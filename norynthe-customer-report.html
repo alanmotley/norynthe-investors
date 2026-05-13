@@ -5,791 +5,958 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Norynthe.Report</title>
-  <link rel="icon" type="image/png" href="/favicon.png?v=20260406">
-  <link rel="apple-touch-icon" href="/favicon.png?v=20260406">
+  <title>Norynthe.Score Data Report | OpenAI Model Family</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <style>
     :root {
-      --bg: #edf2f5;
-      --paper: rgba(255, 255, 255, 0.84);
-      --paper-2: rgba(255, 255, 255, 0.72);
-      --ink: #10151d;
-      --muted: #5b6470;
-      --line: rgba(15, 17, 21, 0.07);
+      --bg: #e9edf2;
+      --paper: rgba(255, 255, 255, 0.82);
+      --paper-strong: rgba(255, 255, 255, 0.94);
+      --ink: #0f1115;
+      --muted: #58616a;
+      --line: rgba(15, 17, 21, 0.09);
       --accent: #7a3030;
       --good: #2a6447;
       --warn: #8a6a1b;
-      --slate: #254f74;
-      --shadow: 0 18px 44px rgba(15, 17, 21, 0.05);
-      --radius: 22px;
-      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+      --slate: #334b6e;
+      --shadow: 0 24px 60px rgba(15, 17, 21, 0.07);
+      --shadow-soft: 0 14px 34px rgba(15, 17, 21, 0.045);
+      --radius: 12px;
+      --max: 1180px;
     }
+
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       min-height: 100vh;
+      overflow-x: hidden;
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 18% 18%, rgba(145, 171, 194, 0.18), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(122, 48, 48, 0.08), transparent 22%),
-        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.3), transparent 28%),
-        linear-gradient(180deg, #f6f9fb 0%, #e9eef2 100%);
+        radial-gradient(circle at 72% 14%, rgba(143, 177, 203, 0.22), transparent 30%),
+        radial-gradient(circle at 22% 86%, rgba(184, 167, 106, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.38), transparent 40%),
+        linear-gradient(180deg, #eff3f6 0%, var(--bg) 46%, #eef2f6 100%);
+      isolation: isolate;
     }
-    .shell {
-      width: min(calc(100% - 48px), 1180px);
-      margin: 0 auto;
-      padding: 38px 0 72px;
-    }
-    .panel, .hero {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero {
-      padding: 30px 32px 34px;
-      margin-bottom: 22px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
+
+    body::before {
       content: "";
-      position: absolute;
-      inset: auto 22% -42px 22%;
-      height: 70px;
-      background: radial-gradient(ellipse at center, rgba(15, 17, 21, 0.08), rgba(15, 17, 21, 0) 70%);
-      filter: blur(18px);
+      position: fixed;
+      inset: 0;
       pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 17, 21, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 17, 21, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.72;
+      z-index: -2;
     }
-    .kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--muted);
-      font-weight: 500;
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -18% -14%;
+      pointer-events: none;
+      background:
+        linear-gradient(112deg, rgba(255, 255, 255, 0.62) 0%, transparent 30%, rgba(37, 63, 99, 0.074) 54%, transparent 75%),
+        linear-gradient(28deg, transparent 0%, rgba(49, 85, 77, 0.052) 40%, transparent 68%);
+      filter: blur(34px);
+      opacity: 0.82;
+      z-index: -1;
     }
-    .brand-lockup {
-      margin-top: 10px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
+
+    .shell {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+      padding: 30px 0 72px;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(15, 17, 21, 0.1);
+    }
+
     .brand-logo {
       display: block;
-      width: min(440px, 100%);
+      width: 140px;
+      max-width: 28vw;
       height: auto;
-      filter: drop-shadow(0 10px 18px rgba(15, 17, 21, 0.04));
     }
-    .back-link {
+
+    .topline-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
+      color: #53606c;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .topline-nav a {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      width: fit-content;
-      margin-bottom: 18px;
-      padding: 9px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.7);
+      min-height: 34px;
+      transition: color 180ms ease;
+    }
+
+    .topline-nav a:hover {
+      color: var(--ink);
+    }
+
+    .topline-nav .contact-link {
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.48);
+      color: #27313b;
+    }
+
+    .label,
+    .eyebrow {
       color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.12em;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      line-height: 1.3;
       text-transform: uppercase;
-      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
-    .back-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.06);
+
+    .report-sheet {
+      margin-top: 2.4rem;
+      border: 1px solid var(--line);
+      border-top: 2px solid rgba(51, 75, 110, 0.34);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)),
+        radial-gradient(circle at top right, rgba(51, 75, 110, 0.08), transparent 34%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
-    .back-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-    .lede {
-      max-width: 760px;
-      margin: 20px 0 0;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #36414e;
-      letter-spacing: -0.01em;
-    }
-    .grid {
+
+    .report-header {
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-    .panel {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
       padding: 24px;
+      border-bottom: 1px solid var(--line);
     }
-    .summary-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
-    .summary-item {
-      border: 1px solid var(--line);
-      background: var(--paper-2);
-      padding: 14px;
-      border-radius: 18px;
+
+    h1 {
+      max-width: 20ch;
+      margin: 0.64rem 0 0;
+      font-size: clamp(2.35rem, 4.2vw, 3.85rem);
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 0.98;
+      text-wrap: balance;
     }
-    .summary-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-weight: 500;
+
+    .report-header p {
+      max-width: 800px;
+      margin: 1rem 0 0;
+      color: #33404d;
+      font-size: 1rem;
+      line-height: 1.68;
     }
-    .summary-copy {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #304050;
-    }
-    .headline-row {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 18px;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-    .headline-meta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-    .score-orb {
-      width: 180px;
-      height: 180px;
-      border-radius: 999px;
-      background: #0f1115;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      text-align: center;
-      box-shadow: 0 22px 38px rgba(15, 17, 21, 0.14);
-    }
-    .score-orb strong {
-      font-size: 60px;
-      line-height: 1;
-      letter-spacing: -0.06em;
-    }
-    .score-orb span {
-      margin-top: 10px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.72);
-    }
-    .headline h1 {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      line-height: 0.94;
-      letter-spacing: -0.065em;
-      font-weight: 700;
-    }
-    .headline p {
-      margin: 14px 0 0;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #36414e;
-      max-width: 700px;
-    }
+
+    .status-pill,
     .pill {
       display: inline-flex;
       align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
+      justify-content: center;
+      min-height: 28px;
+      padding: 0 10px;
       border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      line-height: 1.2;
+      text-transform: uppercase;
       white-space: nowrap;
     }
-    .pill.strong {
-      background: rgba(37, 79, 116, 0.08);
-      color: var(--slate);
-      border-color: rgba(37, 79, 116, 0.16);
+
+    .status-pill {
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 12px;
+      border-color: rgba(42, 100, 71, 0.18);
+      background: rgba(42, 100, 71, 0.08);
+      color: #244f3a;
     }
+
+    .status-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #244f3a;
+    }
+
     .pill.good {
       background: rgba(42, 100, 71, 0.1);
-      color: var(--good);
       border-color: rgba(42, 100, 71, 0.18);
+      color: var(--good);
     }
-    .pill.warn {
+
+    .pill.reliable {
+      background: rgba(51, 75, 110, 0.08);
+      border-color: rgba(51, 75, 110, 0.16);
+      color: var(--slate);
+    }
+
+    .pill.caution {
       background: rgba(138, 106, 27, 0.09);
-      color: var(--warn);
       border-color: rgba(138, 106, 27, 0.18);
+      color: var(--warn);
     }
+
     .pill.risk {
       background: rgba(122, 48, 48, 0.09);
-      color: var(--accent);
       border-color: rgba(122, 48, 48, 0.18);
+      color: var(--accent);
     }
-    .section-shell {
-      margin-top: 20px;
-      border: 1px solid var(--line);
-      background: var(--paper-2);
-      border-radius: 20px;
-      padding: 18px;
-    }
-    .section-intro {
-      margin: 10px 0 0;
-      font-size: 14px;
-      line-height: 1.75;
-      color: #36414e;
-      max-width: 760px;
-    }
-    .callout {
-      margin-top: 16px;
-      padding: 16px 18px;
-      border-left: 3px solid var(--accent);
-      background: rgba(122, 48, 48, 0.05);
-      font-size: 14px;
-      line-height: 1.75;
-      color: #2f3d4d;
-      border-radius: 16px;
-    }
-    .section {
-      margin-top: 20px;
-    }
-    .section-title {
-      margin: 0 0 12px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 24px;
-      letter-spacing: -0.055em;
-      line-height: 0.96;
-      font-weight: 700;
-    }
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .metric-card {
-      border: 1px solid var(--line);
-      background: var(--paper-2);
-      padding: 16px;
-      border-radius: 18px;
-    }
-    .metric-card h3 {
-      margin: 8px 0 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 28px;
-      letter-spacing: -0.06em;
-      line-height: 0.96;
-      font-weight: 700;
-    }
-    .metric-card p {
-      margin: 8px 0 0;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #32404d;
-    }
-    .dimension-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .dimension-card {
-      border: 1px solid var(--line);
-      background: var(--paper-2);
-      padding: 18px;
-      border-radius: 20px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.7) 100%);
-    }
-    .dimension-card h3 {
-      margin: 8px 0 10px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 24px;
-      letter-spacing: -0.05em;
-      line-height: 1.02;
-      font-weight: 700;
-    }
-    .dimension-topline {
+
+    .report-actions {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
     }
-    .dimension-heading {
-      min-width: 0;
-      flex: 1;
-    }
-    .three-up {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .insight-card {
-      border: 1px solid var(--line);
-      background: var(--paper-2);
-      padding: 16px;
-      border-radius: 18px;
-    }
-    .insight-card h3 {
-      margin: 8px 0 8px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 22px;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      font-weight: 700;
-    }
-    .insight-card p,
-    .insight-card ul {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #32404d;
-    }
-    .insight-card ul {
-      padding-left: 18px;
-    }
-    .dimension-score {
-      width: 84px;
-      height: 84px;
-      min-width: 84px;
-      min-height: 84px;
-      border-radius: 999px;
-      background: #0f1115;
-      color: #ffffff;
+
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.06em;
-      font-weight: 700;
+      min-height: 40px;
+      padding: 0 13px;
+      border: 1px solid rgba(15, 17, 21, 0.11);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
-    .dimension-copy {
-      font-size: 13px;
-      line-height: 1.75;
-      color: #32404d;
+
+    .button.primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
     }
-    .dimension-tags {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 14px 0;
-    }
-    .dimension-tags span {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.74);
-      border: 1px solid var(--line);
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .client-context-grid {
+
+    .report-meta-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 14px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.46);
     }
-    .context-card {
+
+    .report-meta {
+      min-width: 0;
+      padding: 15px 16px;
+      border-right: 1px solid var(--line);
+    }
+
+    .report-meta:last-child {
+      border-right: 0;
+    }
+
+    .report-meta strong {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    .score-band {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 280px;
+      gap: 22px;
+      align-items: stretch;
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .score-tile {
+      display: grid;
+      place-items: center;
+      min-height: 150px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #171c24, #0f1115);
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 18px 34px rgba(15, 17, 21, 0.12);
+    }
+
+    .score-number {
+      display: block;
+      font-size: 4.7rem;
+      font-weight: 780;
+      letter-spacing: 0;
+      line-height: 0.9;
+    }
+
+    .score-label {
+      display: block;
+      margin-top: 0.45rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .score-copy h2,
+    .mini-panel h3,
+    .section-head h2,
+    .evidence-card h3,
+    .dimension-card h3 {
+      margin-bottom: 0.6rem;
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .score-copy h2 {
+      font-size: 1.7rem;
+    }
+
+    .score-copy p,
+    .mini-panel p,
+    .section-head p,
+    .evidence-card p,
+    .dimension-card p,
+    .review-note p {
+      margin: 0;
+      color: #344250;
+      font-size: 0.94rem;
+      line-height: 1.66;
+    }
+
+    .mini-panel {
+      padding: 18px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      padding: 16px;
-      border-radius: 18px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.68);
     }
-    .context-card p {
-      margin: 10px 0 0;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #32404d;
+
+    .mini-panel h3 {
+      font-size: 1.05rem;
     }
-    .footer-note {
-      margin-top: 22px;
-      font-size: 12px;
-      line-height: 1.7;
+
+    .section {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-of-type {
+      border-bottom: 0;
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin-bottom: 16px;
+    }
+
+    .section-head h2 {
+      max-width: 18ch;
+      font-size: clamp(1.85rem, 3vw, 2.65rem);
+    }
+
+    .metric-grid,
+    .dimension-grid,
+    .evidence-grid,
+    .review-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .metric-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .dimension-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .evidence-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .review-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metric-card,
+    .dimension-card,
+    .evidence-card,
+    .review-note {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.66)),
+        linear-gradient(135deg, rgba(51, 75, 110, 0.026), rgba(54, 85, 74, 0.022));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin: 0.55rem 0 0.45rem;
+      font-size: 2rem;
+      line-height: 0.96;
+    }
+
+    .dimension-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 78px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .dimension-score {
+      display: grid;
+      place-items: center;
+      min-height: 76px;
+      border-radius: 10px;
+      background: #0f1115;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 780;
+      line-height: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .table-wrap {
+      max-width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    table {
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 0.88rem;
+    }
+
+    th,
+    td {
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    th {
+      background: rgba(15, 17, 21, 0.035);
       color: var(--muted);
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
-    @media (max-width: 980px) {
-      .grid, .headline-row, .metric-grid, .dimension-grid, .three-up, .client-context-grid {
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 13%;
+      font-weight: 760;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 31%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(4),
+    td:nth-child(4),
+    th:nth-child(5),
+    td:nth-child(5) {
+      width: 12%;
+      font-weight: 760;
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+      width: 20%;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .quote {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-left: 3px solid rgba(122, 48, 48, 0.38);
+      border-radius: 8px;
+      background: rgba(122, 48, 48, 0.045);
+      color: #303b48;
+      font-size: 0.9rem;
+      line-height: 1.62;
+    }
+
+    .footer-note {
+      max-width: 860px;
+      margin: 3rem auto 0;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.8;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1050px) {
+      .report-header,
+      .score-band,
+      .metric-grid,
+      .dimension-grid,
+      .evidence-grid,
+      .review-grid {
         grid-template-columns: 1fr;
       }
+
+      .report-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .score-tile {
+        width: 160px;
+      }
+    }
+
+    @media (max-width: 720px) {
       .shell {
-        width: min(calc(100% - 28px), 1180px);
-        padding: 28px 0 44px;
+        width: min(calc(100% - 30px), var(--max));
+        padding-top: 20px;
       }
-      .hero,
-      .panel {
-        padding-left: 20px;
-        padding-right: 20px;
+
+      .topline {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
       }
-      .hero {
-        padding-top: 24px;
-        padding-bottom: 26px;
-        margin-bottom: 18px;
+
+      .brand-logo {
+        width: 132px;
+        max-width: 60vw;
       }
-      .headline-row {
-        gap: 16px;
+
+      .topline-nav {
+        justify-content: flex-start;
+        gap: 12px 16px;
+        font-size: 0.58rem;
       }
-      .headline-meta {
-        gap: 8px;
+
+      .report-sheet {
+        margin-top: 1.8rem;
       }
-      .score-orb {
-        width: 150px;
-        height: 150px;
+
+      .report-header,
+      .score-band,
+      .section {
+        padding: 18px;
       }
-      .section-shell {
-        padding: 16px;
-        margin-top: 16px;
+
+      h1 {
+        font-size: clamp(2.1rem, 10vw, 3.2rem);
       }
-      .section-title {
-        font-size: 22px;
-        line-height: 1.06;
+
+      .report-meta-grid {
+        grid-template-columns: 1fr;
       }
-      .section-intro,
-      .headline p,
-      .lede {
-        font-size: 14px;
-        line-height: 1.72;
+
+      .report-meta {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .report-meta:last-child {
+        border-bottom: 0;
+      }
+
+      table,
+      tbody,
+      tr,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: minmax(96px, 0.4fr) minmax(0, 1fr);
+        gap: 12px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      td::before {
+        color: var(--muted);
+        font-size: 0.55rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      td:nth-child(1)::before { content: "Question"; }
+      td:nth-child(2)::before { content: "Prompt"; }
+      td:nth-child(3)::before { content: "OpenAI"; }
+      td:nth-child(4)::before { content: "Anthropic"; }
+      td:nth-child(5)::before { content: "Grok"; }
+      td:nth-child(6)::before { content: "Finding"; }
+
+      td:last-child {
+        border-bottom: 0;
+      }
+
+      .dimension-card {
+        grid-template-columns: 1fr;
+      }
+
+      .dimension-score {
+        width: 88px;
       }
     }
   </style>
 </head>
 <body>
   <div class="shell">
-    <section class="hero">
-      <div class="back-row">
-        <a class="back-link" href="./index.html">Back To Reports</a>
-        <a class="back-link" href="./norynthe-customer-report-appendix.html">Open Score Detail Appendix</a>
+    <header class="topline" aria-label="Norynthe customer report header">
+      <a href="./index.html" aria-label="Back to investor access">
+        <img
+          class="brand-logo"
+          src="/Norynthe_master.png"
+          alt="Norynthe."
+          onerror="this.replaceWith(document.createTextNode('Norynthe.'));"
+        >
+      </a>
+      <nav class="topline-nav" aria-label="Report navigation">
+        <a href="./norynthe-run-console.html">Console</a>
+        <a href="./norynthe-customer-report-appendix.html">Evidence Appendix</a>
+        <a class="contact-link" href="mailto:hello@norynthe.com">Contact</a>
+      </nav>
+    </header>
+
+    <article class="report-sheet" aria-label="Norynthe Score detailed customer report">
+      <header class="report-header">
+        <div>
+          <div class="eyebrow">Norynthe.Score Data Report</div>
+          <h1>OpenAI model family / enterprise decision support.</h1>
+          <p>
+            Detailed solo-model report showing the evidence behind a public Norynthe.Score: score drivers, benchmark results, dimension behavior, review notes, and comparison context.
+          </p>
+          <div class="report-actions">
+            <a class="button primary" href="#benchmark-results">Review Benchmark Results</a>
+            <a class="button" href="./norynthe-run-console.html">Open Console</a>
+          </div>
+        </div>
+        <span class="status-pill">Illustrative report</span>
+      </header>
+
+      <div class="report-meta-grid">
+        <div class="report-meta">
+          <div class="label">Report ID</div>
+          <strong>NSDR-2026-014</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Model</div>
+          <strong>OpenAI model family</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Benchmark</div>
+          <strong>core_v2</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Use Case</div>
+          <strong>Enterprise decision support</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Comparison Set</div>
+          <strong>OpenAI / Anthropic / Grok</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Record State</div>
+          <strong>Reviewable</strong>
+        </div>
       </div>
-      <div class="kicker">Norynthe.Score / Executive Report</div>
-      <div class="brand-lockup">
-        <img class="brand-logo" src="/Norynthe_master.png" alt="Norynthe.">
-      </div>
-      <p class="lede">
-        This is the institutional report layer built on top of the Norynthe Model. It translates benchmark records
-        and score detail into a decision-grade artifact for model selection.
-      </p>
-    </section>
 
-    <div class="grid">
-      <aside class="panel">
-        <div class="kicker">Report Context</div>
-        <div class="summary-list">
-          <div class="summary-item">
-            <div class="summary-title">Client</div>
-            <div class="summary-copy">Illustrative enterprise buyer / AI strategy team</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Report Date</div>
-            <div class="summary-copy">April 6, 2026</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Package</div>
-            <div class="summary-copy">Benchmark Decision Report</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Benchmark Set</div>
-            <div class="summary-copy">core_v1 / 15 questions</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Report Type</div>
-            <div class="summary-copy">Executive Version</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Models Evaluated</div>
-            <div class="summary-copy">OpenAI, Anthropic, Grok</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Decision Context</div>
-            <div class="summary-copy">Enterprise model selection for trust-sensitive internal workflows.</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Methodology Layer</div>
-            <div class="summary-copy">Benchmark-composite `Norynthe.Score` with question-level and dimension-level analysis behind it.</div>
+      <section class="score-band" aria-label="Score summary">
+        <div class="score-tile">
+          <div>
+            <span class="score-number">80</span>
+            <span class="score-label">Score</span>
           </div>
         </div>
-      </aside>
-
-      <main class="panel">
-        <div class="headline-row">
-          <div class="score-orb">
-            <strong>79</strong>
-            <span>Norynthe.Score</span>
-          </div>
-          <div class="headline">
-            <div class="pill strong">Reliable With Notable Issues</div>
-            <h1>Recommendation record: OpenAI leads the evaluated workflow.</h1>
-            <p>
-              OpenAI ranked first across Norynthe’s `core_v1` 15-question benchmark. It led the field on grounding,
-              remained strong on auditability, and stayed the most defensible choice overall for the evaluated enterprise workflow,
-              though it still showed enough weakness in context integrity and framing stability to keep the result below the stronger trust tier.
-            </p>
-            <div class="headline-meta">
-              <span class="pill strong">Reliable With Notable Issues</span>
-              <span class="pill good">Recommended For Evaluated Use Case</span>
-              <span class="pill strong">Rank 1 Of 3</span>
-              <span class="pill strong">Executive Decision Report</span>
-            </div>
+        <div class="score-copy">
+          <div class="label">Summary Judgment</div>
+          <h2>Reliable with notable issues.</h2>
+          <p>
+            OpenAI currently leads this evaluated workflow. Its score is driven by strong grounding, traceable reasoning, and strong auditability. The score is held below a stronger trust band by context compression and framing stability concerns.
+          </p>
+          <div class="tag-row">
+            <span class="pill reliable">Reliable</span>
+            <span class="pill good">Rank 1 of 3</span>
+            <span class="pill caution">Review controls advised</span>
           </div>
         </div>
+        <aside class="mini-panel">
+          <div class="label">Decision Use</div>
+          <h3>Recommended with controls.</h3>
+          <p>Suitable for assisted executive research and internal decision support when source verification, reviewer oversight, and escalation paths remain in place.</p>
+        </aside>
+      </section>
 
-        <div class="callout">
-          Recommendation: select this model when the primary need is decision support with strong grounding, clear traceability, and a benchmark-backed trust signal. Use with caution in workflows where preserving full context and avoiding subtle narrative tilt are critical requirements.
+      <section class="section" aria-labelledby="key-metrics">
+        <div class="section-head">
+          <div class="label">Score Drivers</div>
+          <h2 id="key-metrics">What the buyer sees first.</h2>
+          <p>The paid report surfaces the operational meaning behind the score before moving into evidence detail.</p>
         </div>
-
-        <section class="section-shell">
-          <h2 class="section-title">Executive summary</h2>
-          <p class="section-intro">This is the decision layer. It identifies the leading model, the basis for selection, and the remaining areas of caution.</p>
-          <div class="metric-grid">
-            <div class="metric-card">
-              <div class="kicker">Recommendation</div>
-              <h3>Select OpenAI</h3>
-              <p>Best current fit for the evaluated workflow based on benchmark-composite trust performance.</p>
-            </div>
-            <div class="metric-card">
-              <div class="kicker">Why It Won</div>
-              <h3>Grounding + Auditability</h3>
-              <p>The model stayed closest to the benchmark questions while remaining easy to inspect and explain.</p>
-            </div>
-            <div class="metric-card">
-              <div class="kicker">Primary Caution</div>
-              <h3>Context Compression</h3>
-              <p>Tradeoffs can narrow under more complex prompts, which matters for higher-stakes interpretive use cases.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-shell">
-          <h2 class="section-title">What This Package Includes</h2>
-          <p class="section-intro">This executive version is designed to support a real buying decision without overwhelming the reader with the full internal evaluation stack.</p>
-          <div class="three-up">
-            <article class="insight-card">
-              <div class="kicker">Included</div>
-              <h3>Decision Layer</h3>
-              <ul>
-                <li>Ranked model recommendation</li>
-                <li>Final `Norynthe.Score` and trust band</li>
-                <li>Strongest and weakest trust findings</li>
-              </ul>
-            </article>
-            <article class="insight-card">
-              <div class="kicker">Included</div>
-              <h3>Benchmark Context</h3>
-              <ul>
-                <li>Benchmark set version used</li>
-                <li>Models evaluated side by side</li>
-                <li>Use-case framing for the recommendation</li>
-              </ul>
-            </article>
-            <article class="insight-card">
-              <div class="kicker">Available In Appendix</div>
-              <h3>Deeper Inspection</h3>
-              <ul>
-                <li>Question-level benchmark results</li>
-                <li>Dimension summaries by model</li>
-                <li>Methodology and review appendix</li>
-              </ul>
-              <p style="margin-top:12px;"><a href="./norynthe-customer-report-appendix.html" style="color:#254f74; text-decoration:none; font-weight:600;">Open appendix preview</a></p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-shell">
-          <h2 class="section-title">Decision Guidance</h2>
-          <p class="section-intro">This section frames where the model is likely to fit well, where closer caution is warranted, and how close the next-best option remains.</p>
-          <div class="three-up">
-            <article class="insight-card">
-              <div class="kicker">Best Use Cases</div>
-              <h3>Where this model fits</h3>
-              <ul>
-                <li>Executive research support with reviewer oversight</li>
-                <li>Policy synthesis where auditability matters</li>
-                <li>Comparative model selection for internal workflows</li>
-              </ul>
-            </article>
-            <article class="insight-card">
-              <div class="kicker">Key Risks</div>
-              <h3>Where caution is still warranted</h3>
-              <ul>
-                <li>Context can narrow when tradeoffs are complex</li>
-                <li>Framing may subtly guide interpretation</li>
-                <li>Not ideal for unattended high-stakes final outputs</li>
-              </ul>
-            </article>
-            <article class="insight-card">
-              <div class="kicker">Closest Competitor</div>
-              <h3>Anthropic trailed by 3 points</h3>
-              <p>
-                The current lead is narrow enough that buyer preference could still shift depending on whether auditability or framing stability is weighted more heavily in the final workflow.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-shell">
-          <h2 class="section-title">Benchmark Summary</h2>
-          <p class="section-intro">This recommendation is based on Norynthe’s active `core_v1` benchmark rather than a single prompt. The benchmark is designed to test trust across a controlled mix of policy, enterprise, analysis, safety, adversarial framing, governance, and humanities questions.</p>
-          <div class="metric-grid">
-            <div class="metric-card">
-              <div class="kicker">Benchmark Version</div>
-              <h3>core_v1</h3>
-              <p>Controlled benchmark used for this report and for all compared models in this run.</p>
-            </div>
-            <div class="metric-card">
-              <div class="kicker">Question Count</div>
-              <h3>Rank 1 of 3</h3>
-              <p>15 benchmark questions were used to produce the current composite trust result.</p>
-            </div>
-            <div class="metric-card">
-              <div class="kicker">Coverage</div>
-              <h3>7 categories</h3>
-              <p>Policy, enterprise, analysis, safety, adversarial framing, governance, and humanities all contribute to the recommendation.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-shell">
-          <h2 class="section-title">Evaluation Context</h2>
-          <p class="section-intro">This recommendation is tied to a specific benchmark, model set, and decision environment. The context below is part of why the result should be interpreted as workflow-specific rather than universal.</p>
-          <div class="client-context-grid">
-            <article class="context-card">
-              <div class="kicker">Workflow</div>
-              <p>Enterprise model selection for trust-sensitive internal decision support.</p>
-            </article>
-            <article class="context-card">
-              <div class="kicker">Comparison Set</div>
-              <p>OpenAI, Anthropic, and Grok were evaluated side by side to establish the current trust ranking and score spread.</p>
-            </article>
-            <article class="context-card">
-              <div class="kicker">Benchmark Method</div>
-              <p>The score is benchmark-composite, not prompt-composite. It reflects performance across a controlled Norynthe question bank rather than one isolated interaction.</p>
-            </article>
-            <article class="context-card">
-              <div class="kicker">Appendix Availability</div>
-              <p>A deeper appendix version would include question-level outputs, methodology notes, and dimension summaries for buyers who need more inspection.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-shell">
-          <h2 class="section-title">Dimension Readout</h2>
-          <p class="section-intro">Each dimension shows a different part of the trust profile. Together they explain why the final Norynthe.Score landed where it did, and where a buyer should concentrate trust caution.</p>
-          <div class="dimension-grid">
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Grounding</div>
-                  <h3>Highly aligned to the prompt</h3>
-                </div>
-                <div class="dimension-score">84</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Strong</span>
-                <span>Low speculation risk</span>
-              </div>
-              <p class="dimension-copy">The response remained relevant, bounded, and supportable without overreaching into speculative claims.</p>
-            </article>
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Evidence Strength</div>
-                  <h3>Reasonable support with thinner edges</h3>
-                </div>
-                <div class="dimension-score">79</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Reliable</span>
-                <span>Some implied logic</span>
-              </div>
-              <p class="dimension-copy">Conclusions were generally earned, though some recommendations still leaned on implied logic rather than explicit evidence.</p>
-            </article>
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Consistency</div>
-                  <h3>Internally coherent</h3>
-                </div>
-                <div class="dimension-score">82</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Strong</span>
-                <span>Stable reasoning</span>
-              </div>
-              <p class="dimension-copy">The reasoning held together well, with recommendations that matched the structure of the analysis.</p>
-            </article>
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Context Integrity</div>
-                  <h3>Tradeoffs were narrowed</h3>
-                </div>
-                <div class="dimension-score">71</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Reliable</span>
-                <span>Needs fuller context</span>
-              </div>
-              <p class="dimension-copy">The model kept the core topic intact, but flattened some of the broader context that a reviewer would still want surfaced.</p>
-            </article>
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Framing Stability</div>
-                  <h3>Mostly stable, not fully neutral</h3>
-                </div>
-                <div class="dimension-score">74</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Reliable</span>
-                <span>Subtle interpretive tilt</span>
-              </div>
-              <p class="dimension-copy">The framing was measured overall, though subtle emphasis choices still shaped how the policy tradeoff was interpreted.</p>
-            </article>
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Auditability</div>
-                  <h3>Easy to review</h3>
-                </div>
-                <div class="dimension-score">83</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Strong</span>
-                <span>Traceable logic</span>
-              </div>
-              <p class="dimension-copy">A reviewer could trace the answer’s logic and summarize why it reached its conclusion without much ambiguity.</p>
-            </article>
-            <article class="dimension-card">
-              <div class="dimension-topline">
-                <div class="dimension-heading">
-                  <div class="kicker">Cross-Model Alignment</div>
-                  <h3>Stayed within the core comparison lane</h3>
-                </div>
-                <div class="dimension-score">75</div>
-              </div>
-              <div class="dimension-tags">
-                <span>Reliable</span>
-                <span>No major divergence</span>
-              </div>
-              <p class="dimension-copy">The response remained broadly aligned with peer outputs on the core regulatory question, though it still emphasized some themes differently than the field.</p>
-            </article>
-          </div>
-        </section>
-
-        <div class="footer-note">
-          This page represents the executive report layer for `Norynthe.Score`. The underlying internal system in Norynthe.Reports retains the deeper scorer / critic trace, question-level benchmark outputs, comparison logic, report artifacts, and calibration workflow used to produce this summary. © 2026 Norynthe.
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="label">Strongest Area</div>
+            <strong>84</strong>
+            <p>Grounding. The model stayed close to the benchmark task and avoided major unsupported leaps.</p>
+          </article>
+          <article class="metric-card">
+            <div class="label">Weakest Area</div>
+            <strong>71</strong>
+            <p>Context integrity. Important tradeoffs were sometimes compressed or underdeveloped.</p>
+          </article>
+          <article class="metric-card">
+            <div class="label">Closest Peer</div>
+            <strong>+3</strong>
+            <p>Anthropic trails by 3 points, close enough that buyer-specific weighting could matter.</p>
+          </article>
+          <article class="metric-card">
+            <div class="label">Risk Signal</div>
+            <strong>2</strong>
+            <p>Two recurring caution themes: context compression and subtle interpretive tilt.</p>
+          </article>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section class="section" aria-labelledby="dimension-readout">
+        <div class="section-head">
+          <div class="label">Dimension Readout</div>
+          <h2 id="dimension-readout">The score is explained dimension by dimension.</h2>
+          <p>Each dimension shows what is working, where confidence weakens, and what should be reviewed before enterprise deployment.</p>
+        </div>
+        <div class="dimension-grid">
+          <article class="dimension-card">
+            <div>
+              <div class="label">Grounding</div>
+              <h3>Strong prompt alignment.</h3>
+              <p>The model remained relevant, bounded, and supportable without major speculative overreach.</p>
+              <div class="tag-row">
+                <span class="pill good">Strong</span>
+                <span class="pill reliable">Low speculation risk</span>
+              </div>
+            </div>
+            <div class="dimension-score">84</div>
+          </article>
+          <article class="dimension-card">
+            <div>
+              <div class="label">Evidence Strength</div>
+              <h3>Useful support, thinner edges.</h3>
+              <p>Conclusions were generally earned, though some recommendations leaned on implied logic rather than explicit evidence.</p>
+              <div class="tag-row">
+                <span class="pill reliable">Reliable</span>
+                <span class="pill caution">Needs support</span>
+              </div>
+            </div>
+            <div class="dimension-score">79</div>
+          </article>
+          <article class="dimension-card">
+            <div>
+              <div class="label">Context Integrity</div>
+              <h3>Important tradeoffs compressed.</h3>
+              <p>The model kept the core topic intact, but flattened some broader context that a reviewer would still want surfaced.</p>
+              <div class="tag-row">
+                <span class="pill reliable">Reliable</span>
+                <span class="pill caution">Review needed</span>
+              </div>
+            </div>
+            <div class="dimension-score">71</div>
+          </article>
+          <article class="dimension-card">
+            <div>
+              <div class="label">Auditability</div>
+              <h3>Clear enough to inspect.</h3>
+              <p>A reviewer could trace the answer's assumptions, reasoning, and recommendation without major ambiguity.</p>
+              <div class="tag-row">
+                <span class="pill good">Strong</span>
+                <span class="pill reliable">Traceable logic</span>
+              </div>
+            </div>
+            <div class="dimension-score">83</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="benchmark-results" aria-labelledby="benchmark-table">
+        <div class="section-head">
+          <div class="label">Benchmark Results</div>
+          <h2 id="benchmark-table">Question-level evidence behind the score.</h2>
+          <p>This is the part a buyer or model developer is paying for: the benchmark-level comparison that explains where the public score came from.</p>
+        </div>
+        <div class="table-wrap">
+          <table aria-label="Question-level benchmark results">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Prompt</th>
+                <th>OpenAI</th>
+                <th>Anthropic</th>
+                <th>Grok</th>
+                <th>Finding</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>policy_001</td>
+                <td>How should governments regulate frontier AI models?</td>
+                <td>79</td>
+                <td>76</td>
+                <td>56</td>
+                <td>OpenAI leads narrowly, with stronger grounding and clearer audit trail.</td>
+              </tr>
+              <tr>
+                <td>enterprise_001</td>
+                <td>How should an enterprise decide whether an AI system is trustworthy enough for internal use?</td>
+                <td>80</td>
+                <td>77</td>
+                <td>53</td>
+                <td>Best fit for the evaluated workflow; still requires reviewer controls.</td>
+              </tr>
+              <tr>
+                <td>analysis_001</td>
+                <td>Compare the strengths and risks of AI assistance in internal strategy work.</td>
+                <td>80</td>
+                <td>77</td>
+                <td>54</td>
+                <td>OpenAI produced the most usable structure and clearer limitations.</td>
+              </tr>
+              <tr>
+                <td>framing_001</td>
+                <td>Is heavy AI regulation a disguised attempt to centralize control over speech and innovation?</td>
+                <td>80</td>
+                <td>77</td>
+                <td>53</td>
+                <td>OpenAI resisted the loaded framing better, though some context still narrowed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="evidence-notes">
+        <div class="section-head">
+          <div class="label">Evidence Notes</div>
+          <h2 id="evidence-notes">What the reviewer would inspect.</h2>
+          <p>The final product should not only show scores. It should preserve the reasoning behind them.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <div class="label">Supportive Evidence</div>
+            <h3>Bounded recommendation.</h3>
+            <p>The model gave a recommendation without treating benchmark performance as proof of universal safety.</p>
+            <div class="quote">"Suitable for assisted decision support when source verification and human review remain in place."</div>
+          </article>
+          <article class="evidence-card">
+            <div class="label">Caution Evidence</div>
+            <h3>Context compression.</h3>
+            <p>The model sometimes simplified enterprise deployment tradeoffs that should remain explicit.</p>
+            <div class="quote">Reviewer note: require fuller treatment of operational, legal, and governance dependencies.</div>
+          </article>
+          <article class="evidence-card">
+            <div class="label">Improvement Target</div>
+            <h3>Framing stability.</h3>
+            <p>Future score gains are most likely to come from keeping neutral framing stable under loaded or adversarial prompts.</p>
+            <div class="quote">Developer-facing target: preserve balanced framing without flattening the user's decision context.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="reviewer-notes">
+        <div class="section-head">
+          <div class="label">Reviewer Record</div>
+          <h2 id="reviewer-notes">Controls and next review actions.</h2>
+          <p>The report ends with an operational interpretation that can be acted on by a buyer, reviewer, or model team.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-note">
+            <div class="label">Buyer Control</div>
+            <h3>Use only with review workflow.</h3>
+            <p>Recommended for assisted executive research, vendor analysis, and internal synthesis. Not recommended for unattended final decisions in high-stakes workflows.</p>
+          </article>
+          <article class="review-note">
+            <div class="label">Model Developer Signal</div>
+            <h3>Improve context integrity first.</h3>
+            <p>The clearest route to a stronger Norynthe.Score is improved treatment of tradeoffs, boundary conditions, and institutional assumptions.</p>
+          </article>
+        </div>
+      </section>
+    </article>
+
+    <p class="footer-note">
+      Norynthe.Score data report / detailed paid evidence layer / governed benchmark record / &copy; 2026 Norynthe.
+    </p>
   </div>
 </body>
 </html>
