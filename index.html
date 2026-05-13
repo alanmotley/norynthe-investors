@@ -490,21 +490,21 @@
       display: grid;
       align-content: space-between;
       min-height: 220px;
-      padding: 18px;
-      border: 1px solid rgba(15, 17, 21, 0.08);
-      border-radius: 12px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.68)),
-        linear-gradient(135deg, rgba(51, 75, 110, 0.024), rgba(54, 85, 74, 0.02));
-      box-shadow: var(--shadow-soft);
+      padding: 20px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-top: 2px solid rgba(51, 75, 110, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: none;
       overflow: hidden;
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
     .library-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(51, 75, 110, 0.17);
-      box-shadow: 0 18px 38px rgba(15, 17, 21, 0.07);
+      border-color: rgba(51, 75, 110, 0.2);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 18px 42px rgba(15, 17, 21, 0.06);
     }
 
     .library-card.is-paused {
@@ -513,15 +513,16 @@
 
     .library-card.is-paused:hover {
       transform: none;
-      border-color: rgba(15, 17, 21, 0.08);
-      box-shadow: var(--shadow-soft);
+      border-color: rgba(15, 17, 21, 0.1);
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: none;
     }
 
     .library-card h3,
     .context-card h3 {
       margin: 0.72rem 0 0.62rem;
       color: var(--ink);
-      font-size: 1.24rem;
+      font-size: 1.18rem;
       font-weight: 760;
       letter-spacing: 0;
       line-height: 1.08;
@@ -538,30 +539,30 @@
     .card-action {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       width: max-content;
-      min-height: 38px;
+      min-height: auto;
       margin-top: 1.25rem;
-      padding: 0 13px;
-      border: 1px solid rgba(15, 17, 21, 0.12);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.62);
-      color: #27313b;
-      font-size: 0.62rem;
+      padding: 0 0 7px;
+      border: 0;
+      border-bottom: 1px solid rgba(51, 75, 110, 0.24);
+      border-radius: 0;
+      background: transparent;
+      color: var(--slate);
+      font-size: 0.56rem;
       font-weight: 760;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
     .library-card.primary .card-action {
-      border-color: #0f1115;
-      background: #0f1115;
-      color: #fff;
+      border-color: rgba(122, 48, 48, 0.28);
+      background: transparent;
+      color: var(--signal);
     }
 
     .library-card.is-paused .card-action {
-      border-color: rgba(138, 111, 45, 0.22);
-      background: rgba(138, 111, 45, 0.08);
+      border-color: rgba(138, 111, 45, 0.28);
+      background: transparent;
       color: #6f5720;
     }
 
