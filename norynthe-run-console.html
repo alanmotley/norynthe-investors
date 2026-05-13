@@ -770,6 +770,8 @@
         linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
       border-radius: 10px;
       padding: 20px;
+      max-width: 100%;
+      overflow: hidden;
     }
     .executive-callout {
       display: none;
@@ -787,31 +789,119 @@
     }
     .comparison-table {
       width: 100%;
+      max-width: 100%;
       border: 1px solid var(--line);
       border-collapse: separate;
       border-spacing: 0;
+      table-layout: fixed;
       background: rgba(255,255,255,0.62);
       margin-top: 14px;
-      font-size: 13px;
+      font-size: 12.5px;
       border-radius: 10px;
       overflow: hidden;
     }
     .comparison-table th,
     .comparison-table td {
-      padding: 13px 14px;
+      padding: 12px 12px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: top;
+      overflow-wrap: anywhere;
+      word-break: normal;
     }
     .comparison-table th {
-      font-size: 11px;
+      font-size: 0.56rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       color: var(--muted);
       background: rgba(15, 17, 21, 0.035);
     }
+    .comparison-table th,
+    .comparison-table td {
+      min-width: 0;
+    }
+    .comparison-table th:nth-child(1),
+    .comparison-table td:nth-child(1) {
+      width: 8%;
+    }
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2) {
+      width: 25%;
+      font-weight: 760;
+    }
+    .comparison-table th:nth-child(3),
+    .comparison-table td:nth-child(3) {
+      width: 13%;
+      font-weight: 760;
+    }
+    .comparison-table th:nth-child(4),
+    .comparison-table td:nth-child(4) {
+      width: 22%;
+    }
+    .comparison-table th:nth-child(5),
+    .comparison-table td:nth-child(5),
+    .comparison-table th:nth-child(6),
+    .comparison-table td:nth-child(6) {
+      width: 16%;
+    }
+    .comparison-table .pill {
+      max-width: 100%;
+      white-space: normal;
+      line-height: 1.22;
+      padding: 6px 8px;
+      font-size: 0.54rem;
+      letter-spacing: 0.1em;
+    }
     .comparison-table tr:last-child td {
       border-bottom: none;
+    }
+    @media (max-width: 780px) {
+      .comparison-table {
+        border: 0;
+        background: transparent;
+      }
+      .comparison-table thead {
+        display: none;
+      }
+      .comparison-table,
+      .comparison-table tbody,
+      .comparison-table tr,
+      .comparison-table td {
+        display: block;
+        width: 100%;
+      }
+      .comparison-table tr {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.72);
+      }
+      .comparison-table tr + tr {
+        margin-top: 10px;
+      }
+      .comparison-table td {
+        display: grid;
+        grid-template-columns: minmax(96px, 0.42fr) minmax(0, 1fr);
+        gap: 12px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .comparison-table td::before {
+        color: var(--muted);
+        font-size: 0.55rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .comparison-table td:nth-child(1)::before { content: "Rank"; }
+      .comparison-table td:nth-child(2)::before { content: "Model"; }
+      .comparison-table td:nth-child(3)::before { content: "Score"; }
+      .comparison-table td:nth-child(4)::before { content: "Trust Band"; }
+      .comparison-table td:nth-child(5)::before { content: "Strongest"; }
+      .comparison-table td:nth-child(6)::before { content: "Weakest"; }
+      .comparison-table td:last-child {
+        border-bottom: 0;
+      }
     }
     .toolbar {
       display: flex;
@@ -1868,8 +1958,6 @@
                   <tr>
                     <th>Rank</th>
                     <th>Model</th>
-                    <th>Provider</th>
-                    <th>Version</th>
                     <th>Norynthe.Score</th>
                     <th>Trust Band</th>
                     <th>Strongest</th>
@@ -2054,6 +2142,16 @@
 
     function pillClass(band) {
       return `pill ${band}`;
+    }
+
+    function compactBandLabel(label) {
+      const value = String(label ?? "").toLowerCase();
+      if (value.includes("exceptional")) return "Exceptional";
+      if (value.includes("strong")) return "Strong";
+      if (value.includes("reliable")) return "Reliable";
+      if (value.includes("caution")) return "Caution";
+      if (value.includes("risk")) return "Risk";
+      return label ?? "Unscored";
     }
 
     function setWalkthroughStep(step) {
@@ -2633,10 +2731,8 @@
         row.innerHTML = `
           <td>${item.rank}</td>
           <td>${item.target_model_name}</td>
-          <td>${item.provider}</td>
-          <td>${item.version}</td>
           <td>${displayScore(item.norynthe_score)}</td>
-          <td><span class="${pillClass(item.overall_band)}">${item.overall_band_label}</span></td>
+          <td><span class="${pillClass(item.overall_band)}">${compactBandLabel(item.overall_band_label)}</span></td>
           <td>${titleize(item.strongest_dimension.dimension)} (${displayScore(item.strongest_dimension.score)})</td>
           <td>${titleize(item.weakest_dimension.dimension)} (${displayScore(item.weakest_dimension.score)})</td>
         `;
@@ -2651,10 +2747,8 @@
         row.innerHTML = `
           <td>${item.rank}</td>
           <td>${item.target_model_name}</td>
-          <td>${item.provider}</td>
-          <td>${item.version}</td>
           <td>${displayScore(item.norynthe_score)}</td>
-          <td><span class="${pillClass(item.overall_band)}">${item.overall_band_label}</span></td>
+          <td><span class="${pillClass(item.overall_band)}">${compactBandLabel(item.overall_band_label)}</span></td>
           <td>${item.strongest_question.prompt_id} (${displayScore(item.strongest_question.score)})</td>
           <td>${item.weakest_question.prompt_id} (${displayScore(item.weakest_question.score)})</td>
         `;
