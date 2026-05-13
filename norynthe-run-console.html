@@ -165,7 +165,7 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: 332px 1fr;
+      grid-template-columns: 292px minmax(0, 1fr);
       gap: 24px;
       align-items: start;
     }
@@ -626,6 +626,25 @@
       border-radius: 8px;
       background: rgba(255,255,255,0.78);
     }
+    .report-mode-exit {
+      display: none;
+      margin: 0 0 14px auto;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.58);
+      color: #27313b;
+      font-size: 0.58rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    body.paid-report-mode .report-mode-exit {
+      display: inline-flex;
+      align-items: center;
+    }
     .comparison-summary {
       display: none;
       grid-template-columns: 1fr;
@@ -637,44 +656,118 @@
     }
     .comparison-hero {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 24px;
-      align-items: center;
-      padding: 24px;
+      grid-template-columns: minmax(0, 1fr) 178px;
+      gap: 28px;
+      align-items: stretch;
+      padding: 0;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.74);
+      border-top: 2px solid rgba(51, 75, 110, 0.28);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.66)),
+        radial-gradient(circle at top right, rgba(51, 75, 110, 0.07), transparent 34%);
       border-radius: 10px;
+      overflow: hidden;
     }
     .comparison-hero-score {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 8px;
+      min-height: 100%;
+      padding: 22px 18px;
+      background: #0f1115;
+      color: #fff;
+      text-align: center;
+    }
+    .comparison-hero > div:first-child {
+      padding: 24px;
+    }
+    .comparison-hero-score .score-badge {
+      width: auto;
+      height: auto;
+      min-width: 0;
+      min-height: 0;
+      flex: none;
+      border-radius: 0;
+      background: transparent;
+      color: #fff;
+      font-size: clamp(3rem, 7vw, 4.4rem);
+      line-height: 0.9;
+    }
+    .comparison-hero-score .single-report-badge-label {
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 800;
     }
     .comparison-hero-title {
       margin: 12px 0 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      line-height: 0.96;
+      font-size: clamp(2.05rem, 4vw, 3rem);
+      line-height: 0.98;
       letter-spacing: 0;
-      font-weight: 700;
+      font-weight: 780;
+      max-width: 15ch;
+      text-wrap: balance;
     }
     .comparison-hero-copy {
       margin: 14px 0 0;
       font-size: 15px;
-      line-height: 1.8;
+      line-height: 1.68;
       color: #32404d;
       max-width: 760px;
+    }
+    .paid-data-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.54);
+      overflow: hidden;
+    }
+    .paid-data-card {
+      min-width: 0;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+    .paid-data-card:last-child {
+      border-right: 0;
+    }
+    .paid-data-card h3 {
+      margin: 9px 0 8px;
+      font-size: 1rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+    .paid-data-card p {
+      margin: 0;
+      color: #3f4c58;
+      font-size: 0.86rem;
+      line-height: 1.6;
     }
     .comparison-metrics {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.48);
+    }
+    .comparison-summary .summary-card {
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+    }
+    .comparison-summary .summary-card:last-child {
+      border-right: 0;
     }
     .comparison-table-section {
       margin-top: 20px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
+      border-top: 2px solid rgba(51, 75, 110, 0.2);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
       border-radius: 10px;
       padding: 20px;
     }
@@ -695,8 +788,9 @@
     .comparison-table {
       width: 100%;
       border: 1px solid var(--line);
-      border-collapse: collapse;
-      background: rgba(255,255,255,0.72);
+      border-collapse: separate;
+      border-spacing: 0;
+      background: rgba(255,255,255,0.62);
       margin-top: 14px;
       font-size: 13px;
       border-radius: 10px;
@@ -704,7 +798,7 @@
     }
     .comparison-table th,
     .comparison-table td {
-      padding: 12px 14px;
+      padding: 13px 14px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: top;
@@ -714,7 +808,7 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--muted);
-      background: rgba(17, 23, 34, 0.03);
+      background: rgba(15, 17, 21, 0.035);
     }
     .comparison-table tr:last-child td {
       border-bottom: none;
@@ -745,7 +839,7 @@
       padding: 10px 12px;
       font-size: 13px;
       color: var(--ink);
-      border-radius: 12px;
+      border-radius: 8px;
     }
     .delta-grid {
       display: none;
@@ -758,7 +852,7 @@
     }
     .delta-card {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.58);
       padding: 16px;
       border-radius: 10px;
     }
@@ -822,13 +916,15 @@
     }
     .model-detail {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
+      border-top: 2px solid rgba(51, 75, 110, 0.2);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.62));
       padding: 20px;
       border-radius: 10px;
     }
     .model-detail.is-active {
-      border-color: rgba(17, 23, 34, 0.18);
-      box-shadow: 0 18px 36px rgba(17, 23, 34, 0.08);
+      border-color: rgba(51, 75, 110, 0.24);
+      box-shadow: 0 18px 36px rgba(15, 17, 21, 0.06);
     }
     .detail-header {
       display: flex;
@@ -878,8 +974,8 @@
       display: inline-flex;
       align-items: center;
       padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.74);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.58);
       border: 1px solid var(--line);
     }
     .ranking-rationale {
@@ -894,13 +990,13 @@
     }
     .dimension-mini-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
     }
     .dimension-mini {
       border: 1px solid var(--line);
       padding: 15px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.58);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -959,7 +1055,9 @@
       display: none;
       margin-top: 20px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
+      border-top: 2px solid rgba(122, 48, 48, 0.2);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6));
       padding: 20px;
       border-radius: 10px;
     }
@@ -981,7 +1079,7 @@
     }
     .compare-side {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.58);
       padding: 18px;
       border-radius: 10px;
     }
@@ -1005,7 +1103,7 @@
     }
     .compare-table-shell {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.74);
+      background: rgba(255,255,255,0.58);
       border-radius: 10px;
       padding: 16px;
       align-self: start;
@@ -1367,6 +1465,21 @@
     .grid, .summary-grid, .comparison-summary, .comparison-detail-grid, .dimension-grid, .dimension-mini-grid, .compare-grid, .review-grid, .single-report-metrics, .comparison-metrics { grid-template-columns: 1fr; }
       .single-report-hero { grid-template-columns: 1fr; }
       .comparison-hero { grid-template-columns: 1fr; }
+      .paid-data-grid { grid-template-columns: 1fr; }
+      .paid-data-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .paid-data-card:last-child {
+        border-bottom: 0;
+      }
+      .comparison-summary .summary-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .comparison-summary .summary-card:last-child {
+        border-bottom: 0;
+      }
       .walkthrough-top {
         flex-direction: column;
       }
@@ -1442,6 +1555,25 @@
     }
     body.presentation-mode .walkthrough-copy p {
       max-width: 860px;
+    }
+    body.paid-report-mode .masthead {
+      gap: 0;
+      margin-bottom: 24px;
+    }
+    body.paid-report-mode .masthead-copy,
+    body.paid-report-mode .walkthrough-strip,
+    body.paid-report-mode aside.panel {
+      display: none;
+    }
+    body.paid-report-mode .grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    body.paid-report-mode main.panel {
+      padding: 24px;
+      border-top: 2px solid rgba(51, 75, 110, 0.24);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.52)),
+        radial-gradient(circle at top right, rgba(51, 75, 110, 0.07), transparent 30%);
     }
   </style>
 </head>
@@ -1585,20 +1717,21 @@
           <section class="rail-section">
             <div class="eyebrow">What This Shows</div>
             <ul class="list">
-              <li>Overall score and trust band</li>
-              <li>Strongest and weakest dimensions</li>
-              <li>Scorer / critic resolution state</li>
-              <li>Prompt text and fixture context</li>
+              <li>Public score explained through paid evidence</li>
+              <li>Model deltas buyers can use for selection</li>
+              <li>Benchmark gaps developers can use for improvement</li>
+              <li>Traceable records behind the market-facing signal</li>
             </ul>
           </section>
         </div>
       </aside>
 
       <main class="panel">
+        <button id="exitReportMode" class="report-mode-exit" type="button">Back To Record Library</button>
         <div id="emptyState">
-          <div class="eyebrow">Waiting For Report</div>
+          <div class="eyebrow">Waiting For Data Package</div>
           <p class="lede">
-            Load one of the hosted sample artifacts from the left rail, or generate a fresh mock report with:
+            Load a bundled assessment record from the left rail, or inspect a local report package from the MVP.
           </p>
           <div class="prompt-box">node "/Users/alanmotley/Documents/Playground/docs/norynthe/implementation/norynthe-prototype-runner.mjs" --mode=mock --all-dimensions</div>
         </div>
@@ -1643,34 +1776,51 @@
 
           <div id="comparisonSummary" class="comparison-summary">
             <section class="comparison-hero">
-              <div class="comparison-hero-score">
-                <div id="comparisonHeroBadge" class="score-badge">--</div>
-                <div class="single-report-badge-label">Top Norynthe.Score</div>
-              </div>
               <div>
-                <div class="eyebrow">Comparison Report</div>
+                <div class="eyebrow">Norynthe.Score Data Report</div>
                 <h2 id="comparisonHeroTitle" class="comparison-hero-title">--</h2>
                 <p id="comparisonHeroCopy" class="comparison-hero-copy">--</p>
               </div>
+              <div class="comparison-hero-score">
+                <div id="comparisonHeroBadge" class="score-badge">--</div>
+                <div class="single-report-badge-label">Leader score</div>
+              </div>
             </section>
+            <div class="paid-data-grid" aria-label="Paid report value">
+              <article class="paid-data-card">
+                <div class="eyebrow">Enterprise Buyer Value</div>
+                <h3>Selection risk becomes inspectable.</h3>
+                <p>Buyers can see why a model earned its public signal, where confidence weakens, and which benchmark behaviors should affect procurement or deployment.</p>
+              </article>
+              <article class="paid-data-card">
+                <div class="eyebrow">Model Developer Value</div>
+                <h3>Score movement becomes actionable.</h3>
+                <p>Developers can identify the benchmark gaps, behavioral patterns, and evidence deficits most likely to move Norynthe.Score over time.</p>
+              </article>
+              <article class="paid-data-card">
+                <div class="eyebrow">Commercial Layer</div>
+                <h3>The public score opens the door.</h3>
+                <p>The deeper report is the paid data layer behind Norynthe.Score: comparison context, score drivers, model deltas, and benchmark evidence.</p>
+              </article>
+            </div>
             <div class="annotation">
-              <strong>What this shows:</strong> Norynthe is ranking the model set through a structured trust method, not just showing outputs side by side and asking for a subjective judgment.
+              <strong>Why this matters commercially:</strong> the public Norynthe.Score gives the market a visible trust signal. This report is the deeper data product companies pay for when they need to understand, defend, or improve that signal.
             </div>
             <div class="comparison-metrics">
               <div class="summary-card">
-                <div class="eyebrow">Top Ranked Model</div>
+                <div class="eyebrow">Score Leader</div>
                 <div id="comparisonTopModel" class="summary-value" style="font-size:22px;">--</div>
-                <div class="summary-copy">The current leader under the active comparison or sort view.</div>
+                <div class="summary-copy">The model currently carrying the strongest visible trust signal in this report.</div>
               </div>
               <div class="summary-card">
-                <div class="eyebrow">Models Compared</div>
+                <div class="eyebrow">Comparable Records</div>
                 <div id="comparisonModelCount" class="summary-value" style="font-size:22px;">--</div>
-                <div class="summary-copy">The number of peer models included in this evaluation set.</div>
+                <div class="summary-copy">The model records evaluated against the same benchmark surface.</div>
               </div>
               <div class="summary-card">
-                <div class="eyebrow">Score Spread</div>
+                <div class="eyebrow">Commercial Signal Gap</div>
                 <div id="comparisonSpread" class="summary-value" style="font-size:22px;">--</div>
-                <div class="summary-copy">The gap between the strongest and weakest model in the current view.</div>
+                <div class="summary-copy">The distance between market-facing credibility profiles.</div>
               </div>
             </div>
           </div>
@@ -1678,17 +1828,17 @@
           <div id="executiveCallout" class="executive-callout"></div>
 
           <section id="comparisonSetSection" class="report-section">
-            <div class="eyebrow">Comparison Set</div>
-            <p class="report-section-intro">This report was evaluated against the peer models below, which define the comparison field for the current prompt.</p>
+            <div class="eyebrow">Data Package</div>
+            <p class="report-section-intro">This report packages the model set, governed benchmark context, score movement, and evidence layer behind the public Norynthe.Score.</p>
             <div id="comparisonModels" class="meta"></div>
           </section>
 
           <div id="comparisonTableWrap" class="hidden">
             <section class="comparison-table-section">
-              <div class="eyebrow">Ranked Comparison</div>
-              <p class="report-section-intro">This table shows how the current model set ranks under Norynthe.Score and the active comparison settings.</p>
+              <div class="eyebrow">Paid Standing Detail</div>
+              <p class="report-section-intro">The public board shows the signal. This table shows the comparable score basis, trust band, strongest behavior, and weakest behavior behind that signal.</p>
               <div class="annotation">
-                <strong>What this shows:</strong> the ranking stays explainable because every model is tied to its trust band, strongest dimension, and weakest dimension.
+                <strong>What buyers get here:</strong> a structured view of why one model stands ahead of another, with enough context to support vendor review, model selection, or deeper diligence.
               </div>
               <div class="toolbar">
                 <div class="toolbar-group">
@@ -1752,10 +1902,10 @@
             </div>
 
             <div id="comparePanel" class="compare-panel">
-              <div class="eyebrow">Two-Model Compare</div>
+              <div class="eyebrow">Buyer / Developer Compare</div>
               <div id="compareSummary" class="executive-callout active" style="display:block; margin-top:14px; margin-bottom:0;"></div>
               <div class="annotation">
-                <strong>What this shows:</strong> this is where a winner becomes defensible. The score can be unpacked into dimension-level differences between two models.
+                <strong>What this unlocks:</strong> buyers can compare selection risk, while model developers can see where score deficits are concentrated.
               </div>
               <div class="compare-grid">
                 <div id="compareSides" class="compare-side-stack"></div>
@@ -1775,16 +1925,16 @@
               </div>
             </div>
 
-            <div class="eyebrow" style="margin-top:18px;">Model Drill-Down</div>
+            <div class="eyebrow" style="margin-top:18px;">Model Evidence Drill-Down</div>
             <div class="annotation">
-              <strong>What this shows:</strong> each ranked model becomes a profile with its own rationale, report stack, and dimension fingerprint.
+              <strong>What this shows:</strong> each ranked model becomes a paid evidence profile with its own rationale, benchmark fingerprint, and score-improvement path.
             </div>
             <div id="comparisonDetailGrid" class="comparison-detail-grid"></div>
           </div>
 
           <section class="report-section">
-            <div class="eyebrow">Prompt Context</div>
-            <p class="report-section-intro">The report below is tied to the source prompt and operating context shown here. This is the framing the model was evaluated against.</p>
+            <div class="eyebrow">Evaluation Context</div>
+            <p class="report-section-intro">The report is tied to the governed prompt or benchmark context shown here. This is the scope behind the paid comparison layer.</p>
             <div id="promptBox" class="prompt-box"></div>
             <div id="promptMeta" class="meta"></div>
           </section>
@@ -1860,6 +2010,7 @@
     const overallBandPill = document.getElementById("overallBandPill");
     const comparisonHeroBadge = document.getElementById("comparisonHeroBadge");
     const presentationToggle = document.getElementById("presentationToggle");
+    const exitReportMode = document.getElementById("exitReportMode");
     const walkthroughNarrative = document.getElementById("walkthroughNarrative");
     const walkthroughStepComparison = document.getElementById("walkthroughStepComparison");
     const walkthroughStepWinner = document.getElementById("walkthroughStepWinner");
@@ -2135,6 +2286,7 @@
     }
 
     function resetViews() {
+      document.body.classList.remove("paid-report-mode");
       dimensionGrid.innerHTML = "";
       comparisonTableBody.innerHTML = "";
       comparisonDetailGrid.innerHTML = "";
@@ -2164,14 +2316,14 @@
       const weakest = titleize(item.weakest_dimension.dimension);
 
       if (item.rank === 1) {
-        return `Ranked first because it produced the highest Norynthe.Score in this comparison, led most clearly in ${strongest}, and avoided deeper penalties than the rest of the field.`;
+        return `Ranked first because it produced the strongest paid-data profile in this comparison, led most clearly in ${strongest}, and avoided deeper penalties than the rest of the field. This is the supporting evidence behind the market-facing Norynthe.Score.`;
       }
 
       if (item.overall_band === "risk") {
-        return `Ranked lower because trust risk remained elevated overall. Its strongest area was ${strongest}, but weaker performance in ${weakest} pulled the final Norynthe.Score down.`;
+        return `Ranked lower because trust risk remained elevated overall. Its strongest area was ${strongest}, but weaker performance in ${weakest} pulled the final Norynthe.Score down. For a developer, that weakness becomes a concrete improvement target.`;
       }
 
-      return `Ranked here because it stayed competitive in ${strongest}, but did not separate enough from the field and gave back ground through ${weakest}.`;
+      return `Ranked here because it stayed competitive in ${strongest}, but did not separate enough from the field and gave back ground through ${weakest}. For a buyer, this explains the selection tradeoff behind the public signal.`;
     }
 
     function buildSingleReportNarrative(report) {
@@ -2197,17 +2349,17 @@
     function buildComparisonHeroNarrative(report, field = "norynthe_score") {
       const top = report.ranked_models?.[0];
       const bottom = report.ranked_models?.at(-1);
-      if (!top || !bottom) return "Comparison record loaded.";
+      if (!top || !bottom) return "Paid comparison record loaded.";
       const spread = Math.abs(displayScore(getSortValue(top, field)) - displayScore(getSortValue(bottom, field)));
-      return `${top.target_model_name} currently leads this evaluation set, while ${bottom.target_model_name} remains the lowest-scoring model in the same prompt context. The current spread is ${spread} points under ${dimensionLabel(field)}.`;
+      return `${top.target_model_name} currently carries the strongest paid-data signal in this set, while ${bottom.target_model_name} shows the weakest comparable profile. The ${spread}-point spread under ${dimensionLabel(field)} is the evidence layer behind what the public Norynthe.Score can only summarize.`;
     }
 
     function buildBenchmarkHeroNarrative(report) {
       const top = report.ranked_models?.[0];
       const bottom = report.ranked_models?.at(-1);
-      if (!top || !bottom) return "Benchmark record loaded.";
+      if (!top || !bottom) return "Paid benchmark record loaded.";
       const spread = Math.abs(displayScore(top.norynthe_score) - displayScore(bottom.norynthe_score));
-      return `${top.target_model_name} currently holds the strongest standing in the active benchmark set across ${report.benchmark_question_count} controlled benchmark assets. The current spread is ${spread} points from top to bottom.`;
+      return `${top.target_model_name} currently holds the strongest standing across ${report.benchmark_question_count} governed benchmark assets. The ${spread}-point spread from top to bottom is the paid data layer companies use to understand why the public score moved, where risk sits, and what a model developer could improve.`;
     }
 
     function buildBenchmarkModelNarrative(report) {
@@ -2553,23 +2705,23 @@
           </div>
           <p class="ranking-rationale">${buildRankingRationale(item)}</p>
           <details class="report-details">
-            <summary>Report Details</summary>
+            <summary>Paid Evidence Details</summary>
             <div class="report-details-body">
-              <p>This model sits inside a small report stack, with each artifact serving a different purpose.</p>
+              <p>This model sits inside the paid evidence stack behind the public score. Each artifact supports either buyer diligence, developer improvement, or reviewer calibration.</p>
               <div class="report-breakdown">
                 <div class="report-breakdown-item">
                   <div class="report-breakdown-title">Model Report JSON</div>
-                  <div class="report-breakdown-copy">Open this when you want the full saved report for ${item.target_model_name}. It contains the model identity, Norynthe.Score, trust band, strongest and weakest dimensions, full 7-dimension results, and the scorer / critic resolution output behind the final score.</div>
+                  <div class="report-breakdown-copy">Full saved report for ${item.target_model_name}: model identity, Norynthe.Score, trust band, score drivers, and scorer / critic resolution behind the final signal.</div>
                   ${getArtifactLink(SAMPLE_MODEL_REPORT_URLS[item.target_model_name] ?? null, SAMPLE_MODEL_REPORT_URLS[item.target_model_name] ? "Open bundled sample model report" : "Bundled sample model report not available in this view.")}
                 </div>
                 <div class="report-breakdown-item">
                   <div class="report-breakdown-title">Comparison Report JSON</div>
-                  <div class="report-breakdown-copy">Open this when you want the full ranked comparison for the prompt. It contains the compared model list, ranked ordering, Norynthe.Score results across the set, dimension gap summaries, and the drill-down data used in this screen.</div>
+                  <div class="report-breakdown-copy">Ranked peer comparison containing model order, Norynthe.Score results, gap summaries, and the evidence needed to explain selection tradeoffs.</div>
                   ${getArtifactLink(report.__artifact_url ?? null, report.__artifact_url ? "Open current comparison artifact" : "This comparison artifact was loaded locally.")}
                 </div>
                 <div class="report-breakdown-item">
                   <div class="report-breakdown-title">Human Review JSON</div>
-                  <div class="report-breakdown-copy">This is where a saved manual calibration review would live for this model. A human review JSON contains manual scores by dimension, reviewer notes, system-versus-human deltas, and the review timestamp.</div>
+                  <div class="report-breakdown-copy">Manual calibration artifact with reviewer notes, system-versus-human deltas, and the decision trail needed before sharing findings externally.</div>
                   <div class="path-link" style="text-decoration:none; color:#5a6572;">Exported from Human Review Mode when a reviewer saves a calibration artifact.</div>
                 </div>
               </div>
@@ -2623,20 +2775,20 @@
             <span>Strongest: ${item.strongest_question.prompt_id} (${displayScore(item.strongest_question.score)})</span>
             <span>Weakest: ${item.weakest_question.prompt_id} (${displayScore(item.weakest_question.score)})</span>
           </div>
-          <p class="ranking-rationale">${item.target_model_name} holds rank ${item.rank} on the current benchmark set. Its composite score comes from controlled Norynthe questions rather than a single prompt, making this a more durable trust signal.</p>
+          <p class="ranking-rationale">${item.target_model_name} holds rank ${item.rank} on the current benchmark set. Its composite score comes from controlled Norynthe questions rather than a single prompt, making this the paid evidence layer behind a more durable public trust signal.</p>
           <details class="report-details">
-            <summary>Report Details</summary>
+            <summary>Paid Evidence Details</summary>
             <div class="report-details-body">
-              <p>This benchmark card sits inside a benchmark report stack, with each artifact serving a different purpose.</p>
+              <p>This benchmark card sits inside the paid report stack: the layer a buyer or model developer opens after seeing the public Norynthe.Score.</p>
               <div class="report-breakdown">
                 <div class="report-breakdown-item">
                   <div class="report-breakdown-title">Benchmark Model Report JSON</div>
-                  <div class="report-breakdown-copy">Open this when you want the full benchmark profile for ${item.target_model_name}. It contains the benchmark-composite Norynthe.Score, overall band, strongest and weakest questions, and the per-question reports used in the composite.</div>
+                  <div class="report-breakdown-copy">Full benchmark profile for ${item.target_model_name}: composite Norynthe.Score, trust band, strongest and weakest questions, and per-question evidence behind the composite.</div>
                   ${getArtifactLink(SAMPLE_BENCHMARK_MODEL_REPORT_URLS[item.target_model_name] ?? null, SAMPLE_BENCHMARK_MODEL_REPORT_URLS[item.target_model_name] ? "Open bundled benchmark model report" : "Bundled benchmark model report not available in this view.")}
                 </div>
                 <div class="report-breakdown-item">
                   <div class="report-breakdown-title">Benchmark Comparison JSON</div>
-                  <div class="report-breakdown-copy">Open this when you want the full ranked benchmark set. It contains the ranked models, the composite benchmark score, question counts, and the per-model benchmark summaries used in this screen.</div>
+                  <div class="report-breakdown-copy">Full ranked benchmark set containing model standing, composite benchmark scores, question counts, and per-model evidence summaries.</div>
                   ${getArtifactLink(report.__artifact_url ?? null, report.__artifact_url ? "Open current benchmark comparison artifact" : "This benchmark artifact was loaded locally.")}
                 </div>
               </div>
@@ -2684,7 +2836,7 @@
         }
       });
 
-      compareSummary.innerHTML = `<strong>${left.target_model_name}</strong> and <strong>${right.target_model_name}</strong> are being compared dimension by dimension. The largest current separation is in <strong>${titleize(biggest.dimension)}</strong>, where the scores differ by <strong>${biggest.gap} points</strong>.`;
+      compareSummary.innerHTML = `<strong>${left.target_model_name}</strong> and <strong>${right.target_model_name}</strong> are being compared dimension by dimension. The largest current separation is in <strong>${titleize(biggest.dimension)}</strong>, where the scores differ by <strong>${biggest.gap} points</strong>. This is the kind of score-driver detail buyers and model developers cannot get from the public board alone.`;
 
       [left, right].forEach((item, index) => {
         const side = document.createElement("div");
@@ -2744,7 +2896,7 @@
         }
       });
 
-      compareSummary.innerHTML = `<strong>${left.target_model_name}</strong> and <strong>${right.target_model_name}</strong> are being compared across the benchmark question set. The largest current separation is on <strong>${biggest.promptId}</strong>, where the scores differ by <strong>${biggest.gap} points</strong>.`;
+      compareSummary.innerHTML = `<strong>${left.target_model_name}</strong> and <strong>${right.target_model_name}</strong> are being compared across the governed benchmark bank. The largest current separation is on <strong>${biggest.promptId}</strong>, where the scores differ by <strong>${biggest.gap} points</strong>. This turns the public score into paid diagnostic evidence.`;
 
       [left, right].forEach((item, index) => {
         const side = document.createElement("div");
@@ -2763,7 +2915,7 @@
             <strong>Strongest:</strong> ${item.strongest_question.prompt_id} (${displayScore(item.strongest_question.score)})<br>
             <strong>Weakest:</strong> ${item.weakest_question.prompt_id} (${displayScore(item.weakest_question.score)})
           </div>
-          <div class="compare-side-copy">${item.target_model_name} is being compared on benchmark-composite performance across the governed benchmark bank, not on a single prompt. This view shows where the benchmark separates the field most clearly.</div>
+          <div class="compare-side-copy">${item.target_model_name} is being compared on benchmark-composite performance across the governed benchmark bank, not on a single prompt. This view shows where the benchmark separates the field most clearly and where a developer would need to improve to move the public signal.</div>
         `;
         compareSides.appendChild(side);
       });
@@ -2789,12 +2941,12 @@
           spread === "--" ? "--" : `${spread} points`;
         comparisonHeroBadge.textContent = top ? `${displayScore(top.norynthe_score)}` : "--";
         document.getElementById("comparisonHeroTitle").textContent =
-          top ? `${top.target_model_name} leads the benchmark set.` : "--";
+          top ? `${top.target_model_name} leads the paid benchmark report.` : "--";
         document.getElementById("comparisonHeroCopy").textContent =
           buildBenchmarkHeroNarrative(currentComparisonReport);
         executiveCallout.innerHTML = top && bottom
-        ? `<strong>${top.target_model_name}</strong> currently leads the governed benchmark bank with a <strong>Norynthe.Score of ${displayScore(top.norynthe_score)}</strong>. The composite spread across the field is <strong>${spread} points</strong>.`
-          : "Benchmark record loaded.";
+        ? `<strong>${top.target_model_name}</strong> currently leads the governed benchmark bank with a <strong>Norynthe.Score of ${displayScore(top.norynthe_score)}</strong>. The <strong>${spread}-point spread</strong> is the paid evidence layer behind the public score.`
+          : "Paid benchmark record loaded.";
         renderBenchmarkComparisonRows(currentComparisonReport);
         renderBenchmarkComparisonCards(currentComparisonReport);
         renderBenchmarkComparePanel(currentComparisonReport);
@@ -2822,12 +2974,12 @@
         spread === "--" ? "--" : `${spread} points`;
       comparisonHeroBadge.textContent = top ? `${displayScore(getSortValue(top, field))}` : "--";
       document.getElementById("comparisonHeroTitle").textContent =
-        top ? `${top.target_model_name} leads the field under ${dimensionLabel(field)}.` : "--";
+        top ? `${top.target_model_name} leads the paid report under ${dimensionLabel(field)}.` : "--";
       document.getElementById("comparisonHeroCopy").textContent =
         buildComparisonHeroNarrative(currentComparisonReport, field);
       executiveCallout.innerHTML = top && bottom
-        ? `<strong>${top.target_model_name}</strong> currently leads when sorted by <strong>${dimensionLabel(field)}</strong>. The widest gap to monitor in this view is the <strong>${spread}-point spread</strong> between the top and bottom ranked models.`
-        : "Comparison report loaded.";
+        ? `<strong>${top.target_model_name}</strong> currently leads when sorted by <strong>${dimensionLabel(field)}</strong>. The <strong>${spread}-point spread</strong> is the deeper data companies pay for when the public score is not enough.`
+        : "Paid comparison report loaded.";
 
       renderComparisonRows(currentComparisonReport);
       renderComparisonCards(currentComparisonReport);
@@ -2949,6 +3101,7 @@
 
     function renderComparisonReport(report) {
       resetViews();
+      document.body.classList.add("paid-report-mode");
       sortField.disabled = false;
       currentComparisonReport = JSON.parse(JSON.stringify(report));
       singleModelSummary.style.display = "none";
@@ -2972,13 +3125,13 @@
       comparisonHeroBadge.textContent =
         topModel ? `${displayScore(topModel.norynthe_score)}` : "--";
       document.getElementById("comparisonHeroTitle").textContent =
-        topModel ? `${topModel.target_model_name} ranked first in this comparison set.` : "--";
+        topModel ? `${topModel.target_model_name} leads the paid comparison report.` : "--";
       document.getElementById("comparisonHeroCopy").textContent =
         buildComparisonHeroNarrative(currentComparisonReport);
       executiveCallout.classList.add("active");
       executiveCallout.innerHTML = topModel && bottomModel
-        ? `<strong>${topModel.target_model_name}</strong> currently leads this comparison with a <strong>Norynthe.Score of ${displayScore(topModel.norynthe_score)}</strong>. The widest gap to monitor is the <strong>${spread}-point spread</strong> across the controlled benchmark set between the top and bottom ranked models.`
-        : "Comparison record loaded.";
+        ? `<strong>${topModel.target_model_name}</strong> currently leads this paid comparison package with a <strong>Norynthe.Score of ${displayScore(topModel.norynthe_score)}</strong>. The <strong>${spread}-point spread</strong> is the commercial insight: it tells buyers where model credibility separates and tells developers where score movement is most valuable.`
+        : "Paid comparison record loaded.";
       renderDeltaInsights(currentComparisonReport);
       comparisonModels.innerHTML = (currentComparisonReport.compared_models ?? [])
         .map((model) => `<span>${model.name} | ${model.provider} | ${model.version}</span>`)
@@ -2997,6 +3150,7 @@
 
     function renderBenchmarkComparisonReport(report) {
       resetViews();
+      document.body.classList.add("paid-report-mode");
       currentComparisonReport = JSON.parse(JSON.stringify(report));
       singleModelSummary.style.display = "none";
       comparisonSummary.classList.add("active");
@@ -3021,18 +3175,18 @@
       comparisonHeroBadge.textContent =
         topModel ? `${displayScore(topModel.norynthe_score)}` : "--";
       document.getElementById("comparisonHeroTitle").textContent =
-        topModel ? `${topModel.target_model_name} leads the benchmark set.` : "--";
+        topModel ? `${topModel.target_model_name} leads the paid benchmark report.` : "--";
       document.getElementById("comparisonHeroCopy").textContent =
         buildBenchmarkHeroNarrative(currentComparisonReport);
       executiveCallout.classList.add("active");
       executiveCallout.innerHTML = topModel && bottomModel
-        ? `<strong>${topModel.target_model_name}</strong> currently leads the active benchmark set with a <strong>Norynthe.Score of ${displayScore(topModel.norynthe_score)}</strong>. The benchmark-composite spread is <strong>${spread} points</strong> across ${report.benchmark_question_count} controlled benchmark assets.`
-        : "Benchmark record loaded.";
+        ? `<strong>${topModel.target_model_name}</strong> currently leads the governed benchmark bank with a <strong>Norynthe.Score of ${displayScore(topModel.norynthe_score)}</strong>. The benchmark-composite spread is <strong>${spread} points</strong> across ${report.benchmark_question_count} controlled assets, creating the deeper data product behind the public score.`
+        : "Paid benchmark record loaded.";
       renderDeltaInsights(currentComparisonReport);
       comparisonModels.innerHTML = report.ranked_models
         .map((model) => `<span>${model.target_model_name} | ${model.provider} | ${model.questions_evaluated} questions</span>`)
         .join("");
-      promptBox.textContent = "This view shows the active benchmark set rather than a single prompt. Each model score is a composite across Norynthe controlled benchmark assets.";
+      promptBox.textContent = "This view shows the governed benchmark bank rather than a single prompt. Each model score is a composite across Norynthe-controlled benchmark assets. This is the paid layer behind the public Norynthe.Score.";
       promptMeta.innerHTML = `
         <span>Benchmark Set: ${report.benchmark_set_id ?? "n/a"}</span>
         <span>Questions Evaluated: ${report.benchmark_question_count ?? "n/a"}</span>
@@ -3141,6 +3295,11 @@
 
     presentationToggle.addEventListener("click", () => {
       setPresentationMode(!presentationMode);
+    });
+
+    exitReportMode.addEventListener("click", () => {
+      document.body.classList.remove("paid-report-mode");
+      setPresentationMode(false);
     });
 
     document.querySelectorAll("[data-walkthrough-step]").forEach((button) => {
