@@ -4,22 +4,23 @@
   <meta charset="utf-8">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-  <title>Norynthe.Reports / Model Standing</title>
+  <title>Norynthe.Score Console | MVP Evaluation Surface</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/favicon.png?v=20260406">
-  <link rel="apple-touch-icon" href="/favicon.png?v=20260406">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <style>
     :root {
-      --bg: #eef3f6;
-      --paper: rgba(255, 255, 255, 0.84);
-      --ink: #10151d;
-      --muted: #5b6470;
-      --line: rgba(17, 23, 34, 0.07);
+      --bg: #e9edf2;
+      --paper: rgba(255, 255, 255, 0.72);
+      --ink: #0f1115;
+      --muted: #58616a;
+      --line: rgba(15, 17, 21, 0.09);
       --accent: #7d3131;
       --good: #2a6447;
       --warn: #8a6a1b;
-      --shadow: 0 18px 44px rgba(15, 17, 21, 0.05);
-      --radius: 22px;
+      --shadow: 0 24px 60px rgba(15, 17, 21, 0.07);
+      --shadow-soft: 0 14px 34px rgba(15, 17, 21, 0.045);
+      --radius: 12px;
       --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
     }
     * { box-sizing: border-box; }
@@ -28,18 +29,44 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 14% 18%, rgba(150, 174, 194, 0.18), transparent 28%),
-        radial-gradient(circle at 86% 12%, rgba(125, 49, 49, 0.08), transparent 24%),
-        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.3), transparent 28%),
-        linear-gradient(180deg, #f5f8fa 0%, #e9eef2 100%);
+        radial-gradient(circle at 72% 14%, rgba(143, 177, 203, 0.22), transparent 30%),
+        radial-gradient(circle at 22% 86%, rgba(184, 167, 106, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.38), transparent 40%),
+        linear-gradient(180deg, #eff3f6 0%, var(--bg) 46%, #eef2f6 100%);
       min-height: 100vh;
+      overflow-x: hidden;
+      isolation: isolate;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 17, 21, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 17, 21, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.72;
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -18% -14%;
+      pointer-events: none;
+      background:
+        linear-gradient(112deg, rgba(255, 255, 255, 0.62) 0%, transparent 30%, rgba(37, 63, 99, 0.074) 54%, transparent 75%),
+        linear-gradient(28deg, transparent 0%, rgba(49, 85, 77, 0.052) 40%, transparent 68%);
+      filter: blur(34px);
+      opacity: 0.82;
+      z-index: -1;
     }
     .shell {
-      max-width: 1240px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 48px 24px 84px;
+      padding: 30px 24px 70px;
     }
-    .masthead, .panel, .dimension-card {
+    .panel, .dimension-card {
       background: var(--paper);
       border: 1px solid var(--line);
       backdrop-filter: blur(10px);
@@ -47,67 +74,94 @@
       box-shadow: var(--shadow);
     }
     .masthead {
-      padding: 30px 32px 34px;
+      display: grid;
+      gap: clamp(2.6rem, 6vw, 4.8rem);
       margin-bottom: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .masthead::after {
-      content: "";
-      position: absolute;
-      inset: auto 22% -42px 22%;
-      height: 70px;
-      background: radial-gradient(ellipse at center, rgba(15, 17, 21, 0.08), rgba(15, 17, 21, 0) 70%);
-      filter: blur(18px);
-      pointer-events: none;
-    }
-    .brand-lockup {
-      margin-top: 10px;
     }
     .brand-logo {
       display: block;
-      width: min(440px, 100%);
+      width: 140px;
+      max-width: 28vw;
       height: auto;
-      filter: drop-shadow(0 10px 18px rgba(15, 17, 21, 0.04));
+    }
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(15, 17, 21, 0.1);
+    }
+    .topline-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
+      color: #53606c;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
     .back-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      width: fit-content;
-      margin-bottom: 18px;
-      padding: 9px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.7);
+      min-height: 34px;
+      padding: 0;
+      border: 0;
+      background: transparent;
       color: var(--muted);
       text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      transition: color 180ms ease;
+    }
+    .topline-nav .contact-link {
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.48);
+      color: #27313b;
+      transition: border-color 180ms ease, background 180ms ease;
     }
     .back-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.06);
+      color: var(--ink);
+      box-shadow: none;
+      transform: none;
+    }
+    .topline-nav .contact-link:hover {
+      border-color: rgba(15, 17, 21, 0.22);
+      background: rgba(255, 255, 255, 0.72);
+    }
+    .masthead-copy {
+      max-width: 820px;
+    }
+    .masthead h1 {
+      margin: 0.62rem 0 0;
+      max-width: 13.5ch;
+      color: var(--ink);
+      font-size: clamp(3.1rem, 6.5vw, 5.65rem);
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 0.92;
+      text-wrap: balance;
     }
     .kicker, .eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 11px;
+      letter-spacing: 0.2em;
+      font-size: 0.62rem;
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 800;
+    }
+    .masthead .kicker {
+      color: var(--accent);
     }
     .lede {
       color: #33404d;
-      font-size: 15px;
-      line-height: 1.8;
+      font-size: 1.02rem;
+      line-height: 1.66;
       max-width: 760px;
-      margin: 20px 0 0;
-      letter-spacing: -0.01em;
+      margin: 1rem 0 0;
     }
     .grid {
       display: grid;
@@ -116,15 +170,16 @@
       align-items: start;
     }
     .panel {
-      padding: 26px;
+      padding: 22px;
     }
     .walkthrough-strip {
       margin-bottom: 22px;
       padding: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.76);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 17, 21, 0.09);
+      border-top: 2px solid rgba(51, 75, 110, 0.28);
+      background: rgba(255, 255, 255, 0.58);
+      border-radius: 8px;
+      box-shadow: none;
     }
     .walkthrough-top {
       display: flex;
@@ -142,14 +197,14 @@
       color: #36414e;
     }
     .presentation-toggle {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      background: rgba(255,255,255,0.68);
       color: var(--ink);
       padding: 10px 14px;
-      font-size: 12px;
+      font-size: 0.62rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      border-radius: 999px;
+      border-radius: 6px;
       cursor: pointer;
       transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
       white-space: nowrap;
@@ -166,22 +221,27 @@
     .walkthrough-steps {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+      gap: 0;
       margin-top: 18px;
+      border-top: 1px solid rgba(15, 17, 21, 0.1);
+      border-bottom: 1px solid rgba(15, 17, 21, 0.1);
     }
     .walkthrough-step {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.68);
-      border-radius: 18px;
+      border: 0;
+      border-right: 1px solid rgba(15, 17, 21, 0.1);
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 0;
       padding: 16px;
-      min-height: 142px;
+      min-height: 138px;
       transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
     }
+    .walkthrough-step:last-child {
+      border-right: 0;
+    }
     .walkthrough-step.is-active {
-      border-color: rgba(17, 23, 34, 0.16);
-      background: rgba(17, 23, 34, 0.04);
-      box-shadow: 0 12px 28px rgba(15, 17, 21, 0.05);
-      transform: translateY(-1px);
+      background: rgba(15, 17, 21, 0.045);
+      box-shadow: none;
+      transform: none;
     }
     .walkthrough-step-number {
       font-size: 11px;
@@ -193,9 +253,9 @@
     .walkthrough-step h3 {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 22px;
-      line-height: 0.98;
-      letter-spacing: -0.05em;
+      font-size: 1.08rem;
+      line-height: 1.08;
+      letter-spacing: 0;
     }
     .walkthrough-step p {
       margin: 10px 0 0;
@@ -205,27 +265,29 @@
     }
     .walkthrough-step button {
       margin-top: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.84);
-      color: var(--ink);
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      border: 0;
+      border-bottom: 1px solid rgba(51, 75, 110, 0.24);
+      background: transparent;
+      color: #334b6e;
+      padding: 0 0 7px;
+      border-radius: 0;
+      font-size: 0.56rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       cursor: pointer;
       transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
     .walkthrough-step button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.06);
+      transform: none;
+      box-shadow: none;
     }
     .annotation {
       margin-top: 14px;
       padding: 13px 15px;
-      border-left: 3px solid rgba(37, 79, 116, 0.7);
-      background: rgba(37, 79, 116, 0.05);
-      border-radius: 14px;
+      border-left: 2px solid rgba(122, 48, 48, 0.34);
+      background: rgba(255, 255, 255, 0.46);
+      border-radius: 8px;
       font-size: 13px;
       line-height: 1.72;
       color: #304050;
@@ -245,9 +307,10 @@
       margin-top: 18px;
     }
     .rail-section {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.66);
-      border-radius: 18px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-top: 2px solid rgba(51, 75, 110, 0.24);
+      background: rgba(255,255,255,0.58);
+      border-radius: 8px;
       padding: 18px;
     }
     .rail-section-copy {
@@ -261,7 +324,7 @@
       padding: 18px;
       background: rgba(17, 23, 34, 0.02);
       margin-top: 16px;
-      border-radius: 18px;
+      border-radius: 10px;
     }
     .button {
       display: flex;
@@ -269,16 +332,19 @@
       align-items: flex-start;
       gap: 10px;
       border: 1px solid var(--line);
-      background: #fff;
+      background: rgba(255, 255, 255, 0.72);
       color: var(--ink);
       padding: 10px 14px;
-      font-size: 13px;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       cursor: pointer;
       margin-top: 10px;
       width: 100%;
       max-width: 100%;
       overflow: hidden;
-      border-radius: 14px;
+      border-radius: 6px;
       transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
     .button-row {
@@ -292,14 +358,20 @@
     }
     .sample-library {
       display: grid;
-      gap: 14px;
+      gap: 0;
       margin-top: 16px;
+      border-top: 1px solid rgba(15, 17, 21, 0.08);
+      border-bottom: 1px solid rgba(15, 17, 21, 0.08);
     }
     .sample-library-item {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      padding: 15px 16px;
-      border-radius: 16px;
+      border: 0;
+      border-bottom: 1px solid rgba(15, 17, 21, 0.08);
+      background: transparent;
+      padding: 14px 0;
+      border-radius: 0;
+    }
+    .sample-library-item:last-child {
+      border-bottom: 0;
     }
     .sample-library-head {
       display: grid;
@@ -319,21 +391,25 @@
       max-width: none;
     }
     .sample-library-item .sample-button {
-      width: 100%;
-      padding: 9px 12px;
-      justify-content: center;
-      text-align: center;
+      width: max-content;
+      padding: 0 0 7px;
+      justify-content: flex-start;
+      text-align: left;
     }
     .sample-button {
-      width: 100%;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.82);
-      color: var(--ink);
-      padding: 11px 14px;
+      width: auto;
+      border: 0;
+      border-bottom: 1px solid rgba(51, 75, 110, 0.24);
+      background: transparent;
+      color: #334b6e;
+      padding: 0 0 7px;
       text-align: left;
       cursor: pointer;
-      font-size: 13px;
-      border-radius: 14px;
+      font-size: 0.56rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 0;
     }
     .button:hover,
     .sample-button:hover,
@@ -357,7 +433,7 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.62);
       padding: 12px 14px;
-      border-radius: 16px;
+      border-radius: 8px;
     }
     .helper-card code {
       display: block;
@@ -384,12 +460,12 @@
     .browser-item {
       width: 100%;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.64);
       padding: 10px 12px;
       text-align: left;
       cursor: pointer;
       color: var(--ink);
-      border-radius: 14px;
+      border-radius: 8px;
       transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
     .browser-item.is-active {
@@ -431,7 +507,7 @@
       padding: 22px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.74);
-      border-radius: 20px;
+      border-radius: 10px;
       margin-bottom: 14px;
     }
     .single-report-score {
@@ -451,7 +527,7 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: clamp(2rem, 4vw, 3.1rem);
       line-height: 0.96;
-      letter-spacing: -0.065em;
+      letter-spacing: 0;
       font-weight: 700;
     }
     .single-report-copy {
@@ -469,7 +545,7 @@
       font-size: 14px;
       line-height: 1.75;
       color: #253240;
-      border-radius: 16px;
+      border-radius: 8px;
     }
     .single-report-metrics {
       display: grid;
@@ -480,7 +556,7 @@
       border: 1px solid var(--line);
       padding: 16px;
       background: rgba(255,255,255,0.72);
-      border-radius: 18px;
+      border-radius: 10px;
     }
     .summary-card.score-card {
       display: flex;
@@ -491,7 +567,7 @@
       font-size: 30px;
       line-height: 1;
       margin: 8px 0 0;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
     }
     .summary-detail {
       min-width: 0;
@@ -513,7 +589,7 @@
       margin-top: 20px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.72);
-      border-radius: 18px;
+      border-radius: 10px;
       padding: 20px;
     }
     .report-section-intro {
@@ -547,7 +623,7 @@
     }
     .report-section .prompt-box {
       margin-top: 14px;
-      border-radius: 16px;
+      border-radius: 8px;
       background: rgba(255,255,255,0.78);
     }
     .comparison-summary {
@@ -567,7 +643,7 @@
       padding: 24px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.74);
-      border-radius: 20px;
+      border-radius: 10px;
     }
     .comparison-hero-score {
       display: flex;
@@ -580,7 +656,7 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: clamp(2rem, 4vw, 3.1rem);
       line-height: 0.96;
-      letter-spacing: -0.065em;
+      letter-spacing: 0;
       font-weight: 700;
     }
     .comparison-hero-copy {
@@ -599,7 +675,7 @@
       margin-top: 20px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.72);
-      border-radius: 20px;
+      border-radius: 10px;
       padding: 20px;
     }
     .executive-callout {
@@ -611,7 +687,7 @@
       font-size: 14px;
       line-height: 1.75;
       color: #253240;
-      border-radius: 16px;
+      border-radius: 8px;
     }
     .executive-callout.active {
       display: block;
@@ -623,7 +699,7 @@
       background: rgba(255,255,255,0.72);
       margin-top: 14px;
       font-size: 13px;
-      border-radius: 18px;
+      border-radius: 10px;
       overflow: hidden;
     }
     .comparison-table th,
@@ -684,20 +760,20 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.72);
       padding: 16px;
-      border-radius: 18px;
+      border-radius: 10px;
     }
     .delta-card h4 {
       margin: 8px 0 10px;
-      font-family: var(--serif);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 18px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       line-height: 1.02;
       font-weight: 700;
     }
     .delta-value {
       font-size: 26px;
       line-height: 1;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       margin-bottom: 8px;
     }
     .delta-meta {
@@ -724,9 +800,9 @@
       border-color: rgba(42, 100, 71, 0.18);
     }
     .pill.reliable {
-      background: rgba(37, 79, 116, 0.08);
-      color: #254f74;
-      border-color: rgba(37, 79, 116, 0.16);
+      background: rgba(51, 75, 110, 0.08);
+      color: #334b6e;
+      border-color: rgba(51, 75, 110, 0.16);
     }
     .pill.caution {
       background: rgba(138, 106, 27, 0.09);
@@ -748,7 +824,7 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.72);
       padding: 20px;
-      border-radius: 20px;
+      border-radius: 10px;
     }
     .model-detail.is-active {
       border-color: rgba(17, 23, 34, 0.18);
@@ -769,7 +845,7 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 24px;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       line-height: 1.02;
       font-weight: 700;
     }
@@ -814,7 +890,7 @@
       font-size: 13px;
       line-height: 1.72;
       color: #263240;
-      border-radius: 16px;
+      border-radius: 8px;
     }
     .dimension-mini-grid {
       display: grid;
@@ -829,7 +905,7 @@
       flex-direction: column;
       gap: 10px;
       min-height: 144px;
-      border-radius: 16px;
+      border-radius: 8px;
     }
     .dimension-mini-name {
       text-transform: uppercase;
@@ -841,7 +917,7 @@
     .dimension-mini-score {
       font-size: 18px;
       line-height: 1;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       font-weight: 700;
     }
     .dimension-mini-summary {
@@ -885,7 +961,7 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.72);
       padding: 20px;
-      border-radius: 20px;
+      border-radius: 10px;
     }
     .compare-panel.active {
       display: block;
@@ -907,13 +983,13 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.7);
       padding: 18px;
-      border-radius: 18px;
+      border-radius: 10px;
     }
     .compare-side h4 {
       margin: 8px 0 6px;
-      font-family: var(--serif);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 24px;
-      letter-spacing: -0.04em;
+      letter-spacing: 0;
       line-height: 1.02;
       font-weight: 700;
     }
@@ -922,7 +998,7 @@
       padding: 13px 14px;
       border: 1px solid var(--line);
       background: rgba(17, 23, 34, 0.03);
-      border-radius: 14px;
+      border-radius: 8px;
       font-size: 13px;
       line-height: 1.72;
       color: #263240;
@@ -930,7 +1006,7 @@
     .compare-table-shell {
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.74);
-      border-radius: 18px;
+      border-radius: 10px;
       padding: 16px;
       align-self: start;
     }
@@ -969,7 +1045,7 @@
       margin-top: 18px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.72);
-      border-radius: 18px;
+      border-radius: 10px;
       overflow: hidden;
     }
     .review-panel.active {
@@ -1025,7 +1101,7 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.8);
       padding: 14px;
-      border-radius: 16px;
+      border-radius: 8px;
     }
     .review-card-head {
       display: flex;
@@ -1103,7 +1179,7 @@
     }
     .dimension-card {
       padding: 20px;
-      border-radius: 20px;
+      border-radius: 10px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.7) 100%);
     }
@@ -1111,7 +1187,7 @@
       margin: 8px 0 10px;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 24px;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       line-height: 1.02;
       font-weight: 700;
     }
@@ -1147,7 +1223,7 @@
       display: inline-flex;
       align-items: center;
       padding: 7px 10px;
-      border-radius: 999px;
+      border-radius: 10px;
       background: rgba(255,255,255,0.74);
       border: 1px solid var(--line);
     }
@@ -1176,7 +1252,7 @@
       justify-content: center;
       font-size: 28px;
       line-height: 1;
-      letter-spacing: -0.06em;
+      letter-spacing: 0;
       font-weight: 700;
     }
     .band {
@@ -1205,7 +1281,7 @@
       display: block;
       overflow-wrap: anywhere;
       word-break: break-word;
-      color: #254f74;
+      color: #334b6e;
       text-decoration: none;
       margin-top: 8px;
     }
@@ -1216,7 +1292,7 @@
       margin-top: 12px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.65);
-      border-radius: 16px;
+      border-radius: 8px;
       overflow: hidden;
     }
     .report-details summary {
@@ -1297,6 +1373,13 @@
       .walkthrough-steps {
         grid-template-columns: 1fr;
       }
+      .walkthrough-step {
+        border-right: 0;
+        border-bottom: 1px solid rgba(15, 17, 21, 0.1);
+      }
+      .walkthrough-step:last-child {
+        border-bottom: 0;
+      }
       .shell {
         padding: 28px 14px 44px;
       }
@@ -1305,8 +1388,9 @@
         padding: 18px;
       }
       .masthead {
-        padding: 24px 20px 26px;
+        padding: 0;
         margin-bottom: 18px;
+        gap: 2.4rem;
       }
       .grid {
         gap: 16px;
@@ -1364,30 +1448,39 @@
 <body>
   <div class="shell">
     <section class="masthead">
-      <a class="back-link" href="./index.html">Back To Reports</a>
-      <div class="kicker">Norynthe.Reports</div>
-      <div class="brand-lockup">
-        <img class="brand-logo" src="/Norynthe_master.png" alt="Norynthe.">
+      <header class="topline" aria-label="Norynthe console header">
+        <a href="./index.html" aria-label="Back to investor access">
+          <img class="brand-logo" src="/Norynthe_master.png" alt="Norynthe.">
+        </a>
+        <nav class="topline-nav" aria-label="Console navigation">
+          <a class="back-link" href="./index.html">Investor Access</a>
+          <a class="back-link" href="./norynthe-customer-report.html">Report Surface</a>
+          <a class="back-link contact-link" href="mailto:hello@norynthe.com">Contact</a>
+        </nav>
+      </header>
+      <div class="masthead-copy">
+        <div class="kicker">Norynthe.Score / MVP Console</div>
+        <h1>Evaluation console for governed model scoring.</h1>
+        <p class="lede">
+          Inspect saved benchmark records, compare model standing, and review human calibration against the same evidence path behind Norynthe.Score.
+        </p>
       </div>
-      <p class="lede">
-        Norynthe.Reports lets me inspect saved scoring reports, compare models, and run human calibration without relying on live API calls.
-      </p>
     </section>
 
     <section class="walkthrough-strip">
       <div class="walkthrough-top">
         <div class="walkthrough-copy">
-          <div class="eyebrow">Guided Walkthrough</div>
-          <p id="walkthroughNarrative">Start with the 15-question benchmark composite to show the scoring system at work across Norynthe’s controlled question bank, including the new humanities layer, then move through the winner profile, the two-model delta view, and finally the client-facing report layer.</p>
+          <div class="eyebrow">Evaluation Path</div>
+          <p id="walkthroughNarrative">Start with the governed benchmark comparison to show the scoring system at work across Norynthe’s controlled question bank, then move through the winner profile, the two-model delta view, and the client-facing report layer.</p>
         </div>
-        <button id="presentationToggle" class="presentation-toggle" type="button">Presentation Mode</button>
+        <button id="presentationToggle" class="presentation-toggle" type="button">Walkthrough Mode</button>
       </div>
       <div class="walkthrough-steps">
         <article id="walkthroughStepComparison" class="walkthrough-step is-active">
           <div class="walkthrough-step-number">Step 1</div>
           <h3>Open Benchmark</h3>
-          <p>Show the ranked model set, the current leader, and the overall Norynthe.Score spread across the full 15-question benchmark.</p>
-          <button type="button" data-walkthrough-step="comparison">Go To Comparison</button>
+          <p>Show the ranked model set, the current leader, and the Norynthe.Score spread across the governed benchmark bank.</p>
+          <button type="button" data-walkthrough-step="comparison">Open Benchmark</button>
         </article>
         <article id="walkthroughStepWinner" class="walkthrough-step">
           <div class="walkthrough-step-number">Step 2</div>
@@ -1399,33 +1492,33 @@
           <div class="walkthrough-step-number">Step 3</div>
           <h3>Compare Two Models</h3>
           <p>Use the delta table to show where two close competitors separate by dimension.</p>
-          <button type="button" data-walkthrough-step="compare">Open Two-Model Compare</button>
+          <button type="button" data-walkthrough-step="compare">Compare Models</button>
         </article>
         <article id="walkthroughStepClient" class="walkthrough-step">
           <div class="walkthrough-step-number">Step 4</div>
           <h3>View Client Report</h3>
           <p>Transition from the internal reporting engine to the client-facing decision layer.</p>
-          <button type="button" data-walkthrough-step="client">Open Client Report</button>
+          <button type="button" data-walkthrough-step="client">Open Report</button>
         </article>
       </div>
     </section>
 
     <section class="grid">
       <aside class="panel">
-        <div class="eyebrow">Report Navigator</div>
+        <div class="eyebrow">Evaluation Records</div>
         <p class="rail-intro">
-          Start with the hosted benchmark samples for the cleanest product walkthrough. The active demo uses Norynthe’s full 15-question `core_v1` set, including policy, enterprise, analysis, safety, adversarial framing, governance, and humanities questions.
+          Start with the bundled benchmark records for the cleanest MVP path. The current surface uses the governed `core_v2` bank as the operating context for model standing, score detail, and report review.
         </p>
         <div class="rail-stack">
           <section class="rail-section">
-            <div class="eyebrow">Hosted Samples</div>
-            <p class="rail-section-copy">These are the curated demo artifacts built into the site for stakeholder walkthroughs.</p>
+            <div class="eyebrow">Record Library</div>
+            <p class="rail-section-copy">Curated assessment records are bundled into the console so reviewers can move through the MVP without live provider credentials.</p>
             <div class="sample-library">
               <div class="sample-library-item">
                 <div class="sample-library-head">
                   <div>
                     <div class="sample-library-title">Core Benchmark Comparison</div>
-                    <div class="sample-library-meta">The full 15-question benchmark-composite view across Norynthe’s controlled question bank, including the humanities layer and the ranked Norynthe.Score field.</div>
+                    <div class="sample-library-meta">The benchmark-composite view across Norynthe’s controlled question bank, including the ranked Norynthe.Score field.</div>
                   </div>
                   <button class="sample-button" type="button" data-sample="./samples/mock-benchmark-comparison-report.json" data-sample-name="mock-benchmark-comparison-report.json">Open</button>
                 </div>
@@ -1434,7 +1527,7 @@
                 <div class="sample-library-head">
                   <div>
                     <div class="sample-library-title">Benchmark Winner Profile</div>
-                    <div class="sample-library-meta">The leading model’s profile across the full 15-question benchmark, showing how the strongest current result holds up across the controlled set.</div>
+                    <div class="sample-library-meta">The leading model’s profile across the governed benchmark bank, showing how the strongest current result holds up across the controlled set.</div>
                   </div>
                   <button class="sample-button" type="button" data-sample="./samples/mock-benchmark-model-report-openai.json" data-sample-name="mock-benchmark-model-report-openai.json">Open</button>
                 </div>
@@ -1443,7 +1536,7 @@
                 <div class="sample-library-head">
                   <div>
                     <div class="sample-library-title">Benchmark Challenger Profile</div>
-                    <div class="sample-library-meta">A near-leading profile showing how a model can stay competitive across the same 15-question benchmark without taking first overall.</div>
+                    <div class="sample-library-meta">A near-leading profile showing how a model can stay competitive across the same governed benchmark bank without taking first overall.</div>
                   </div>
                   <button class="sample-button" type="button" data-sample="./samples/mock-benchmark-model-report-anthropic.json" data-sample-name="mock-benchmark-model-report-anthropic.json">Open</button>
                 </div>
@@ -1452,7 +1545,7 @@
                 <div class="sample-library-head">
                   <div>
                     <div class="sample-library-title">Benchmark High-Risk Profile</div>
-                    <div class="sample-library-meta">A lower-trust profile showing how weaknesses compound across the full controlled benchmark, including loaded framing and humanities questions.</div>
+                    <div class="sample-library-meta">A lower-trust profile showing how weaknesses compound across the controlled benchmark bank, including loaded framing and humanities questions.</div>
                   </div>
                   <button class="sample-button" type="button" data-sample="./samples/mock-benchmark-model-report-grok.json" data-sample-name="mock-benchmark-model-report-grok.json">Open</button>
                 </div>
@@ -1842,7 +1935,7 @@
       presentationMode = nextState;
       document.body.classList.toggle("presentation-mode", presentationMode);
       presentationToggle.classList.toggle("is-active", presentationMode);
-      presentationToggle.textContent = presentationMode ? "Exit Presentation Mode" : "Presentation Mode";
+      presentationToggle.textContent = presentationMode ? "Exit Walkthrough Mode" : "Walkthrough Mode";
     }
 
     function focusWinnerCard() {
@@ -1889,35 +1982,35 @@
     const SAMPLE_LIBRARY_META = {
       "mock-benchmark-comparison-report.json": {
         title: "Core Benchmark Comparison",
-        meta: "Hosted walkthrough | full 15-question benchmark ranking"
+        meta: "MVP record | governed benchmark ranking"
       },
       "mock-benchmark-model-report-openai.json": {
         title: "Benchmark Winner Profile",
-        meta: "Hosted walkthrough | top profile across 15 benchmark questions"
+        meta: "MVP record | leading governed benchmark profile"
       },
       "mock-benchmark-model-report-anthropic.json": {
         title: "Benchmark Challenger Profile",
-        meta: "Hosted walkthrough | near-leading profile across 15 benchmark questions"
+        meta: "MVP record | near-leading governed benchmark profile"
       },
       "mock-benchmark-model-report-grok.json": {
         title: "Benchmark High-Risk Profile",
-        meta: "Hosted walkthrough | lower-trust profile across 15 benchmark questions"
+        meta: "MVP record | lower-trust governed benchmark profile"
       },
       "mock-comparison-report.json": {
         title: "Policy Trust Comparison",
-        meta: "Hosted walkthrough | ranked three-model policy comparison"
+        meta: "MVP record | ranked three-model policy comparison"
       },
       "mock-full-report-openai.json": {
         title: "Leading Model Profile",
-        meta: "Hosted walkthrough | top-ranked single-model report"
+        meta: "MVP record | top-ranked single-model report"
       },
       "mock-full-report-anthropic.json": {
         title: "Close Challenger Profile",
-        meta: "Hosted walkthrough | near-leading single-model report"
+        meta: "MVP record | near-leading single-model report"
       },
       "mock-full-report-grok.json": {
         title: "High-Risk Profile",
-        meta: "Hosted walkthrough | lower-trust single-model report"
+        meta: "MVP record | lower-trust single-model report"
       }
     };
 
@@ -2670,7 +2763,7 @@
             <strong>Strongest:</strong> ${item.strongest_question.prompt_id} (${displayScore(item.strongest_question.score)})<br>
             <strong>Weakest:</strong> ${item.weakest_question.prompt_id} (${displayScore(item.weakest_question.score)})
           </div>
-          <div class="compare-side-copy">${item.target_model_name} is being compared on benchmark-composite performance across the full 15-question benchmark, not on a single prompt. This view shows where the benchmark separates the field most clearly.</div>
+          <div class="compare-side-copy">${item.target_model_name} is being compared on benchmark-composite performance across the governed benchmark bank, not on a single prompt. This view shows where the benchmark separates the field most clearly.</div>
         `;
         compareSides.appendChild(side);
       });
@@ -2700,7 +2793,7 @@
         document.getElementById("comparisonHeroCopy").textContent =
           buildBenchmarkHeroNarrative(currentComparisonReport);
         executiveCallout.innerHTML = top && bottom
-        ? `<strong>${top.target_model_name}</strong> currently leads the active 15-question benchmark set with a <strong>Norynthe.Score of ${displayScore(top.norynthe_score)}</strong>. The composite spread across the field is <strong>${spread} points</strong>.`
+        ? `<strong>${top.target_model_name}</strong> currently leads the governed benchmark bank with a <strong>Norynthe.Score of ${displayScore(top.norynthe_score)}</strong>. The composite spread across the field is <strong>${spread} points</strong>.`
           : "Benchmark record loaded.";
         renderBenchmarkComparisonRows(currentComparisonReport);
         renderBenchmarkComparisonCards(currentComparisonReport);
@@ -3110,6 +3203,6 @@
       }
     });
   </script>
-  <p class="footer-note">Norynthe.Reports · Norynthe.Score, score detail, and model standing · © 2026 Norynthe.</p>
+  <p class="footer-note">Norynthe.Score Console · governed records, score detail, and model standing · © 2026 Norynthe.</p>
 </body>
 </html>
