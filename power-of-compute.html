@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Power of Compute | Norynthe Investors</title>
+  <meta
+    name="description"
+    content="An investor-facing infrastructure thesis on why controlled compute is the strategic unlock for Norynthe, Norynthe.Score, benchmark governance, and independent AI evaluation."
+  >
+  <link rel="canonical" href="https://investors.norynthe.com/power-of-compute.html">
+  <meta property="og:site_name" content="Norynthe Investors">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Power of Compute">
+  <meta
+    property="og:description"
+    content="Controlled compute is the strategic unlock for independent AI evaluation, benchmark integrity, and Norynthe.Score."
+  >
+  <meta property="og:url" content="https://investors.norynthe.com/power-of-compute.html">
+  <meta property="og:image" content="https://investors.norynthe.com/Norynthe_master.png">
+  <meta property="og:image:alt" content="Norynthe wordmark">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Power of Compute">
+  <meta
+    name="twitter:description"
+    content="Controlled compute is the infrastructure layer behind Norynthe's independent AI evaluation strategy."
+  >
+  <meta name="twitter:image" content="https://investors.norynthe.com/Norynthe_master.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <style>
+    :root {
+      --bg: #e9edf2;
+      --bg-soft: #f5f8fa;
+      --ink: #0f1115;
+      --ink-2: #171e27;
+      --muted: #58616a;
+      --muted-2: #707a84;
+      --line: rgba(15, 17, 21, 0.09);
+      --line-strong: rgba(15, 17, 21, 0.14);
+      --paper: rgba(255, 255, 255, 0.74);
+      --paper-strong: rgba(255, 255, 255, 0.92);
+      --signal: #7a3030;
+      --signal-soft: rgba(122, 48, 48, 0.1);
+      --slate: #334b6e;
+      --slate-soft: rgba(51, 75, 110, 0.1);
+      --pine: #36554a;
+      --gold: #a18444;
+      --dark: #0f1115;
+      --dark-2: #161c25;
+      --dark-line: rgba(226, 233, 240, 0.13);
+      --dark-text: #eef3f6;
+      --dark-muted: #a9b5c0;
+      --shadow: 0 24px 60px rgba(15, 17, 21, 0.07);
+      --shadow-soft: 0 14px 34px rgba(15, 17, 21, 0.045);
+      --shadow-hover: 0 28px 70px rgba(15, 17, 21, 0.1);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(132deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 32%),
+        linear-gradient(26deg, rgba(122, 48, 48, 0.045) 0%, rgba(122, 48, 48, 0) 32%),
+        linear-gradient(158deg, rgba(51, 75, 110, 0.08) 0%, rgba(51, 75, 110, 0) 38%),
+        linear-gradient(180deg, #f5f8fa 0%, var(--bg) 46%, #f4f7f9 100%);
+      overflow-x: hidden;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 17, 21, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 17, 21, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.72;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      width: min(calc(100% - 52px), var(--max));
+      margin: 0 auto;
+      padding: 30px 0 72px;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      margin-bottom: 30px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(15, 17, 21, 0.1);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      width: 140px;
+      min-width: 140px;
+      max-width: 28vw;
+      line-height: 0;
+    }
+
+    .brand img {
+      width: 100%;
+      height: auto;
+    }
+
+    .brand-fallback {
+      color: var(--ink);
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .topline-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .topline-right a {
+      display: inline-flex;
+      align-items: center;
+      color: #53606c;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: color 180ms ease;
+    }
+
+    .topline-right a:hover {
+      color: var(--ink);
+    }
+
+    .topline-right a:last-child {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.48);
+      color: #27313b;
+      transition: border-color 180ms ease, background 180ms ease;
+    }
+
+    .topline-right a:last-child:hover {
+      border-color: rgba(15, 17, 21, 0.22);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+      gap: 44px;
+      align-items: center;
+      min-height: 620px;
+      padding: 44px;
+      border: 1px solid rgba(226, 233, 240, 0.14);
+      border-top: 3px solid rgba(178, 193, 207, 0.28);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(118deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 33%),
+        linear-gradient(180deg, #111820 0%, #0f1115 100%);
+      box-shadow: 0 34px 90px rgba(15, 17, 21, 0.22);
+      color: var(--dark-text);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(238, 243, 246, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(238, 243, 246, 0.045) 1px, transparent 1px),
+        radial-gradient(circle, rgba(238, 243, 246, 0.13) 1px, transparent 1.7px);
+      background-size: 68px 68px, 68px 68px, 32px 32px;
+      opacity: 0.66;
+      mask-image: linear-gradient(90deg, black 0%, black 56%, rgba(0, 0, 0, 0.58) 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(150, 174, 196, 0.08) 44%, transparent 68%),
+        linear-gradient(135deg, transparent 0%, rgba(122, 48, 48, 0.12) 52%, transparent 72%);
+      background-size: 180% 100%, 160% 160%;
+      animation: signalSweep 18s ease-in-out infinite alternate;
+      opacity: 0.88;
+    }
+
+    .hero-content,
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow,
+    .section-label,
+    .card-kicker,
+    .tier-label,
+    .metric-label,
+    .diagram-label {
+      color: var(--signal);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      color: #c9d4de;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 10.8ch;
+      margin-bottom: 22px;
+      font-size: 5.7rem;
+      font-weight: 760;
+      line-height: 0.92;
+    }
+
+    .hero-subhead {
+      max-width: 47rem;
+      margin-bottom: 18px;
+      color: #dce6ee;
+      font-size: 1.24rem;
+      line-height: 1.54;
+    }
+
+    .hero-copy {
+      max-width: 45rem;
+      margin-bottom: 0;
+      color: var(--dark-muted);
+      font-size: 1rem;
+      line-height: 1.76;
+      text-wrap: pretty;
+    }
+
+    .hero-actions,
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 11px 14px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.14em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(15, 17, 21, 0.2);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.08);
+    }
+
+    .button.primary {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(15, 17, 21, 0.12);
+    }
+
+    .hero .button {
+      border-color: rgba(238, 243, 246, 0.18);
+      background: rgba(238, 243, 246, 0.08);
+      color: #edf4f8;
+      box-shadow: none;
+    }
+
+    .hero .button:hover {
+      border-color: rgba(238, 243, 246, 0.3);
+      background: rgba(238, 243, 246, 0.12);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero .button.primary {
+      border-color: rgba(238, 243, 246, 0.86);
+      background: #eef3f6;
+      color: #10151d;
+    }
+
+    .hero-visual {
+      min-height: 432px;
+      border: 1px solid rgba(226, 233, 240, 0.13);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+        linear-gradient(145deg, rgba(51, 75, 110, 0.22), rgba(15, 17, 21, 0.08));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(226, 233, 240, 0.1);
+      border-radius: 10px;
+      background-image:
+        linear-gradient(rgba(238, 243, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(238, 243, 246, 0.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.72;
+    }
+
+    .visual-stack {
+      position: absolute;
+      inset: 42px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+    }
+
+    .visual-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: #aebac4;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .signal-plane {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+      min-height: 260px;
+    }
+
+    .signal-plane::before,
+    .signal-plane::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(197, 210, 221, 0.38), rgba(122, 48, 48, 0.35), transparent);
+      transform-origin: center;
+      animation: pathPulse 8s ease-in-out infinite;
+    }
+
+    .signal-plane::before {
+      top: 34%;
+      transform: rotate(7deg);
+    }
+
+    .signal-plane::after {
+      bottom: 32%;
+      transform: rotate(-8deg);
+      animation-delay: -3s;
+    }
+
+    .control-node {
+      position: relative;
+      z-index: 1;
+      min-height: 128px;
+      padding: 18px;
+      border: 1px solid rgba(226, 233, 240, 0.15);
+      border-radius: var(--radius-md);
+      background: rgba(15, 17, 21, 0.42);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .control-node strong,
+    .control-node span {
+      display: block;
+    }
+
+    .control-node strong {
+      margin-bottom: 8px;
+      color: #f5f8fa;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .control-node span {
+      color: #aab6c1;
+      font-size: 0.75rem;
+      line-height: 1.55;
+    }
+
+    .metric-rail {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 11px 10px;
+      border: 1px solid rgba(226, 233, 240, 0.12);
+      border-radius: 8px;
+      background: rgba(238, 243, 246, 0.055);
+    }
+
+    .metric span,
+    .metric strong {
+      display: block;
+    }
+
+    .metric span {
+      margin-bottom: 6px;
+      color: #93a3b0;
+      font-size: 0.56rem;
+      font-weight: 760;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      color: #f3f7fa;
+      font-size: 0.9rem;
+      line-height: 1.18;
+    }
+
+    .section-stack {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .section-card,
+    .comparison-wrap,
+    .ladder-card,
+    .model-examples-card,
+    .tier-card,
+    .closing-card,
+    .footnotes {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 252, 253, 0.72)),
+        linear-gradient(138deg, rgba(51, 75, 110, 0.06), rgba(51, 75, 110, 0) 36%);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-card::before,
+    .comparison-wrap::before,
+    .ladder-card::before,
+    .model-examples-card::before,
+    .tier-card::before,
+    .closing-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(51, 75, 110, 0.28), rgba(122, 48, 48, 0.16), transparent 72%);
+      pointer-events: none;
+    }
+
+    .section-card,
+    .comparison-wrap,
+    .ladder-card,
+    .model-examples-card,
+    .closing-card,
+    .footnotes {
+      padding: 34px;
+    }
+
+    .section-card p,
+    .section-card li,
+    .tier-card p,
+    .tier-card li,
+    .model-examples-card p,
+    .model-examples-card li,
+    .closing-card p,
+    .comparison-wrap td,
+    .footnotes p {
+      color: #3c4855;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      max-width: 840px;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin-bottom: 0;
+      font-size: 2.45rem;
+      font-weight: 760;
+      line-height: 1.04;
+    }
+
+    .section-head p {
+      margin-bottom: 0;
+      color: #45515d;
+      font-size: 1.02rem;
+      line-height: 1.72;
+    }
+
+    .body-flow {
+      display: grid;
+      gap: 16px;
+      max-width: 900px;
+    }
+
+    .body-flow p {
+      margin-bottom: 0;
+    }
+
+    .proof-grid,
+    .value-grid,
+    .risk-grid,
+    .note-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .proof-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 24px 0;
+    }
+
+    .value-grid,
+    .note-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .risk-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .proof-item,
+    .value-item,
+    .risk-item,
+    .note-item {
+      min-height: 92px;
+      padding: 15px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .proof-item {
+      min-height: 72px;
+      color: #2f3b47;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.32;
+    }
+
+    .value-item strong,
+    .risk-item strong,
+    .note-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.24;
+    }
+
+    .value-item span,
+    .risk-item span,
+    .note-item span {
+      display: block;
+      color: #53606c;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .quote-block,
+    .statement-band {
+      margin-top: 24px;
+      padding: 22px 24px;
+      border-left: 3px solid rgba(122, 48, 48, 0.48);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background:
+        linear-gradient(90deg, rgba(122, 48, 48, 0.08), rgba(122, 48, 48, 0)),
+        rgba(255, 255, 255, 0.62);
+      color: #26313c;
+      font-size: 1.22rem;
+      font-weight: 760;
+      line-height: 1.38;
+    }
+
+    .statement-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .statement-band {
+      margin-top: 0;
+      min-height: 126px;
+      display: flex;
+      align-items: center;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .architecture-panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 472px;
+      padding: 22px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.88));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .architecture-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 17, 21, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 17, 21, 0.022) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.72;
+      mask-image: linear-gradient(180deg, black, rgba(0, 0, 0, 0.68) 70%, transparent);
+    }
+
+    .architecture-panel.positive {
+      border-top: 3px solid rgba(54, 85, 74, 0.42);
+    }
+
+    .architecture-panel.warning {
+      border-top: 3px solid rgba(122, 48, 48, 0.42);
+    }
+
+    .architecture-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 18px;
+    }
+
+    .architecture-panel h3 {
+      margin-bottom: 4px;
+      font-size: 1.52rem;
+      line-height: 1.05;
+    }
+
+    .flow-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .flow-node {
+      display: grid;
+      place-items: center;
+      min-height: 74px;
+      padding: 14px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      color: #27313b;
+      font-size: 1rem;
+      font-weight: 760;
+      line-height: 1.26;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .flow-connector {
+      position: relative;
+      width: 1px;
+      height: 34px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(51, 75, 110, 0.16), rgba(51, 75, 110, 0.6), rgba(122, 48, 48, 0.18));
+      overflow: hidden;
+    }
+
+    .flow-connector::after {
+      content: "";
+      position: absolute;
+      inset: -34px 0 auto;
+      height: 34px;
+      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.88), transparent);
+      animation: verticalTrace 3.8s ease-in-out infinite;
+    }
+
+    .flow-connector span {
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      width: 8px;
+      height: 8px;
+      border-right: 1px solid rgba(51, 75, 110, 0.55);
+      border-bottom: 1px solid rgba(51, 75, 110, 0.55);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .architecture-notes {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .architecture-notes li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #465360;
+      font-size: 0.92rem;
+      line-height: 1.48;
+    }
+
+    .architecture-notes li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      margin-top: 0.46em;
+      border-radius: 999px;
+      background: rgba(122, 48, 48, 0.5);
+    }
+
+    .positive .architecture-notes li::before {
+      background: rgba(54, 85, 74, 0.62);
+    }
+
+    .ladder-card {
+      padding-bottom: 38px;
+    }
+
+    .compute-ladder {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 26px;
+      min-height: 388px;
+    }
+
+    .compute-ladder::before {
+      content: "";
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 40%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(122, 48, 48, 0.18), rgba(51, 75, 110, 0.46), rgba(54, 85, 74, 0.44));
+      overflow: hidden;
+    }
+
+    .compute-ladder::after {
+      content: "";
+      position: absolute;
+      left: 7%;
+      top: 40%;
+      width: 24%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+      animation: ladderTrace 7s ease-in-out infinite;
+    }
+
+    .ladder-tier {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 16px;
+      min-height: 388px;
+      padding: 18px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.9));
+      box-shadow: var(--shadow-soft);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .ladder-tier:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 17, 21, 0.15);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .hardware-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      border: 1px solid rgba(15, 17, 21, 0.07);
+      border-radius: 10px;
+      background:
+        linear-gradient(rgba(15, 17, 21, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 17, 21, 0.022) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(238, 243, 246, 0.5));
+      background-size: 34px 34px, 34px 34px, auto;
+      overflow: hidden;
+    }
+
+    .hardware-group {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+      min-height: 136px;
+    }
+
+    .machine {
+      position: relative;
+      border: 1px solid rgba(15, 17, 21, 0.16);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(226, 233, 240, 0.78)),
+        linear-gradient(90deg, rgba(51, 75, 110, 0.12), rgba(122, 48, 48, 0.05));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.78),
+        0 18px 32px rgba(15, 17, 21, 0.08);
+    }
+
+    .machine::before {
+      content: "";
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      top: 18px;
+      height: 1px;
+      background: rgba(15, 17, 21, 0.14);
+    }
+
+    .machine::after {
+      content: "";
+      position: absolute;
+      right: 16px;
+      bottom: 15px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(54, 85, 74, 0.62);
+      box-shadow: 0 0 0 5px rgba(54, 85, 74, 0.08);
+    }
+
+    .machine.mac {
+      width: 110px;
+      height: 54px;
+      border-radius: 12px;
+    }
+
+    .machine.spark {
+      width: 70px;
+      height: 90px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(248, 250, 252, 0.86), rgba(211, 219, 227, 0.72)),
+        linear-gradient(90deg, rgba(51, 75, 110, 0.16), rgba(54, 85, 74, 0.08));
+    }
+
+    .machine.spark.secondary {
+      transform: translateY(-14px);
+    }
+
+    .machine.gb300 {
+      width: 130px;
+      height: 184px;
+      border-radius: 12px;
+      background:
+        linear-gradient(180deg, rgba(249, 251, 252, 0.92), rgba(215, 225, 233, 0.78)),
+        linear-gradient(90deg, rgba(51, 75, 110, 0.18), rgba(54, 85, 74, 0.16));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.82),
+        0 26px 44px rgba(15, 17, 21, 0.11);
+    }
+
+    .machine.gb300::before {
+      top: 24px;
+      box-shadow:
+        0 34px 0 rgba(15, 17, 21, 0.11),
+        0 68px 0 rgba(15, 17, 21, 0.08),
+        0 102px 0 rgba(15, 17, 21, 0.07);
+    }
+
+    .stage-baseline {
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 38px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(15, 17, 21, 0.12), transparent);
+      filter: blur(7px);
+    }
+
+    .ladder-caption {
+      display: grid;
+      gap: 8px;
+    }
+
+    .ladder-caption h3 {
+      margin-bottom: 0;
+      font-size: 1.35rem;
+      line-height: 1.12;
+    }
+
+    .ladder-caption p {
+      margin: 0;
+      color: #4c5865;
+      font-size: 0.92rem;
+      line-height: 1.62;
+    }
+
+    .capability-meter {
+      position: relative;
+      height: 7px;
+      margin-top: 4px;
+      border-radius: 999px;
+      background: rgba(15, 17, 21, 0.08);
+      overflow: hidden;
+    }
+
+    .capability-meter span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(122, 48, 48, 0.55), rgba(51, 75, 110, 0.7), rgba(54, 85, 74, 0.7));
+    }
+
+    .model-example-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .model-example-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 14px;
+      padding: 20px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-top: 3px solid rgba(51, 75, 110, 0.2);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.9));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .model-example-card:nth-child(1) {
+      border-top-color: rgba(122, 48, 48, 0.28);
+    }
+
+    .model-example-card:nth-child(2) {
+      border-top-color: rgba(51, 75, 110, 0.34);
+    }
+
+    .model-example-card:nth-child(3) {
+      border-top-color: rgba(54, 85, 74, 0.34);
+    }
+
+    .model-example-card h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.12;
+    }
+
+    .model-tier-meta {
+      color: #6a747f;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.14em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .model-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .model-list li {
+      position: relative;
+      padding-left: 16px;
+      color: #3f4b58;
+      font-size: 0.93rem;
+      line-height: 1.48;
+    }
+
+    .model-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(122, 48, 48, 0.5);
+    }
+
+    .model-usage {
+      margin-top: 2px;
+      padding: 13px 14px;
+      border: 1px solid rgba(15, 17, 21, 0.07);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .model-usage strong,
+    .model-usage span {
+      display: block;
+    }
+
+    .model-usage strong {
+      margin-bottom: 5px;
+      color: var(--slate);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .model-usage span {
+      color: #4a5662;
+      font-size: 0.9rem;
+      line-height: 1.52;
+    }
+
+    .model-caveat {
+      margin-top: 20px;
+      padding: 17px 18px;
+      border: 1px solid rgba(51, 75, 110, 0.11);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(90deg, rgba(51, 75, 110, 0.07), rgba(51, 75, 110, 0)),
+        rgba(255, 255, 255, 0.6);
+      color: #34404c;
+      font-size: 0.95rem;
+      line-height: 1.66;
+    }
+
+    .model-caveat strong {
+      color: var(--ink);
+    }
+
+    .tier-stack {
+      display: grid;
+      gap: 22px;
+    }
+
+    .tier-card {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.34fr) minmax(0, 1fr);
+      gap: 30px;
+      padding: 28px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 17, 21, 0.15);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .tier-aside {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      align-self: start;
+      padding: 18px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .tier-card h3 {
+      margin: 0;
+      font-size: 1.8rem;
+      line-height: 1.04;
+      overflow-wrap: anywhere;
+    }
+
+    .price-block {
+      display: grid;
+      gap: 6px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(15, 17, 21, 0.09);
+    }
+
+    .price-block span {
+      color: #68737e;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .price-block strong {
+      color: var(--ink);
+      font-size: 1.24rem;
+      line-height: 1.18;
+    }
+
+    .tier-content {
+      display: grid;
+      gap: 20px;
+    }
+
+    .tier-content p {
+      margin-bottom: 0;
+    }
+
+    .tier-section {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tier-section h4 {
+      margin: 0;
+      color: var(--slate);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .tier-list,
+    .breakdown-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tier-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tier-list li,
+    .breakdown-list li {
+      position: relative;
+      padding-left: 16px;
+      color: #3f4b58;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .tier-list li::before,
+    .breakdown-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.67em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(122, 48, 48, 0.52);
+    }
+
+    .technical-note {
+      padding: 17px 18px;
+      border: 1px solid rgba(51, 75, 110, 0.11);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(90deg, rgba(51, 75, 110, 0.07), rgba(51, 75, 110, 0)),
+        rgba(255, 255, 255, 0.58);
+      color: #34404c;
+      line-height: 1.68;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      margin-top: 20px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: var(--shadow-soft);
+    }
+
+    table {
+      width: 100%;
+      min-width: 940px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 18px 16px;
+      border-bottom: 1px solid rgba(15, 17, 21, 0.075);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #53606c;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      line-height: 1.35;
+      text-transform: uppercase;
+      background: rgba(248, 250, 252, 0.78);
+    }
+
+    td {
+      color: #3c4855;
+      font-size: 0.93rem;
+      line-height: 1.58;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    td strong {
+      color: var(--ink);
+      font-weight: 760;
+    }
+
+    .closing-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.38fr);
+      gap: 30px;
+      align-items: center;
+      background:
+        linear-gradient(118deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 33%),
+        linear-gradient(180deg, #151d26, #101317);
+      color: var(--dark-text);
+      border-color: rgba(226, 233, 240, 0.14);
+      box-shadow: 0 28px 74px rgba(15, 17, 21, 0.16);
+    }
+
+    .closing-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(238, 243, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(238, 243, 246, 0.034) 1px, transparent 1px),
+        radial-gradient(circle, rgba(238, 243, 246, 0.12) 1px, transparent 1.6px);
+      background-size: 62px 62px, 62px 62px, 34px 34px;
+      opacity: 0.58;
+    }
+
+    .closing-copy,
+    .closing-action {
+      position: relative;
+      z-index: 1;
+    }
+
+    .closing-card h2 {
+      margin-bottom: 20px;
+      color: #f4f8fb;
+      font-size: 2.45rem;
+      line-height: 1.04;
+    }
+
+    .closing-card p {
+      color: #b8c5cf;
+      margin-bottom: 14px;
+    }
+
+    .final-statement {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-left: 3px solid rgba(238, 243, 246, 0.55);
+      border-radius: 0 10px 10px 0;
+      background: rgba(238, 243, 246, 0.07);
+      color: #f5f8fa;
+      font-size: 1.24rem;
+      font-weight: 760;
+      line-height: 1.34;
+    }
+
+    .closing-action {
+      display: grid;
+      gap: 12px;
+      justify-items: start;
+      padding: 22px;
+      border: 1px solid rgba(238, 243, 246, 0.12);
+      border-radius: var(--radius-md);
+      background: rgba(238, 243, 246, 0.055);
+    }
+
+    .closing-action p {
+      margin: 0;
+      color: #aebac4;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .closing-action .button.primary {
+      border-color: rgba(238, 243, 246, 0.9);
+      background: #eef3f6;
+      color: #10151d;
+    }
+
+    .footnotes {
+      padding: 24px 28px;
+      background: rgba(255, 255, 255, 0.54);
+    }
+
+    .footnotes p {
+      margin: 0;
+      color: #68737e;
+      font-size: 0.78rem;
+      line-height: 1.72;
+    }
+
+    .footnotes p + p {
+      margin-top: 10px;
+    }
+
+    .footer-note {
+      max-width: 54rem;
+      margin: 4rem auto 0;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      line-height: 1.8;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @keyframes signalSweep {
+      0% {
+        background-position: 0% 0%, 0% 0%;
+      }
+      100% {
+        background-position: 100% 0%, 100% 100%;
+      }
+    }
+
+    @keyframes pathPulse {
+      0%, 100% {
+        opacity: 0.28;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes verticalTrace {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(92px);
+      }
+    }
+
+    @keyframes ladderTrace {
+      0% {
+        transform: translateX(0);
+        opacity: 0;
+      }
+      16% {
+        opacity: 1;
+      }
+      84% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(260%);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .closing-card,
+      .tier-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .proof-grid,
+      .value-grid,
+      .note-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .risk-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .comparison-grid,
+      .statement-stack,
+      .compute-ladder,
+      .model-example-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .compute-ladder {
+        min-height: auto;
+      }
+
+      .compute-ladder::before,
+      .compute-ladder::after {
+        display: none;
+      }
+
+      .ladder-tier {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(calc(100% - 30px), var(--max));
+        padding-top: 18px;
+      }
+
+      .topline {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+
+      .topline-right {
+        justify-content: flex-start;
+        gap: 12px 16px;
+      }
+
+      .brand {
+        width: 132px;
+        min-width: 132px;
+      }
+
+      .hero,
+      .section-card,
+      .comparison-wrap,
+      .ladder-card,
+      .model-examples-card,
+      .closing-card,
+      .footnotes {
+        padding: 20px;
+      }
+
+      .hero {
+        gap: 28px;
+      }
+
+      h1 {
+        font-size: 3.35rem;
+        line-height: 0.96;
+      }
+
+      .hero-subhead {
+        font-size: 1.08rem;
+      }
+
+      .section-head h2,
+      .closing-card h2 {
+        font-size: 2rem;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .visual-stack {
+        inset: 24px;
+      }
+
+      .signal-plane {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-rail,
+      .proof-grid,
+      .value-grid,
+      .risk-grid,
+      .note-grid,
+      .model-example-grid,
+      .tier-list {
+        grid-template-columns: 1fr;
+      }
+
+      .architecture-panel {
+        min-height: auto;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.85rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-actions,
+      .action-row {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .metric-rail {
+        gap: 8px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "The Power of Compute",
+      "description": "Investor-facing infrastructure thesis for Norynthe controlled compute, benchmark governance, and independent AI evaluation.",
+      "url": "https://investors.norynthe.com/power-of-compute.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Norynthe Investors",
+        "url": "https://investors.norynthe.com/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header class="topline" aria-label="Norynthe investor navigation">
+      <a class="brand" href="index.html" aria-label="Return to Norynthe investor access">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe"
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right" aria-label="Investor materials">
+        <a href="index.html">Investor Access</a>
+        <a href="norynthe-investors.html">Investor Overview</a>
+        <a href="mailto:hello@norynthe.com">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-content">
+          <p class="eyebrow">Infrastructure Sovereignty</p>
+          <h1 id="page-title">The Power of Compute</h1>
+          <p class="hero-subhead">
+            The Norynthe OS console already exists. The next unlock is controlled compute &mdash; infrastructure capable of scaling independent AI evaluation beyond prototype-level testing.
+          </p>
+          <p class="hero-copy">
+            Norynthe&rsquo;s value grows as its controlled compute grows. More local memory, more throughput, and more independent inference capability allow Norynthe to evaluate increasingly capable AI systems without exposing benchmark logic to external model providers.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="index.html">Return to Investor Portal</a>
+            <a class="button" href="norynthe-customer-report.html">View Norynthe.Score</a>
+          </div>
+        </div>
+
+        <aside class="hero-visual" aria-label="Controlled compute and benchmark governance visual">
+          <div class="visual-stack">
+            <div class="visual-meta">
+              <span>Benchmark Governance</span>
+              <span>Controlled Inference</span>
+            </div>
+            <div class="signal-plane" aria-hidden="true">
+              <div class="control-node">
+                <strong>Norynthe-owned benchmark logic</strong>
+                <span>Governed prompts, scoring contracts, calibration records, and assessment rules remain inside the evaluator boundary.</span>
+              </div>
+              <div class="control-node">
+                <strong>Local evaluation path</strong>
+                <span>Inference, records, and score production move through controlled infrastructure rather than provider-owned API surfaces.</span>
+              </div>
+            </div>
+            <div class="metric-rail" aria-label="Compute strategy signals">
+              <div class="metric">
+                <span>Protection</span>
+                <strong>Benchmark integrity</strong>
+              </div>
+              <div class="metric">
+                <span>Control</span>
+                <strong>Repeatable runs</strong>
+              </div>
+              <div class="metric">
+                <span>Output</span>
+                <strong>Trust records</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="section-stack">
+        <section class="section-card" aria-labelledby="thesis-title">
+          <div class="section-head">
+            <div class="section-label">The Thesis</div>
+            <h2 id="thesis-title">The MVP proved the system. Compute unlocks the scale.</h2>
+            <p>
+              The current Norynthe MVP already validates the core workflow.
+            </p>
+          </div>
+
+          <div class="proof-grid" aria-label="Validated MVP workflow">
+            <div class="proof-item">Benchmark setup</div>
+            <div class="proof-item">Controlled evaluation</div>
+            <div class="proof-item">Scoring logic</div>
+            <div class="proof-item">Assessment records</div>
+            <div class="proof-item">Reporting surfaces</div>
+            <div class="proof-item">Investor-facing interfaces</div>
+            <div class="proof-item">Norynthe.Score mechanics</div>
+          </div>
+
+          <div class="body-flow">
+            <p>The limitation is no longer whether the system works.</p>
+            <p>The limitation is how much controlled compute is available to execute increasingly sophisticated evaluations directly.</p>
+            <p>The more Norynthe relies on external APIs, the more benchmark logic risks exposure to the very systems being evaluated.</p>
+            <p>The long-term goal is sovereign evaluation infrastructure: independent compute running independent trust assessment.</p>
+          </div>
+
+          <div class="value-grid" aria-label="Why controlled compute matters">
+            <div class="value-item">
+              <strong>Benchmark integrity matters</strong>
+              <span>The evaluation standard becomes stronger when its logic is not passed through the systems under review.</span>
+            </div>
+            <div class="value-item">
+              <strong>Repeatability matters</strong>
+              <span>Owned infrastructure makes run conditions easier to control, inspect, and reproduce.</span>
+            </div>
+            <div class="value-item">
+              <strong>Throughput matters</strong>
+              <span>More controlled capacity supports larger test sets, more models, and deeper review cycles.</span>
+            </div>
+            <div class="value-item">
+              <strong>Independence matters</strong>
+              <span>The scoring layer becomes more credible as it depends less on the companies being evaluated.</span>
+            </div>
+          </div>
+
+          <blockquote class="quote-block">
+            &ldquo;The MVP is not blocked by software imagination. It is blocked by compute access.&rdquo;
+          </blockquote>
+        </section>
+
+        <section class="section-card" aria-labelledby="moat-title">
+          <div class="section-head">
+            <div class="section-label">The Moat</div>
+            <h2 id="moat-title">Owned Compute Is The Moat</h2>
+            <p>
+              Most AI companies are being built on top of API access controlled by the very model companies they depend on.
+            </p>
+          </div>
+
+          <div class="body-flow">
+            <p>Norynthe is intentionally moving in the opposite direction.</p>
+            <p>The long-term strategic value of Norynthe is not simply benchmarking models. The strategic value is owning the infrastructure required to evaluate models independently.</p>
+            <p>If evaluation logic flows through external APIs, the systems being evaluated can eventually absorb the patterns, structure, and assumptions of the evaluation framework itself.</p>
+            <p>That weakens the integrity of the scoring layer.</p>
+            <p>Norynthe&rsquo;s long-term architecture is designed around controlled local compute because independent trust signals require independent infrastructure.</p>
+          </div>
+
+          <div class="risk-grid" aria-label="API dependency risks">
+            <div class="risk-item">
+              <strong>Benchmark exposure</strong>
+              <span>Core evaluation logic can leak into provider-controlled execution paths.</span>
+            </div>
+            <div class="risk-item">
+              <strong>Evaluation contamination</strong>
+              <span>Repeated external calls can train the market around the shape of the test.</span>
+            </div>
+            <div class="risk-item">
+              <strong>Pricing instability</strong>
+              <span>Evaluation economics remain vulnerable to third-party pricing shifts.</span>
+            </div>
+            <div class="risk-item">
+              <strong>Access instability</strong>
+              <span>Provider permissions, rate limits, and terms can change outside Norynthe control.</span>
+            </div>
+            <div class="risk-item">
+              <strong>Platform dependence</strong>
+              <span>The evaluator becomes exposed to the operating priorities of the evaluated ecosystem.</span>
+            </div>
+            <div class="risk-item">
+              <strong>Reduced reproducibility</strong>
+              <span>External runtimes make benchmark conditions harder to freeze and audit.</span>
+            </div>
+          </div>
+
+          <div class="statement-stack" aria-label="Strategic compute statements">
+            <div class="statement-band">&ldquo;The compute is not support infrastructure. The compute is the moat.&rdquo;</div>
+            <div class="statement-band">&ldquo;The more independent the compute becomes, the more defensible Norynthe becomes.&rdquo;</div>
+          </div>
+        </section>
+
+        <section class="comparison-wrap" aria-labelledby="architecture-title">
+          <div class="section-head">
+            <div class="section-label">Architecture</div>
+            <h2 id="architecture-title">API dependence versus controlled Norynthe infrastructure.</h2>
+            <p>
+              The strategic distinction is not cosmetic. It changes who controls benchmark exposure, inference conditions, assessment records, and the resulting trust signal.
+            </p>
+          </div>
+
+          <div class="comparison-grid">
+            <article class="architecture-panel warning" aria-labelledby="api-world-title">
+              <div class="architecture-inner">
+                <div>
+                  <div class="diagram-label">API-Based World</div>
+                  <h3 id="api-world-title">Evaluation runs through external infrastructure.</h3>
+                </div>
+
+                <div class="flow-stack" aria-label="API-based evaluation flow">
+                  <div class="flow-node">Evaluator</div>
+                  <div class="flow-connector" aria-hidden="true"><span></span></div>
+                  <div class="flow-node">External API</div>
+                  <div class="flow-connector" aria-hidden="true"><span></span></div>
+                  <div class="flow-node">Model Company Infrastructure</div>
+                </div>
+
+                <ul class="architecture-notes">
+                  <li>Benchmark leakage risk</li>
+                  <li>Dependence on external access</li>
+                  <li>Reduced evaluation isolation</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="architecture-panel positive" aria-labelledby="norynthe-world-title">
+              <div class="architecture-inner">
+                <div>
+                  <div class="diagram-label">Norynthe World</div>
+                  <h3 id="norynthe-world-title">Evaluation stays inside the controlled assessment path.</h3>
+                </div>
+
+                <div class="flow-stack" aria-label="Norynthe controlled compute evaluation flow">
+                  <div class="flow-node">Evaluator</div>
+                  <div class="flow-connector" aria-hidden="true"><span></span></div>
+                  <div class="flow-node">Norynthe Controlled Compute</div>
+                  <div class="flow-connector" aria-hidden="true"><span></span></div>
+                  <div class="flow-node">Independent Assessment Record</div>
+                </div>
+
+                <ul class="architecture-notes">
+                  <li>Controlled inference</li>
+                  <li>Benchmark protection</li>
+                  <li>Repeatable evaluation</li>
+                  <li>Independent trust signal</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="ladder-card" aria-labelledby="ladder-title">
+          <div class="section-head">
+            <div class="section-label">Compute Ladder</div>
+            <h2 id="ladder-title">The Compute Ladder</h2>
+            <p>
+              Norynthe&rsquo;s compute path moves from constrained founder development, to founder-lab evaluation capacity, to production-grade independent assessment infrastructure.
+            </p>
+          </div>
+
+          <div class="compute-ladder" aria-label="Compute ladder from Mac Studio to DGX Spark systems to GB300 workstation">
+            <article class="ladder-tier">
+              <div class="hardware-stage" aria-hidden="true">
+                <div class="stage-baseline"></div>
+                <div class="hardware-group">
+                  <div class="machine mac"></div>
+                </div>
+              </div>
+              <div class="ladder-caption">
+                <div class="card-kicker">Current</div>
+                <h3>Mac Studio</h3>
+                <p>Constrained founder machine proving the console, scoring workflow, records, and investor surfaces.</p>
+                <div class="capability-meter" aria-hidden="true"><span style="width: 28%;"></span></div>
+              </div>
+            </article>
+
+            <article class="ladder-tier">
+              <div class="hardware-stage" aria-hidden="true">
+                <div class="stage-baseline"></div>
+                <div class="hardware-group">
+                  <div class="machine mac"></div>
+                  <div class="machine spark"></div>
+                  <div class="machine spark secondary"></div>
+                </div>
+              </div>
+              <div class="ladder-caption">
+                <div class="card-kicker">Founder Lab</div>
+                <h3>Mac Studio + 2 NVIDIA DGX Spark Systems</h3>
+                <p>Controlled lab capacity for larger open-weight inference, repeatable benchmark cycles, and early customer-facing evaluation.</p>
+                <div class="capability-meter" aria-hidden="true"><span style="width: 64%;"></span></div>
+              </div>
+            </article>
+
+            <article class="ladder-tier">
+              <div class="hardware-stage" aria-hidden="true">
+                <div class="stage-baseline"></div>
+                <div class="hardware-group">
+                  <div class="machine gb300"></div>
+                </div>
+              </div>
+              <div class="ladder-caption">
+                <div class="card-kicker">Strategic Unlock</div>
+                <h3>W775-V10-L01 AI Workstation with NVIDIA GB300 Grace Blackwell Ultra</h3>
+                <p>The major infrastructure unlock for production-grade local evaluation, advanced reasoning analysis, and serious independent trust signaling.</p>
+                <div class="capability-meter" aria-hidden="true"><span style="width: 100%;"></span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="model-examples-card" aria-labelledby="model-examples-title">
+          <div class="section-head">
+            <div class="section-label">Model Examples</div>
+            <h2 id="model-examples-title">What each compute tier makes practical to evaluate.</h2>
+            <p>
+              The names below are examples of model classes Norynthe could evaluate locally as compute expands. They are included to make the infrastructure ladder legible to investors, not as fixed performance guarantees.
+            </p>
+          </div>
+
+          <div class="model-example-grid" aria-label="Example models by compute tier">
+            <article class="model-example-card">
+              <div class="model-tier-meta">Mac Studio / 32GB memory</div>
+              <h3>Small local models and heavily quantized 7B-class systems.</h3>
+              <ul class="model-list">
+                <li>Gemma 3 1B / 4B</li>
+                <li>Llama 3.2 1B / 3B</li>
+                <li>Microsoft Phi-3 Mini</li>
+                <li>Mistral 7B or Qwen2.5 7B in constrained quantized runs</li>
+              </ul>
+              <div class="model-usage">
+                <strong>Evaluation Use</strong>
+                <span>Workflow validation, scorer interface testing, lightweight benchmark runs, record generation, and proof that Norynthe.Score mechanics work.</span>
+              </div>
+            </article>
+
+            <article class="model-example-card">
+              <div class="model-tier-meta">Mac Studio + 2 DGX Sparks</div>
+              <h3>Mid-to-large open-weight models under controlled lab conditions.</h3>
+              <ul class="model-list">
+                <li>Gemma 3 27B</li>
+                <li>DeepSeek-R1-Distill-Qwen 32B / 70B</li>
+                <li>Llama 3.1 70B</li>
+                <li>Qwen2.5 72B</li>
+                <li>405B-class experiments in constrained dual-system configurations</li>
+              </ul>
+              <div class="model-usage">
+                <strong>Evaluation Use</strong>
+                <span>Repeatable multi-model comparisons, larger benchmark sets, reasoning-model testing, multimodal experimentation, and early customer-facing assessment capacity.</span>
+              </div>
+            </article>
+
+            <article class="model-example-card">
+              <div class="model-tier-meta">GB300 workstation</div>
+              <h3>Frontier-class open-weight workloads and large assessment batches.</h3>
+              <ul class="model-list">
+                <li>Llama 3.1 405B-class workloads</li>
+                <li>DeepSeek-V3 / DeepSeek-R1-class MoE systems</li>
+                <li>Large multimodal model evaluation suites</li>
+                <li>Concurrent benchmark runs across multiple smaller models</li>
+              </ul>
+              <div class="model-usage">
+                <strong>Evaluation Use</strong>
+                <span>Production-scale benchmark execution, enterprise assessment pipelines, large reasoning-model analysis, and stronger independence from external model APIs.</span>
+              </div>
+            </article>
+          </div>
+
+          <p class="model-caveat">
+            <strong>Important framing:</strong> model fit depends on quantization level, context length, runtime, batching, memory allocation, and acceptable throughput. The strategic point is not that every model runs identically on every machine. The point is that more controlled memory and throughput expand what Norynthe can evaluate without exposing the benchmark layer to external providers.
+          </p>
+        </section>
+
+        <section class="section-card" aria-labelledby="tiers-title">
+          <div class="section-head">
+            <div class="section-label">Compute Tiers</div>
+            <h2 id="tiers-title">What each level enables.</h2>
+            <p>
+              The compute plan is not a hardware showcase. It is a staged path toward controlled local inference, benchmark protection, and credible independent scoring.
+            </p>
+          </div>
+
+          <div class="tier-stack">
+            <article class="tier-card" aria-labelledby="tier-one-title">
+              <aside class="tier-aside">
+                <div class="tier-label">Current Development Machine</div>
+                <h3 id="tier-one-title">Mac Studio &mdash; Apple M2 Max, 32GB Memory</h3>
+                <div class="price-block">
+                  <span>Estimated Cost</span>
+                  <strong>Already owned</strong>
+                </div>
+              </aside>
+
+              <div class="tier-content">
+                <div class="body-flow">
+                  <p>Alan&rsquo;s current Mac Studio is not a high-end AI workstation. It is an Apple M2 Max system with 32GB of memory.</p>
+                  <p>That matters.</p>
+                  <p>This is the machine currently running the Norynthe OS console, investor surfaces, reporting workflows, scoring logic, and MVP infrastructure.</p>
+                  <p>Norynthe was not built on a massive compute cluster. It was built from a constrained founder machine.</p>
+                  <p>This system proves the core thesis: Norynthe.Score can function as a real evaluation workflow.</p>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Capabilities</h4>
+                  <ul class="tier-list">
+                    <li>Build and run the Norynthe OS console</li>
+                    <li>Develop scoring interfaces</li>
+                    <li>Prototype benchmark workflows</li>
+                    <li>Generate assessment records</li>
+                    <li>Create investor-facing reporting</li>
+                    <li>Test lightweight local models</li>
+                    <li>Run smaller quantized models</li>
+                    <li>Execute MVP-level evaluations</li>
+                  </ul>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Strategic Meaning</h4>
+                  <p>This machine proves the system works even under serious compute constraints.</p>
+                  <p>It does not provide the scale needed for serious independent model evaluation.</p>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Current Limitations</h4>
+                  <ul class="tier-list">
+                    <li>32GB memory ceiling</li>
+                    <li>Smaller model support</li>
+                    <li>Limited local inference capacity</li>
+                    <li>Limited parallel testing</li>
+                    <li>Reduced throughput</li>
+                    <li>Constrained memory for larger evaluations</li>
+                    <li>Prototype-level benchmark execution</li>
+                  </ul>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Best Suited For</h4>
+                  <ul class="tier-list">
+                    <li>Lightweight local models</li>
+                    <li>Small quantized models</li>
+                    <li>Workflow validation</li>
+                    <li>Report generation</li>
+                    <li>MVP operation</li>
+                    <li>Proving Norynthe OS logic</li>
+                  </ul>
+                </div>
+
+                <div class="technical-note">
+                  <strong>Technical Note:</strong> The current system is an Apple M2 Max Mac Studio with 32GB memory. This makes the existing Norynthe MVP more important, not less &mdash; because it shows the product was built before the compute arrived.
+                </div>
+              </div>
+            </article>
+
+            <article class="tier-card" aria-labelledby="tier-two-title">
+              <aside class="tier-aside">
+                <div class="tier-label">Founder Lab Compute</div>
+                <h3 id="tier-two-title">Mac Studio + 2 NVIDIA DGX Spark Systems</h3>
+                <div class="price-block">
+                  <span>Estimated Cost</span>
+                  <strong>$17,000&ndash;$20,000 estimated total</strong>
+                </div>
+                <div class="tier-section">
+                  <h4>Breakdown</h4>
+                  <ul class="breakdown-list">
+                    <li>Mac Studio expansion/support infrastructure</li>
+                    <li>2 DGX Spark systems: ~$9,500&ndash;$10,000</li>
+                    <li>Networking/storage/setup buffer</li>
+                  </ul>
+                </div>
+              </aside>
+
+              <div class="tier-content">
+                <div class="body-flow">
+                  <p>This configuration transforms Norynthe from a proof-of-concept environment into an independent founder-scale AI evaluation lab.</p>
+                  <p>The addition of DGX Spark systems dramatically expands the ability to process larger open-weight models, increase benchmark throughput, and run repeatable evaluations under controlled infrastructure.</p>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Capabilities</h4>
+                  <ul class="tier-list">
+                    <li>Larger local model inference</li>
+                    <li>Repeatable benchmark execution</li>
+                    <li>Parallel evaluation runs</li>
+                    <li>Expanded throughput</li>
+                    <li>Stronger benchmark isolation</li>
+                    <li>Early customer-facing evaluation capacity</li>
+                    <li>Improved multimodal experimentation</li>
+                    <li>Stronger reasoning-model testing</li>
+                  </ul>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Strategic Meaning</h4>
+                  <p>This is the first level where Norynthe begins operating as a serious independent AI evaluation environment.</p>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Best Suited For</h4>
+                  <ul class="tier-list">
+                    <li>Mid-to-large open-weight models</li>
+                    <li>Larger quantized models</li>
+                    <li>Repeatable evaluation cycles</li>
+                    <li>Multi-model comparison workflows</li>
+                  </ul>
+                </div>
+
+                <div class="technical-note">
+                  <strong>Technical Note:</strong> DGX Spark systems use NVIDIA GB10 Grace Blackwell architecture with 128GB memory and up to 1 PFLOP FP4 AI performance per unit. NVIDIA positions a single DGX Spark for models up to 200B parameters and a dual-Spark configuration for 405B-class model support, subject to quantization, runtime, and workload constraints.
+                </div>
+              </div>
+            </article>
+
+            <article class="tier-card" aria-labelledby="tier-three-title">
+              <aside class="tier-aside">
+                <div class="tier-label">Strategic Compute Unlock</div>
+                <h3 id="tier-three-title">W775-V10-L01 AI Workstation<br>NVIDIA GB300 Grace Blackwell Ultra Desktop Superchip</h3>
+                <div class="price-block">
+                  <span>Estimated Cost</span>
+                  <strong>Approximately $100,000</strong>
+                </div>
+                <div class="price-block">
+                  <span>Display Price</span>
+                  <strong>$99,999.99</strong>
+                </div>
+              </aside>
+
+              <div class="tier-content">
+                <div class="body-flow">
+                  <p>This is the compute tier where Norynthe transitions from founder-lab capability into serious production-grade independent AI evaluation infrastructure.</p>
+                  <p>The GB300 workstation unlocks the ability to process far larger open-weight models locally while dramatically increasing throughput, memory capacity, and advanced reasoning evaluation potential.</p>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Capabilities</h4>
+                  <ul class="tier-list">
+                    <li>Large-scale local inference</li>
+                    <li>Frontier-class open-weight evaluation</li>
+                    <li>High-throughput benchmark execution</li>
+                    <li>Advanced multimodal testing</li>
+                    <li>Large reasoning-model analysis</li>
+                    <li>Production-grade evaluation workflows</li>
+                    <li>Enterprise-scale assessment pipelines</li>
+                    <li>Stronger independence from external model APIs</li>
+                  </ul>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Strategic Meaning</h4>
+                  <p>This workstation represents the infrastructure layer capable of turning Norynthe.Score into a credible independent market signal.</p>
+                </div>
+
+                <div class="tier-section">
+                  <h4>Best Suited For</h4>
+                  <ul class="tier-list">
+                    <li>Frontier-class open-weight workloads</li>
+                    <li>Advanced reasoning models</li>
+                    <li>Multimodal systems</li>
+                    <li>Production-scale benchmark execution</li>
+                    <li>Enterprise evaluation throughput</li>
+                  </ul>
+                </div>
+
+                <div class="technical-note">
+                  <strong>Technical Note:</strong> The GB300 configuration includes Grace 72-core CPU, Blackwell Ultra GPU, 252GB HBM3E GPU memory, 496GB LPDDR5X CPU memory, up to 748GB coherent memory, and up to 20 PFLOPS AI performance.
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="comparison-wrap" aria-labelledby="matrix-title">
+          <div class="section-head">
+            <div class="section-label">Comparison Matrix</div>
+            <h2 id="matrix-title">Compute ownership translates directly into evaluation scope.</h2>
+            <p>
+              Each tier has a distinct role in the Norynthe architecture, from MVP proof to independent trust infrastructure.
+            </p>
+          </div>
+
+          <div class="table-scroll" role="region" aria-label="Compute tier comparison table" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Compute Tier</th>
+                  <th scope="col">Role in Norynthe</th>
+                  <th scope="col">Best Fit</th>
+                  <th scope="col">Model Scale</th>
+                  <th scope="col">Strategic Value</th>
+                  <th scope="col">Estimated Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Mac Studio &mdash; M2 Max, 32GB</strong></td>
+                  <td>Current MVP development machine</td>
+                  <td>UI, scoring logic, workflow validation, lightweight inference</td>
+                  <td>Small local and quantized models such as Gemma 3 1B/4B, Llama 3.2 1B/3B, Phi-3 Mini, and constrained 7B-class runs</td>
+                  <td>Proves Norynthe.Score under constrained compute</td>
+                  <td>Already owned</td>
+                </tr>
+                <tr>
+                  <td><strong>Mac Studio + 2 DGX Sparks</strong></td>
+                  <td>Founder lab compute</td>
+                  <td>Controlled evaluation and repeatable testing</td>
+                  <td>Mid-to-large open-weight models such as Gemma 3 27B, DeepSeek-R1-Distill-Qwen 32B/70B, Llama 3.1 70B, and Qwen2.5 72B</td>
+                  <td>Enables independent benchmark execution</td>
+                  <td>~$20K</td>
+                </tr>
+                <tr>
+                  <td><strong>GB300 Workstation</strong></td>
+                  <td>Production-grade evaluation infrastructure</td>
+                  <td>Large-scale benchmark execution</td>
+                  <td>Frontier-class open-weight workloads, including Llama 3.1 405B-class and DeepSeek-V3/R1-class MoE evaluations, subject to runtime configuration</td>
+                  <td>Transforms Norynthe into a serious independent AI trust layer</td>
+                  <td>~$100K</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="closing-card" aria-labelledby="closing-title">
+          <div class="closing-copy">
+            <h2 id="closing-title">The application is built. Compute is the unlock.</h2>
+            <p>The Norynthe OS console already exists. The reporting infrastructure exists. The scoring workflow exists. The benchmark architecture exists.</p>
+            <p>The next stage is compute infrastructure capable of scaling the evaluation system beyond prototype constraints.</p>
+            <p>This is not about chasing hardware prestige.</p>
+            <p>It is about building the independent compute layer required to evaluate increasingly capable AI systems without compromising benchmark integrity.</p>
+            <p>Norynthe&rsquo;s infrastructure strategy is intentionally different from the dominant API-dependent AI ecosystem.</p>
+            <p>The long-term moat is not simply the scoring interface. The moat is controlled compute tied directly to benchmark governance, reproducibility, and independent evaluation integrity.</p>
+            <p>Norynthe is building toward a future where AI systems are evaluated outside the model itself.</p>
+            <div class="final-statement">&ldquo;Independent trust requires independent compute ownership.&rdquo;</div>
+          </div>
+
+          <aside class="closing-action">
+            <div class="diagram-label">Investor Path</div>
+            <p>Return to the portal for the full investor packet, MVP surfaces, report examples, and strategic diligence materials.</p>
+            <a class="button primary" href="index.html">Return to Investor Portal</a>
+          </aside>
+        </section>
+
+        <aside class="footnotes" aria-label="Capability and pricing disclaimers">
+          <p>Capability ranges depend on model architecture, quantization, memory configuration, runtime optimization, context length, and evaluation workload complexity.</p>
+          <p>Pricing estimates are based on current public market listings and may vary depending on reseller pricing, configuration, taxes, shipping, support contracts, and availability.</p>
+        </aside>
+      </div>
+    </main>
+
+    <p class="footer-note">The Power of Compute &middot; Independent AI governance infrastructure &middot; Controlled benchmark layer &middot; &copy; 2026 Norynthe.</p>
+  </div>
+</body>
+</html>
