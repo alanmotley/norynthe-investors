@@ -329,25 +329,31 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="investor-page.css">
 </head>
 <body>
   <div class="page">
-    <div class="topline">
-      <span>Founder Memo</span>
-      <nav>
-        <a href="index.html">Main Site</a>
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html">Investor Access</a>
         <a href="norynthe-investors.html">Investor Overview</a>
         <a href="mailto:hello@norynthe.com">Contact</a>
       </nav>
-    </div>
+    </header>
 
     <section class="hero">
       <div class="back-row">
-        <a class="back-link" href="index.html">Back To Main Site</a>
+        <a class="back-link" href="index.html">Investor Access</a>
         <a class="back-link" href="norynthe-investors.html">Investor Overview</a>
       </div>
       <div class="eyebrow">Founder Memo</div>
-      <img class="hero-logo" src="norynthe-logo.png" alt="Norynthe." onerror="if (!this.dataset.fallbackTried) { this.dataset.fallbackTried='true'; this.src='assets/norynthe-logo.png'; } else { this.style.display='none'; }">
       <h1>Why trust needs an external standard.</h1>
       <p class="subtitle">
         This memo sits beneath the public signal and the method. It states the operating claim behind Norynthe:
