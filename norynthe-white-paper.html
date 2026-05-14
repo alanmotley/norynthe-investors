@@ -153,16 +153,6 @@
       text-transform: uppercase;
     }
 
-    .hero-logo-wrap {
-      margin: 0 0 18px;
-    }
-
-    .hero-logo {
-      width: min(360px, 62vw);
-      height: auto;
-      filter: drop-shadow(0 14px 24px rgba(19, 23, 28, 0.08));
-    }
-
     .subtitle {
       margin: 12px 0 0;
       max-width: 44rem;
@@ -514,27 +504,27 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="investor-page.css">
 </head>
 <body>
   <div class="page">
-    <div class="topline">
-      <span>Norynthe Research</span>
-      <nav>
-        <a href="index.html" id="backLink">Back</a>
-        <a href="#problem">Problem</a>
-        <a href="#thesis">Thesis</a>
-        <a href="#structure">Structure</a>
-        <a href="#rubric">Rubric</a>
-        <a href="#evaluation">Evaluation</a>
-        <a href="#conclusion">Conclusion</a>
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html" id="backLink">Investor Access</a>
+        <a href="norynthe-investors.html">Investor Overview</a>
+        <a href="mailto:hello@norynthe.com">Contact</a>
       </nav>
-    </div>
+    </header>
 
     <section class="hero">
       <p class="eyebrow">White Paper</p>
-      <div class="hero-logo-wrap">
-        <img class="hero-logo" src="Norynthe_master.png" alt="" aria-hidden="true" onerror="this.style.display='none';this.parentElement.style.display='none';">
-      </div>
       <p class="subtitle">An independent method for Norynthe.Score, score detail, and private evaluation under a governed trust standard.</p>
       <div class="meta">
         <span>April 17, 2026</span>
