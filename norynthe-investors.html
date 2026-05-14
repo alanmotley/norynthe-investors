@@ -546,32 +546,34 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="investor-page.css">
 </head>
 <body>
   <div class="page">
-    <div class="topline">
-      <span>Investor Overview</span>
-      <nav>
-        <a href="index.html">Main Site</a>
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html">Investor Access</a>
         <a href="norynthe-founder-memo.html">Founder Memo</a>
+        <a href="mailto:hello@norynthe.com">Contact</a>
       </nav>
-    </div>
+    </header>
 
     <section class="hero">
       <div class="back-row">
-        <a class="back-link" href="index.html">Back To Main Site</a>
+        <a class="back-link" href="index.html">Investor Access</a>
         <a class="back-link" href="norynthe-founder-memo.html">Founder Memo</a>
       </div>
 
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Investor Overview</p>
-          <img
-            class="hero-logo"
-            src="norynthe-logo.png"
-            alt="Norynthe"
-            onerror="if (!this.dataset.fallbackTried) { this.dataset.fallbackTried='true'; this.src='assets/norynthe-logo.png'; } else { this.style.display='none'; }"
-          >
           <h1>The trust standard behind Norynthe.Score</h1>
           <p class="lede">
             Norynthe is building an independent trust company for AI. Norynthe.Score is the public signal. The Norynthe Model
@@ -580,7 +582,7 @@
           </p>
           <div class="hero-links">
             <a class="hero-link primary" href="norynthe-founder-memo.html">Founder Memo</a>
-            <a class="hero-link" href="index.html">Main Site</a>
+            <a class="hero-link" href="index.html">Investor Access</a>
           </div>
           <div class="hero-pills">
             <span class="pill">Norynthe.Score</span>
