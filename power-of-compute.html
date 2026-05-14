@@ -359,7 +359,7 @@
     }
 
     .hero-visual {
-      min-height: 432px;
+      min-height: 500px;
       border: 1px solid rgba(226, 233, 240, 0.13);
       border-radius: var(--radius-lg);
       background:
@@ -384,10 +384,10 @@
 
     .visual-stack {
       position: absolute;
-      inset: 42px;
+      inset: 42px 42px 36px;
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 22px;
+      grid-template-rows: auto minmax(220px, 1fr) auto;
+      gap: 18px;
     }
 
     .visual-meta {
@@ -407,7 +407,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       align-items: center;
-      min-height: 260px;
+      min-height: 220px;
     }
 
     .signal-plane::before,
@@ -1487,7 +1487,7 @@
       }
 
       .hero-visual {
-        min-height: 390px;
+        min-height: 500px;
       }
 
       .proof-grid,
@@ -1573,15 +1573,25 @@
       }
 
       .hero-visual {
-        min-height: 420px;
+        min-height: auto;
       }
 
       .visual-stack {
-        inset: 24px;
+        position: relative;
+        inset: auto;
+        padding: 24px;
+        grid-template-rows: auto auto auto;
+        gap: 14px;
       }
 
       .signal-plane {
+        min-height: 0;
         grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .control-node {
+        min-height: auto;
       }
 
       .metric-rail,
@@ -1615,7 +1625,7 @@
       }
 
       .hero-visual {
-        min-height: 460px;
+        min-height: auto;
       }
 
       .metric-rail {
