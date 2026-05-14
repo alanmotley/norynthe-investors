@@ -487,27 +487,33 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="investor-page.css">
 </head>
 <body>
   <div class="page">
-    <div class="topline">
-      <span>Enterprise Decision Layer</span>
-      <nav>
-        <a href="#use-cases">Use Cases</a>
-        <a href="#framework">How It Works</a>
-        <a href="#outcomes">Outcomes</a>
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html">Investor Access</a>
+        <a href="norynthe-investors.html">Investor Overview</a>
+        <a href="mailto:hello@norynthe.com">Contact</a>
       </nav>
-    </div>
+    </header>
 
     <section class="hero">
       <div class="back-row">
-        <a class="back-link" href="index.html">Back To Main Site</a>
+        <a class="back-link" href="index.html">Investor Access</a>
         <a class="back-link" href="mailto:hello@norynthe.com?subject=Norynthe%20Investor%20Materials%20Request">Request Materials</a>
       </div>
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Enterprise Use Cases</div>
-          <img class="hero-logo" src="Norynthe_master.png" alt="Norynthe.">
           <div class="hero-heading">Institutional decision contexts for Norynthe.Score</div>
           <p class="lede">
             Norynthe.Score is the public signal. The Norynthe Model and reporting layer support private evaluation,
