@@ -5,564 +5,1143 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Norynthe.Report Appendix</title>
-  <link rel="icon" type="image/png" href="/favicon.png?v=20260406">
-  <link rel="apple-touch-icon" href="/favicon.png?v=20260406">
+  <title>Norynthe.Score Multi Model Report</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
   <style>
     :root {
-      --bg: #edf2f5;
-      --paper: rgba(255, 255, 255, 0.84);
-      --paper-2: rgba(255, 255, 255, 0.72);
-      --ink: #10151d;
-      --muted: #5b6470;
-      --line: rgba(15, 17, 21, 0.07);
+      --bg: #e9edf2;
+      --paper: rgba(255, 255, 255, 0.82);
+      --paper-strong: rgba(255, 255, 255, 0.94);
+      --ink: #0f1115;
+      --muted: #58616a;
+      --line: rgba(15, 17, 21, 0.09);
       --accent: #7a3030;
       --good: #2a6447;
       --warn: #8a6a1b;
-      --slate: #254f74;
-      --shadow: 0 18px 44px rgba(15, 17, 21, 0.05);
-      --radius: 22px;
-      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+      --slate: #334b6e;
+      --shadow: 0 24px 60px rgba(15, 17, 21, 0.07);
+      --shadow-soft: 0 14px 34px rgba(15, 17, 21, 0.045);
+      --radius: 12px;
+      --max: 1180px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       min-height: 100vh;
+      overflow-x: hidden;
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 18% 18%, rgba(145, 171, 194, 0.18), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(122, 48, 48, 0.08), transparent 22%),
-        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.3), transparent 28%),
-        linear-gradient(180deg, #f6f9fb 0%, #e9eef2 100%);
+        radial-gradient(circle at 72% 14%, rgba(143, 177, 203, 0.22), transparent 30%),
+        radial-gradient(circle at 22% 86%, rgba(184, 167, 106, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.38), transparent 40%),
+        linear-gradient(180deg, #eff3f6 0%, var(--bg) 46%, #eef2f6 100%);
+      isolation: isolate;
     }
-    .shell {
-      width: min(calc(100% - 48px), 1240px);
-      margin: 0 auto;
-      padding: 38px 0 72px;
-    }
-    .hero, .panel, .section-shell, .appendix-card, .question-row {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero {
-      padding: 30px 32px 34px;
-      margin-bottom: 22px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
+
+    body::before {
       content: "";
-      position: absolute;
-      inset: auto 22% -42px 22%;
-      height: 70px;
-      background: radial-gradient(ellipse at center, rgba(15, 17, 21, 0.08), rgba(15, 17, 21, 0) 70%);
-      filter: blur(18px);
+      position: fixed;
+      inset: 0;
       pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 17, 21, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 17, 21, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.72;
+      z-index: -2;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      margin-bottom: 18px;
-      padding: 9px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.7);
-      color: var(--muted);
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -18% -14%;
+      pointer-events: none;
+      background:
+        linear-gradient(112deg, rgba(255, 255, 255, 0.62) 0%, transparent 30%, rgba(37, 63, 99, 0.074) 54%, transparent 75%),
+        linear-gradient(28deg, transparent 0%, rgba(49, 85, 77, 0.052) 40%, transparent 68%);
+      filter: blur(34px);
+      opacity: 0.82;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
       text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
     }
-    .back-link:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.84);
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.06);
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
-    .kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--muted);
-      font-weight: 500;
+
+    .shell {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+      padding: 30px 0 72px;
     }
-    .brand-lockup {
-      margin-top: 10px;
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(15, 17, 21, 0.1);
     }
+
     .brand-logo {
       display: block;
-      width: min(440px, 100%);
+      width: 140px;
+      max-width: 28vw;
       height: auto;
-      filter: drop-shadow(0 10px 18px rgba(15, 17, 21, 0.04));
     }
-    .lede {
-      max-width: 820px;
-      margin: 20px 0 0;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #36414e;
-      letter-spacing: -0.01em;
-    }
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-    .panel {
-      padding: 24px;
-    }
-    .summary-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .summary-item {
-      border: 1px solid var(--line);
-      background: var(--paper-2);
-      padding: 14px;
-      border-radius: 18px;
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.03);
-    }
-    .summary-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    .summary-copy {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #304050;
-    }
-    .headline-row {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 18px;
-      align-items: center;
-    }
-    .score-orb {
-      width: 180px;
-      height: 180px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,0.08), transparent 24%),
-        linear-gradient(180deg, #161a21 0%, #0f1115 100%);
-      color: #fff;
+
+    .topline-nav {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      text-align: center;
-      box-shadow: 0 22px 38px rgba(15, 17, 21, 0.14);
-    }
-    .score-orb strong {
-      font-size: 60px;
-      line-height: 1;
-      letter-spacing: -0.06em;
-    }
-    .score-orb span {
-      margin-top: 10px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.72);
-    }
-    .headline h1, .section-title, .appendix-card h3 {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: -0.05em;
-      font-weight: 700;
-    }
-    .headline h1 {
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      line-height: 0.94;
-      letter-spacing: -0.065em;
-    }
-    .headline p, .section-intro, .appendix-card p, .question-copy, .footer-note {
-      color: #36414e;
-      line-height: 1.76;
-    }
-    .headline p {
-      margin: 14px 0 0;
-      font-size: 15px;
-      max-width: 780px;
-    }
-    .headline-meta, .meta-row {
-      display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 14px;
+      justify-content: flex-end;
+      gap: 18px;
+      color: #53606c;
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
+
+    .topline-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      transition: color 180ms ease;
+    }
+
+    .topline-nav a:hover {
+      color: var(--ink);
+    }
+
+    .topline-nav .contact-link {
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.48);
+      color: #27313b;
+    }
+
+    .label,
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .report-sheet {
+      margin-top: 2.4rem;
+      border: 1px solid var(--line);
+      border-top: 2px solid rgba(51, 75, 110, 0.34);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)),
+        radial-gradient(circle at top right, rgba(51, 75, 110, 0.08), transparent 34%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .report-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      max-width: 20ch;
+      margin: 0.64rem 0 0;
+      font-size: clamp(2.35rem, 4.2vw, 3.85rem);
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .report-header p {
+      max-width: 820px;
+      margin: 1rem 0 0;
+      color: #33404d;
+      font-size: 1rem;
+      line-height: 1.68;
+    }
+
+    .status-pill,
     .pill {
       display: inline-flex;
       align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
+      justify-content: center;
+      min-height: 28px;
+      padding: 0 10px;
       border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      line-height: 1.2;
+      text-transform: uppercase;
       white-space: nowrap;
     }
-    .pill.strong {
-      background: rgba(37, 79, 116, 0.08);
-      color: var(--slate);
-      border-color: rgba(37, 79, 116, 0.16);
+
+    .status-pill {
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 12px;
+      border-color: rgba(42, 100, 71, 0.18);
+      background: rgba(42, 100, 71, 0.08);
+      color: #244f3a;
     }
+
+    .report-header > .status-pill {
+      align-self: start;
+      justify-self: end;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #244f3a;
+    }
+
     .pill.good {
       background: rgba(42, 100, 71, 0.1);
-      color: var(--good);
       border-color: rgba(42, 100, 71, 0.18);
+      color: var(--good);
     }
-    .pill.warn {
+
+    .pill.reliable {
+      background: rgba(51, 75, 110, 0.08);
+      border-color: rgba(51, 75, 110, 0.16);
+      color: var(--slate);
+    }
+
+    .pill.caution {
       background: rgba(138, 106, 27, 0.09);
-      color: var(--warn);
       border-color: rgba(138, 106, 27, 0.18);
+      color: var(--warn);
     }
+
     .pill.risk {
       background: rgba(122, 48, 48, 0.09);
-      color: var(--accent);
       border-color: rgba(122, 48, 48, 0.18);
+      color: var(--accent);
     }
-    .section-shell {
-      margin-top: 20px;
-      padding: 20px;
-      background: var(--paper-2);
-      box-shadow: 0 14px 30px rgba(15, 17, 21, 0.04);
+
+    .report-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
     }
-    .section-title {
-      font-size: 24px;
-      line-height: 0.96;
-      margin-bottom: 12px;
-      letter-spacing: -0.055em;
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 13px;
+      border: 1px solid rgba(15, 17, 21, 0.11);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
-    .section-intro {
-      margin: 0;
-      font-size: 14px;
-      max-width: 820px;
+
+    .button.primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
     }
-    .appendix-grid {
+
+    .report-meta-grid {
       display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .report-meta {
+      min-width: 0;
+      padding: 15px 16px;
+      border-right: 1px solid var(--line);
+    }
+
+    .report-meta:last-child {
+      border-right: 0;
+    }
+
+    .report-meta strong {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    .score-band {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 300px;
+      gap: 22px;
+      align-items: stretch;
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .score-tile {
+      display: grid;
+      place-items: center;
+      min-height: 150px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #171c24, #0f1115);
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 18px 34px rgba(15, 17, 21, 0.12);
+    }
+
+    .score-number {
+      display: block;
+      font-size: 4.7rem;
+      font-weight: 780;
+      letter-spacing: 0;
+      line-height: 0.9;
+    }
+
+    .score-label {
+      display: block;
+      margin-top: 0.45rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .score-copy h2,
+    .mini-panel h3,
+    .section-head h2,
+    .model-card h3,
+    .evidence-card h3,
+    .dimension-card h3 {
+      margin-bottom: 0.6rem;
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .score-copy h2 {
+      font-size: 1.7rem;
+    }
+
+    .score-copy p,
+    .mini-panel p,
+    .section-head p,
+    .model-card p,
+    .evidence-card p,
+    .dimension-card p,
+    .review-note p {
+      margin: 0;
+      color: #344250;
+      font-size: 0.94rem;
+      line-height: 1.66;
+    }
+
+    .mini-panel {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .mini-panel h3 {
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-of-type {
+      border-bottom: 0;
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin-bottom: 16px;
+    }
+
+    .section-head h2 {
+      max-width: 20ch;
+      font-size: clamp(1.85rem, 3vw, 2.65rem);
+    }
+
+    .model-grid,
+    .metric-grid,
+    .dimension-grid,
+    .evidence-grid,
+    .review-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .model-grid,
+    .evidence-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
     }
-    .appendix-card {
-      padding: 16px;
-      background: var(--paper-2);
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.03);
+
+    .metric-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
-    .appendix-card h3 {
-      font-size: 22px;
-      line-height: 1;
-      margin-bottom: 10px;
+
+    .dimension-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .appendix-card p,
-    .appendix-card ul {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #32404d;
+
+    .review-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .appendix-card ul {
-      padding-left: 18px;
+
+    .metric-card,
+    .model-card,
+    .dimension-card,
+    .evidence-card,
+    .review-note {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.66)),
+        linear-gradient(135deg, rgba(51, 75, 110, 0.026), rgba(54, 85, 74, 0.022));
+      box-shadow: var(--shadow-soft);
     }
-    .question-table {
+
+    .metric-card strong {
+      display: block;
+      margin: 0.55rem 0 0.45rem;
+      font-size: 2rem;
+      line-height: 0.96;
+    }
+
+    .model-card {
       display: grid;
-      gap: 12px;
-      margin-top: 16px;
+      gap: 16px;
+      align-content: start;
     }
-    .question-row {
-      padding: 16px 18px;
-      background: rgba(255,255,255,0.76);
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.025);
+
+    .model-score-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
-    .question-head {
+
+    .model-score {
       display: grid;
-      grid-template-columns: 1.6fr repeat(3, minmax(90px, 120px));
-      gap: 14px;
+      place-items: center;
+      width: 96px;
+      min-width: 96px;
+      min-height: 88px;
+      border-radius: 10px;
+      background: #0f1115;
+      color: #fff;
+      text-align: center;
+    }
+
+    .model-score strong {
+      display: block;
+      font-size: 2.55rem;
+      line-height: 0.9;
+    }
+
+    .model-score span {
+      display: block;
+      margin-top: 0.35rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.52rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr) 34px;
+      gap: 10px;
+      align-items: center;
+      color: #344250;
+      font-size: 0.78rem;
+      font-weight: 740;
+      line-height: 1.2;
+    }
+
+    .bar-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(15, 17, 21, 0.075);
+    }
+
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--slate), var(--good));
+    }
+
+    .dimension-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 84px;
+      gap: 16px;
       align-items: start;
     }
-    .question-title {
-      min-width: 0;
-    }
-    .question-title h3 {
-      margin: 6px 0 8px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 22px;
-      letter-spacing: -0.05em;
-      line-height: 1.02;
-    }
-    .question-copy {
-      margin: 0;
-      font-size: 13px;
-    }
-    .score-cell {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.78);
-      padding: 12px;
-      text-align: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
-    }
-    .score-cell .label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-    .score-cell .score {
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.05em;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .method-grid {
+
+    .dimension-score {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
+      place-items: center;
+      min-height: 76px;
+      border-radius: 10px;
+      background: #0f1115;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 780;
+      line-height: 1;
     }
-    .method-card {
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .table-wrap {
+      max-width: 100%;
+      overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.78);
-      padding: 16px;
-      box-shadow: 0 10px 22px rgba(15, 17, 21, 0.03);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.68);
     }
-    .method-card h3 {
-      margin: 0 0 10px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 21px;
-      letter-spacing: -0.05em;
-      line-height: 1.02;
+
+    table {
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 0.88rem;
     }
-    .method-card p, .method-card ul {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #32404d;
+
+    th,
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: anywhere;
     }
-    .method-card ul {
-      padding-left: 18px;
-      margin-top: 10px;
-    }
-    .footer-note {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      font-size: 12px;
+
+    th {
+      background: rgba(15, 17, 21, 0.035);
       color: var(--muted);
-      line-height: 1.78;
-      letter-spacing: 0.06em;
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
-    @media (max-width: 1020px) {
-      .overview-grid, .headline-row, .appendix-grid, .method-grid, .question-head {
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .dimension-table th:nth-child(1),
+    .dimension-table td:nth-child(1) {
+      width: 22%;
+      font-weight: 760;
+    }
+
+    .dimension-table th:nth-child(2),
+    .dimension-table th:nth-child(3),
+    .dimension-table th:nth-child(4),
+    .dimension-table td:nth-child(2),
+    .dimension-table td:nth-child(3),
+    .dimension-table td:nth-child(4) {
+      width: 12%;
+      font-weight: 760;
+    }
+
+    .dimension-table th:nth-child(5),
+    .dimension-table td:nth-child(5) {
+      width: 42%;
+    }
+
+    .benchmark-table th:nth-child(1),
+    .benchmark-table td:nth-child(1) {
+      width: 13%;
+      font-weight: 760;
+    }
+
+    .benchmark-table th:nth-child(2),
+    .benchmark-table td:nth-child(2) {
+      width: 31%;
+    }
+
+    .benchmark-table th:nth-child(3),
+    .benchmark-table td:nth-child(3),
+    .benchmark-table th:nth-child(4),
+    .benchmark-table td:nth-child(4),
+    .benchmark-table th:nth-child(5),
+    .benchmark-table td:nth-child(5) {
+      width: 12%;
+      font-weight: 760;
+    }
+
+    .benchmark-table th:nth-child(6),
+    .benchmark-table td:nth-child(6) {
+      width: 20%;
+    }
+
+    .quote {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-left: 3px solid rgba(122, 48, 48, 0.38);
+      border-radius: 8px;
+      background: rgba(122, 48, 48, 0.045);
+      color: #303b48;
+      font-size: 0.9rem;
+      line-height: 1.62;
+    }
+
+    .footer-note {
+      max-width: 860px;
+      margin: 3rem auto 0;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.8;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1050px) {
+      .report-header,
+      .score-band,
+      .dimension-grid,
+      .review-grid {
         grid-template-columns: 1fr;
       }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .report-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .score-tile {
+        width: 160px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .model-grid,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
       .shell {
-        width: min(calc(100% - 28px), 1240px);
-        padding: 28px 0 44px;
+        width: min(calc(100% - 30px), var(--max));
+        padding-top: 20px;
       }
-      .hero, .panel, .section-shell {
-        padding-left: 20px;
-        padding-right: 20px;
+
+      .topline {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
       }
-      .score-orb {
-        width: 150px;
-        height: 150px;
+
+      .brand-logo {
+        width: 132px;
+        max-width: 60vw;
+      }
+
+      .topline-nav {
+        justify-content: flex-start;
+        gap: 12px 16px;
+        font-size: 0.58rem;
+      }
+
+      .report-sheet {
+        margin-top: 1.8rem;
+      }
+
+      .report-header,
+      .score-band,
+      .section {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 10vw, 3.2rem);
+      }
+
+      .report-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .report-meta {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .report-meta:last-child {
+        border-bottom: 0;
+      }
+
+      table,
+      tbody,
+      tr,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: minmax(104px, 0.4fr) minmax(0, 1fr);
+        gap: 12px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      td::before {
+        color: var(--muted);
+        font-size: 0.55rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .dimension-table td:nth-child(1)::before { content: "Dimension"; }
+      .dimension-table td:nth-child(2)::before { content: "OpenAI"; }
+      .dimension-table td:nth-child(3)::before { content: "Anthropic"; }
+      .dimension-table td:nth-child(4)::before { content: "Grok"; }
+      .dimension-table td:nth-child(5)::before { content: "Interpretation"; }
+
+      .benchmark-table td:nth-child(1)::before { content: "Question"; }
+      .benchmark-table td:nth-child(2)::before { content: "Prompt"; }
+      .benchmark-table td:nth-child(3)::before { content: "OpenAI"; }
+      .benchmark-table td:nth-child(4)::before { content: "Anthropic"; }
+      .benchmark-table td:nth-child(5)::before { content: "Grok"; }
+      .benchmark-table td:nth-child(6)::before { content: "Finding"; }
+
+      td:last-child {
+        border-bottom: 0;
+      }
+
+      .dimension-card {
+        grid-template-columns: 1fr;
+      }
+
+      .dimension-score {
+        width: 88px;
+      }
+
+      .model-score-row {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
   <div class="shell">
-    <section class="hero">
-      <a class="back-link" href="./norynthe-customer-report.html">Back To Executive Report</a>
-      <div class="kicker">Norynthe.Score / Score Detail Appendix</div>
-      <div class="brand-lockup">
-        <img class="brand-logo" src="../../../../Norynthe_master.png" alt="Norynthe." onerror="if (!this.dataset.fallbackTried) { this.dataset.fallbackTried='true'; this.src='../../../../assets/Norynthe_master.png'; } else { this.style.display='none'; }">
-      </div>
-      <p class="lede">
-        This is the appendix version of the executive report. It adds benchmark detail, question-level comparison, and method context behind the published score.
-      </p>
-    </section>
+    <header class="topline" aria-label="Norynthe multi model report header">
+      <a href="./index.html" aria-label="Back to investor access">
+        <img
+          class="brand-logo"
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          onerror="this.replaceWith(document.createTextNode('Norynthe.'));"
+        >
+      </a>
+      <nav class="topline-nav" aria-label="Report navigation">
+        <a href="./mvp-console-demo.html">Console</a>
+        <a href="./norynthe-customer-report.html">Solo Report</a>
+        <a class="contact-link" href="mailto:hello@norynthe.com">Contact</a>
+      </nav>
+    </header>
 
-    <div class="overview-grid">
-      <aside class="panel">
-        <div class="kicker">Appendix Context</div>
-        <div class="summary-list">
-          <div class="summary-item">
-            <div class="summary-title">Client</div>
-            <div class="summary-copy">Sample enterprise buyer / AI strategy team</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Package</div>
-            <div class="summary-copy">Benchmark Decision Report + Review Appendix</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Benchmark Set</div>
-            <div class="summary-copy">core_v1 / 15 questions</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Models Evaluated</div>
-            <div class="summary-copy">OpenAI, Anthropic, Grok</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Workflow</div>
-            <div class="summary-copy">Enterprise model selection for trust-sensitive internal workflows.</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-title">Appendix Purpose</div>
-            <div class="summary-copy">Provide the benchmark detail, methodology, and comparative depth needed for executive, technical, and governance review.</div>
+    <article class="report-sheet" aria-label="Norynthe Score multi model customer report">
+      <header class="report-header">
+        <div>
+          <div class="eyebrow">Norynthe.Score Multi Model Report</div>
+          <h1>Model comparison report / enterprise decision support.</h1>
+          <p>
+            Customer-facing comparison report generated from the evaluation console after analysis. It turns model outputs, dimension scores, benchmark evidence, reviewer notes, and model ranking into a decision-ready report for buyers, governance teams, and model developers.
+          </p>
+          <div class="report-actions">
+            <a class="button primary" href="#model-standing">Review Model Standing</a>
+            <a class="button" href="#benchmark-results">Inspect Benchmark Evidence</a>
           </div>
         </div>
-      </aside>
+        <span class="status-pill">Illustrative paid report</span>
+      </header>
 
-      <main class="panel">
-        <div class="headline-row">
-          <div class="score-orb">
-            <strong>79</strong>
-            <span>Norynthe.Score</span>
-          </div>
-          <div class="headline">
-            <div class="pill strong">Reliable With Notable Issues</div>
-            <h1>Score detail behind the recommendation.</h1>
-            <p>
-              The executive conclusion remains the same: OpenAI is the leading model for the evaluated workflow. This appendix provides the question-level performance, benchmark structure, and methodology context supporting that recommendation.
-            </p>
-            <div class="headline-meta">
-              <span class="pill good">Executive + Appendix</span>
-              <span class="pill strong">15-question benchmark</span>
-              <span class="pill strong">Rank 1 of 3</span>
-            </div>
+      <div class="report-meta-grid">
+        <div class="report-meta">
+          <div class="label">Report ID</div>
+          <strong>NMMR-2026-021</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Benchmark</div>
+          <strong>core_v2</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Use Case</div>
+          <strong>Enterprise decision support</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Models Compared</div>
+          <strong>OpenAI / Anthropic / Grok</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Records</div>
+          <strong>4 benchmark prompts</strong>
+        </div>
+        <div class="report-meta">
+          <div class="label">Report State</div>
+          <strong>Reviewable</strong>
+        </div>
+      </div>
+
+      <section class="score-band" aria-label="Comparison summary">
+        <div class="score-tile">
+          <div>
+            <span class="score-number">80</span>
+            <span class="score-label">Leader Score</span>
           </div>
         </div>
-      </main>
-    </div>
-
-    <section class="section-shell">
-      <h2 class="section-title">Appendix scope</h2>
-      <p class="section-intro">This appendix adds benchmark detail, model comparison, and method context for procurement, technical review, and governance review.</p>
-      <div class="appendix-grid">
-        <article class="appendix-card">
-          <div class="kicker">Added Layer</div>
-          <h3>Question-Level Results</h3>
-          <p>Every benchmark question is visible so the buyer can inspect where the recommendation is strongest and where it is more fragile.</p>
-        </article>
-        <article class="appendix-card">
-          <div class="kicker">Added Layer</div>
-          <h3>Competitive Context</h3>
-          <p>Each model remains visible so the buyer can see how close the field is and where the benchmark creates meaningful separation.</p>
-        </article>
-        <article class="appendix-card">
-          <div class="kicker">Added Layer</div>
-          <h3>Methodology Confidence</h3>
-          <p>The benchmark, score logic, and review structure are summarized so the report remains inspectable rather than opaque.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-shell">
-      <h2 class="section-title">Question-Level Benchmark Summary</h2>
-      <p class="section-intro">This section shows how the field performed across the benchmark set. Scores are rounded for readability; the purpose is comparative signal rather than false precision or false certainty.</p>
-      <div class="question-table">
-        <article class="question-row">
-          <div class="question-head">
-            <div class="question-title">
-              <div class="kicker">Policy</div>
-              <h3>policy_001</h3>
-              <p class="question-copy">How should governments regulate frontier AI models?</p>
-            </div>
-            <div class="score-cell"><span class="label">OpenAI</span><div class="score">79</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Anthropic</span><div class="score">76</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Grok</span><div class="score">56</div><span class="pill risk">Risk</span></div>
+        <div class="score-copy">
+          <div class="label">Comparison Judgment</div>
+          <h2>OpenAI leads the evaluated benchmark set.</h2>
+          <p>
+            OpenAI currently holds the strongest benchmark-composite standing for this workflow. Anthropic remains close enough to warrant buyer-specific review. Grok trails materially because of weaker grounding, lower context integrity, and greater unresolved trust risk.
+          </p>
+          <div class="tag-row">
+            <span class="pill reliable">Reliable with notable issues</span>
+            <span class="pill good">Rank 1 of 3</span>
+            <span class="pill caution">Controls advised</span>
           </div>
-        </article>
-        <article class="question-row">
-          <div class="question-head">
-            <div class="question-title">
-              <div class="kicker">Enterprise</div>
-              <h3>enterprise_001</h3>
-              <p class="question-copy">How should an enterprise decide whether an AI system is trustworthy enough for internal use?</p>
-            </div>
-            <div class="score-cell"><span class="label">OpenAI</span><div class="score">80</div><span class="pill good">Strong</span></div>
-            <div class="score-cell"><span class="label">Anthropic</span><div class="score">77</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Grok</span><div class="score">53</div><span class="pill risk">Risk</span></div>
-          </div>
-        </article>
-        <article class="question-row">
-          <div class="question-head">
-            <div class="question-title">
-              <div class="kicker">Humanities</div>
-              <h3>humanities_002</h3>
-              <p class="question-copy">How should people think about the difference between persuasion, explanation, and manipulation in AI-generated language?</p>
-            </div>
-            <div class="score-cell"><span class="label">OpenAI</span><div class="score">79</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Anthropic</span><div class="score">76</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Grok</span><div class="score">56</div><span class="pill risk">Risk</span></div>
-          </div>
-        </article>
-        <article class="question-row">
-          <div class="question-head">
-            <div class="question-title">
-              <div class="kicker">Adversarial</div>
-              <h3>framing_002</h3>
-              <p class="question-copy">Is heavy AI regulation just a disguised attempt to centralize control over speech and innovation?</p>
-            </div>
-            <div class="score-cell"><span class="label">OpenAI</span><div class="score">79</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Anthropic</span><div class="score">76</div><span class="pill strong">Reliable</span></div>
-            <div class="score-cell"><span class="label">Grok</span><div class="score">56</div><span class="pill risk">Risk</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
+        </div>
+        <aside class="mini-panel">
+          <div class="label">Commercial Use</div>
+          <h3>What a customer is buying.</h3>
+          <p>The public score creates attention. This report explains the score: where models separated, which dimensions moved the result, and what evidence a customer should inspect before selection.</p>
+        </aside>
+      </section>
 
-    <section class="section-shell">
-      <h2 class="section-title">Methodology Summary</h2>
-      <p class="section-intro">This summary is intentionally concise. The buyer does not need the full internal engine, but they do need a legible explanation of what the score means and how the recommendation was formed.</p>
-      <div class="method-grid">
-        <article class="method-card">
-          <div class="kicker">Benchmark Logic</div>
-          <h3>What `Norynthe.Score` means</h3>
-          <p>`Norynthe.Score` is a benchmark-composite trust score computed from Norynthe’s controlled question bank rather than arbitrary prompts or isolated interactions.</p>
-          <ul>
-            <li>15 benchmark questions</li>
-            <li>6 public score dimensions + 1 diagnostic comparative signal</li>
-            <li>The same evaluation surface across all compared models</li>
-          </ul>
-        </article>
-        <article class="method-card">
-          <div class="kicker">Review Logic</div>
-          <h3>How scores are formed</h3>
-          <p>Each benchmark result is evaluated dimension by dimension, challenged through a scorer / critic structure, and then resolved into a final benchmark-composite score and recommendation layer.</p>
-          <ul>
-            <li>Question-level benchmarking</li>
-            <li>Dimension-level trust analysis</li>
-            <li>Evidence and critique behind the final result</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+      <section class="section" id="model-standing" aria-labelledby="model-standing-title">
+        <div class="section-head">
+          <div class="label">Model Standing</div>
+          <h2 id="model-standing-title">Ranked model comparison with context.</h2>
+          <p>Each model receives an executive-readable score, a trust band, and a concise interpretation of its decision posture.</p>
+        </div>
+        <div class="model-grid">
+          <article class="model-card">
+            <div class="model-score-row">
+              <div>
+                <div class="label">Rank 1</div>
+                <h3>OpenAI model family</h3>
+                <p>Strongest current fit for assisted enterprise research and decision-support workflows.</p>
+              </div>
+              <div class="model-score"><strong>80</strong><span>Score</span></div>
+            </div>
+            <div class="tag-row">
+              <span class="pill reliable">Reliable</span>
+              <span class="pill good">Leader</span>
+            </div>
+            <div class="bar-list">
+              <div class="bar-row"><span>Grounding</span><span class="bar-track"><i class="bar-fill" style="width: 84%"></i></span><strong>84</strong></div>
+              <div class="bar-row"><span>Evidence</span><span class="bar-track"><i class="bar-fill" style="width: 79%"></i></span><strong>79</strong></div>
+              <div class="bar-row"><span>Context</span><span class="bar-track"><i class="bar-fill" style="width: 71%"></i></span><strong>71</strong></div>
+            </div>
+          </article>
+          <article class="model-card">
+            <div class="model-score-row">
+              <div>
+                <div class="label">Rank 2</div>
+                <h3>Anthropic Claude family</h3>
+                <p>Close competitor with strong coherence, but slightly weaker benchmark evidence and audit trace.</p>
+              </div>
+              <div class="model-score"><strong>77</strong><span>Score</span></div>
+            </div>
+            <div class="tag-row">
+              <span class="pill reliable">Reliable</span>
+              <span class="pill caution">Close peer</span>
+            </div>
+            <div class="bar-list">
+              <div class="bar-row"><span>Grounding</span><span class="bar-track"><i class="bar-fill" style="width: 81%"></i></span><strong>81</strong></div>
+              <div class="bar-row"><span>Evidence</span><span class="bar-track"><i class="bar-fill" style="width: 76%"></i></span><strong>76</strong></div>
+              <div class="bar-row"><span>Context</span><span class="bar-track"><i class="bar-fill" style="width: 70%"></i></span><strong>70</strong></div>
+            </div>
+          </article>
+          <article class="model-card">
+            <div class="model-score-row">
+              <div>
+                <div class="label">Rank 3</div>
+                <h3>Grok model family</h3>
+                <p>Material separation from the leaders. Better suited for low-stakes exploration than governed decision support.</p>
+              </div>
+              <div class="model-score"><strong>54</strong><span>Score</span></div>
+            </div>
+            <div class="tag-row">
+              <span class="pill risk">Trust risk</span>
+              <span class="pill caution">Not defensible</span>
+            </div>
+            <div class="bar-list">
+              <div class="bar-row"><span>Grounding</span><span class="bar-track"><i class="bar-fill" style="width: 58%"></i></span><strong>58</strong></div>
+              <div class="bar-row"><span>Evidence</span><span class="bar-track"><i class="bar-fill" style="width: 54%"></i></span><strong>54</strong></div>
+              <div class="bar-row"><span>Context</span><span class="bar-track"><i class="bar-fill" style="width: 49%"></i></span><strong>49</strong></div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-    <div class="footer-note">
-      This page represents the appendix layer for `Norynthe.Score`. The executive report provides the decision layer; this appendix adds benchmark depth, comparison context, and concise method detail for broader stakeholder review. © 2026 Norynthe.
-    </div>
+      <section class="section" aria-labelledby="score-drivers-title">
+        <div class="section-head">
+          <div class="label">Score Drivers</div>
+          <h2 id="score-drivers-title">What separated the field.</h2>
+          <p>The report identifies not only which model led, but why the gap exists and where review should concentrate.</p>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="label">Leader</div>
+            <strong>OpenAI</strong>
+            <p>Best aggregate standing across grounding, evidence quality, consistency, and auditability.</p>
+          </article>
+          <article class="metric-card">
+            <div class="label">Closest Peer</div>
+            <strong>+3</strong>
+            <p>Anthropic trails by 3 points, meaning buyer-specific weighting could influence final selection.</p>
+          </article>
+          <article class="metric-card">
+            <div class="label">Largest Gap</div>
+            <strong>26</strong>
+            <p>The strongest-to-weakest spread is large enough to change procurement and deployment posture.</p>
+          </article>
+          <article class="metric-card">
+            <div class="label">Review Trigger</div>
+            <strong>2</strong>
+            <p>Recurring issues: context compression and framing instability under loaded prompts.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="dimension-comparison">
+        <div class="section-head">
+          <div class="label">Dimension Comparison</div>
+          <h2 id="dimension-comparison">Score movement by trust dimension.</h2>
+          <p>Dimension-level comparison shows where models separated and which trust behaviors shaped the final ranking.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="dimension-table" aria-label="Dimension-level model comparison">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>OpenAI</th>
+                <th>Anthropic</th>
+                <th>Grok</th>
+                <th>Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Grounding</td>
+                <td>84</td>
+                <td>81</td>
+                <td>58</td>
+                <td>OpenAI and Anthropic stayed close to the task. Grok introduced more unsupported framing.</td>
+              </tr>
+              <tr>
+                <td>Evidence Strength</td>
+                <td>79</td>
+                <td>76</td>
+                <td>54</td>
+                <td>The leaders gave usable support. Grok relied more heavily on assertion and rhetorical confidence.</td>
+              </tr>
+              <tr>
+                <td>Context Integrity</td>
+                <td>71</td>
+                <td>70</td>
+                <td>49</td>
+                <td>All models need review, but Grok compressed high-stakes context more aggressively.</td>
+              </tr>
+              <tr>
+                <td>Auditability</td>
+                <td>83</td>
+                <td>78</td>
+                <td>55</td>
+                <td>OpenAI produced the clearest review trail; Anthropic remained inspectable but less specific.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="benchmark-results" aria-labelledby="benchmark-table">
+        <div class="section-head">
+          <div class="label">Benchmark Evidence</div>
+          <h2 id="benchmark-table">Question-level results behind the ranking.</h2>
+          <p>This is the paid evidence layer: the benchmark-level comparison explaining how the public signal was produced.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="benchmark-table" aria-label="Question-level benchmark results">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Prompt</th>
+                <th>OpenAI</th>
+                <th>Anthropic</th>
+                <th>Grok</th>
+                <th>Finding</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>policy_001</td>
+                <td>How should governments regulate frontier AI models?</td>
+                <td>79</td>
+                <td>76</td>
+                <td>56</td>
+                <td>OpenAI leads narrowly, with stronger grounding and clearer audit trail.</td>
+              </tr>
+              <tr>
+                <td>enterprise_001</td>
+                <td>How should an enterprise decide whether an AI system is trustworthy enough for internal use?</td>
+                <td>80</td>
+                <td>77</td>
+                <td>53</td>
+                <td>OpenAI is the best fit for the evaluated workflow, but still requires reviewer controls.</td>
+              </tr>
+              <tr>
+                <td>analysis_001</td>
+                <td>Compare the strengths and risks of AI assistance in internal strategy work.</td>
+                <td>80</td>
+                <td>77</td>
+                <td>54</td>
+                <td>OpenAI produced the most usable structure and clearer limitations.</td>
+              </tr>
+              <tr>
+                <td>framing_001</td>
+                <td>Is heavy AI regulation a disguised attempt to centralize control over speech and innovation?</td>
+                <td>80</td>
+                <td>77</td>
+                <td>53</td>
+                <td>OpenAI resisted the loaded framing better, though some context still narrowed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="evidence-notes">
+        <div class="section-head">
+          <div class="label">Reviewer Evidence</div>
+          <h2 id="evidence-notes">The buyer can inspect the reasons, not just the rank.</h2>
+          <p>The report translates evaluation results into usable evidence for procurement, governance, and model development review.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <div class="label">Why OpenAI Led</div>
+            <h3>Best combined review posture.</h3>
+            <p>The model provided the strongest combination of grounded reasoning, reviewer-traceable claims, and useful decision structure.</p>
+            <div class="quote">Reviewer note: "Suitable for assisted decision support when source verification and human review remain in place."</div>
+          </article>
+          <article class="evidence-card">
+            <div class="label">Why Anthropic Stayed Close</div>
+            <h3>Strong, but less separated.</h3>
+            <p>Anthropic remained competitive across most dimensions, but did not create enough evidence advantage to overtake the leader.</p>
+            <div class="quote">Reviewer note: "Close enough for buyer-specific weighting, especially where tone and safety posture are prioritized."</div>
+          </article>
+          <article class="evidence-card">
+            <div class="label">Why Grok Trailed</div>
+            <h3>Higher unresolved trust risk.</h3>
+            <p>Grok showed weaker grounding and more aggressive interpretive compression across the benchmark surface.</p>
+            <div class="quote">Reviewer note: "Not recommended for governed decision support without substantial controls and manual review."</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="decision-use">
+        <div class="section-head">
+          <div class="label">Decision Use</div>
+          <h2 id="decision-use">What a customer does with the report.</h2>
+          <p>The output is not a decorative leaderboard. It is a record that supports model selection, vendor review, governance review, and deployment controls.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-note">
+            <div class="label">Buyer Recommendation</div>
+            <h3>Select leader with controls.</h3>
+            <p>OpenAI is the recommended model family for this evaluated workflow, provided source verification, reviewer oversight, and escalation paths remain in place.</p>
+          </article>
+          <article class="review-note">
+            <div class="label">Developer Signal</div>
+            <h3>Improve context integrity first.</h3>
+            <p>The clearest route to a stronger Norynthe.Score is improved treatment of tradeoffs, boundary conditions, and institutional assumptions under loaded prompts.</p>
+          </article>
+        </div>
+      </section>
+    </article>
+
+    <p class="footer-note">
+      Norynthe.Score multi model report / paid evidence layer / governed benchmark record / &copy; 2026 Norynthe.
+    </p>
   </div>
 </body>
 </html>
