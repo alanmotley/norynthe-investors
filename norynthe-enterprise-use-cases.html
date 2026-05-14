@@ -488,8 +488,165 @@
     }
   </style>
   <link rel="stylesheet" href="investor-page.css">
+  <style>
+    body.enterprise-use-cases-page .hero {
+      padding: clamp(2rem, 4vw, 3rem) !important;
+    }
+
+    body.enterprise-use-cases-page .hero-grid {
+      display: grid !important;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.48fr) !important;
+      gap: clamp(2rem, 5vw, 4.25rem) !important;
+      align-items: center !important;
+    }
+
+    body.enterprise-use-cases-page .hero-heading {
+      max-width: 12.5ch !important;
+      margin: 0 0 1rem !important;
+      font-size: clamp(3.15rem, 6.4vw, 6rem) !important;
+      line-height: 0.9 !important;
+      font-weight: 760 !important;
+      text-transform: none !important;
+    }
+
+    body.enterprise-use-cases-page .lede {
+      max-width: 48rem !important;
+      font-size: 1.05rem !important;
+      line-height: 1.62 !important;
+    }
+
+    body.enterprise-use-cases-page .hero-summary {
+      align-self: center !important;
+      padding: 1.35rem 1.45rem !important;
+    }
+
+    body.enterprise-use-cases-page .hero-summary h2 {
+      margin-bottom: 0.75rem !important;
+      font-size: clamp(1.35rem, 2vw, 1.75rem) !important;
+      line-height: 1.04 !important;
+    }
+
+    body.enterprise-use-cases-page .hero-summary li + li {
+      margin-top: 0.45rem !important;
+    }
+
+    body.enterprise-use-cases-page .stack {
+      gap: 1.35rem !important;
+    }
+
+    body.enterprise-use-cases-page .section-card {
+      padding: clamp(1.55rem, 3vw, 2.25rem) !important;
+    }
+
+    body.enterprise-use-cases-page .section-head {
+      margin-bottom: 1.35rem !important;
+    }
+
+    body.enterprise-use-cases-page .use-case-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 0.95rem !important;
+    }
+
+    body.enterprise-use-cases-page .framework-grid {
+      gap: 0.95rem !important;
+    }
+
+    body.enterprise-use-cases-page .outcome-grid {
+      gap: 0.95rem !important;
+    }
+
+    body.enterprise-use-cases-page .case-card,
+    body.enterprise-use-cases-page .framework-card,
+    body.enterprise-use-cases-page .outcome-card {
+      padding: 1.1rem !important;
+      min-height: 100% !important;
+    }
+
+    body.enterprise-use-cases-page .case-card h3,
+    body.enterprise-use-cases-page .framework-card h3,
+    body.enterprise-use-cases-page .outcome-card h3 {
+      font-size: clamp(1.1rem, 1.7vw, 1.45rem) !important;
+      line-height: 1.06 !important;
+    }
+
+    body.enterprise-use-cases-page .case-card p,
+    body.enterprise-use-cases-page .framework-card p,
+    body.enterprise-use-cases-page .outcome-card p,
+    body.enterprise-use-cases-page .case-card li,
+    body.enterprise-use-cases-page .framework-card li {
+      font-size: 0.95rem !important;
+      line-height: 1.56 !important;
+    }
+
+    body.enterprise-use-cases-page .signal-strip {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 0.9rem !important;
+    }
+
+    body.enterprise-use-cases-page .signal-pill {
+      display: grid !important;
+      min-height: 148px !important;
+      padding: 1.1rem !important;
+      place-content: start !important;
+      align-items: start !important;
+      border-radius: 12px !important;
+      text-align: left !important;
+      box-shadow: 0 12px 28px rgba(15, 17, 21, 0.04) !important;
+    }
+
+    body.enterprise-use-cases-page .signal-pill strong {
+      margin: 0 0 0.65rem !important;
+      color: var(--investor-signal) !important;
+      font-size: 0.62rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.18em !important;
+      line-height: 1.25 !important;
+      text-transform: uppercase !important;
+    }
+
+    body.enterprise-use-cases-page .signal-pill span {
+      color: #35414e !important;
+      font-size: clamp(1.05rem, 1.45vw, 1.32rem) !important;
+      font-weight: 760 !important;
+      letter-spacing: 0 !important;
+      line-height: 1.12 !important;
+      text-transform: none !important;
+    }
+
+    @media (max-width: 1120px) {
+      body.enterprise-use-cases-page .hero-grid,
+      body.enterprise-use-cases-page .use-case-grid,
+      body.enterprise-use-cases-page .signal-strip {
+        grid-template-columns: 1fr !important;
+      }
+
+      body.enterprise-use-cases-page .hero-heading {
+        max-width: 13ch !important;
+      }
+
+      body.enterprise-use-cases-page .signal-pill {
+        min-height: 0 !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body.enterprise-use-cases-page .hero {
+        padding: 1.2rem !important;
+      }
+
+      body.enterprise-use-cases-page .hero-heading {
+        max-width: 11ch !important;
+        font-size: clamp(2.6rem, 13vw, 4.1rem) !important;
+      }
+
+      body.enterprise-use-cases-page .meta {
+        gap: 0.45rem !important;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="enterprise-use-cases-page">
   <div class="page">
     <header class="topline" aria-label="Investor site header">
       <a class="brand" href="index.html" aria-label="Norynthe investor access home">
