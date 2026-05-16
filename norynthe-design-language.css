@@ -72,6 +72,18 @@ body.market-position-page .hero .lede {
   color: rgba(238, 243, 246, 0.68);
 }
 
+body.enterprise-use-cases-page .hero-heading {
+  max-width: 12.7ch;
+  font-size: clamp(3rem, 5.75vw, 5.45rem) !important;
+  line-height: 0.92 !important;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+body.enterprise-use-cases-page .hero-heading .no-break {
+  white-space: nowrap;
+}
+
 .hero-actions a,
 .hero-actions .button,
 .hero-cta {
@@ -99,6 +111,12 @@ body.market-position-page .hero .lede {
     max-width: 13ch;
     font-size: var(--nt-report-title-mobile-size) !important;
     line-height: 1 !important;
+  }
+
+  body.enterprise-use-cases-page .hero-heading {
+    max-width: 8.9ch;
+    font-size: clamp(2.55rem, 11.5vw, 3rem) !important;
+    line-height: 0.95 !important;
   }
 
   .grid,
