@@ -72,6 +72,10 @@ body.market-position-page .hero .lede {
   color: rgba(238, 243, 246, 0.68);
 }
 
+body.power-of-compute-page .hero h1 {
+  color: #f4f8fb !important;
+}
+
 body.enterprise-use-cases-page .hero-heading {
   max-width: 12.7ch;
   font-size: clamp(3rem, 5.75vw, 5.45rem) !important;
