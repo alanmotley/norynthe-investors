@@ -549,9 +549,30 @@
     }
   </style>
   <link rel="stylesheet" href="investor-page.css">
-  <link rel="stylesheet" href="norynthe-design-language.css">
+  <link rel="stylesheet" href="norynthe-design-language.css?v=score-fix-20260515">
+  <style>
+    body.investor-overview-page .hero h1 {
+      max-width: 12.4ch !important;
+      font-size: clamp(3rem, 5.85vw, 5.55rem) !important;
+      line-height: 0.93 !important;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
+    }
+
+    body.investor-overview-page .hero h1 .no-break {
+      white-space: nowrap !important;
+    }
+
+    @media (max-width: 760px) {
+      body.investor-overview-page .hero h1 {
+        max-width: 8.8ch !important;
+        font-size: clamp(2.55rem, 11.5vw, 3rem) !important;
+        line-height: 0.95 !important;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="investor-overview-page">
   <div class="page">
     <header class="topline" aria-label="Investor site header">
       <a class="brand" href="index.html" aria-label="Norynthe investor access home">
@@ -572,7 +593,7 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Investor Overview</p>
-          <h1>The trust standard behind Norynthe.Score</h1>
+          <h1>The trust standard behind <span class="no-break" style="white-space: nowrap;">Norynthe.Score</span></h1>
           <p class="lede">
             Norynthe is building an independent trust company for AI. Norynthe.Score is the public signal. The Norynthe Model
             is the proprietary scoring engine that turns controlled benchmark assets into ranked model standing, score detail,
