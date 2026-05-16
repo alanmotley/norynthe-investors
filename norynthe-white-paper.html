@@ -32,7 +32,7 @@
         node.setAttribute("href", faviconHref);
       });
 
-      window.__noryntheNavHref = pathExists("index.html") ? "index.html" : (pathExists("index.html") ? "index.html" : "norynthe-index.html");
+      window.__noryntheNavHref = "index.html";
     })();
   </script>
   <link rel="apple-touch-icon" href="favicon.png">
@@ -515,6 +515,7 @@
     }
   </style>
   <link rel="stylesheet" href="investor-page.css">
+  <link rel="stylesheet" href="norynthe-design-language.css">
 </head>
 <body>
   <div class="page">
@@ -758,7 +759,7 @@
         <p>The resolver applies deterministic application logic to finalize dimension results when scorer and critic outcomes diverge.</p>
         <div class="diagram">
           <div class="diagram-label">Figure 4 · Evaluation Flow</div>
-          <img class="diagram-figure" src="figure-4-evaluation-flow.svg" onerror="this.onerror=null;this.src='figure-4-evaluation-flow.drawio.svg'" alt="Figure 4 showing the Norynthe evaluation flow from benchmark context through scorer, critic, resolver, aggregation, and verification.">
+          <img class="diagram-figure" src="figure-4-evaluation-flow.drawio.svg" alt="Figure 4 showing the Norynthe evaluation flow from benchmark context through scorer, critic, resolver, aggregation, and verification.">
           <div class="diagram-caption">Challenge and resolution are built into the evaluator flow rather than added after the fact.</div>
         </div>
       </section>
