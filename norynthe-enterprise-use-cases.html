@@ -645,7 +645,28 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="norynthe-design-language.css">
+  <link rel="stylesheet" href="norynthe-design-language.css?v=score-fix-20260515">
+  <style>
+    body.enterprise-use-cases-page .hero-heading {
+      max-width: 12.7ch !important;
+      font-size: clamp(3rem, 5.75vw, 5.45rem) !important;
+      line-height: 0.92 !important;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
+    }
+
+    body.enterprise-use-cases-page .hero-heading .no-break {
+      white-space: nowrap !important;
+    }
+
+    @media (max-width: 760px) {
+      body.enterprise-use-cases-page .hero-heading {
+        max-width: 8.9ch !important;
+        font-size: clamp(2.55rem, 11.5vw, 3rem) !important;
+        line-height: 0.95 !important;
+      }
+    }
+  </style>
 </head>
 <body class="enterprise-use-cases-page">
   <div class="page">
@@ -668,7 +689,7 @@
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Enterprise Use Cases</div>
-          <div class="hero-heading">Institutional decision contexts for <span class="no-break">Norynthe.Score</span></div>
+          <div class="hero-heading">Institutional decision contexts for <span class="no-break" style="white-space: nowrap;">Norynthe.Score</span></div>
           <p class="lede">
             Norynthe.Score is the public signal. The Norynthe Model and reporting layer support private evaluation,
             score detail, and institutional decision support in model selection, procurement, governance, regulated review,
