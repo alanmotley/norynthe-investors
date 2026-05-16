@@ -84,6 +84,18 @@ body.enterprise-use-cases-page .hero-heading .no-break {
   white-space: nowrap;
 }
 
+body.investor-overview-page .hero h1 {
+  max-width: 12.4ch;
+  font-size: clamp(3rem, 5.85vw, 5.55rem) !important;
+  line-height: 0.93 !important;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+body.investor-overview-page .hero h1 .no-break {
+  white-space: nowrap;
+}
+
 .hero-actions a,
 .hero-actions .button,
 .hero-cta {
@@ -115,6 +127,12 @@ body.enterprise-use-cases-page .hero-heading .no-break {
 
   body.enterprise-use-cases-page .hero-heading {
     max-width: 8.9ch;
+    font-size: clamp(2.55rem, 11.5vw, 3rem) !important;
+    line-height: 0.95 !important;
+  }
+
+  body.investor-overview-page .hero h1 {
+    max-width: 8.8ch;
     font-size: clamp(2.55rem, 11.5vw, 3rem) !important;
     line-height: 0.95 !important;
   }
