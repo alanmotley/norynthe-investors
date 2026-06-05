@@ -451,6 +451,62 @@
       letter-spacing: 0;
     }
 
+    .allocation .amount-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .allocation .amount-line strong {
+      margin: 0;
+      font-size: clamp(1.24rem, 2.2vw, 1.62rem);
+      line-height: 1;
+    }
+
+    .allocation .amount-line span {
+      color: #66727d;
+      font-size: 0.68rem;
+      font-weight: 760;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .allocation-note {
+      margin: 16px 0 0;
+      color: #66727d;
+      font-size: 0.82rem;
+      line-height: 1.62;
+    }
+
+    .timeline-grid,
+    .proof-grid,
+    .risk-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .proof-grid,
+    .risk-grid {
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    }
+
+    .compute-discipline {
+      margin-top: 16px;
+      padding: 15px 16px;
+      border-left: 2px solid rgba(122, 48, 48, 0.45);
+      background: rgba(122, 48, 48, 0.035);
+      color: #344251;
+      font-size: 0.9rem;
+      line-height: 1.62;
+    }
+
     .quote-band {
       padding: 20px 22px;
       border-left: 3px solid var(--signal);
@@ -661,6 +717,16 @@
       letter-spacing: 0.04em;
     }
 
+    .timeline-grid .milestone .card-kicker {
+      display: inline-flex;
+      width: auto;
+      height: auto;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      letter-spacing: 0.12em;
+    }
+
     .closing-card {
       background:
         radial-gradient(circle at 84% 18%, rgba(50, 73, 100, 0.14), transparent 26%),
@@ -798,16 +864,40 @@
   <link rel="stylesheet" href="norynthe-page-transitions.css">
   <script src="norynthe-page-transitions.js" defer></script>
   <style>
+    .raise-plan-page .summary-card:first-child {
+      color: #f5f8fb !important;
+    }
+
+    .raise-plan-page .summary-card:first-child .eyebrow,
+    .raise-plan-page .summary-card:first-child .card-kicker {
+      color: rgba(234, 240, 246, 0.78) !important;
+    }
+
+    .raise-plan-page .summary-card:first-child strong,
+    .raise-plan-page .summary-card:first-child h3 {
+      color: #ffffff !important;
+    }
+
+    .raise-plan-page .summary-card:first-child span,
+    .raise-plan-page .summary-card:first-child p {
+      color: rgba(238, 244, 249, 0.86) !important;
+    }
+
     .raise-plan-page .unlock-aside {
-      color: #fff !important;
+      color: #f5f8fb !important;
     }
 
     .raise-plan-page .unlock-aside .section-label {
-      color: rgba(255, 255, 255, 0.66) !important;
+      color: rgba(234, 240, 246, 0.8) !important;
     }
 
     .raise-plan-page .unlock-aside h3 {
       color: #fff !important;
+    }
+
+    .raise-plan-page .unlock-aside .unlock-chip {
+      color: rgba(238, 244, 249, 0.86) !important;
+      border-color: rgba(238, 244, 249, 0.24) !important;
     }
   </style>
 </head>
@@ -835,12 +925,12 @@
           <p class="eyebrow">Capital Plan / Building The Lab</p>
           <h1>$2M to build the AI trust lab.</h1>
           <p class="lede">
-            Norynthe is raising $2M to build a controlled evaluation lab for independent AI trust scoring:
-            secure compute, fund founder runway, productize Norynthe.Score and Norynthe.Reports, develop
-            the evaluation framework, validate early customer demand, and use light specialist support where needed.
+            Norynthe is raising $2M to take a fully built founder MVP into a controlled evaluation lab for independent
+            AI trust scoring: secure compute, fund founder runway, productize Norynthe.Score and Norynthe.Reports,
+            develop the evaluation framework, validate early customer demand, and use light specialist support where needed.
           </p>
           <div class="hero-links">
-            <a class="hero-link primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Raise%20Plan">Discuss The Round</a>
+            <a class="hero-link primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Raise%20Plan">Discuss The $2M Round</a>
             <a class="hero-link" href="norynthe-investors.html">Investor Overview</a>
           </div>
         </div>
@@ -852,14 +942,14 @@
             <span>Capital for a focused lab build and validation phase, not a broad hiring or marketing expansion.</span>
           </article>
           <article class="summary-card">
-            <p class="eyebrow">Strategic Unlock</p>
-            <strong>W775 / GB300 lab compute</strong>
-            <span>The compute target is production-grade local evaluation, advanced reasoning analysis, and serious independent trust signaling.</span>
+            <p class="eyebrow">Lab Infrastructure</p>
+            <strong>$1M lab infrastructure</strong>
+            <span>This allocation funds owned compute and lab infrastructure for production-grade evaluation, advanced reasoning analysis, and independent trust signaling.</span>
           </article>
           <article class="summary-card">
             <p class="eyebrow">Core Outcome</p>
             <strong>Operational trust lab</strong>
-            <span>The goal is to prove that Norynthe can evaluate, score, explain, and package model trust decisions for real institutional use.</span>
+            <span>The goal is to turn the fully built MVP into a lab-backed system that can evaluate, score, explain, and package model trust decisions for real institutional use.</span>
           </article>
         </div>
       </div>
@@ -870,13 +960,41 @@
         <div class="section-label">Why This Round</div>
         <h2>The next phase is building the lab.</h2>
         <p>
-          Norynthe already has a public signal thesis, investor materials, a working reporting surface, a benchmark-driven scoring
-          direction, and a clear category claim. The $2M round is designed to move the company from convincing proof into a
-          controlled evaluation lab and productized system that can survive customer scrutiny.
+          Norynthe already has a fully built founder MVP, public signal thesis, investor materials, working reporting surfaces,
+          benchmark-driven scoring direction, and a clear category claim. The $2M round is designed to move the company from
+          convincing proof into a controlled evaluation lab and productized system that can survive customer scrutiny.
         </p>
       </div>
       <div class="quote-band">
         The round is meant to build the lab: controlled compute, governed benchmarks, evaluator workflows, report outputs, and the customer validation loop needed to turn independent AI trust scoring into real infrastructure.
+      </div>
+    </section>
+
+    <section class="section-card baseline-section">
+      <div class="section-head">
+        <div class="section-label">Current Baseline</div>
+        <h2>What exists before the round.</h2>
+        <p>
+          The raise is not starting from a blank page. Norynthe already has a fully built MVP and investor-ready product artifacts.
+          The round is meant to convert that system into a controlled lab and repeatable product path.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-kicker">Built</div>
+          <h3>Fully built founder MVP and investor-ready artifacts</h3>
+          <p>Norynthe already has the founder-built MVP, investor portal, founder context, customer report formats, the Norynthe.Score thesis, and a clearer category claim around independent AI trust evaluation.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">In Formation</div>
+          <h3>Scoring workflow and methodology spine</h3>
+          <p>The scoring logic, benchmark direction, evidence expectations, reviewer workflow, and report-to-decision pathway are defined enough to harden into a repeatable system.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Capital Unlock</div>
+          <h3>Controlled lab, product workflow, and customer signal</h3>
+          <p>The $2M round should fund the leap from fully built MVP to credible evaluation lab with owned compute, workflow discipline, product outputs, and early buyer validation.</p>
+        </article>
       </div>
     </section>
 
@@ -963,6 +1081,9 @@
             <span>Production-scale benchmark execution</span>
             <span>Credible independent market signal</span>
           </div>
+          <div class="compute-discipline">
+            The named workstation should be treated as the target configuration, not a blank check. Before purchase, Norynthe should validate the final vendor quote, support plan, power and thermal requirements, storage needs, and whether any cloud overflow remains useful during pilot periods.
+          </div>
         </div>
       </div>
     </section>
@@ -978,9 +1099,9 @@
       </div>
       <div class="grid-3">
         <article class="card">
-          <div class="card-kicker">Compute And Infrastructure</div>
+          <div class="card-kicker">Lab Infrastructure</div>
           <h3>W775-V10-L01 AI Workstation with NVIDIA GB300 Grace Blackwell Ultra</h3>
-          <p><strong>Purpose:</strong> Secure the major infrastructure unlock for production-grade local evaluation, evaluator runs, report generation, calibration experiments, and advanced reasoning analysis.</p>
+          <p><strong>Purpose:</strong> Fund lab infrastructure: owned compute, local evaluation capacity, evaluator runs, report generation, calibration experiments, and advanced reasoning analysis.</p>
           <p><strong>Why it matters:</strong> Reduces dependence on model-company APIs, protects the benchmark layer, and supports credible independent trust signaling.</p>
         </article>
         <article class="card">
@@ -1016,12 +1137,76 @@
       </div>
     </section>
 
+    <section class="section-card allocation-section">
+      <div class="section-head">
+        <div class="section-label">Allocation Plan</div>
+        <h2>A planning budget for the $2M round.</h2>
+        <p>
+          The allocation should make the round feel disciplined: enough capital to build the lab and validate demand, without forcing
+          premature hiring or unfocused expansion.
+        </p>
+      </div>
+      <div class="allocation-grid">
+        <article class="allocation">
+          <div class="amount-line">
+            <strong>$1,000,000</strong>
+            <span>50%</span>
+          </div>
+          <h3>Lab infrastructure and owned compute</h3>
+          <p>Lab infrastructure budget: target workstation, local evaluation environment, storage, benchmark execution, secure development infrastructure, and measured cloud overflow where useful.</p>
+        </article>
+        <article class="allocation">
+          <div class="amount-line">
+            <strong>$350K</strong>
+            <span>17.5%</span>
+          </div>
+          <h3>Founder runway</h3>
+          <p>Protect full-time execution through the lab build, methodology hardening, customer discovery, investor process, and product packaging.</p>
+        </article>
+        <article class="allocation">
+          <div class="amount-line">
+            <strong>$250K</strong>
+            <span>12.5%</span>
+          </div>
+          <h3>Productization</h3>
+          <p>Turn score, benchmark, report, reviewer state, evidence capture, and pilot workflow logic into repeatable product surfaces.</p>
+        </article>
+        <article class="allocation">
+          <div class="amount-line">
+            <strong>$200K</strong>
+            <span>10%</span>
+          </div>
+          <h3>Evaluation framework</h3>
+          <p>Expand methodology, benchmark library, scoring dimensions, calibration records, documentation, and model-comparison logic.</p>
+        </article>
+        <article class="allocation">
+          <div class="amount-line">
+            <strong>$125K</strong>
+            <span>6.25%</span>
+          </div>
+          <h3>Early customer validation</h3>
+          <p>Fund enterprise discovery, pilot packaging, design partner work, buyer interviews, sector-specific use cases, and customer-facing materials.</p>
+        </article>
+        <article class="allocation">
+          <div class="amount-line">
+            <strong>$75K</strong>
+            <span>3.75%</span>
+          </div>
+          <h3>Light specialist support</h3>
+          <p>Use targeted engineering, design, legal, accounting, and security help without committing to a bloated early team.</p>
+        </article>
+      </div>
+      <p class="allocation-note">
+        These are planning allocations, not final procurement instructions. Actual deployment should follow vendor quotes, pilot signal, security needs, and the sequence of lab milestones.
+      </p>
+    </section>
+
     <section class="section-card funding-section">
       <div class="section-head">
         <div class="section-label">Funding And Burn</div>
         <h2>$2M, disciplined and intentionally lean.</h2>
         <p>
-          Norynthe is seeking $2M to move from founder-built system to credible, investable AI trust infrastructure. The ask
+          Norynthe is seeking $2M to move from fully built founder MVP to credible, investable AI trust infrastructure. The ask
           should be framed as disciplined, intentionally lean, and tied directly to the lab.
         </p>
       </div>
@@ -1029,7 +1214,7 @@
         <article class="card">
           <div class="card-kicker">Raise Target</div>
           <h3>$2,000,000</h3>
-          <p>The round funds the transition from founder-built system to credible AI trust lab: compute, runway, productization, evaluation framework, customer validation, and light specialist support.</p>
+          <p>The round funds the transition from fully built MVP to credible AI trust lab: compute, runway, productization, evaluation framework, customer validation, and light specialist support.</p>
         </article>
         <article class="card">
           <div class="card-kicker">Burn Philosophy</div>
@@ -1039,6 +1224,103 @@
       </div>
       <div class="quote-band funding-quote">
         Investor phrasing: I do not want to overhire before the system and market signals are real.
+      </div>
+    </section>
+
+    <section class="section-card not-section">
+      <div class="section-head">
+        <div class="section-label">What This Is Not</div>
+        <h2>Not old-school startup burn.</h2>
+        <p>
+          This round should not be read as a traditional headcount-heavy seed plan or money to figure out what to build.
+          The fully built MVP exists. Norynthe is not trying to raise money to build a large early team, subsidize broad marketing,
+          or create the appearance of scale before the lab and market signal are real.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-kicker">Not A Hiring Spree</div>
+          <h3>Extremely low headcount required</h3>
+          <p>The first phase is founder-led with light specialist support only where quality requires it. The company should avoid full-time hiring before repeatable workflows and buyer signals justify it.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Not Vanity Scale</div>
+          <h3>Capital goes into the system</h3>
+          <p>The spend is intentionally weighted toward lab infrastructure, methodology, product workflow, and customer validation rather than office footprint, broad paid media, or premature operational overhead.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Not Burn For Burn</div>
+          <h3>Every dollar should reduce a proof risk</h3>
+          <p>The round should convert uncertainty into evidence: stronger compute independence, clearer scoring repeatability, pilot-ready reports, and a sharper understanding of who pays.</p>
+        </article>
+      </div>
+      <div class="quote-band funding-quote">
+        The philosophy is intentional spend with an extremely low required headcount: build the lab, prove the system, validate the buyer, then scale the company.
+      </div>
+    </section>
+
+    <section class="section-card timeline-section">
+      <div class="section-head">
+        <div class="section-label">12-18 Month Plan</div>
+        <h2>The round should create measurable operating proof.</h2>
+        <p>
+          The capital plan should be sequenced around proof, not spending for its own sake. Each phase should leave behind a stronger lab,
+          a clearer product surface, and better customer evidence.
+        </p>
+      </div>
+      <div class="timeline-grid">
+        <article class="milestone">
+          <div class="card-kicker">0-90 Days</div>
+          <h3>Lock the lab foundation</h3>
+          <p>Finalize compute specification, vendor quote, infrastructure plan, benchmark backlog, data handling expectations, and initial lab operating workflow.</p>
+        </article>
+        <article class="milestone">
+          <div class="card-kicker">3-6 Months</div>
+          <h3>Harden repeatable evaluation</h3>
+          <p>Connect benchmark selection, scoring, critique, resolver logic, confidence, flags, evidence capture, and report generation into repeatable workflows.</p>
+        </article>
+        <article class="milestone">
+          <div class="card-kicker">6-12 Months</div>
+          <h3>Package pilot-ready outputs</h3>
+          <p>Turn Norynthe.Score and Norynthe.Reports into customer-facing pilot surfaces with methodology notes, score detail, and decision-ready outputs.</p>
+        </article>
+        <article class="milestone">
+          <div class="card-kicker">12-18 Months</div>
+          <h3>Validate buyer signal</h3>
+          <p>Show design partner engagement, paid or near-paid pilot interest, sector-specific pain clarity, and a stronger basis for the next financing conversation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card proof-section">
+      <div class="section-head">
+        <div class="section-label">What This Round Proves</div>
+        <h2>The investor test is evidence, not activity.</h2>
+        <p>
+          The round should answer whether Norynthe can move from a strong thesis into repeatable AI trust infrastructure that serious buyers understand.
+        </p>
+      </div>
+      <div class="proof-grid">
+        <article class="card">
+          <div class="card-kicker">Product Proof</div>
+          <h3>Fully built MVP becomes repeatable lab workflow</h3>
+          <p>The investor proof is turning the existing MVP into a governed path from benchmark selection through scoring, critique, resolver behavior, evidence capture, and report output.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Market Proof</div>
+          <h3>Validated buyer pain</h3>
+          <p>Evidence that enterprise, institutional, or government buyers recognize the problem and can map Norynthe to a real workflow.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Infrastructure Proof</div>
+          <h3>Credible independent evaluation capacity</h3>
+          <p>Owned or dedicated compute supports serious local evaluation, benchmark protection, reasoning analysis, and reduced dependence on model-company APIs.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Financing Proof</div>
+          <h3>A sharper next-round story</h3>
+          <p>The next raise should be based on lab outputs, pilot evidence, methodology depth, and early customer signal rather than narrative alone.</p>
+        </article>
       </div>
     </section>
 
@@ -1075,6 +1357,38 @@
       </div>
     </section>
 
+    <section class="section-card risk-section">
+      <div class="section-head">
+        <div class="section-label">Risk And Mitigation</div>
+        <h2>Make the plan credible by naming the hard parts.</h2>
+        <p>
+          A disciplined investor story should show that Norynthe understands the risks and has a lean plan to reduce them through staged proof.
+        </p>
+      </div>
+      <div class="risk-grid">
+        <article class="card">
+          <div class="card-kicker">Risk</div>
+          <h3>Compute spend before market signal</h3>
+          <p><strong>Mitigation:</strong> Stage procurement around confirmed vendor quotes, lab requirements, and customer-validation milestones rather than treating the workstation as an isolated trophy purchase.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Risk</div>
+          <h3>Category education takes time</h3>
+          <p><strong>Mitigation:</strong> Use the investor portal, white paper, report surfaces, and pilot materials to translate independent AI trust scoring into buyer-specific workflows.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Risk</div>
+          <h3>Method credibility must be earned</h3>
+          <p><strong>Mitigation:</strong> Version the benchmark library, document scoring logic, preserve evidence, and make calibration decisions inspectable.</p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">Risk</div>
+          <h3>Founder concentration</h3>
+          <p><strong>Mitigation:</strong> Keep the first phase founder-led while using light specialist support and repeatable workflows to reduce single-person dependency over time.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="closing-card">
       <div class="closing-grid">
         <div>
@@ -1090,7 +1404,7 @@
             trust infrastructure, but whether the company can turn that need into repeatable scoring, reports, pilots, and buyer demand.
           </p>
           <div class="contact-row">
-            <a class="contact-pill primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Raise%20Plan">Discuss The Round</a>
+            <a class="contact-pill primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Raise%20Plan">Discuss The $2M Round</a>
             <a class="contact-pill" href="norynthe-investors.html">Investor Overview</a>
             <a class="contact-pill" href="norynthe-founder-memo.html">Founder Memo</a>
           </div>
