@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norynthe Financial Model Assumptions</title>
+  <meta
+    name="description"
+    content="Investor-facing financial model assumptions for Norynthe's $2,000,000 raise, capital deployment, runway logic, and modeled commercialization path."
+  >
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <style>
+    :root {
+      --bg: #edf2f5;
+      --ink: #10151b;
+      --body: #344250;
+      --muted: #66717c;
+      --paper: rgba(255, 255, 255, 0.76);
+      --paper-strong: rgba(255, 255, 255, 0.94);
+      --line: rgba(16, 21, 27, 0.09);
+      --line-strong: rgba(49, 72, 99, 0.16);
+      --slate: #304760;
+      --signal: #7a3030;
+      --pine: #2f5b4d;
+      --gold: #9a7c39;
+      --steel: #55758e;
+      --shadow: 0 24px 58px rgba(16, 21, 27, 0.08);
+      --shadow-soft: 0 12px 28px rgba(16, 21, 27, 0.05);
+      --radius-lg: 24px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(122, 48, 48, 0.08), transparent 26%),
+        radial-gradient(circle at 84% 10%, rgba(50, 73, 100, 0.13), transparent 28%),
+        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.36), transparent 38%),
+        linear-gradient(180deg, #f6f9fb 0%, var(--bg) 52%, #f5f8fa 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(16, 21, 27, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 21, 27, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.78;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: min(calc(100% - 44px), var(--max));
+      margin: 0 auto;
+      padding: 1rem 0 76px;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      margin-bottom: clamp(1.55rem, 3vw, 2.35rem);
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      width: 140px;
+      min-width: 140px;
+      max-width: 32vw;
+      line-height: 0;
+    }
+
+    .brand img {
+      width: 100%;
+      height: auto;
+    }
+
+    .brand-fallback {
+      color: var(--ink);
+      font-size: 1.55rem;
+      font-weight: 760;
+      line-height: 1;
+    }
+
+    .topline-right,
+    .eyebrow,
+    .section-label,
+    .kicker,
+    .chart-note,
+    .phase-index,
+    .table-kicker {
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .topline-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .topline-right a {
+      display: inline-flex;
+      align-items: center;
+      color: #53606c;
+      transition: color 180ms ease;
+    }
+
+    .topline-right a:hover {
+      color: var(--ink);
+    }
+
+    .topline-right a:last-child {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.54);
+      color: #27313b;
+    }
+
+    .hero,
+    .section-card,
+    .visual-card,
+    .metric-card,
+    .closing-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: clamp(2rem, 4.5vw, 3.5rem);
+      margin-bottom: 22px;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 46%, rgba(235,242,247,0.94) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.92));
+    }
+
+    .hero::after,
+    .section-card::after,
+    .closing-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(122, 48, 48, 0.08), transparent 22%, transparent 78%, rgba(50, 73, 100, 0.1)),
+        linear-gradient(180deg, rgba(18, 23, 30, 0.03), transparent 22%);
+      opacity: 0.62;
+    }
+
+    .hero > *,
+    .section-card > *,
+    .closing-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+      gap: clamp(1.8rem, 4.6vw, 3.8rem);
+      align-items: start;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 10.8ch;
+      margin: 0.82rem 0 1.2rem;
+      font-size: clamp(3.2rem, 7vw, 6.6rem);
+      line-height: 0.92;
+      text-wrap: balance;
+    }
+
+    h2 {
+      font-size: clamp(1.82rem, 3.4vw, 3.05rem);
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    h3 {
+      font-size: 1.04rem;
+      line-height: 1.12;
+    }
+
+    .lede {
+      max-width: 48rem;
+      margin: 0;
+      color: var(--body);
+      font-size: clamp(1.02rem, 1.45vw, 1.18rem);
+      line-height: 1.78;
+      text-wrap: pretty;
+    }
+
+    .hero-actions,
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.55rem;
+    }
+
+    .hero-link,
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 12px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.13em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .hero-link:hover,
+    .contact-pill:hover {
+      border-color: rgba(15, 17, 21, 0.2);
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .hero-link.primary,
+    .contact-pill.primary {
+      background: #0f1115;
+      border-color: #0f1115;
+      color: #fff;
+    }
+
+    .model-panel {
+      display: grid;
+      gap: 16px;
+    }
+
+    .model-card {
+      padding: 20px;
+      border: 1px solid rgba(16, 21, 27, 0.1);
+      border-radius: var(--radius-sm);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.64));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .model-card strong {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink);
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      letter-spacing: 0;
+      line-height: 0.92;
+    }
+
+    .model-card span {
+      display: block;
+      margin-top: 12px;
+      color: #4d5a67;
+      line-height: 1.6;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 26px;
+    }
+
+    .metric-card {
+      min-height: 156px;
+      padding: 18px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin: 14px 0 9px;
+      color: var(--ink);
+      font-size: clamp(1.45rem, 2.5vw, 2.28rem);
+      letter-spacing: 0;
+      line-height: 0.94;
+    }
+
+    .metric-card span {
+      color: #52606c;
+      font-size: 0.86rem;
+      line-height: 1.52;
+    }
+
+    .section-card,
+    .closing-card {
+      margin-top: 26px;
+      padding: clamp(1.55rem, 3.4vw, 2.45rem);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 13px;
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: #4b5866;
+      line-height: 1.82;
+      text-wrap: pretty;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .visual-card {
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .visual-card h3 {
+      margin: 10px 0 16px;
+    }
+
+    .donut-wrap {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.74fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .donut {
+      position: relative;
+      width: min(100%, 245px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          #7a3030 0deg 202.8deg,
+          #304760 202.8deg 219.6deg,
+          #2f5b4d 219.6deg 246deg,
+          #9a7c39 246deg 259deg,
+          #55758e 259deg 265.2deg,
+          #8f6c50 265.2deg 274.2deg,
+          #c5d1dc 274.2deg 360deg
+        );
+      box-shadow: inset 0 0 0 1px rgba(16,21,27,0.09), var(--shadow-soft);
+    }
+
+    .donut::after {
+      content: "$2.0M";
+      position: absolute;
+      inset: 24%;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #f8fbfc;
+      color: var(--ink);
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      box-shadow: inset 0 0 0 1px rgba(16,21,27,0.08);
+    }
+
+    .legend {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .legend li {
+      display: grid;
+      grid-template-columns: 12px minmax(0, 1fr) auto;
+      gap: 9px;
+      align-items: center;
+      color: #445160;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .legend b {
+      color: var(--ink);
+      font-weight: 760;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: var(--swatch);
+    }
+
+    .funds-table,
+    .forecast-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid rgba(16,21,27,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.58);
+    }
+
+    .funds-table th,
+    .funds-table td,
+    .forecast-table th,
+    .forecast-table td {
+      padding: 12px 11px;
+      border-bottom: 1px solid rgba(16,21,27,0.07);
+      color: #3f4d59;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .funds-table th,
+    .forecast-table th {
+      color: #233140;
+      font-size: 0.68rem;
+      font-weight: 820;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(232, 239, 245, 0.86);
+    }
+
+    .funds-table td:nth-child(2),
+    .funds-table td:nth-child(3),
+    .forecast-table td:not(:first-child),
+    .forecast-table th:not(:first-child) {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .funds-table tr:last-child td,
+    .forecast-table tr:last-child td {
+      border-bottom: 0;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .logic-grid,
+    .stream-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .logic-card,
+    .stream-card,
+    .phase-card {
+      min-height: 168px;
+      padding: 20px;
+      border: 1px solid rgba(16,21,27,0.09);
+      border-top: 2px solid rgba(48,71,96,0.3);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.64);
+    }
+
+    .logic-card h3,
+    .stream-card h3,
+    .phase-card h3 {
+      margin: 12px 0 10px;
+    }
+
+    .logic-card p,
+    .stream-card p,
+    .phase-card p {
+      margin: 0;
+      color: #52606c;
+      font-size: 0.91rem;
+      line-height: 1.66;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .chart-card {
+      min-height: 462px;
+    }
+
+    .chart-shell {
+      min-height: 322px;
+      border: 1px solid rgba(16,21,27,0.08);
+      border-radius: 12px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(248,251,252,0.62));
+      overflow: hidden;
+    }
+
+    .chart-shell svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .chart-line {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+
+    .chart-bar {
+      opacity: 0;
+      transform: scaleY(0.04);
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+    }
+
+    .chart-shell.is-animated .chart-line {
+      animation: chart-line-draw 1400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    .chart-shell.is-animated .chart-bar {
+      animation: chart-bar-rise 760ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    @keyframes chart-line-draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes chart-bar-rise {
+      to {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 14px;
+      color: #4a5663;
+      font-size: 0.82rem;
+    }
+
+    .chart-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .chart-legend i {
+      width: 18px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--legend-color);
+    }
+
+    .forecast-table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .phase-card {
+      min-height: 232px;
+      border-top-color: rgba(122,48,48,0.32);
+    }
+
+    .phase-index {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 28px;
+      padding: 0 10px;
+      border: 1px solid rgba(122,48,48,0.12);
+      border-radius: 999px;
+      background: rgba(122,48,48,0.07);
+      color: var(--signal);
+      letter-spacing: 0.12em;
+    }
+
+    .disclosure {
+      padding: 20px 22px;
+      border: 1px solid rgba(122, 48, 48, 0.16);
+      border-radius: 10px;
+      background: rgba(248, 236, 236, 0.72);
+      color: #6f2d2d;
+      line-height: 1.72;
+      font-weight: 700;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .closing-card p {
+      margin: 14px 0 0;
+      color: #4b5866;
+      line-height: 1.84;
+    }
+
+    .closing-line {
+      padding: 24px;
+      border-radius: 12px;
+      background: #111820;
+      color: #fff;
+      font-size: clamp(1.28rem, 2.4vw, 2rem);
+      font-weight: 800;
+      line-height: 1.12;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: reveal 700ms ease forwards;
+    }
+
+    .fade-in:nth-of-type(2) { animation-delay: 80ms; }
+    .fade-in:nth-of-type(3) { animation-delay: 140ms; }
+    .fade-in:nth-of-type(4) { animation-delay: 200ms; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .grid-two,
+      .chart-grid,
+      .closing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .topline {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 1.4rem;
+      }
+
+      .topline-right {
+        justify-content: flex-start;
+        gap: 12px 14px;
+      }
+
+      .hero {
+        padding: 28px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 9.5ch;
+        font-size: clamp(2.55rem, 13vw, 3.35rem);
+        line-height: 0.94;
+      }
+
+      .lede {
+        line-height: 1.72;
+      }
+
+      .hero-actions,
+      .contact-row {
+        gap: 8px;
+        margin-top: 1.25rem;
+      }
+
+      .section-card,
+      .closing-card {
+        margin-top: 20px;
+        padding: 22px;
+      }
+
+      .section-head {
+        gap: 11px;
+        margin-bottom: 20px;
+      }
+
+      .model-card,
+      .visual-card,
+      .logic-card,
+      .stream-card,
+      .phase-card {
+        padding: 18px;
+      }
+
+      .chart-shell {
+        min-height: 250px;
+      }
+
+      .metric-grid,
+      .grid-three,
+      .logic-grid,
+      .stream-grid,
+      .timeline,
+      .donut-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-card,
+      .logic-card,
+      .stream-card,
+      .phase-card {
+        min-height: auto;
+      }
+
+      .chart-card {
+        min-height: auto;
+      }
+
+      .funds-table th,
+      .funds-table td,
+      .forecast-table th,
+      .forecast-table td {
+        padding: 10px 9px;
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+
+      .chart-line {
+        stroke-dasharray: none;
+        stroke-dashoffset: 0;
+      }
+
+      .chart-bar {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="norynthe-design-language.css">
+  <style>
+    body.financial-model-page .hero h1 {
+      max-width: 12.6ch;
+      line-height: 1 !important;
+      overflow-wrap: normal;
+      padding-inline-end: 0.08em;
+      padding-bottom: 0.06em;
+      word-break: normal;
+    }
+
+    @media (max-width: 760px) {
+      body.financial-model-page .hero h1 {
+        max-width: 11.8ch;
+        line-height: 1.03 !important;
+        padding-inline-end: 0.06em;
+      }
+    }
+  </style>
+  <script>document.documentElement.classList.add("nt-transition-enabled");</script>
+  <link rel="stylesheet" href="norynthe-page-transitions.css">
+  <script src="norynthe-page-transitions.js" defer></script>
+</head>
+<body class="financial-model-page">
+  <main class="page">
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          loading="eager"
+          decoding="async"
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html">Investor Access</a>
+        <a href="norynthe-investors.html">Investor Overview</a>
+        <a href="norynthe-raise-plan.html">Raise Plan</a>
+        <a href="mailto:hello@norynthe.com?subject=Norynthe%20Financial%20Model">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero fade-in" aria-labelledby="model-title">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Financial Model / Investor Assumptions</p>
+          <h1 id="model-title">Financial Model Assumptions</h1>
+          <p class="lede">
+            How Norynthe models capital deployment, runway, infrastructure investment, and early commercialization assumptions.
+            The initial raise is designed to fund durable infrastructure, founder runway, AI evaluation capacity, and the first
+            enterprise validation cycle.
+          </p>
+          <div class="hero-actions">
+            <a class="hero-link primary" href="#forecast">View Forecast</a>
+            <a class="hero-link" href="#deployment">Use of Funds</a>
+            <a class="hero-link" href="norynthe-raise-plan.html">Raise Plan</a>
+          </div>
+        </div>
+        <aside class="model-panel" aria-label="Model headline metrics">
+          <article class="model-card">
+            <div class="kicker">Initial Raise Target</div>
+            <strong>$2,000,000</strong>
+            <span>Foundation capital for owned compute, evaluation infrastructure, legal/IP setup, operational runway, product development, and enterprise pilot readiness.</span>
+          </article>
+          <article class="model-card">
+            <div class="kicker">Modeled Commercial Ramp</div>
+            <strong>6 months</strong>
+            <span>Customer discovery, pilot packaging, and early paid access conversion before steadier commercial growth.</span>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="metric-grid fade-in" aria-label="Financial model key metrics">
+      <article class="metric-card">
+        <div class="kicker">Raise</div>
+        <strong>$2.0M</strong>
+        <span>Infrastructure-first capital assumption.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Runway Liquidity</div>
+        <strong>$477K</strong>
+        <span>Remaining liquidity after upfront deployment.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Year 1 Revenue</div>
+        <strong>$1.42M</strong>
+        <span>Base scenario revenue across months 1-12.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Year 2 Revenue</div>
+        <strong>$7.22M</strong>
+        <span>Base scenario revenue across months 13-24.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">M24 Run Rate</div>
+        <strong>$10.44M</strong>
+        <span>Month 24 revenue multiplied by 12.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Break-even</div>
+        <strong>M4</strong>
+        <span>First modeled positive operating profit month.</span>
+      </article>
+    </section>
+
+    <section class="section-card fade-in" id="deployment" aria-labelledby="deployment-title">
+      <div class="section-head">
+        <div class="section-label">Capital Deployment</div>
+        <h2 id="deployment-title">The raise is modeled around durable infrastructure before payroll scale.</h2>
+        <p>
+          This model prioritizes fully owned operating infrastructure, evaluation capacity, legal setup, and runway.
+          Instead of using the initial capital primarily for headcount, the budget is structured around the operating base
+          required for independent AI evaluation.
+        </p>
+      </div>
+      <div class="grid-two">
+        <article class="visual-card">
+          <div class="table-kicker">Use of Funds</div>
+          <h3>$2,000,000 capital deployment</h3>
+          <div class="donut-wrap">
+            <div class="donut" role="img" aria-label="Use of funds donut chart showing headquarters infrastructure as the largest allocation"></div>
+            <ul class="legend" aria-label="Use of funds legend">
+              <li><span class="swatch" style="--swatch:#7a3030"></span><span>Property / HQ Infrastructure</span><b>$1.13M</b></li>
+              <li><span class="swatch" style="--swatch:#304760"></span><span>Lab / Workspace Buildout</span><b>$93.5K</b></li>
+              <li><span class="swatch" style="--swatch:#2f5b4d"></span><span>Compute Infrastructure</span><b>$146.5K</b></li>
+              <li><span class="swatch" style="--swatch:#9a7c39"></span><span>Legal / Entity Setup</span><b>$72K</b></li>
+              <li><span class="swatch" style="--swatch:#55758e"></span><span>Ops / Software / Security</span><b>$34K</b></li>
+              <li><span class="swatch" style="--swatch:#8f6c50"></span><span>Travel / Business Development</span><b>$50K</b></li>
+              <li><span class="swatch" style="--swatch:#c5d1dc"></span><span>Remaining Liquidity / Runway</span><b>$477K</b></li>
+            </ul>
+          </div>
+        </article>
+        <article class="visual-card">
+          <div class="table-kicker">Detailed Budget</div>
+          <h3>Assumption table</h3>
+          <table class="funds-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Property / Headquarters Infrastructure</td><td>$1,126,571</td><td>56.3%</td></tr>
+              <tr><td>Lab / Workspace Buildout</td><td>$93,500</td><td>4.7%</td></tr>
+              <tr><td>Compute Infrastructure</td><td>$146,500</td><td>7.3%</td></tr>
+              <tr><td>International / Legal / Entity Setup</td><td>$72,000</td><td>3.6%</td></tr>
+              <tr><td>Operations / Software / Security</td><td>$34,000</td><td>1.7%</td></tr>
+              <tr><td>Travel / Business Development</td><td>$50,000</td><td>2.5%</td></tr>
+              <tr><td>Remaining Liquidity / Founder Runway</td><td>$477,429</td><td>23.9%</td></tr>
+              <tr><td>Total</td><td>$2,000,000</td><td>100.0%</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="runway-title">
+      <div class="section-head">
+        <div class="section-label">Runway Logic</div>
+        <h2 id="runway-title">Founder-led execution preserves optionality until enterprise demand is validated.</h2>
+        <p>
+          The model assumes disciplined early operating costs and prioritizes runway preservation until enterprise demand,
+          pilot feedback, and product-market signals justify expansion.
+        </p>
+      </div>
+      <div class="logic-grid">
+        <article class="logic-card">
+          <div class="kicker">Operating Mode</div>
+          <h3>Founder-led operations</h3>
+          <p>One employee during the initial phase, with limited payroll burden before validation.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Infrastructure</div>
+          <h3>Fully owned compute</h3>
+          <p>Capital goes toward evaluation control and larger-model testing on upgraded compute.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Cost Discipline</div>
+          <h3>Controlled software and cloud costs</h3>
+          <p>The model avoids cloud-heavy experimentation consuming the raise early.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Workflow Leverage</div>
+          <h3>AI-assisted operations</h3>
+          <p>Research, product strategy, documentation, and reporting workflows use AI-assisted leverage.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Commercial Trigger</div>
+          <h3>Pilots before hiring</h3>
+          <p>Enterprise pilot development precedes aggressive hiring or broad go-to-market expansion.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Scale Gate</div>
+          <h3>Expand from evidence</h3>
+          <p>Expansion follows demand signals, buyer validation, pricing acceptance, and repeatable delivery.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" id="forecast" aria-labelledby="forecast-title">
+      <div class="section-head">
+        <div class="section-label">Modeled Forecast</div>
+        <h2 id="forecast-title">A 24-month base scenario shows what Norynthe could bring in after a six-month ramp.</h2>
+        <p>
+          The forecast models enterprise subscriptions, custom evaluations, reports, advisory support, API access,
+          and licensing. It is an assumption-based operating case, not guaranteed revenue or audited guidance.
+        </p>
+      </div>
+      <div class="chart-grid">
+        <article class="visual-card chart-card">
+          <div class="table-kicker">Monthly Revenue and Profitability</div>
+          <h3>Revenue, gross profit, and operating profit</h3>
+          <div class="chart-shell" id="line-chart" aria-label="Line chart showing modeled revenue, gross profit, and operating profit over 24 months"></div>
+          <div class="chart-legend" aria-label="Line chart legend">
+            <span><i style="--legend-color:#304760"></i>Total revenue</span>
+            <span><i style="--legend-color:#9a7c39"></i>Gross profit</span>
+            <span><i style="--legend-color:#2f5b4d"></i>Operating profit</span>
+          </div>
+        </article>
+        <article class="visual-card chart-card">
+          <div class="table-kicker">Revenue Mix</div>
+          <h3>Year 1 and Year 2 revenue by stream</h3>
+          <div class="chart-shell" id="bar-chart" aria-label="Bar chart showing modeled revenue mix by stream"></div>
+          <div class="chart-legend" aria-label="Bar chart legend">
+            <span><i style="--legend-color:#304760"></i>Year 1</span>
+            <span><i style="--legend-color:#7a3030"></i>Year 2</span>
+          </div>
+        </article>
+      </div>
+      <div class="forecast-table-wrap" style="margin-top:14px;">
+        <table class="forecast-table" aria-label="Forecast checkpoints">
+          <thead>
+            <tr>
+              <th>Checkpoint</th>
+              <th>Revenue</th>
+              <th>Operating Profit</th>
+              <th>Ending Liquidity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Month 6</td><td>$66,000</td><td>$32,600</td><td>$511,529</td></tr>
+            <tr><td>Month 12</td><td>$324,500</td><td>$237,325</td><td>$1,308,604</td></tr>
+            <tr><td>Month 24</td><td>$870,000</td><td>$683,000</td><td>$6,767,604</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="streams-title">
+      <div class="section-head">
+        <div class="section-label">Revenue Streams</div>
+        <h2 id="streams-title">Enterprise access to the evidence layer creates multiple commercial paths.</h2>
+      </div>
+      <div class="stream-grid">
+        <article class="stream-card">
+          <div class="kicker">Recurring</div>
+          <h3>Enterprise subscriptions</h3>
+          <p>Recurring access to evidence-layer materials and trust-scoring outputs.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Scoped Work</div>
+          <h3>Custom evaluations</h3>
+          <p>Specific AI system evaluations for vendors, procurement teams, or enterprise governance groups.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Decision Intelligence</div>
+          <h3>Vendor and governance reports</h3>
+          <p>Comparison reports for procurement, governance, risk, and AI program stakeholders.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Support</div>
+          <h3>Advisory packages</h3>
+          <p>Help interpreting evidence and preparing internal decision materials.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Data Access</div>
+          <h3>API access</h3>
+          <p>Future score history, score metadata, monitoring feeds, and integration pathways.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Licensing</div>
+          <h3>Benchmark and sector licensing</h3>
+          <p>Controlled licensing of benchmark assets, methodology, or sector-specific trust reports.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="milestones-title">
+      <div class="section-head">
+        <div class="section-label">Commercial Milestones</div>
+        <h2 id="milestones-title">Scale follows infrastructure, larger-model testing, and enterprise validation.</h2>
+      </div>
+      <div class="timeline">
+        <article class="phase-card">
+          <span class="phase-index">Phase 1</span>
+          <h3>Infrastructure foundation</h3>
+          <p>Secure infrastructure, compute, legal structure, and operating base.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 2</span>
+          <h3>Larger-model testing</h3>
+          <p>Push the Norynthe MVP OS to upgraded compute and tune the already-built scoring and evidence framework against larger-model performance.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 3</span>
+          <h3>Enterprise engagement</h3>
+          <p>Engage procurement, governance, risk, compliance, and enterprise AI stakeholders.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 4</span>
+          <h3>Controlled pilots</h3>
+          <p>Run pilot programs and validate paid access use cases.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 5</span>
+          <h3>Validated packaging</h3>
+          <p>Convert validated use cases into subscription, custom evaluation, or advisory revenue.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="disclosure-title">
+      <div class="section-head">
+        <div class="section-label">Forecast Treatment</div>
+        <h2 id="disclosure-title">The page shows modeled upside, not guaranteed outcomes.</h2>
+      </div>
+      <div class="disclosure">
+        Forecast figures are assumptions. Revenue development depends on customer discovery, procurement stakeholder validation,
+        pilot conversion, pricing acceptance, delivery capacity, and enterprise willingness to pay for independent AI evaluation
+        and trust-scoring infrastructure. Profitability is modeled as an operating scenario output, not a guaranteed profitability promise.
+      </div>
+    </section>
+
+    <section class="closing-card fade-in">
+      <div class="closing-grid">
+        <div>
+          <div class="section-label">Investor Interpretation</div>
+          <h2>Infrastructure first. Revenue modeled from validation.</h2>
+          <p>
+            The raise is not designed to immediately maximize headcount. It is designed to give Norynthe enough independence,
+            compute capacity, legal structure, and runway to build credible AI evaluation infrastructure before scaling.
+          </p>
+          <div class="contact-row">
+            <a class="contact-pill primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Financial%20Model">Discuss Financial Model</a>
+            <a class="contact-pill" href="norynthe-raise-plan.html">Raise Plan</a>
+            <a class="contact-pill" href="norynthe-investors.html">Investor Overview</a>
+          </div>
+        </div>
+        <div class="closing-line">
+          Preserve runway. Build defensible infrastructure. Validate enterprise demand. Scale from evidence.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Norynthe Financial Model Assumptions · Investor review page · © 2026 Norynthe.
+    </footer>
+  </main>
+
+  <script>
+    const months = Array.from({ length: 24 }, (_, index) => `M${index + 1}`);
+    const revenue = [0, 0, 26000, 54000, 60000, 66000, 99500, 137000, 218000, 209500, 221000, 324500, 354000, 416000, 487000, 490000, 513000, 628000, 596000, 649000, 734000, 737000, 746000, 870000];
+    const grossProfit = [0, 0, 22100, 45900, 51000, 56100, 84575, 116450, 185300, 178075, 187850, 275825, 300900, 353600, 413950, 416500, 436050, 533800, 506600, 551650, 623900, 626450, 634100, 739500];
+    const operatingProfit = [-23500, -23500, -1400, 22400, 27500, 32600, 46075, 77950, 146800, 139575, 149350, 237325, 244400, 297100, 357450, 360000, 379550, 477300, 450100, 495150, 567400, 569950, 577600, 683000];
+    const mix = [
+      { label: "Enterprise subs", y1: 427500, y2: 2052000 },
+      { label: "Custom evals", y1: 530000, y2: 3360000 },
+      { label: "Reports", y1: 168000, y2: 696000 },
+      { label: "Advisory", y1: 150000, y2: 480000 },
+      { label: "API access", y1: 40000, y2: 432000 },
+      { label: "Licensing", y1: 100000, y2: 200000 },
+    ];
+
+    function moneyShort(value) {
+      const abs = Math.abs(value);
+      const sign = value < 0 ? "-" : "";
+      if (abs >= 1000000) return `${sign}$${(abs / 1000000).toFixed(abs >= 10000000 ? 0 : 1)}M`;
+      if (abs >= 1000) return `${sign}$${Math.round(abs / 1000)}K`;
+      return `${sign}$${abs}`;
+    }
+
+    function linePath(values, xFor, yFor) {
+      return values.map((value, index) => `${index === 0 ? "M" : "L"}${xFor(index).toFixed(1)},${yFor(value).toFixed(1)}`).join(" ");
+    }
+
+    function renderLineChart() {
+      const target = document.getElementById("line-chart");
+      if (!target) return;
+
+      const width = 780;
+      const height = 360;
+      const pad = { top: 28, right: 28, bottom: 48, left: 70 };
+      const allValues = [...revenue, ...grossProfit, ...operatingProfit];
+      const min = -100000;
+      const max = Math.ceil(Math.max(...allValues) / 100000) * 100000;
+      const innerW = width - pad.left - pad.right;
+      const innerH = height - pad.top - pad.bottom;
+      const xFor = (index) => pad.left + (index / (months.length - 1)) * innerW;
+      const yFor = (value) => pad.top + ((max - value) / (max - min)) * innerH;
+      const ticks = [-100000, 0, 200000, 400000, 600000, 800000, 1000000];
+
+      const grid = ticks.map((tick) => {
+        const y = yFor(tick);
+        return `<g><line x1="${pad.left}" x2="${width - pad.right}" y1="${y}" y2="${y}" stroke="rgba(16,21,27,0.1)" stroke-dasharray="4 5"></line><text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text></g>`;
+      }).join("");
+
+      const monthLabels = months.map((month, index) => {
+        if (index % 2 !== 0 && index !== months.length - 1) return "";
+        return `<text x="${xFor(index)}" y="${height - 19}" text-anchor="middle" fill="#66717c" font-size="10">${month}</text>`;
+      }).join("");
+
+      target.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Monthly revenue and operating profit chart">
+          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.36)"></rect>
+          ${grid}
+          <line x1="${pad.left}" x2="${width - pad.right}" y1="${yFor(0)}" y2="${yFor(0)}" stroke="rgba(122,48,48,0.34)" stroke-width="1.4"></line>
+          <path class="chart-line" pathLength="1" style="--delay: 80ms" d="${linePath(revenue, xFor, yFor)}" fill="none" stroke="#304760" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path class="chart-line" pathLength="1" style="--delay: 200ms" d="${linePath(grossProfit, xFor, yFor)}" fill="none" stroke="#9a7c39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path class="chart-line" pathLength="1" style="--delay: 320ms" d="${linePath(operatingProfit, xFor, yFor)}" fill="none" stroke="#2f5b4d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          ${monthLabels}
+        </svg>
+      `;
+    }
+
+    function renderBarChart() {
+      const target = document.getElementById("bar-chart");
+      if (!target) return;
+
+      const width = 620;
+      const height = 360;
+      const pad = { top: 28, right: 24, bottom: 74, left: 62 };
+      const max = 3500000;
+      const innerW = width - pad.left - pad.right;
+      const innerH = height - pad.top - pad.bottom;
+      const groupW = innerW / mix.length;
+      const barW = Math.min(24, groupW * 0.24);
+      const yFor = (value) => pad.top + ((max - value) / max) * innerH;
+      const hFor = (value) => height - pad.bottom - yFor(value);
+      const ticks = [0, 1000000, 2000000, 3000000];
+
+      const grid = ticks.map((tick) => {
+        const y = yFor(tick);
+        return `<g><line x1="${pad.left}" x2="${width - pad.right}" y1="${y}" y2="${y}" stroke="rgba(16,21,27,0.1)" stroke-dasharray="4 5"></line><text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text></g>`;
+      }).join("");
+
+      const bars = mix.map((item, index) => {
+        const baseX = pad.left + index * groupW + groupW / 2;
+        const y1 = yFor(item.y1);
+        const y2 = yFor(item.y2);
+        return `
+          <rect class="chart-bar" style="--delay: ${120 + index * 70}ms" x="${baseX - barW - 2}" y="${y1}" width="${barW}" height="${hFor(item.y1)}" rx="4" fill="#304760"></rect>
+          <rect class="chart-bar" style="--delay: ${210 + index * 70}ms" x="${baseX + 2}" y="${y2}" width="${barW}" height="${hFor(item.y2)}" rx="4" fill="#7a3030"></rect>
+          <text x="${baseX}" y="${height - 42}" text-anchor="middle" fill="#4b5866" font-size="10">${item.label}</text>
+        `;
+      }).join("");
+
+      target.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Revenue mix by stream chart">
+          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.36)"></rect>
+          ${grid}
+          ${bars}
+        </svg>
+      `;
+    }
+
+    renderLineChart();
+    renderBarChart();
+
+    function animateCharts() {
+      const shells = document.querySelectorAll(".chart-shell");
+      if (!shells.length) return;
+
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion || !("IntersectionObserver" in window)) {
+        shells.forEach((shell) => shell.classList.add("is-animated"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-animated");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.28, rootMargin: "0px 0px -8% 0px" });
+
+      shells.forEach((shell) => observer.observe(shell));
+    }
+
+    animateCharts();
+  </script>
+</body>
+</html>
