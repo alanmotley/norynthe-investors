@@ -344,6 +344,11 @@
       box-shadow: 0 0 0 3px rgba(51, 75, 110, 0.08);
     }
 
+    .access-card.has-error .access-form input {
+      border-color: rgba(122, 48, 48, 0.42);
+      box-shadow: 0 0 0 3px rgba(122, 48, 48, 0.075);
+    }
+
     .access-form button {
       min-height: 46px;
       border: 1px solid #0f1115;
@@ -363,6 +368,12 @@
       box-shadow: 0 12px 22px rgba(15, 17, 21, 0.08);
     }
 
+    .access-form button[aria-busy="true"] {
+      cursor: wait;
+      opacity: 0.82;
+      transform: none;
+    }
+
     .access-error {
       min-height: 1.35em;
       margin: 0;
@@ -378,6 +389,14 @@
       color: var(--muted);
       font-size: 0.85rem;
       line-height: 1.56;
+    }
+
+    .access-note a {
+      color: #314966;
+      font-weight: 720;
+      text-decoration: underline;
+      text-decoration-color: rgba(49, 73, 102, 0.24);
+      text-underline-offset: 3px;
     }
 
     .unlocked-note {
@@ -398,6 +417,10 @@
 
     body.access-unlocked .unlocked-note {
       display: block;
+    }
+
+    body.access-unlocked .locked-preview {
+      display: none;
     }
 
     .locked-preview {
@@ -433,6 +456,113 @@
       color: #60707d;
       font-size: 0.82rem;
       line-height: 1.42;
+    }
+
+    .review-dashboard {
+      display: none;
+      margin-top: 1.2rem;
+      padding: clamp(1rem, 2.2vw, 1.35rem);
+      border: 1px solid rgba(15, 17, 21, 0.085);
+      border-top: 2px solid rgba(54, 85, 74, 0.36);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.78), rgba(247,250,251,0.56)),
+        radial-gradient(circle at 12% 0%, rgba(54,85,74,0.1), transparent 30%),
+        radial-gradient(circle at 96% 12%, rgba(122,48,48,0.07), transparent 32%);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body.access-unlocked .review-dashboard {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .review-dashboard-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.42fr);
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .review-dashboard h2 {
+      margin: 0.52rem 0 0;
+      max-width: 18ch;
+      font-size: clamp(1.55rem, 3vw, 2.42rem);
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .review-dashboard p {
+      margin: 0.7rem 0 0;
+      color: #465361;
+      line-height: 1.6;
+    }
+
+    .review-summary {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid rgba(15, 17, 21, 0.075);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .review-summary span {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
+      align-items: baseline;
+      color: #4c5966;
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .review-summary b {
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 780;
+      white-space: nowrap;
+    }
+
+    .review-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .review-step {
+      min-height: 164px;
+      padding: 15px;
+      border: 1px solid rgba(15, 17, 21, 0.085);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .review-step-index {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(122, 48, 48, 0.22);
+      border-radius: 999px;
+      color: var(--signal);
+      font-size: 0.72rem;
+      font-weight: 820;
+    }
+
+    .review-step strong {
+      display: block;
+      margin-top: 0.88rem;
+      color: var(--ink);
+      font-size: 1.02rem;
+      line-height: 1.1;
+    }
+
+    .review-step p {
+      margin-top: 0.58rem;
+      color: #566472;
+      font-size: 0.84rem;
+      line-height: 1.45;
     }
 
     .artifact-panel {
@@ -616,6 +746,34 @@
       line-height: 1.56;
     }
 
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 1rem;
+    }
+
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border: 1px solid rgba(15, 17, 21, 0.075);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.46);
+      color: #5c6874;
+      font-size: 0.58rem;
+      font-weight: 780;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .library-card.primary .card-meta span {
+      border-color: rgba(122, 48, 48, 0.12);
+      color: #6f393a;
+    }
+
     .card-action {
       display: inline-flex;
       align-items: center;
@@ -717,7 +875,8 @@
       .hero,
       .context-grid,
       .section-head,
-      .artifact-panel {
+      .artifact-panel,
+      .review-dashboard-head {
         grid-template-columns: 1fr;
       }
 
@@ -731,7 +890,8 @@
       }
 
       .card-grid,
-      .card-grid.two {
+      .card-grid.two,
+      .review-steps {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -793,6 +953,14 @@
         padding: 16px;
       }
 
+      .review-dashboard {
+        padding: 16px;
+      }
+
+      .review-summary {
+        padding: 12px;
+      }
+
       .artifact-visual {
         min-height: 190px;
         padding: 10px;
@@ -800,8 +968,13 @@
 
       .locked-preview,
       .card-grid,
-      .card-grid.two {
+      .card-grid.two,
+      .review-steps {
         grid-template-columns: 1fr;
+      }
+
+      .review-step {
+        min-height: auto;
       }
 
       .locked-card {
@@ -913,6 +1086,7 @@
           </form>
           <p class="access-note">
             Review access is intended for selected investor and strategic conversations.
+            <a href="mailto:hello@norynthe.com?subject=Norynthe%20Investor%20Access">Need access?</a>
           </p>
           <p class="unlocked-note">
             Access unlocked for this browser session. The materials library is available below.
@@ -957,6 +1131,46 @@
         </article>
       </section>
 
+      <section class="review-dashboard" aria-label="Unlocked investor review dashboard">
+        <div class="review-dashboard-head">
+          <div>
+            <div class="section-label">Review dashboard</div>
+            <h2>Move through the diligence packet in sequence.</h2>
+            <p>
+              Start with the category narrative, then validate the working product, review the capital model,
+              and finish with the broader enterprise and compute strategy.
+            </p>
+          </div>
+          <div class="review-summary" aria-label="Unlocked packet summary">
+            <span><b>12</b> review materials</span>
+            <span><b>4</b> diligence tracks</span>
+            <span><b>1</b> working product surface</span>
+          </div>
+        </div>
+        <div class="review-steps" aria-label="Recommended diligence sequence">
+          <article class="review-step">
+            <span class="review-step-index">1</span>
+            <strong>Company context</strong>
+            <p>Investor overview, business model, founder memo, and executive overview.</p>
+          </article>
+          <article class="review-step">
+            <span class="review-step-index">2</span>
+            <strong>Product evidence</strong>
+            <p>MVP console, customer report, and comparative scoring appendix.</p>
+          </article>
+          <article class="review-step">
+            <span class="review-step-index">3</span>
+            <strong>Capital model</strong>
+            <p>Raise plan, use of funds, forecast assumptions, and runway logic.</p>
+          </article>
+          <article class="review-step">
+            <span class="review-step-index">4</span>
+            <strong>Strategic thesis</strong>
+            <p>White paper, enterprise use cases, and owned-compute rationale.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="library" id="materials" aria-label="Investor materials library">
         <div class="library-shell">
           <section class="section" aria-labelledby="start-here-title">
@@ -973,6 +1187,7 @@
                   <div class="card-kicker">Investor overview</div>
                   <h3>Company and category narrative</h3>
                   <p>The concise investor-facing overview of Norynthe's positioning, market argument, and standard-forming opportunity.</p>
+                  <div class="card-meta"><span>Core</span><span>7 min</span><span>Start</span></div>
                 </div>
                 <span class="card-action">Open overview</span>
               </a>
@@ -981,6 +1196,7 @@
                   <div class="card-kicker">Business model</div>
                   <h3>Revenue logic and paid evidence layer</h3>
                   <p>How Norynthe makes money through public trust scores, enterprise evidence access, and recurring decision-infrastructure revenue.</p>
+                  <div class="card-meta"><span>Core</span><span>6 min</span><span>Revenue</span></div>
                 </div>
                 <span class="card-action">Open model</span>
               </a>
@@ -989,6 +1205,7 @@
                   <div class="card-kicker">Raise plan</div>
                   <h3>$2M to build the AI trust lab</h3>
                   <p>The funding target, use of funds, strategic compute unlock, burn philosophy, and milestones behind the lab build.</p>
+                  <div class="card-meta"><span>Financials</span><span>8 min</span><span>Capital</span></div>
                 </div>
                 <span class="card-action">Open raise plan</span>
               </a>
@@ -997,6 +1214,7 @@
                   <div class="card-kicker">Financial model</div>
                   <h3>Assumptions, forecast, and runway logic</h3>
                   <p>The $2M deployment model, founder-led runway logic, six-month commercial ramp, revenue forecast, and investor-ready charts.</p>
+                  <div class="card-meta"><span>Financials</span><span>10 min</span><span>Model</span></div>
                 </div>
                 <span class="card-action">Open model</span>
               </a>
@@ -1005,6 +1223,7 @@
                   <div class="card-kicker">Founder memo</div>
                   <h3>Why this company exists</h3>
                   <p>Founder-level context on the trust problem, the category, and the rationale for building an external evaluation layer.</p>
+                  <div class="card-meta"><span>Context</span><span>6 min</span><span>Founder</span></div>
                 </div>
                 <span class="card-action">Open memo</span>
               </a>
@@ -1013,6 +1232,7 @@
                   <div class="card-kicker">Executive overview</div>
                   <h3>Boardroom-readable summary</h3>
                   <p>A compact review of the score, evidence layer, benchmark system, and long-term standard-forming strategy.</p>
+                  <div class="card-meta"><span>Summary</span><span>5 min</span><span>Board</span></div>
                 </div>
                 <span class="card-action">Open overview</span>
               </a>
@@ -1033,6 +1253,7 @@
                   <div class="card-kicker">MVP console</div>
                   <h3>Norynthe OS walkthrough</h3>
                   <p>The working console surface for governed evaluation launch, benchmark selection, scoring dimensions, reviewer state, model outputs, records, and operational settings.</p>
+                  <div class="card-meta"><span>Product</span><span>10 min</span><span>Evidence</span></div>
                 </div>
                 <span class="card-action">Open console</span>
               </a>
@@ -1041,6 +1262,7 @@
                   <div class="card-kicker">Client report</div>
                   <h3>External report surface</h3>
                   <p>The customer-facing report format translating internal assessment records into executive findings and score detail.</p>
+                  <div class="card-meta"><span>Product</span><span>7 min</span><span>Report</span></div>
                 </div>
                 <span class="card-action">Open report</span>
               </a>
@@ -1049,6 +1271,7 @@
                   <div class="card-kicker">Multi Model Report</div>
                   <h3>Comparative evidence and scoring detail</h3>
                   <p>A deeper model-comparison report with evidence excerpts, dimension-level interpretation, reviewer notes, and traceable score context.</p>
+                  <div class="card-meta"><span>Product</span><span>12 min</span><span>Detail</span></div>
                 </div>
                 <span class="card-action">Open report</span>
               </a>
@@ -1069,6 +1292,7 @@
                   <div class="card-kicker">White paper</div>
                   <h3>Independent external trust layer</h3>
                   <p>The deeper thesis for Norynthe.Score, benchmark governance, behavioral credibility, and external trust infrastructure.</p>
+                  <div class="card-meta"><span>Strategy</span><span>12 min</span><span>Thesis</span></div>
                 </div>
                 <span class="card-action">Open paper</span>
               </a>
@@ -1077,6 +1301,7 @@
                   <div class="card-kicker">Enterprise use cases</div>
                   <h3>Institutional adoption paths</h3>
                   <p>Examples of how independent model credibility records could support buyers, regulated enterprises, and strategic reviewers.</p>
+                  <div class="card-meta"><span>Strategy</span><span>8 min</span><span>GTM</span></div>
                 </div>
                 <span class="card-action">Open use cases</span>
               </a>
@@ -1085,6 +1310,7 @@
                   <div class="card-kicker">Compute thesis</div>
                   <h3>The strategic role of owned compute</h3>
                   <p>Why controlled local inference, benchmark protection, and compute ownership become part of Norynthe's long-term moat.</p>
+                  <div class="card-meta"><span>Strategy</span><span>7 min</span><span>Moat</span></div>
                 </div>
                 <span class="card-action">Open compute thesis</span>
               </a>
@@ -1126,34 +1352,67 @@
     const ACCESS_PASSWORD = "INVEST_2026";
     const ACCESS_STORAGE_KEY = "noryntheInvestorAccess";
 
-    const unlockInvestorMaterials = () => {
+    const accessForm = document.querySelector("[data-access-form]");
+    const accessError = document.querySelector("[data-access-error]");
+    const accessCard = document.querySelector(".access-card");
+    const accessInput = accessForm?.querySelector("input[name='access_password']");
+    const accessButton = accessForm?.querySelector("button[type='submit']");
+    const originalAccessButtonText = accessButton?.textContent || "Unlock materials";
+
+    const setAccessChecking = (isChecking) => {
+      if (!accessButton) return;
+      accessButton.disabled = isChecking;
+      accessButton.setAttribute("aria-busy", isChecking ? "true" : "false");
+      accessButton.textContent = isChecking ? "Checking access" : originalAccessButtonText;
+    };
+
+    const unlockInvestorMaterials = ({ scrollToDashboard = false } = {}) => {
       document.body.classList.add("access-unlocked");
+      accessCard?.classList.remove("has-error");
+      if (accessError) accessError.textContent = "";
+
+      if (scrollToDashboard) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.setTimeout(() => {
+          document.querySelector(".review-dashboard")?.scrollIntoView({
+            block: "start",
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+          });
+        }, 120);
+      }
     };
 
     if (sessionStorage.getItem(ACCESS_STORAGE_KEY) === "granted") {
       unlockInvestorMaterials();
     }
 
-    const accessForm = document.querySelector("[data-access-form]");
-    const accessError = document.querySelector("[data-access-error]");
-
     if (accessForm) {
       accessForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const formData = new FormData(accessForm);
         const password = String(formData.get("access_password") || "");
+        const passwordMatches = password === ACCESS_PASSWORD;
 
-        if (password === ACCESS_PASSWORD) {
-          sessionStorage.setItem(ACCESS_STORAGE_KEY, "granted");
-          unlockInvestorMaterials();
-          accessForm.reset();
-          if (accessError) accessError.textContent = "";
-          return;
-        }
+        accessCard?.classList.remove("has-error");
+        if (accessError) accessError.textContent = "";
+        setAccessChecking(true);
 
-        if (accessError) {
-          accessError.textContent = "Access password not recognized.";
-        }
+        window.setTimeout(() => {
+          setAccessChecking(false);
+
+          if (passwordMatches) {
+            sessionStorage.setItem(ACCESS_STORAGE_KEY, "granted");
+            unlockInvestorMaterials({ scrollToDashboard: true });
+            accessForm.reset();
+            return;
+          }
+
+          accessCard?.classList.add("has-error");
+          if (accessError) {
+            accessError.textContent = "Access password not recognized. Check the shared investor access code.";
+          }
+          accessInput?.focus();
+        }, 220);
       });
     }
   </script>
