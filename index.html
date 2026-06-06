@@ -433,14 +433,75 @@
     }
 
     .locked-card {
+      display: grid;
+      align-content: start;
       min-height: 118px;
-      padding: 17px 18px;
+      padding: 14px 14px 17px;
       border-right: 1px solid rgba(15, 17, 21, 0.1);
       background: rgba(255, 255, 255, 0.16);
     }
 
     .locked-card:last-child {
       border-right: 0;
+    }
+
+    .locked-thumb {
+      position: relative;
+      height: 58px;
+      margin-bottom: 0.86rem;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(243, 247, 249, 0.48)),
+        radial-gradient(circle at 84% 12%, rgba(51, 75, 110, 0.08), transparent 34%);
+      overflow: hidden;
+    }
+
+    .locked-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 9px 10px auto;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15, 17, 21, 0.12);
+      box-shadow:
+        0 14px 0 rgba(51, 75, 110, 0.1),
+        0 28px 0 rgba(122, 48, 48, 0.09);
+    }
+
+    .locked-thumb::after {
+      content: "";
+      position: absolute;
+      right: 10px;
+      bottom: 9px;
+      width: 34px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(54, 85, 74, 0.12);
+      box-shadow: -44px 0 0 rgba(51, 75, 110, 0.08);
+    }
+
+    .locked-thumb.is-product::after {
+      width: 58px;
+      background: linear-gradient(90deg, rgba(51, 75, 110, 0.28) 62%, rgba(51, 75, 110, 0.08) 62%);
+      box-shadow: -52px 0 0 rgba(122, 48, 48, 0.1);
+    }
+
+    .locked-thumb.is-strategy::before {
+      width: 68%;
+      box-shadow:
+        0 14px 0 rgba(122, 48, 48, 0.11),
+        0 28px 0 rgba(54, 85, 74, 0.11);
+    }
+
+    .locked-thumb.is-financial::after {
+      width: 18px;
+      height: 36px;
+      border-radius: 5px 5px 0 0;
+      background: rgba(122, 48, 48, 0.16);
+      box-shadow:
+        -27px 8px 0 rgba(51, 75, 110, 0.14),
+        -54px 16px 0 rgba(54, 85, 74, 0.12);
     }
 
     .locked-card strong {
@@ -565,6 +626,169 @@
       line-height: 1.45;
     }
 
+    .review-nav-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.48fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .review-tabs,
+    .fast-path {
+      padding: 14px;
+      border: 1px solid rgba(15, 17, 21, 0.085);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .review-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .review-tabs .card-kicker {
+      flex: 0 0 100%;
+      margin-bottom: 2px;
+    }
+
+    .review-tabs a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 11px;
+      border: 1px solid rgba(15, 17, 21, 0.095);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.52);
+      color: #334150;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      line-height: 1;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .review-tabs a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(122, 48, 48, 0.22);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .fast-path {
+      display: grid;
+      gap: 8px;
+    }
+
+    .fast-path ol {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fast-path li {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 8px;
+      align-items: baseline;
+      color: #465361;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .fast-path a {
+      color: #314966;
+      font-weight: 720;
+      text-decoration: underline;
+      text-decoration-color: rgba(49, 73, 102, 0.2);
+      text-underline-offset: 3px;
+    }
+
+    .fast-path b {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(122, 48, 48, 0.2);
+      border-radius: 999px;
+      color: var(--signal);
+      font-size: 0.68rem;
+      line-height: 1;
+    }
+
+    .review-evidence {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr;
+      gap: 10px;
+    }
+
+    .evidence-preview {
+      position: relative;
+      display: grid;
+      grid-template-rows: minmax(130px, 0.95fr) auto;
+      min-height: 248px;
+      border: 1px solid rgba(15, 17, 21, 0.085);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.58);
+      color: inherit;
+      overflow: hidden;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .evidence-preview:hover {
+      transform: translateY(-2px);
+      border-color: rgba(51, 75, 110, 0.2);
+      box-shadow: 0 18px 42px rgba(15, 17, 21, 0.055);
+    }
+
+    .evidence-image {
+      position: relative;
+      min-height: 130px;
+      background: linear-gradient(135deg, rgba(239, 243, 246, 0.9), rgba(255, 255, 255, 0.56));
+      overflow: hidden;
+    }
+
+    .evidence-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 130px;
+      object-fit: cover;
+      object-position: left center;
+      filter: saturate(0.92) contrast(0.98);
+    }
+
+    .evidence-preview.is-figure .evidence-image {
+      padding: 14px;
+    }
+
+    .evidence-preview.is-figure .evidence-image img {
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 14px 20px rgba(15, 17, 21, 0.08));
+    }
+
+    .evidence-copy {
+      padding: 15px;
+    }
+
+    .evidence-copy strong {
+      display: block;
+      margin-top: 0.42rem;
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.12;
+    }
+
+    .evidence-copy p {
+      margin-top: 0.52rem;
+      color: #566472;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
     .artifact-panel {
       display: grid;
       grid-template-columns: minmax(0, 0.76fr) minmax(320px, 1.24fr);
@@ -609,6 +833,82 @@
       max-height: 290px;
       object-fit: contain;
       filter: drop-shadow(0 16px 20px rgba(15,17,21,0.08));
+    }
+
+    .artifact-gallery {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(170px, 0.72fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .artifact-shot,
+    .artifact-mini {
+      margin: 0;
+      border: 1px solid rgba(15, 17, 21, 0.075);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.56);
+      overflow: hidden;
+    }
+
+    .artifact-shot {
+      display: grid;
+      grid-template-rows: minmax(180px, 1fr) auto;
+    }
+
+    .artifact-shot img {
+      max-height: none;
+      object-fit: cover;
+      object-position: left center;
+      filter: saturate(0.92) contrast(0.98);
+    }
+
+    .artifact-shot figcaption,
+    .artifact-mini figcaption {
+      padding: 10px 11px;
+      color: #4f5c68;
+      font-size: 0.72rem;
+      font-weight: 720;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .artifact-shot figcaption strong {
+      display: block;
+      margin-top: 0.28rem;
+      color: #1f2730;
+      font-size: 0.92rem;
+      letter-spacing: 0;
+      line-height: 1.16;
+      text-transform: none;
+    }
+
+    .artifact-mini-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .artifact-mini {
+      display: grid;
+      grid-template-rows: minmax(82px, 1fr) auto;
+    }
+
+    .artifact-mini img {
+      width: 100%;
+      max-height: 112px;
+      padding: 10px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 16px rgba(15, 17, 21, 0.075));
+    }
+
+    .artifact-mini.is-screen img {
+      height: 112px;
+      max-height: 112px;
+      padding: 0;
+      object-fit: cover;
+      object-position: left center;
+      filter: saturate(0.94) contrast(0.98);
     }
 
     .library {
@@ -666,6 +966,10 @@
       margin-top: 2rem;
       padding-top: 2rem;
       border-top: 1px solid rgba(15, 17, 21, 0.075);
+    }
+
+    .section {
+      scroll-margin-top: 20px;
     }
 
     .card-grid {
@@ -769,9 +1073,20 @@
       text-transform: uppercase;
     }
 
+    .card-meta span.is-version {
+      border-color: rgba(54, 85, 74, 0.15);
+      background: rgba(54, 85, 74, 0.06);
+      color: #35584b;
+    }
+
     .library-card.primary .card-meta span {
       border-color: rgba(122, 48, 48, 0.12);
       color: #6f393a;
+    }
+
+    .library-card.primary .card-meta span.is-version {
+      border-color: rgba(54, 85, 74, 0.16);
+      color: #35584b;
     }
 
     .card-action {
@@ -841,6 +1156,68 @@
       background: rgba(122, 48, 48, 0.58);
     }
 
+    .trust-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-top: 2.2rem;
+      padding: 18px 20px;
+      border: 1px solid rgba(15, 17, 21, 0.085);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(247, 250, 251, 0.5)),
+        radial-gradient(circle at 0% 0%, rgba(54, 85, 74, 0.08), transparent 30%);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .trust-strip span {
+      color: var(--signal);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .trust-strip strong {
+      display: block;
+      margin-top: 0.28rem;
+      color: #202832;
+      font-size: 1.06rem;
+      line-height: 1.25;
+    }
+
+    .trust-strip p {
+      margin: 0.45rem 0 0;
+      color: #5d6873;
+      line-height: 1.5;
+    }
+
+    .trust-strip a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid rgba(15, 17, 21, 0.14);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.66);
+      color: #27313b;
+      font-size: 0.6rem;
+      font-weight: 780;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+      white-space: nowrap;
+    }
+
+    .trust-strip a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(15, 17, 21, 0.24);
+      background: rgba(255, 255, 255, 0.88);
+    }
+
     .footer {
       margin-top: 4.5rem;
       text-align: center;
@@ -876,7 +1253,10 @@
       .context-grid,
       .section-head,
       .artifact-panel,
-      .review-dashboard-head {
+      .artifact-gallery,
+      .review-dashboard-head,
+      .review-nav-panel,
+      .review-evidence {
         grid-template-columns: 1fr;
       }
 
@@ -893,6 +1273,14 @@
       .card-grid.two,
       .review-steps {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .trust-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-strip a {
+        width: max-content;
       }
     }
 
@@ -969,11 +1357,25 @@
       .locked-preview,
       .card-grid,
       .card-grid.two,
-      .review-steps {
+      .review-steps,
+      .review-evidence {
         grid-template-columns: 1fr;
       }
 
       .review-step {
+        min-height: auto;
+      }
+
+      .review-tabs {
+        gap: 7px;
+      }
+
+      .review-tabs a {
+        min-height: 32px;
+        padding: 0 9px;
+      }
+
+      .evidence-preview {
         min-height: auto;
       }
 
@@ -992,6 +1394,14 @@
       .library-card.featured {
         grid-column: auto;
         min-height: auto;
+      }
+
+      .trust-strip {
+        padding: 16px;
+      }
+
+      .trust-strip a {
+        width: 100%;
       }
     }
 
@@ -1103,28 +1513,48 @@
             and the standard-forming argument behind independent AI evaluation.
           </p>
         </div>
-        <div class="artifact-visual" aria-label="Norynthe product stack figure preview">
-          <img src="figure-1-product-stack.svg" alt="Diagram of Norynthe's independent evaluation standard, score, report, verification, and market signal layers." loading="lazy" decoding="async">
+        <div class="artifact-visual artifact-gallery" aria-label="Norynthe diligence preview gallery">
+          <figure class="artifact-shot">
+            <img src="previews/console-page-preview.jpg" alt="Preview of the Norynthe scoring console showing benchmark context, model target, runtime setup, and evaluation preview." loading="lazy" decoding="async">
+            <figcaption>
+              Working MVP
+              <strong>Scoring workflow and evidence record preview</strong>
+            </figcaption>
+          </figure>
+          <div class="artifact-mini-grid" aria-label="Supporting artifact previews">
+            <figure class="artifact-mini is-screen">
+              <img src="previews/customer-report-page-preview.jpg" alt="Preview of the Norynthe customer report showing the score summary and buyer-facing reliability judgment." loading="lazy" decoding="async">
+              <figcaption>Customer report</figcaption>
+            </figure>
+            <figure class="artifact-mini is-screen">
+              <img src="previews/financial-model-page-preview.jpg" alt="Preview of the Norynthe financial model showing the use-of-funds chart and budget table." loading="lazy" decoding="async">
+              <figcaption>Use of funds</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
       <section class="locked-preview" aria-label="Locked material preview">
         <article class="locked-card">
+          <div class="locked-thumb" aria-hidden="true"></div>
           <span>Start here</span>
           <strong>Investor context</strong>
-          <p>Overview, founder memo, business model, and raise plan.</p>
+          <p>Overview, founder memo, business model, and executive summary.</p>
         </article>
         <article class="locked-card">
+          <div class="locked-thumb is-product" aria-hidden="true"></div>
           <span>Product evidence</span>
           <strong>MVP and reports</strong>
           <p>Console walkthrough, client report, and scoring detail.</p>
         </article>
         <article class="locked-card">
+          <div class="locked-thumb is-strategy" aria-hidden="true"></div>
           <span>Strategy</span>
           <strong>Trust standard</strong>
           <p>White paper, enterprise use cases, and compute thesis.</p>
         </article>
         <article class="locked-card">
+          <div class="locked-thumb is-financial" aria-hidden="true"></div>
           <span>Financials</span>
           <strong>Raise and forecast</strong>
           <p>Deployment model, runway logic, and commercialization assumptions.</p>
@@ -1145,6 +1575,23 @@
             <span><b>12</b> review materials</span>
             <span><b>4</b> diligence tracks</span>
             <span><b>1</b> working product surface</span>
+          </div>
+        </div>
+        <div class="review-nav-panel" aria-label="Unlocked review navigation">
+          <nav class="review-tabs" aria-label="Material categories">
+            <div class="card-kicker">Browse by track</div>
+            <a href="#start-here">Start</a>
+            <a href="#product-artifacts">Product</a>
+            <a href="#financials">Financials</a>
+            <a href="#strategy-materials">Strategy</a>
+          </nav>
+          <div class="fast-path" aria-label="Recommended first 15 minutes">
+            <div class="card-kicker">First 15 minutes</div>
+            <ol>
+              <li><b>1</b><span><a href="./norynthe-investors.html">Investor overview</a></span></li>
+              <li><b>2</b><span><a href="./norynthe-run-console.html">MVP console</a></span></li>
+              <li><b>3</b><span><a href="./norynthe-financial-model-assumptions.html">Financial model</a></span></li>
+            </ol>
           </div>
         </div>
         <div class="review-steps" aria-label="Recommended diligence sequence">
@@ -1169,16 +1616,48 @@
             <p>White paper, enterprise use cases, and owned-compute rationale.</p>
           </article>
         </div>
+        <div class="review-evidence" aria-label="Featured unlocked review previews">
+          <a class="evidence-preview" href="./norynthe-run-console.html">
+            <div class="evidence-image">
+              <img src="previews/console-page-preview.jpg" alt="Preview of the Norynthe MVP console scoring workflow." loading="lazy" decoding="async">
+            </div>
+            <div class="evidence-copy">
+              <div class="card-kicker">MVP console</div>
+              <strong>Open the working product surface</strong>
+              <p>Review benchmark launch, model selection, scoring progress, and evidence records.</p>
+            </div>
+          </a>
+          <a class="evidence-preview" href="./norynthe-customer-report.html">
+            <div class="evidence-image">
+              <img src="previews/customer-report-page-preview.jpg" alt="Preview of the Norynthe customer report score summary and evidence surface." loading="lazy" decoding="async">
+            </div>
+            <div class="evidence-copy">
+              <div class="card-kicker">Customer report</div>
+              <strong>Inspect the buyer-facing score layer</strong>
+              <p>See how a public score turns into reliability judgment, context, and paid evidence.</p>
+            </div>
+          </a>
+          <a class="evidence-preview" href="./norynthe-financial-model-assumptions.html">
+            <div class="evidence-image">
+              <img src="previews/financial-model-page-preview.jpg" alt="Preview of the Norynthe financial model use-of-funds chart and detailed budget table." loading="lazy" decoding="async">
+            </div>
+            <div class="evidence-copy">
+              <div class="card-kicker">Financial model</div>
+              <strong>Review the capital deployment logic</strong>
+              <p>Use-of-funds, runway, and budget assumptions are visible before the full model.</p>
+            </div>
+          </a>
+        </div>
       </section>
 
       <section class="library" id="materials" aria-label="Investor materials library">
         <div class="library-shell">
-          <section class="section" aria-labelledby="start-here-title">
+          <section class="section" id="start-here" aria-labelledby="start-here-title">
             <div class="section-head">
               <div class="section-label">Start here</div>
               <h2 id="start-here-title">A short path through the diligence packet.</h2>
               <p>
-                These materials establish the company narrative, founder context, and executive-level product thesis before moving into deeper artifacts.
+                These materials establish the company narrative, founder context, and executive-level product thesis before moving into product, financial, and strategy artifacts.
               </p>
             </div>
             <div class="card-grid">
@@ -1187,7 +1666,7 @@
                   <div class="card-kicker">Investor overview</div>
                   <h3>Company and category narrative</h3>
                   <p>The concise investor-facing overview of Norynthe's positioning, market argument, and standard-forming opportunity.</p>
-                  <div class="card-meta"><span>Core</span><span>7 min</span><span>Start</span></div>
+                  <div class="card-meta"><span>Core</span><span>7 min</span><span>Start</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open overview</span>
               </a>
@@ -1196,25 +1675,7 @@
                   <div class="card-kicker">Business model</div>
                   <h3>Revenue logic and paid evidence layer</h3>
                   <p>How Norynthe makes money through public trust scores, enterprise evidence access, and recurring decision-infrastructure revenue.</p>
-                  <div class="card-meta"><span>Core</span><span>6 min</span><span>Revenue</span></div>
-                </div>
-                <span class="card-action">Open model</span>
-              </a>
-              <a class="library-card primary" href="./norynthe-raise-plan.html">
-                <div>
-                  <div class="card-kicker">Raise plan</div>
-                  <h3>$2M to build the AI trust lab</h3>
-                  <p>The funding target, use of funds, strategic compute unlock, burn philosophy, and milestones behind the lab build.</p>
-                  <div class="card-meta"><span>Financials</span><span>8 min</span><span>Capital</span></div>
-                </div>
-                <span class="card-action">Open raise plan</span>
-              </a>
-              <a class="library-card primary" href="./norynthe-financial-model-assumptions.html">
-                <div>
-                  <div class="card-kicker">Financial model</div>
-                  <h3>Assumptions, forecast, and runway logic</h3>
-                  <p>The $2M deployment model, founder-led runway logic, six-month commercial ramp, revenue forecast, and investor-ready charts.</p>
-                  <div class="card-meta"><span>Financials</span><span>10 min</span><span>Model</span></div>
+                  <div class="card-meta"><span>Core</span><span>6 min</span><span>Revenue</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open model</span>
               </a>
@@ -1223,7 +1684,7 @@
                   <div class="card-kicker">Founder memo</div>
                   <h3>Why this company exists</h3>
                   <p>Founder-level context on the trust problem, the category, and the rationale for building an external evaluation layer.</p>
-                  <div class="card-meta"><span>Context</span><span>6 min</span><span>Founder</span></div>
+                  <div class="card-meta"><span>Context</span><span>6 min</span><span>Founder</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open memo</span>
               </a>
@@ -1232,14 +1693,14 @@
                   <div class="card-kicker">Executive overview</div>
                   <h3>Boardroom-readable summary</h3>
                   <p>A compact review of the score, evidence layer, benchmark system, and long-term standard-forming strategy.</p>
-                  <div class="card-meta"><span>Summary</span><span>5 min</span><span>Board</span></div>
+                  <div class="card-meta"><span>Summary</span><span>5 min</span><span>Board</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open overview</span>
               </a>
             </div>
           </section>
 
-          <section class="section" aria-labelledby="product-title">
+          <section class="section" id="product-artifacts" aria-labelledby="product-title">
             <div class="section-head">
               <div class="section-label">Product artifacts</div>
               <h2 id="product-title">The working surface behind the thesis.</h2>
@@ -1253,7 +1714,7 @@
                   <div class="card-kicker">MVP console</div>
                   <h3>Norynthe OS walkthrough</h3>
                   <p>The working console surface for governed evaluation launch, benchmark selection, scoring dimensions, reviewer state, model outputs, records, and operational settings.</p>
-                  <div class="card-meta"><span>Product</span><span>10 min</span><span>Evidence</span></div>
+                  <div class="card-meta"><span>Product</span><span>10 min</span><span>Evidence</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open console</span>
               </a>
@@ -1262,7 +1723,7 @@
                   <div class="card-kicker">Client report</div>
                   <h3>External report surface</h3>
                   <p>The customer-facing report format translating internal assessment records into executive findings and score detail.</p>
-                  <div class="card-meta"><span>Product</span><span>7 min</span><span>Report</span></div>
+                  <div class="card-meta"><span>Product</span><span>7 min</span><span>Report</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open report</span>
               </a>
@@ -1271,14 +1732,44 @@
                   <div class="card-kicker">Multi Model Report</div>
                   <h3>Comparative evidence and scoring detail</h3>
                   <p>A deeper model-comparison report with evidence excerpts, dimension-level interpretation, reviewer notes, and traceable score context.</p>
-                  <div class="card-meta"><span>Product</span><span>12 min</span><span>Detail</span></div>
+                  <div class="card-meta"><span>Product</span><span>12 min</span><span>Detail</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open report</span>
               </a>
             </div>
           </section>
 
-          <section class="section" aria-labelledby="strategy-title">
+          <section class="section" id="financials" aria-labelledby="financials-title">
+            <div class="section-head">
+              <div class="section-label">Financials</div>
+              <h2 id="financials-title">Capital deployment, use of funds, and runway logic.</h2>
+              <p>
+                These materials show the raise plan, spending model, forecast assumptions, and operating logic behind the capital request.
+              </p>
+            </div>
+            <div class="card-grid two">
+              <a class="library-card primary" href="./norynthe-raise-plan.html">
+                <div>
+                  <div class="card-kicker">Raise plan</div>
+                  <h3>$2M to build the AI trust lab</h3>
+                  <p>The funding target, use of funds, strategic compute unlock, burn philosophy, and milestones behind the lab build.</p>
+                  <div class="card-meta"><span>Financials</span><span>8 min</span><span>Capital</span><span class="is-version">Updated Jun 2026</span></div>
+                </div>
+                <span class="card-action">Open raise plan</span>
+              </a>
+              <a class="library-card primary" href="./norynthe-financial-model-assumptions.html">
+                <div>
+                  <div class="card-kicker">Financial model</div>
+                  <h3>Assumptions, forecast, and runway logic</h3>
+                  <p>The $2M deployment model, founder-led runway logic, six-month commercial ramp, revenue forecast, and investor-ready charts.</p>
+                  <div class="card-meta"><span>Financials</span><span>10 min</span><span>Model</span><span class="is-version">Updated Jun 2026</span></div>
+                </div>
+                <span class="card-action">Open model</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="section" id="strategy-materials" aria-labelledby="strategy-title">
             <div class="section-head">
               <div class="section-label">Strategic materials</div>
               <h2 id="strategy-title">The category argument and enterprise path.</h2>
@@ -1292,7 +1783,7 @@
                   <div class="card-kicker">White paper</div>
                   <h3>Independent external trust layer</h3>
                   <p>The deeper thesis for Norynthe.Score, benchmark governance, behavioral credibility, and external trust infrastructure.</p>
-                  <div class="card-meta"><span>Strategy</span><span>12 min</span><span>Thesis</span></div>
+                  <div class="card-meta"><span>Strategy</span><span>12 min</span><span>Thesis</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open paper</span>
               </a>
@@ -1301,7 +1792,7 @@
                   <div class="card-kicker">Enterprise use cases</div>
                   <h3>Institutional adoption paths</h3>
                   <p>Examples of how independent model credibility records could support buyers, regulated enterprises, and strategic reviewers.</p>
-                  <div class="card-meta"><span>Strategy</span><span>8 min</span><span>GTM</span></div>
+                  <div class="card-meta"><span>Strategy</span><span>8 min</span><span>GTM</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open use cases</span>
               </a>
@@ -1310,7 +1801,7 @@
                   <div class="card-kicker">Compute thesis</div>
                   <h3>The strategic role of owned compute</h3>
                   <p>Why controlled local inference, benchmark protection, and compute ownership become part of Norynthe's long-term moat.</p>
-                  <div class="card-meta"><span>Strategy</span><span>7 min</span><span>Moat</span></div>
+                  <div class="card-meta"><span>Strategy</span><span>7 min</span><span>Moat</span><span class="is-version">Updated Jun 2026</span></div>
                 </div>
                 <span class="card-action">Open compute thesis</span>
               </a>
@@ -1334,6 +1825,7 @@
                 <ul class="context-list">
                   <li>Start with the investor overview, business model, and founder memo.</li>
                   <li>Review the Norynthe OS walkthrough to see the completed MVP console and operational workflow.</li>
+                  <li>Use the raise plan and financial model to evaluate capital deployment, runway, and forecast assumptions.</li>
                   <li>Use the white paper, enterprise use cases, and compute thesis for the broader category, adoption, and infrastructure strategy.</li>
                 </ul>
               </div>
@@ -1342,8 +1834,19 @@
         </div>
       </section>
 
+      <section class="trust-strip" aria-label="Investor review support">
+        <div>
+          <span>Confidential review</span>
+          <strong>Prepared for selected investor and strategic diligence conversations.</strong>
+          <p>
+            For walkthrough scheduling, document questions, or follow-up diligence requests, contact the Norynthe team directly.
+          </p>
+        </div>
+        <a href="mailto:hello@norynthe.com?subject=Norynthe%20Investor%20Review%20Follow-up">Request follow-up</a>
+      </section>
+
       <footer class="footer">
-        Public signal · Governed record · Independent standard · investors.norynthe.com · © 2026 Norynthe.
+        Confidential investor review · Public signal · Governed record · Independent standard · investors.norynthe.com · © 2026 Norynthe.
       </footer>
     </div>
   </main>
