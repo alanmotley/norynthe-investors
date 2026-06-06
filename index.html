@@ -1854,6 +1854,8 @@
   <script>
     const ACCESS_PASSWORD = "INVEST_2026";
     const ACCESS_STORAGE_KEY = "noryntheInvestorAccess";
+    const FIRST_MATERIAL_STORAGE_KEY = "noryntheFirstMaterialTracked";
+    const GA4_MEASUREMENT_ID = "";
 
     const accessForm = document.querySelector("[data-access-form]");
     const accessError = document.querySelector("[data-access-error]");
@@ -1861,6 +1863,46 @@
     const accessInput = accessForm?.querySelector("input[name='access_password']");
     const accessButton = accessForm?.querySelector("button[type='submit']");
     const originalAccessButtonText = accessButton?.textContent || "Unlock materials";
+
+    const initAnalytics = () => {
+      if (!GA4_MEASUREMENT_ID) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", GA4_MEASUREMENT_ID, {
+        send_page_view: true,
+      });
+
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_MEASUREMENT_ID)}`;
+      document.head.appendChild(script);
+    };
+
+    const trackInvestorEvent = (eventName, eventParams = {}) => {
+      if (typeof window.gtag !== "function") return;
+      window.gtag("event", eventName, {
+        event_category: "Investor Portal",
+        transport_type: "beacon",
+        ...eventParams,
+      });
+    };
+
+    const getMaterialLabel = (link) => {
+      const heading = link.querySelector("h3, strong");
+      return heading?.textContent?.trim() || link.textContent.trim().replace(/\s+/g, " ");
+    };
+
+    const getMaterialTrack = (link) => {
+      if (link.closest(".fast-path")) return "First 15 minutes";
+      if (link.closest(".review-evidence")) return "Featured previews";
+      const section = link.closest(".section, .review-dashboard");
+      const sectionLabel = section?.querySelector(".section-label")?.textContent?.trim();
+      const metaTrack = link.querySelector(".card-meta span")?.textContent?.trim();
+      return sectionLabel || metaTrack || "Uncategorized";
+    };
+
+    initAnalytics();
 
     const setAccessChecking = (isChecking) => {
       if (!accessButton) return;
@@ -1906,6 +1948,9 @@
           if (passwordMatches) {
             sessionStorage.setItem(ACCESS_STORAGE_KEY, "granted");
             unlockInvestorMaterials({ scrollToDashboard: true });
+            trackInvestorEvent("access_unlocked", {
+              access_state: "granted",
+            });
             accessForm.reset();
             return;
           }
@@ -1918,6 +1963,46 @@
         }, 220);
       });
     }
+
+    document.querySelectorAll(".review-tabs a").forEach((link) => {
+      link.addEventListener("click", () => {
+        trackInvestorEvent("review_track_clicked", {
+          track: link.textContent.trim(),
+          target_section: link.getAttribute("href") || "",
+        });
+      });
+    });
+
+    document.querySelectorAll(".library-card, .evidence-preview, .fast-path a").forEach((link) => {
+      link.addEventListener("click", () => {
+        const material = getMaterialLabel(link);
+        const track = getMaterialTrack(link);
+        const destination = link.getAttribute("href") || "";
+
+        if (!sessionStorage.getItem(FIRST_MATERIAL_STORAGE_KEY)) {
+          sessionStorage.setItem(FIRST_MATERIAL_STORAGE_KEY, "tracked");
+          trackInvestorEvent("first_material_opened", {
+            material,
+            track,
+            destination,
+          });
+        }
+
+        trackInvestorEvent("material_opened", {
+          material,
+          track,
+          destination,
+        });
+      });
+    });
+
+    document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        trackInvestorEvent("follow_up_requested", {
+          link_text: link.textContent.trim(),
+        });
+      });
+    });
   </script>
 </body>
 </html>
