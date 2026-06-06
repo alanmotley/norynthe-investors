@@ -399,36 +399,52 @@
 
     .donut {
       position: relative;
-      width: min(100%, 245px);
-      aspect-ratio: 1;
-      margin: 0 auto;
-      border-radius: 50%;
-      background:
-        conic-gradient(
-          #7a3030 0deg 202.8deg,
-          #304760 202.8deg 219.6deg,
-          #2f5b4d 219.6deg 246deg,
-          #9a7c39 246deg 259deg,
-          #55758e 259deg 265.2deg,
-          #8f6c50 265.2deg 274.2deg,
-          #c5d1dc 274.2deg 360deg
-        );
-      box-shadow: inset 0 0 0 1px rgba(16,21,27,0.09), var(--shadow-soft);
-    }
-
-    .donut::after {
-      content: "$2.0M";
-      position: absolute;
-      inset: 24%;
       display: grid;
       place-items: center;
+      width: min(100%, 255px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      padding: 8px;
       border-radius: 50%;
-      background: #f8fbfc;
-      color: var(--ink);
-      font-size: 2rem;
-      font-weight: 800;
+      border: 1px solid rgba(16,21,27,0.08);
+      background:
+        radial-gradient(circle at 36% 28%, rgba(255,255,255,0.92), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.72), rgba(230,238,244,0.66));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.82),
+        0 14px 28px rgba(16,21,27,0.075);
+    }
+
+    .donut svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .donut-segment {
+      stroke: rgba(248,251,252,0.94);
+      stroke-width: 2.2;
+      stroke-linejoin: round;
+    }
+
+    .donut-segment-shadow {
+      opacity: 0.14;
+    }
+
+    .donut-center-label {
+      fill: var(--ink);
+      font-size: 1.72rem;
+      font-weight: 820;
       letter-spacing: 0;
-      box-shadow: inset 0 0 0 1px rgba(16,21,27,0.08);
+    }
+
+    .donut-center-sub {
+      fill: #66717c;
+      font-size: 0.58rem;
+      font-weight: 820;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
 
     .legend {
@@ -554,18 +570,67 @@
     }
 
     .chart-shell {
+      position: relative;
       min-height: 322px;
       border: 1px solid rgba(16,21,27,0.08);
       border-radius: 12px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(248,251,252,0.62));
+        linear-gradient(180deg, rgba(255,255,255,0.8), rgba(248,251,252,0.66));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.86),
+        inset 0 -16px 28px rgba(48,71,96,0.045),
+        0 10px 22px rgba(16,21,27,0.055);
       overflow: hidden;
     }
 
+    .chart-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(126deg, rgba(255,255,255,0.36), transparent 32%),
+        linear-gradient(180deg, transparent 68%, rgba(16,21,27,0.026));
+      mix-blend-mode: screen;
+    }
+
     .chart-shell svg {
+      position: relative;
+      z-index: 0;
       display: block;
       width: 100%;
       height: auto;
+      overflow: visible;
+    }
+
+    .chart-plane {
+      filter: drop-shadow(0 7px 10px rgba(16,21,27,0.055));
+    }
+
+    .chart-axis {
+      stroke: rgba(16,21,27,0.2);
+      stroke-width: 1.3;
+    }
+
+    .chart-grid-line {
+      stroke: rgba(16,21,27,0.1);
+      stroke-dasharray: 4 5;
+    }
+
+    .chart-depth-line {
+      opacity: 0.16;
+      stroke-width: 5.2;
+    }
+
+    .chart-line-glow {
+      opacity: 0.1;
+      stroke-width: 6.8;
+    }
+
+    .chart-line-highlight {
+      opacity: 0.44;
+      stroke-width: 1;
     }
 
     .chart-line {
@@ -573,11 +638,34 @@
       stroke-dashoffset: 1;
     }
 
-    .chart-bar {
+    .chart-bar,
+    .chart-point {
       opacity: 0;
-      transform: scaleY(0.04);
       transform-box: fill-box;
+    }
+
+    .chart-point {
+      transform: scale(0.5);
+      transform-origin: 50% 50%;
+    }
+
+    .chart-bar {
+      transform: scaleY(0.04);
       transform-origin: 50% 100%;
+      filter: drop-shadow(4px 7px 6px rgba(16,21,27,0.13));
+    }
+
+    .chart-bar-front {
+      stroke: rgba(255,255,255,0.28);
+      stroke-width: 0.8;
+    }
+
+    .chart-bar-top {
+      opacity: 0.66;
+    }
+
+    .chart-bar-side {
+      opacity: 0.48;
     }
 
     .chart-shell.is-animated .chart-line {
@@ -587,6 +675,11 @@
 
     .chart-shell.is-animated .chart-bar {
       animation: chart-bar-rise 760ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    .chart-shell.is-animated .chart-point {
+      animation: chart-point-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
       animation-delay: var(--delay, 0ms);
     }
 
@@ -600,6 +693,13 @@
       to {
         opacity: 1;
         transform: scaleY(1);
+      }
+    }
+
+    @keyframes chart-point-pop {
+      to {
+        opacity: 1;
+        transform: scale(1);
       }
     }
 
@@ -840,7 +940,8 @@
         stroke-dashoffset: 0;
       }
 
-      .chart-bar {
+      .chart-bar,
+      .chart-point {
         opacity: 1;
         transform: none;
       }
@@ -968,7 +1069,7 @@
           <div class="table-kicker">Use of Funds</div>
           <h3>$2,000,000 capital deployment</h3>
           <div class="donut-wrap">
-            <div class="donut" role="img" aria-label="Use of funds donut chart showing headquarters infrastructure as the largest allocation"></div>
+            <div class="donut" role="img" aria-label="Use of funds donut chart showing $1.13M for headquarters infrastructure, $477K remaining liquidity, and smaller allocations for lab, compute, legal, operations, and business development."></div>
             <ul class="legend" aria-label="Use of funds legend">
               <li><span class="swatch" style="--swatch:#7a3030"></span><span>Property / HQ Infrastructure</span><b>$1.13M</b></li>
               <li><span class="swatch" style="--swatch:#304760"></span><span>Lab / Workspace Buildout</span><b>$93.5K</b></li>
@@ -976,7 +1077,7 @@
               <li><span class="swatch" style="--swatch:#9a7c39"></span><span>Legal / Entity Setup</span><b>$72K</b></li>
               <li><span class="swatch" style="--swatch:#55758e"></span><span>Ops / Software / Security</span><b>$34K</b></li>
               <li><span class="swatch" style="--swatch:#8f6c50"></span><span>Travel / Business Development</span><b>$50K</b></li>
-              <li><span class="swatch" style="--swatch:#c5d1dc"></span><span>Remaining Liquidity / Runway</span><b>$477K</b></li>
+              <li><span class="swatch" style="--swatch:#b7c7d2"></span><span>Remaining Liquidity / Runway</span><b>$477K</b></li>
             </ul>
           </div>
         </article>
@@ -1210,6 +1311,15 @@
   </main>
 
   <script>
+    const funds = [
+      { label: "Property / HQ Infrastructure", amount: 1126571, color: "#7a3030" },
+      { label: "Lab / Workspace Buildout", amount: 93500, color: "#304760" },
+      { label: "Compute Infrastructure", amount: 146500, color: "#2f5b4d" },
+      { label: "Legal / Entity Setup", amount: 72000, color: "#9a7c39" },
+      { label: "Ops / Software / Security", amount: 34000, color: "#55758e" },
+      { label: "Travel / Business Development", amount: 50000, color: "#8f6c50" },
+      { label: "Remaining Liquidity / Runway", amount: 477429, color: "#b7c7d2" },
+    ];
     const months = Array.from({ length: 24 }, (_, index) => `M${index + 1}`);
     const revenue = [0, 0, 26000, 54000, 60000, 66000, 99500, 137000, 218000, 209500, 221000, 324500, 354000, 416000, 487000, 490000, 513000, 628000, 596000, 649000, 734000, 737000, 746000, 870000];
     const grossProfit = [0, 0, 22100, 45900, 51000, 56100, 84575, 116450, 185300, 178075, 187850, 275825, 300900, 353600, 413950, 416500, 436050, 533800, 506600, 551650, 623900, 626450, 634100, 739500];
@@ -1235,6 +1345,80 @@
       return values.map((value, index) => `${index === 0 ? "M" : "L"}${xFor(index).toFixed(1)},${yFor(value).toFixed(1)}`).join(" ");
     }
 
+    function renderUseOfFundsChart() {
+      const target = document.querySelector(".donut");
+      if (!target) return;
+
+      const total = funds.reduce((sum, item) => sum + item.amount, 0);
+      const size = 280;
+      const center = size / 2;
+      const outer = 112;
+      const inner = 68;
+      let cursor = 0;
+
+      function polar(radius, angle) {
+        const radians = (angle - 90) * Math.PI / 180;
+        return {
+          x: center + radius * Math.cos(radians),
+          y: center + radius * Math.sin(radians),
+        };
+      }
+
+      function segmentPath(start, end) {
+        const outerStart = polar(outer, start);
+        const outerEnd = polar(outer, end);
+        const innerEnd = polar(inner, end);
+        const innerStart = polar(inner, start);
+        const largeArc = end - start > 180 ? 1 : 0;
+
+        return [
+          `M ${outerStart.x.toFixed(2)} ${outerStart.y.toFixed(2)}`,
+          `A ${outer} ${outer} 0 ${largeArc} 1 ${outerEnd.x.toFixed(2)} ${outerEnd.y.toFixed(2)}`,
+          `L ${innerEnd.x.toFixed(2)} ${innerEnd.y.toFixed(2)}`,
+          `A ${inner} ${inner} 0 ${largeArc} 0 ${innerStart.x.toFixed(2)} ${innerStart.y.toFixed(2)}`,
+          "Z",
+        ].join(" ");
+      }
+
+      const segments = funds.map((item) => {
+        const sweep = (item.amount / total) * 360;
+        const gap = Math.min(1.35, sweep * 0.26);
+        const start = cursor + gap / 2;
+        const end = cursor + sweep - gap / 2;
+        const path = segmentPath(start, end);
+        cursor += sweep;
+        return { ...item, path };
+      });
+
+      const shadowPaths = segments.map((item) => (
+        `<path class="donut-segment-shadow" d="${item.path}" fill="${item.color}" transform="translate(3.5 5)"></path>`
+      )).join("");
+
+      const mainPaths = segments.map((item) => (
+        `<path class="donut-segment" d="${item.path}" fill="${item.color}"><title>${item.label}: ${moneyShort(item.amount)}</title></path>`
+      )).join("");
+
+      target.innerHTML = `
+        <svg viewBox="0 0 ${size} ${size}" aria-hidden="true">
+          <defs>
+            <filter id="donutCenterShadow" x="-35%" y="-35%" width="170%" height="170%">
+              <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#10151b" flood-opacity="0.12"></feDropShadow>
+            </filter>
+            <radialGradient id="donutCenterFill" cx="38%" cy="28%" r="78%">
+              <stop offset="0%" stop-color="#ffffff"></stop>
+              <stop offset="100%" stop-color="#f5f9fb"></stop>
+            </radialGradient>
+          </defs>
+          <circle cx="${center}" cy="${center}" r="${outer + 2}" fill="rgba(255,255,255,0.34)"></circle>
+          ${shadowPaths}
+          ${mainPaths}
+          <circle cx="${center}" cy="${center}" r="${inner - 3}" fill="url(#donutCenterFill)" stroke="rgba(16,21,27,0.08)" stroke-width="1.2" filter="url(#donutCenterShadow)"></circle>
+          <text class="donut-center-label" x="${center}" y="${center - 2}" text-anchor="middle" dominant-baseline="middle">$2.0M</text>
+          <text class="donut-center-sub" x="${center}" y="${center + 25}" text-anchor="middle">Raise</text>
+        </svg>
+      `;
+    }
+
     function renderLineChart() {
       const target = document.getElementById("line-chart");
       if (!target) return;
@@ -1247,13 +1431,65 @@
       const max = Math.ceil(Math.max(...allValues) / 100000) * 100000;
       const innerW = width - pad.left - pad.right;
       const innerH = height - pad.top - pad.bottom;
+      const plotRight = width - pad.right;
+      const plotBottom = height - pad.bottom;
+      const depth = { x: 6, y: -5 };
       const xFor = (index) => pad.left + (index / (months.length - 1)) * innerW;
       const yFor = (value) => pad.top + ((max - value) / (max - min)) * innerH;
       const ticks = [-100000, 0, 200000, 400000, 600000, 800000, 1000000];
+      const series = [
+        { id: "revenue", values: revenue, color: "#304760", dark: "#1d3045", delay: 80 },
+        { id: "gross", values: grossProfit, color: "#9a7c39", dark: "#72581f", delay: 200 },
+        { id: "operating", values: operatingProfit, color: "#2f5b4d", dark: "#1e4036", delay: 320 },
+      ];
+      const markerIndexes = [11, 17, 23];
+      const defs = `
+        <defs>
+          <linearGradient id="lineChartBackPlane" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"></stop>
+            <stop offset="100%" stop-color="#ecf2f5" stop-opacity="0.72"></stop>
+          </linearGradient>
+          <linearGradient id="lineChartFloorPlane" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#eef4f7" stop-opacity="0.88"></stop>
+            <stop offset="100%" stop-color="#c8d7e1" stop-opacity="0.72"></stop>
+          </linearGradient>
+          <linearGradient id="lineChartSidePlane" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#dde8ee" stop-opacity="0.78"></stop>
+            <stop offset="100%" stop-color="#b8c9d5" stop-opacity="0.62"></stop>
+          </linearGradient>
+          <radialGradient id="markerRevenue" cx="34%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="#f8fbfd"></stop>
+            <stop offset="44%" stop-color="#55758e"></stop>
+            <stop offset="100%" stop-color="#1d3045"></stop>
+          </radialGradient>
+          <radialGradient id="markerGross" cx="34%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="#fff8df"></stop>
+            <stop offset="46%" stop-color="#b7954a"></stop>
+            <stop offset="100%" stop-color="#72581f"></stop>
+          </radialGradient>
+          <radialGradient id="markerOperating" cx="34%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="#e9f6ef"></stop>
+            <stop offset="46%" stop-color="#4c7b68"></stop>
+            <stop offset="100%" stop-color="#1e4036"></stop>
+          </radialGradient>
+          <filter id="lineStrokeShadow" x="-12%" y="-18%" width="130%" height="145%">
+            <feDropShadow dx="2" dy="3" stdDeviation="2.4" flood-color="#10151b" flood-opacity="0.14"></feDropShadow>
+          </filter>
+          <filter id="linePointShadow" x="-80%" y="-80%" width="260%" height="260%">
+            <feDropShadow dx="1.8" dy="2.6" stdDeviation="1.8" flood-color="#10151b" flood-opacity="0.16"></feDropShadow>
+          </filter>
+        </defs>
+      `;
 
       const grid = ticks.map((tick) => {
         const y = yFor(tick);
-        return `<g><line x1="${pad.left}" x2="${width - pad.right}" y1="${y}" y2="${y}" stroke="rgba(16,21,27,0.1)" stroke-dasharray="4 5"></line><text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text></g>`;
+        return `
+          <g>
+            <line class="chart-grid-line" x1="${pad.left}" x2="${plotRight}" y1="${y}" y2="${y}"></line>
+            <line x1="${plotRight}" x2="${plotRight + depth.x}" y1="${y}" y2="${y + depth.y}" stroke="rgba(16,21,27,0.05)"></line>
+            <text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text>
+          </g>
+        `;
       }).join("");
 
       const monthLabels = months.map((month, index) => {
@@ -1261,14 +1497,42 @@
         return `<text x="${xFor(index)}" y="${height - 19}" text-anchor="middle" fill="#66717c" font-size="10">${month}</text>`;
       }).join("");
 
+      const verticalGuides = [0, 5, 11, 17, 23].map((index) => {
+        const x = xFor(index);
+        return `<line x1="${x}" y1="${plotBottom}" x2="${x + depth.x}" y2="${pad.top + depth.y}" stroke="rgba(16,21,27,0.035)"></line>`;
+      }).join("");
+
+      const lineLayers = series.map((item) => {
+        const path = linePath(item.values, xFor, yFor);
+        return `
+          <path class="chart-line chart-line-glow" pathLength="1" style="--delay: ${item.delay}ms" d="${path}" fill="none" stroke="${item.dark}" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 4)"></path>
+          <path class="chart-line chart-depth-line" pathLength="1" style="--delay: ${item.delay + 40}ms" d="${path}" fill="none" stroke="${item.dark}" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 2)"></path>
+          <path class="chart-line" pathLength="1" style="--delay: ${item.delay + 80}ms" d="${path}" fill="none" stroke="${item.color}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#lineStrokeShadow)"></path>
+          <path class="chart-line chart-line-highlight" pathLength="1" style="--delay: ${item.delay + 120}ms" d="${path}" fill="none" stroke="rgba(255,255,255,0.78)" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5 -0.8)"></path>
+        `;
+      }).join("");
+
+      const markers = series.map((item) => {
+        const markerFill = item.id === "revenue" ? "markerRevenue" : item.id === "gross" ? "markerGross" : "markerOperating";
+        return item.values.map((value, index) => {
+          if (!markerIndexes.includes(index)) return "";
+          return `<circle class="chart-point" style="--delay: ${item.delay + 760 + index * 18}ms" cx="${xFor(index)}" cy="${yFor(value)}" r="3.4" fill="url(#${markerFill})" stroke="rgba(255,255,255,0.82)" stroke-width="1" filter="url(#linePointShadow)"></circle>`;
+        }).join("");
+      }).join("");
+
       target.innerHTML = `
         <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Monthly revenue and operating profit chart">
-          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.36)"></rect>
+          ${defs}
+          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.28)"></rect>
+          <rect class="chart-plane" x="${pad.left}" y="${pad.top}" width="${innerW}" height="${innerH}" rx="8" fill="url(#lineChartBackPlane)"></rect>
+          <rect x="${pad.left}" y="${plotBottom - 2}" width="${innerW}" height="7" rx="3.5" fill="rgba(48,71,96,0.055)"></rect>
+          ${verticalGuides}
           ${grid}
-          <line x1="${pad.left}" x2="${width - pad.right}" y1="${yFor(0)}" y2="${yFor(0)}" stroke="rgba(122,48,48,0.34)" stroke-width="1.4"></line>
-          <path class="chart-line" pathLength="1" style="--delay: 80ms" d="${linePath(revenue, xFor, yFor)}" fill="none" stroke="#304760" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path class="chart-line" pathLength="1" style="--delay: 200ms" d="${linePath(grossProfit, xFor, yFor)}" fill="none" stroke="#9a7c39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path class="chart-line" pathLength="1" style="--delay: 320ms" d="${linePath(operatingProfit, xFor, yFor)}" fill="none" stroke="#2f5b4d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          <line class="chart-axis" x1="${pad.left}" x2="${plotRight}" y1="${plotBottom}" y2="${plotBottom}"></line>
+          <line class="chart-axis" x1="${pad.left}" x2="${pad.left}" y1="${pad.top}" y2="${plotBottom}"></line>
+          <line x1="${pad.left}" x2="${plotRight}" y1="${yFor(0)}" y2="${yFor(0)}" stroke="rgba(122,48,48,0.38)" stroke-width="1.5"></line>
+          ${lineLayers}
+          ${markers}
           ${monthLabels}
         </svg>
       `;
@@ -1286,35 +1550,102 @@
       const innerH = height - pad.top - pad.bottom;
       const groupW = innerW / mix.length;
       const barW = Math.min(24, groupW * 0.24);
+      const plotRight = width - pad.right;
+      const plotBottom = height - pad.bottom;
+      const depth = { x: 4, y: -4 };
       const yFor = (value) => pad.top + ((max - value) / max) * innerH;
       const hFor = (value) => height - pad.bottom - yFor(value);
       const ticks = [0, 1000000, 2000000, 3000000];
+      const defs = `
+        <defs>
+          <linearGradient id="barChartFloorPlane" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f2f6f8" stop-opacity="0.92"></stop>
+            <stop offset="100%" stop-color="#c8d8e2" stop-opacity="0.72"></stop>
+          </linearGradient>
+          <linearGradient id="barChartBackPlane" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"></stop>
+            <stop offset="100%" stop-color="#edf3f6" stop-opacity="0.68"></stop>
+          </linearGradient>
+          <linearGradient id="yearOneFront" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#607f96"></stop>
+            <stop offset="64%" stop-color="#304760"></stop>
+            <stop offset="100%" stop-color="#263b52"></stop>
+          </linearGradient>
+          <linearGradient id="yearOneTop" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8ba6b8"></stop>
+            <stop offset="100%" stop-color="#55758e"></stop>
+          </linearGradient>
+          <linearGradient id="yearOneSide" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#304760"></stop>
+            <stop offset="100%" stop-color="#162638"></stop>
+          </linearGradient>
+          <linearGradient id="yearTwoFront" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#96504f"></stop>
+            <stop offset="64%" stop-color="#7a3030"></stop>
+            <stop offset="100%" stop-color="#602626"></stop>
+          </linearGradient>
+          <linearGradient id="yearTwoTop" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#b4706d"></stop>
+            <stop offset="100%" stop-color="#9f4c4b"></stop>
+          </linearGradient>
+          <linearGradient id="yearTwoSide" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7a3030"></stop>
+            <stop offset="100%" stop-color="#3e1516"></stop>
+          </linearGradient>
+        </defs>
+      `;
 
       const grid = ticks.map((tick) => {
         const y = yFor(tick);
-        return `<g><line x1="${pad.left}" x2="${width - pad.right}" y1="${y}" y2="${y}" stroke="rgba(16,21,27,0.1)" stroke-dasharray="4 5"></line><text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text></g>`;
+        return `
+          <g>
+            <line class="chart-grid-line" x1="${pad.left}" x2="${plotRight}" y1="${y}" y2="${y}"></line>
+            <line x1="${plotRight}" x2="${plotRight + depth.x}" y1="${y}" y2="${y + depth.y}" stroke="rgba(16,21,27,0.045)"></line>
+            <text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text>
+          </g>
+        `;
       }).join("");
+
+      function barStack(x, y, w, h, palette, delay) {
+        const right = x + w;
+        const bottom = y + h;
+        return `
+          <g class="chart-bar" style="--delay: ${delay}ms">
+            <polygon class="chart-bar-side" points="${right},${y} ${right + depth.x},${y + depth.y} ${right + depth.x},${bottom + depth.y} ${right},${bottom}" fill="url(#${palette}Side)"></polygon>
+            <polygon class="chart-bar-top" points="${x},${y} ${x + depth.x},${y + depth.y} ${right + depth.x},${y + depth.y} ${right},${y}" fill="url(#${palette}Top)"></polygon>
+            <rect class="chart-bar-front" x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="url(#${palette}Front)"></rect>
+          </g>
+        `;
+      }
 
       const bars = mix.map((item, index) => {
         const baseX = pad.left + index * groupW + groupW / 2;
         const y1 = yFor(item.y1);
         const y2 = yFor(item.y2);
+        const h1 = hFor(item.y1);
+        const h2 = hFor(item.y2);
         return `
-          <rect class="chart-bar" style="--delay: ${120 + index * 70}ms" x="${baseX - barW - 2}" y="${y1}" width="${barW}" height="${hFor(item.y1)}" rx="4" fill="#304760"></rect>
-          <rect class="chart-bar" style="--delay: ${210 + index * 70}ms" x="${baseX + 2}" y="${y2}" width="${barW}" height="${hFor(item.y2)}" rx="4" fill="#7a3030"></rect>
+          ${barStack(baseX - barW - 2, y1, barW, h1, "yearOne", 120 + index * 70)}
+          ${barStack(baseX + 2, y2, barW, h2, "yearTwo", 210 + index * 70)}
           <text x="${baseX}" y="${height - 42}" text-anchor="middle" fill="#4b5866" font-size="10">${item.label}</text>
         `;
       }).join("");
 
       target.innerHTML = `
         <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Revenue mix by stream chart">
-          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.36)"></rect>
+          ${defs}
+          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.28)"></rect>
+          <rect class="chart-plane" x="${pad.left}" y="${pad.top}" width="${innerW}" height="${innerH}" rx="8" fill="url(#barChartBackPlane)"></rect>
+          <rect x="${pad.left}" y="${plotBottom - 2}" width="${innerW}" height="7" rx="3.5" fill="rgba(48,71,96,0.055)"></rect>
           ${grid}
+          <line class="chart-axis" x1="${pad.left}" x2="${plotRight}" y1="${plotBottom}" y2="${plotBottom}"></line>
+          <line class="chart-axis" x1="${pad.left}" x2="${pad.left}" y1="${pad.top}" y2="${plotBottom}"></line>
           ${bars}
         </svg>
       `;
     }
 
+    renderUseOfFundsChart();
     renderLineChart();
     renderBarChart();
 
