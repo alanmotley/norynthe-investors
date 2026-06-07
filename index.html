@@ -1422,7 +1422,7 @@
   <link rel="stylesheet" href="norynthe-page-transitions.css">
   <script src="norynthe-page-transitions.js" defer></script>
 </head>
-<body>
+<body data-analytics-page="Norynthe Investor Access">
   <main class="page">
     <div class="container">
       <header class="topline" aria-label="Investor site header">
@@ -1895,6 +1895,8 @@
       if (typeof window.gtag !== "function") return;
       window.gtag("event", eventName, {
         event_category: "Investor Portal",
+        site_area: "Investor Portal",
+        page_name: document.body.dataset.analyticsPage || "Norynthe Investor Access",
         transport_type: "beacon",
         ...eventParams,
       });
@@ -2055,8 +2057,12 @@
 
     document.querySelectorAll(".review-tabs a").forEach((link) => {
       link.addEventListener("click", () => {
+        const linkText = cleanEventText(link.textContent);
         trackInvestorEvent("review_track_clicked", {
-          track: link.textContent.trim(),
+          link_text: linkText,
+          material: linkText,
+          source_area: "Review tabs",
+          track: linkText,
           target_section: link.getAttribute("href") || "",
         });
       });
@@ -2071,14 +2077,18 @@
         if (!sessionStorage.getItem(FIRST_MATERIAL_STORAGE_KEY)) {
           sessionStorage.setItem(FIRST_MATERIAL_STORAGE_KEY, "tracked");
           trackInvestorEvent("first_material_opened", {
+            link_text: material,
             material,
+            source_area: track,
             track,
             destination,
           });
         }
 
         trackInvestorEvent("material_opened", {
+          link_text: material,
           material,
+          source_area: track,
           track,
           destination,
         });
@@ -2095,10 +2105,13 @@
     document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
       link.addEventListener("click", () => {
         trackInvestorEvent("follow_up_requested", {
-          link_text: link.textContent.trim(),
+          link_text: cleanEventText(link.textContent),
+          source_area: "Investor Portal",
+          destination: link.getAttribute("href") || "",
         });
       });
     });
   </script>
 </body>
 </html>
+
