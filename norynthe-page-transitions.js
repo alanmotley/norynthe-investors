@@ -1,6 +1,67 @@
 (() => {
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasInlinePdfTracking = Array.from(document.scripts).some((script) => {
+    return !script.src && script.textContent.includes("pdf_download_clicked");
+  });
+
+  const cleanEventText = (value) => String(value || "").replace(/\s+/g, " ").trim().slice(0, 96);
+
+  const getMaterialLabel = (link) => {
+    const heading = link.querySelector("h3, strong");
+    return cleanEventText(heading?.textContent || link.textContent) || "PDF download";
+  };
+
+  const getMaterialTrack = (link) => {
+    if (link.closest(".fast-path")) return "First 15 minutes";
+    if (link.closest(".review-evidence")) return "Featured previews";
+    const section = link.closest(".section, .review-dashboard");
+    const sectionLabel = section?.querySelector(".section-label")?.textContent;
+    const metaTrack = link.querySelector(".card-meta span")?.textContent;
+    return cleanEventText(sectionLabel || metaTrack) || "Uncategorized";
+  };
+
+  const getDownloadFileName = (link, destination) => {
+    const downloadName = link.getAttribute("download");
+    if (downloadName) return downloadName;
+
+    try {
+      const url = new URL(destination, window.location.href);
+      return url.pathname.split("/").filter(Boolean).pop() || destination;
+    } catch {
+      return destination.split("/").filter(Boolean).pop() || destination;
+    }
+  };
+
+  const isPdfDestination = (destination) => {
+    try {
+      return new URL(destination, window.location.href).pathname.toLowerCase().endsWith(".pdf");
+    } catch {
+      return String(destination || "").toLowerCase().split("?")[0].endsWith(".pdf");
+    }
+  };
+
+  const trackInvestorPdfDownload = (link) => {
+    if (typeof window.gtag !== "function") return;
+
+    const destination = link.getAttribute("href") || "";
+    const material = getMaterialLabel(link);
+    const track = getMaterialTrack(link);
+
+    window.gtag("event", "pdf_download_clicked", {
+      event_category: "Investor Portal",
+      site_area: "Investor Portal",
+      page_name: document.body?.dataset.analyticsPage || "Norynthe Investor Access",
+      transport_type: "beacon",
+      link_text: material,
+      material,
+      source_area: track,
+      track,
+      destination,
+      file_name: getDownloadFileName(link, destination),
+      file_extension: "pdf",
+    });
+  };
 
   const showPage = () => {
     window.requestAnimationFrame(() => {
@@ -16,6 +77,16 @@
   }
 
   window.addEventListener("pageshow", showPage);
+
+  if (!hasInlinePdfTracking && !window.__norynthePdfDownloadTracking) {
+    window.__norynthePdfDownloadTracking = true;
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const link = target?.closest("a[href]");
+      if (!link || !isPdfDestination(link.getAttribute("href") || "")) return;
+      trackInvestorPdfDownload(link);
+    });
+  }
 
   if (reduceMotion) return;
 
