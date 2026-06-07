@@ -80,12 +80,15 @@
 
   if (!hasInlinePdfTracking && !window.__norynthePdfDownloadTracking) {
     window.__norynthePdfDownloadTracking = true;
+    root.dataset.pdfTracking = "ready";
     document.addEventListener("click", (event) => {
       const target = event.target instanceof Element ? event.target : event.target?.parentElement;
       const link = target?.closest("a[href]");
       if (!link || !isPdfDestination(link.getAttribute("href") || "")) return;
       trackInvestorPdfDownload(link);
     });
+  } else if (hasInlinePdfTracking) {
+    root.dataset.pdfTracking = "inline";
   }
 
   if (reduceMotion) return;
