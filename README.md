@@ -1,7 +1,7 @@
-# norynthe-investors
+# project-files
 
-Investor-facing static site for Norynthe.
+Static site files for a limited-access review surface.
 
-This site is lightly gated for investor review and includes noindex metadata to discourage search indexing.
+This repository is not intended to be a public search destination. The live pages include page-level robots metadata to discourage search indexing.
 
-Important: this is not server-side authentication. Do not place highly sensitive unencrypted materials in this public repository.
+Do not place sensitive or confidential materials in this repository.
