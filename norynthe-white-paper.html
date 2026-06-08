@@ -5,10 +5,10 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Norynthe Labs | White Paper</title>
+  <title>Norynthe Labs | White Paper</title>
   <meta
     name="description"
-    content="Norynthe: An independent rubric-based trust scoring and verification framework for AI models."
+    content="Norynthe: An independent rubric-based trust scoring and verification framework for AI models and agent systems."
   >
   <link rel="icon" type="image/png" href="favicon.png">
   <script>
@@ -409,7 +409,7 @@
 
     .glance {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 14px;
       margin: 10px 0 34px;
     }
@@ -540,10 +540,10 @@
     <section class="hero">
       <p class="eyebrow">Norynthe Labs</p>
       <h1>White Paper</h1>
-      <p class="subtitle">An independent method for Norynthe.Score, score detail, and private evaluation under a governed trust standard.</p>
+      <p class="subtitle">An independent method for Norynthe.Score, score detail, private evaluation, and harness-based agent assessment under a governed trust standard.</p>
       <div class="meta">
-        <span>April 17, 2026</span>
-        <span>Foundational Methodology</span>
+        <span>June 8, 2026</span>
+        <span>v1.1 Methodology Extension</span>
       </div>
       <div class="hero-grid">
         <div class="hero-summary">
@@ -555,7 +555,7 @@
           <ul class="hero-list">
             <li>Six public score dimensions and one diagnostic comparative signal</li>
             <li>Norynthe.Score, score detail, and private evaluation as separate outputs</li>
-            <li>Scorer, critic, and deterministic resolution built into the method</li>
+            <li>Harnessed agent episode packages for task, tool, evidence, and recovery review</li>
           </ul>
         </div>
       </div>
@@ -564,9 +564,10 @@
     <article class="paper">
       <section class="abstract">
         <h2>Abstract</h2>
-        <p>AI capability is advancing faster than the systems used to evaluate whether models are actually trustworthy for real-world use. Today, model evaluation is often shaped by benchmark gaming, vendor-controlled narratives, narrow task metrics, or ad hoc human impressions. These signals can be useful, but they do not provide a stable and independent basis for comparing models across vendors or determining whether a system is defensible for consequential use.</p>
-        <p>Norynthe is proposed as an independent scoring and verification layer for AI models. It combines a controlled benchmark, a workbook-governed rubric, a structured evaluator flow, and a reporting system that turns model comparison into a repeatable trust decision. In practical terms, it is designed to help enterprises make better decisions about how probabilistic systems are interpreted, trusted, compared, and operationalized under a governed evaluation standard. The framework is built around three outputs: <code>Norynthe.Score</code>, <code>Score Detail</code>, and <code>Private Evaluation</code>. Together, these outputs provide a public trust signal, an evidence-backed interpretation layer, and a higher-stakes deployment review mode.</p>
-        <p>The implementation story is straightforward: six public score dimensions, one diagnostic comparative signal, scorer and critic agents per dimension, deterministic resolution, calibration prompts, and the workbook layer that makes the process explainable to buyers, researchers, and investors. This paper sets out the problem, the methodology, the rubric and evaluation architecture, and the strategic role of independence in model scoring. It is not a claim of completed scientific validation. It is a first-principles framework for how independent AI trust scoring can be built in a way that is explainable, governable, and expandable over time.</p>
+        <p>AI capability is advancing faster than the systems used to evaluate whether models and agent systems are actually trustworthy for real-world use. Today, evaluation is often shaped by benchmark gaming, vendor-controlled narratives, narrow task metrics, or ad hoc human impressions. These signals can be useful, but they do not provide a stable and independent basis for comparing systems across vendors or determining whether an AI system is defensible for consequential use.</p>
+        <p>Norynthe is proposed as an independent scoring and verification layer for AI models and agents. It combines a controlled benchmark, a workbook-governed rubric, a structured evaluator flow, and a reporting system that turns comparison into a repeatable trust decision. In practical terms, it is designed to help enterprises make better decisions about how probabilistic systems are interpreted, trusted, compared, and operationalized under a governed evaluation standard. The framework is built around three outputs: <code>Norynthe.Score</code>, <code>Score Detail</code>, and <code>Private Evaluation</code>. Together, these outputs provide a public trust signal, an evidence-backed interpretation layer, and a higher-stakes deployment review mode.</p>
+        <p>This v1.1 extension adds a harness-based agent evaluation direction. Instead of scoring only the final text a model emits, Norynthe can score the full operating episode around an agent: task contract, context, tools, permissions, observed actions, failures, evidence records, verification steps, and recovery behavior. This moves the methodology from model-output scoring toward harnessed-agent-episode scoring while keeping the same core discipline: explicit rubrics, challengeable evaluator outputs, deterministic resolution, and evidence-backed reporting.</p>
+        <p>The implementation story is straightforward: six public score dimensions, one diagnostic comparative signal, scorer and critic agents per dimension, deterministic resolution, calibration prompts, and the workbook layer that makes the process explainable to buyers, researchers, and investors. This paper sets out the problem, the methodology, the rubric and evaluation architecture, and the strategic role of independence in model and agent scoring. It is not a claim of completed scientific validation. It is a first-principles framework for how independent AI trust scoring can be built in a way that is explainable, governable, and expandable over time.</p>
       </section>
 
       <section class="glance" aria-label="Key framework characteristics">
@@ -584,6 +585,11 @@
           <p class="glance-label">Decision</p>
           <h3>Verification above scoring</h3>
           <p>The public score remains legible for the market, while the verification layer adds blockers, reproducibility, and escalation for higher-stakes use.</p>
+        </article>
+        <article class="glance-card">
+          <p class="glance-label">Agent extension</p>
+          <h3>Episode package scoring</h3>
+          <p>Harnessed runs preserve task scope, context, tools, permissions, evidence, verification, and recovery behavior as part of the scored record.</p>
         </article>
       </section>
       <section id="problem">
@@ -641,6 +647,11 @@
           <div class="diagram-caption">Public signal, score detail, and private evaluation all derive from the same controlled evaluation standard.</div>
         </div>
         <p>This design allows Norynthe to operate as both a public trust index and a serious verification framework.</p>
+        <h3>2.1 Extension: Harness-Based Agent Evaluation</h3>
+        <p>As AI systems move from answering prompts toward completing work, trust evaluation has to expand beyond the final response. A model may produce a polished answer while the surrounding agent process remains weak, unsafe, difficult to verify, or dependent on hidden human rescue. Norynthe therefore treats agent evaluation as a question about the whole operating harness.</p>
+        <blockquote>Can this AI system complete work safely, reproducibly, and verifiably inside a controlled operating harness?</blockquote>
+        <p>In this extension, an evaluation record can be packaged as a <code>harnessed_agent_episode</code> rather than only a <code>model_output</code>. The episode package preserves the task objective, completion criteria, supplied context, memory rules, available tools, tool constraints, permissions, prohibited actions, observed actions, errors, retries, interventions, verification artifacts, evidence records, failure attribution, and recovery behavior.</p>
+        <p>This matters commercially because enterprise buyers do not only need to know which model writes better. They need to know which AI systems can complete bounded work with disciplined tool use, evidence, permission control, and reproducible verification.</p>
       </section>
 
       <section>
@@ -744,7 +755,7 @@
       <section id="evaluation">
         <h2>7. Evaluation Methodology</h2>
         <p class="section-intro">The system is designed so that scoring is challenged, resolved, and aggregated rather than emitted as a single opaque judgment.</p>
-        <p>Norynthe is not designed as a single black-box judge. It uses scorer and critic agents per dimension plus deterministic resolution when disagreement occurs.</p>
+        <p>Norynthe is not designed as a single black-box judge. It uses scorer and critic agents per dimension plus deterministic resolution when disagreement occurs. For agent systems, the same evaluator discipline applies to a richer record: the full task episode rather than the final answer alone.</p>
         <ol>
           <li>Select the benchmark question set.</li>
           <li>Run the model or model set against the same benchmark.</li>
@@ -752,7 +763,7 @@
           <li>Challenge the initial score through critic review.</li>
           <li>Apply resolver policy when disagreement occurs.</li>
           <li>Aggregate results into score and report outputs.</li>
-          <li>Optionally apply verification rules on top.</li>
+          <li>Optionally apply verification rules or harnessed episode review on top.</li>
         </ol>
         <h3>7.1 Scorer</h3>
         <p>The scorer assigns the initial dimension score, identifies strengths and weaknesses, cites evidence, and records deductions.</p>
@@ -760,6 +771,9 @@
         <p>The critic checks rubric compliance, challenges weak evidence, and revises or escalates when the initial score appears miscalibrated.</p>
         <h3>7.3 Resolver</h3>
         <p>The resolver applies deterministic application logic to finalize dimension results when scorer and critic outcomes diverge.</p>
+        <h3>7.4 Harnessed Runs and Episode Packages</h3>
+        <p>For agent evaluation, Norynthe records the operational conditions around a run instead of treating the output as isolated text. A harnessed episode package should document what the agent was asked to do, what it was allowed to access, which tools it used, what evidence it produced, which checks were applied, where recovery or human intervention occurred, and whether completion was verified.</p>
+        <p>Relevant agent dimensions include task completion, evidence quality, tool discipline, context integrity, permission discipline, verification strength, recovery behavior, and reproducibility. Common failure modes include weak task specification, poor context selection, tool misuse, verification gaps, permission overreach, hidden human dependency, brittle recovery, and unsupported completion claims.</p>
         <div class="diagram">
           <div class="diagram-label">Figure 4 · Evaluation Flow</div>
           <img class="diagram-figure" src="figure-4-evaluation-flow.drawio.svg" alt="Figure 4 showing the Norynthe evaluation flow from benchmark context through scorer, critic, resolver, aggregation, and verification.">
@@ -810,6 +824,7 @@
           <li>Independent AI trust scoring</li>
           <li>AI verification infrastructure</li>
           <li>Rubric-based model assurance</li>
+          <li>Harness-based agent evaluation</li>
           <li>Model comparison and reporting infrastructure</li>
         </ul>
       </section>
@@ -823,6 +838,7 @@
           <li>A structured evaluator design</li>
           <li>An explainable reporting model</li>
           <li>An extensible verification overlay</li>
+          <li>A harness-based agent evaluation extension</li>
         </ul>
         <p>It should not yet be represented as a completed standards body, a universally validated scientific benchmark, or a finished enterprise certification program.</p>
       </section>
@@ -835,19 +851,27 @@
           <li>Benchmark version governance</li>
           <li>Human review workflow design</li>
           <li>Domain-specific verification profiles</li>
+          <li>Harnessed episode package design</li>
+          <li>Agent failure taxonomy and recovery scoring</li>
           <li>Report usability testing with real stakeholders</li>
         </ol>
       </section>
 
       <section id="conclusion">
         <h2>14. Conclusion</h2>
-        <p>Norynthe proposes a new layer in the AI stack: an independent scoring, reporting, and verification framework for AI systems.</p>
+        <p>Norynthe proposes a new layer in the AI stack: an independent scoring, reporting, and verification framework for AI models and agent systems.</p>
         <p>Its central claim is straightforward: trust should not be inferred from vendor narrative, benchmark headlines, or subjective impressions alone. It should be measured through a controlled benchmark, a workbook-governed rubric, a challenge-and-resolution evaluator architecture, and explainable outputs that can support real decisions.</p>
-        <p>If successful, Norynthe would do more than help users decide which model they prefer. It would give the market a shared and independent basis for deciding which systems are most defensible, most reviewable, and most trustworthy for consequential use.</p>
+        <p>If successful, Norynthe would do more than help users decide which model they prefer. It would give the market a shared and independent basis for deciding which systems can be trusted to answer, act, verify, recover, and explain their work under consequential conditions.</p>
+      </section>
+
+      <section class="appendix">
+        <h2>Appendix D: Agent Evaluation Extension</h2>
+        <p>The harness-based agent direction extends Norynthe from <code>model_output</code> scoring into <code>harnessed_agent_episode</code> scoring. The purpose is not to claim that every agent can be certified today. The purpose is to define the evidence record needed before agentic work can be compared, reviewed, or trusted by an external buyer.</p>
+        <p>This appendix direction is intentionally early-stage. It gives Norynthe a credible path from model comparison into agent reliability infrastructure without requiring the company to buy or depend on an outside harness platform.</p>
       </section>
 
       <div class="paper-footer">
-        <span class="paper-footer-meta">Norynthe White Paper · Foundational Methodology · Independent standards for trusted intelligence</span>
+        <span class="paper-footer-meta">Norynthe White Paper · v1.1 Methodology · Independent standards for trusted intelligence</span>
         <span class="paper-footer-copy">© 2026 Norynthe.</span>
       </div>
     </article>
