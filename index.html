@@ -1126,6 +1126,24 @@
       margin-top: 1.55rem;
     }
 
+    .diligence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .diligence-card {
+      min-height: auto;
+    }
+
+    .diligence-card.is-wide {
+      grid-column: span 2;
+    }
+
+    .diligence-card strong {
+      color: #283541;
+    }
+
     .context-card {
       min-height: auto;
     }
@@ -1251,6 +1269,7 @@
     @media (max-width: 980px) {
       .hero,
       .context-grid,
+      .diligence-grid,
       .section-head,
       .artifact-panel,
       .artifact-gallery,
@@ -1394,6 +1413,10 @@
       .library-card.featured {
         grid-column: auto;
         min-height: auto;
+      }
+
+      .diligence-card.is-wide {
+        grid-column: auto;
       }
 
       .trust-strip {
@@ -1818,6 +1841,67 @@
             </div>
           </section>
 
+          <section class="section diligence-snapshot" id="diligence-snapshot" aria-labelledby="diligence-title">
+            <div class="section-head">
+              <div class="section-label">Investor diligence snapshot</div>
+              <h2 id="diligence-title">The questions investors usually test next.</h2>
+              <p>
+                This snapshot separates the current review surface from the next proof milestones, while keeping the proprietary benchmark mechanics private.
+              </p>
+            </div>
+            <div class="diligence-grid">
+              <article class="context-card diligence-card">
+                <div>
+                  <div class="card-kicker">What exists today</div>
+                  <h3>More than a concept deck.</h3>
+                  <p>
+                    Norynthe has an investor packet, working console surface, sample report system, financial model, raise plan, founder memo, enterprise use cases, and methodology paper.
+                  </p>
+                </div>
+              </article>
+              <article class="context-card diligence-card">
+                <div>
+                  <div class="card-kicker">What we prove next</div>
+                  <h3>Validation, repeatability, and paid pilots.</h3>
+                  <ul class="context-list">
+                    <li>Validate scoring consistency across repeated runs.</li>
+                    <li>Test report usefulness with early buyers and advisors.</li>
+                    <li>Package customer-facing evaluations into paid pilot format.</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="context-card diligence-card">
+                <div>
+                  <div class="card-kicker">Defensibility</div>
+                  <h3>Benchmark details stay private.</h3>
+                  <p>
+                    The moat comes from owned rubric governance, benchmark versioning, evaluator contracts, calibration history, reporting trust, and accumulated comparison data over time.
+                  </p>
+                </div>
+              </article>
+              <article class="context-card diligence-card">
+                <div>
+                  <div class="card-kicker">Why Norynthe wins</div>
+                  <h3>Independent evaluation records before compliance theater.</h3>
+                  <p>
+                    Model providers are conflicted, consulting firms are not infrastructure-native, and many GRC platforms begin with compliance rather than model behavior. Norynthe starts from independent evaluation records: benchmark-owned, rubric-governed, evidence-backed, and designed for comparison across vendors.
+                  </p>
+                </div>
+              </article>
+              <article class="context-card diligence-card is-wide">
+                <div>
+                  <div class="card-kicker">$2M milestone map</div>
+                  <h3>Capital tied to concrete proof.</h3>
+                  <ul class="context-list">
+                    <li><strong>0-90 days:</strong> finalize benchmark v1, tighten scoring workflow, package pilot reports.</li>
+                    <li><strong>3-6 months:</strong> run early evaluations, publish comparison records, refine the dashboard.</li>
+                    <li><strong>6-12 months:</strong> build paid pilot pipeline, expand domain profiles, add core evaluation support.</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </section>
+
           <div class="context-grid" aria-label="Investor context">
             <article class="context-card">
               <div>
@@ -1835,6 +1919,7 @@
                 <ul class="context-list">
                   <li>Start with the investor overview, business model, and founder memo.</li>
                   <li>Review the Norynthe OS walkthrough to see the completed MVP console and operational workflow.</li>
+                  <li>Use the diligence snapshot to separate what exists today from what Norynthe is proving next.</li>
                   <li>Use the raise plan and financial model to evaluate capital deployment, runway, and forecast assumptions.</li>
                   <li>Use the white paper, enterprise use cases, and compute thesis for the broader category, adoption, and infrastructure strategy.</li>
                 </ul>
@@ -2114,4 +2199,3 @@
   </script>
 </body>
 </html>
-
