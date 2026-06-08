@@ -2884,6 +2884,25 @@
         border-radius: 20px;
       }
 
+      .demo-frame .section-shell > *,
+      .demo-frame .split-head,
+      .demo-frame .console-workspace-grid,
+      .demo-frame .submit-card,
+      .demo-frame .console-side-rail,
+      .demo-frame .side-card,
+      .demo-frame .execution-trace-card,
+      .demo-frame .submit-card > *,
+      .demo-frame .launch-form-head,
+      .demo-frame .launch-step-grid,
+      .demo-frame .launch-step,
+      .demo-frame .status-pill,
+      .demo-frame .helper-pill,
+      .demo-frame .primary-button {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+      }
+
       .demo-frame-bar {
         align-items: flex-start;
         flex-direction: column;
@@ -2946,6 +2965,21 @@
     }
   </style>
   <link rel="stylesheet" href="norynthe-design-language.css">
+  <style>
+    @media (max-width: 760px) {
+      .demo-frame .section-shell > *,
+      .demo-frame .split-head,
+      .demo-frame .console-workspace-grid,
+      .demo-frame .submit-card,
+      .demo-frame .console-side-rail,
+      .demo-frame .side-card,
+      .demo-frame .execution-trace-card {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
   <script>document.documentElement.classList.add("nt-transition-enabled");</script>
   <link rel="stylesheet" href="norynthe-page-transitions.css">
   <script src="norynthe-page-transitions.js" defer></script>
@@ -3001,18 +3035,18 @@
 
       <section class="demo-guidance" aria-label="How to read the MVP console demo">
         <div class="demo-guidance-copy">
-          <div class="eyebrow">Product Walkthrough</div>
-          <h3>Use the console tabs to review the completed workflow.</h3>
+          <div class="eyebrow">Investor Proof</div>
+          <h3>What the working MVP demonstrates.</h3>
           <p>
-            Each tab shows how the product is organized today. This presentation layer preserves the operating
-            structure of the MVP while keeping live credentialed actions and private data out of the investor review.
+            Each tab shows that the product has moved beyond pitch language into a governed workflow. The next proof
+            comes from upgraded compute, larger-model testing, repeated-run consistency, and customer-facing pilot reports.
           </p>
         </div>
         <div class="demo-guidance-grid" aria-label="Console page guide">
           <article class="demo-guidance-card">
-            <span>Console</span>
+            <span>Product Exists</span>
             <strong>Assessment command center</strong>
-            <p>Launch an evaluation, monitor runtime trace, and review score-record work.</p>
+            <p>Launch flow, runtime posture, reviewer state, and score-record work are represented in the MVP.</p>
           </article>
           <article class="demo-guidance-card">
             <span>Evaluation</span>
@@ -3026,13 +3060,13 @@
           </article>
           <article class="demo-guidance-card">
             <span>Benchmark</span>
-            <strong>Governed benchmark layer</strong>
+            <strong>Protected benchmark layer</strong>
             <p>Coverage, sectors, score dimensions, and protected prompt governance.</p>
           </article>
           <article class="demo-guidance-card">
-            <span>Settings</span>
-            <strong>Operational readiness</strong>
-            <p>Runtime state, credential checks, model registry, and source controls.</p>
+            <span>Next Proof</span>
+            <strong>Compute and larger-model testing</strong>
+            <p>Upgraded compute should harden repeatability, larger-model evaluation, and pilot-ready outputs.</p>
           </article>
         </div>
       </section>
