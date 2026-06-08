@@ -1144,6 +1144,41 @@
       color: #283541;
     }
 
+    .milestone-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .milestone-item {
+      display: grid;
+      gap: 0.55rem;
+      align-content: start;
+      min-height: 132px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-top: 2px solid rgba(122, 48, 48, 0.34);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(248, 250, 252, 0.5));
+    }
+
+    .milestone-item span {
+      color: #25313d;
+      font-size: 0.72rem;
+      font-weight: 820;
+      letter-spacing: 0.14em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .milestone-item p {
+      margin: 0;
+      color: #44505d;
+      line-height: 1.54;
+    }
+
     .context-card {
       min-height: auto;
     }
@@ -1417,6 +1452,14 @@
 
       .diligence-card.is-wide {
         grid-column: auto;
+      }
+
+      .milestone-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .milestone-item {
+        min-height: auto;
       }
 
       .trust-strip {
@@ -1892,11 +1935,20 @@
                 <div>
                   <div class="card-kicker">$2M milestone map</div>
                   <h3>Capital tied to concrete proof.</h3>
-                  <ul class="context-list">
-                    <li><strong>0-90 days:</strong> finalize benchmark v1, tighten scoring workflow, package pilot reports.</li>
-                    <li><strong>3-6 months:</strong> run early evaluations, publish comparison records, refine the dashboard.</li>
-                    <li><strong>6-12 months:</strong> build paid pilot pipeline, expand domain profiles, add core evaluation support.</li>
-                  </ul>
+                  <div class="milestone-strip" aria-label="Capital milestone timeline">
+                    <div class="milestone-item">
+                      <span>0-90 days</span>
+                      <p>Finalize benchmark v1, tighten scoring workflow, and package pilot reports.</p>
+                    </div>
+                    <div class="milestone-item">
+                      <span>3-6 months</span>
+                      <p>Run early evaluations, publish comparison records, and refine the dashboard.</p>
+                    </div>
+                    <div class="milestone-item">
+                      <span>6-12 months</span>
+                      <p>Build the paid pilot pipeline, expand domain profiles, and add core evaluation support.</p>
+                    </div>
+                  </div>
                 </div>
               </article>
             </div>
