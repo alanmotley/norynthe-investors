@@ -1126,22 +1126,67 @@
       margin-top: 1.55rem;
     }
 
-    .diligence-grid {
+    .diligence-snapshot .section-head {
+      max-width: 760px;
+    }
+
+    .diligence-stack {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
 
-    .diligence-card {
-      min-height: auto;
+    .diligence-memo,
+    .diligence-milestones {
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-top: 2px solid rgba(51, 75, 110, 0.28);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.52));
+      overflow: hidden;
     }
 
-    .diligence-card.is-wide {
-      grid-column: span 2;
+    .diligence-row {
+      display: grid;
+      grid-template-columns: minmax(132px, 0.24fr) minmax(0, 1fr);
+      gap: clamp(1rem, 2.4vw, 1.8rem);
+      padding: 18px 20px;
+      border-top: 1px solid rgba(15, 17, 21, 0.075);
     }
 
-    .diligence-card strong {
-      color: #283541;
+    .diligence-row:first-child {
+      border-top: 0;
+    }
+
+    .diligence-label {
+      color: #5b6672;
+      font-size: 0.62rem;
+      font-weight: 820;
+      letter-spacing: 0.18em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .diligence-row h3,
+    .diligence-milestones h3 {
+      margin: 0 0 0.45rem;
+      color: var(--ink);
+      font-size: 1.1rem;
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .diligence-row p,
+    .diligence-milestones p {
+      margin: 0;
+      color: #44505d;
+      line-height: 1.58;
+    }
+
+    .diligence-milestones {
+      padding: 20px;
+      border-top-color: rgba(122, 48, 48, 0.34);
     }
 
     .milestone-strip {
@@ -1304,7 +1349,6 @@
     @media (max-width: 980px) {
       .hero,
       .context-grid,
-      .diligence-grid,
       .section-head,
       .artifact-panel,
       .artifact-gallery,
@@ -1450,8 +1494,10 @@
         min-height: auto;
       }
 
-      .diligence-card.is-wide {
-        grid-column: auto;
+      .diligence-row {
+        grid-template-columns: 1fr;
+        gap: 0.62rem;
+        padding: 16px;
       }
 
       .milestone-strip {
@@ -1887,52 +1933,51 @@
           <section class="section diligence-snapshot" id="diligence-snapshot" aria-labelledby="diligence-title">
             <div class="section-head">
               <div class="section-label">Investor diligence snapshot</div>
-              <h2 id="diligence-title">The questions investors usually test next.</h2>
+              <h2 id="diligence-title">Where the company stands now.</h2>
               <p>
-                This snapshot separates the current review surface from the next proof milestones, while keeping the proprietary benchmark mechanics private.
+                A concise readout of current proof, next validation work, defensibility, and capital milestones without exposing proprietary benchmark mechanics.
               </p>
             </div>
-            <div class="diligence-grid">
-              <article class="context-card diligence-card">
-                <div>
-                  <div class="card-kicker">What exists today</div>
+            <div class="diligence-stack">
+              <div class="diligence-memo" aria-label="Investor diligence answers">
+                <article class="diligence-row">
+                  <div class="diligence-label">Current proof</div>
+                  <div>
                   <h3>More than a concept deck.</h3>
                   <p>
                     Norynthe has an investor packet, working console surface, sample report system, financial model, raise plan, founder memo, enterprise use cases, and methodology paper.
                   </p>
-                </div>
-              </article>
-              <article class="context-card diligence-card">
-                <div>
-                  <div class="card-kicker">What we prove next</div>
-                  <h3>Validation, repeatability, and paid pilots.</h3>
-                  <ul class="context-list">
-                    <li>Validate scoring consistency across repeated runs.</li>
-                    <li>Test report usefulness with early buyers and advisors.</li>
-                    <li>Package customer-facing evaluations into paid pilot format.</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="context-card diligence-card">
-                <div>
-                  <div class="card-kicker">Defensibility</div>
-                  <h3>Benchmark details stay private.</h3>
+                  </div>
+                </article>
+                <article class="diligence-row">
+                  <div class="diligence-label">Next proof</div>
+                  <div>
+                    <h3>Validation, repeatability, and paid pilots.</h3>
+                    <p>
+                      The next work centers on scoring consistency across repeated runs, report usefulness with early buyers, and converting customer-facing evaluations into paid pilot format.
+                    </p>
+                  </div>
+                </article>
+                <article class="diligence-row">
+                  <div class="diligence-label">Defensibility</div>
+                  <div>
+                    <h3>Benchmark details stay private.</h3>
                   <p>
                     The moat comes from owned rubric governance, benchmark versioning, evaluator contracts, calibration history, reporting trust, and accumulated comparison data over time.
                   </p>
-                </div>
-              </article>
-              <article class="context-card diligence-card">
-                <div>
-                  <div class="card-kicker">Why Norynthe wins</div>
-                  <h3>Independent evaluation records before compliance theater.</h3>
+                  </div>
+                </article>
+                <article class="diligence-row">
+                  <div class="diligence-label">Why Norynthe</div>
+                  <div>
+                    <h3>Independent evaluation records beyond compliance checklists.</h3>
                   <p>
-                    Model providers are conflicted, consulting firms are not infrastructure-native, and many GRC platforms begin with compliance rather than model behavior. Norynthe starts from independent evaluation records: benchmark-owned, rubric-governed, evidence-backed, and designed for comparison across vendors.
+                    Model providers are conflicted, consulting firms are not infrastructure-native, and many GRC platforms begin with policy controls rather than model behavior. Norynthe starts from independent evaluation records: benchmark-owned, rubric-governed, evidence-backed, and designed for comparison across vendors.
                   </p>
-                </div>
-              </article>
-              <article class="context-card diligence-card is-wide">
-                <div>
+                  </div>
+                </article>
+              </div>
+              <article class="diligence-milestones">
                   <div class="card-kicker">$2M milestone map</div>
                   <h3>Capital tied to concrete proof.</h3>
                   <div class="milestone-strip" aria-label="Capital milestone timeline">
@@ -1949,7 +1994,6 @@
                       <p>Build the paid pilot pipeline, expand domain profiles, and add core evaluation support.</p>
                     </div>
                   </div>
-                </div>
               </article>
             </div>
           </section>
