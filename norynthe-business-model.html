@@ -23,6 +23,8 @@
       --signal: #7a3030;
       --slate: #324964;
       --paper: rgba(255, 255, 255, 0.5);
+      --paper-strong: rgba(255, 255, 255, 0.82);
+      --shadow-soft: 0 14px 34px rgba(15, 17, 21, 0.045);
       --max: 1180px;
     }
 
@@ -153,15 +155,25 @@
       color: #27313b;
     }
 
+    .hero,
+    .section-card,
+    .closing-card {
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 251, 253, 0.66));
+      box-shadow: var(--shadow-soft);
+    }
+
     .hero {
-      padding: clamp(2.1rem, 4.4vw, 4.4rem) 0 1.75rem;
-      border-top: 1px solid var(--line);
+      padding: clamp(1.55rem, 3.4vw, 2.55rem);
+      margin-bottom: 16px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
-      gap: clamp(1.55rem, 4.2vw, 4.4rem);
+      grid-template-columns: minmax(0, 0.95fr) minmax(330px, 0.62fr);
+      gap: clamp(1.35rem, 3.4vw, 3rem);
       align-items: start;
     }
 
@@ -175,10 +187,10 @@
     }
 
     .hero h1 {
-      max-width: 10ch;
-      margin: 0.72rem 0 0.95rem;
-      font-size: clamp(4.2rem, 8.8vw, 7.6rem);
-      line-height: 0.88;
+      max-width: 9ch;
+      margin: 0.7rem 0 0.9rem;
+      font-size: clamp(3rem, 6vw, 5.55rem);
+      line-height: 0.94;
       text-wrap: balance;
     }
 
@@ -186,8 +198,8 @@
       max-width: 48rem;
       margin: 0;
       color: var(--body);
-      font-size: clamp(1.06rem, 1.7vw, 1.22rem);
-      line-height: 1.66;
+      font-size: clamp(1rem, 1.45vw, 1.12rem);
+      line-height: 1.64;
     }
 
     .hero-links,
@@ -225,22 +237,22 @@
 
     .hero-answer {
       display: grid;
-      gap: 16px;
-      padding: 20px;
-      border: 1px solid rgba(17, 24, 32, 0.52);
-      border-top: 3px solid rgba(143, 177, 203, 0.42);
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid rgba(50, 73, 100, 0.14);
+      border-top: 3px solid rgba(122, 48, 48, 0.28);
       border-radius: 8px;
-      background: linear-gradient(180deg, rgba(17, 24, 32, 0.98), rgba(27, 44, 61, 0.98));
-      color: #f5f8fb;
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--ink);
     }
 
     .hero-answer .section-label {
-      color: rgba(234, 240, 246, 0.78);
+      color: var(--signal);
     }
 
     .answer-lines {
       display: grid;
-      gap: 14px;
+      gap: 0;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -248,9 +260,9 @@
 
     .answer-lines li {
       display: grid;
-      gap: 6px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(238, 244, 249, 0.16);
+      gap: 5px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(50, 73, 100, 0.12);
     }
 
     .answer-lines li:first-child {
@@ -258,38 +270,45 @@
       border-top: 0;
     }
 
+    .answer-lines li:last-child {
+      padding-bottom: 0;
+    }
+
     .answer-lines strong {
-      color: #fff;
-      font-size: clamp(1.18rem, 2vw, 1.48rem);
-      line-height: 1.12;
+      color: var(--ink);
+      font-size: clamp(1rem, 1.35vw, 1.14rem);
+      line-height: 1.18;
     }
 
     .answer-lines span {
-      color: rgba(238, 244, 249, 0.86);
+      color: #4d5b68;
+      font-size: 0.9rem;
       line-height: 1.5;
     }
 
     .callout-card {
-      max-width: 880px;
-      margin-top: 1.45rem;
-      padding: 14px 0;
-      border-top: 1px solid rgba(122, 48, 48, 0.28);
+      max-width: none;
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: 1px solid rgba(122, 48, 48, 0.18);
+      border-radius: 8px;
+      background: rgba(122, 48, 48, 0.045);
       color: #1f2a35;
-      font-size: clamp(1.12rem, 1.8vw, 1.42rem);
+      font-size: clamp(1rem, 1.35vw, 1.12rem);
       font-weight: 760;
-      line-height: 1.4;
+      line-height: 1.42;
     }
 
     .section-card,
     .closing-card {
-      padding: 30px 0 32px;
-      border-top: 1px solid rgba(15, 17, 21, 0.09);
+      padding: 26px;
+      margin-top: 16px;
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
-      gap: 0.7rem clamp(2rem, 5vw, 4.4rem);
+      grid-template-columns: minmax(190px, 0.3fr) minmax(0, 1fr);
+      gap: 0.7rem clamp(1.5rem, 4vw, 3rem);
       align-items: start;
       margin-bottom: 18px;
     }
@@ -303,7 +322,7 @@
     .section-head h2 {
       grid-column: 1;
       grid-row: 2;
-      max-width: 13ch;
+      max-width: 17ch;
       font-size: clamp(1.55rem, 2.55vw, 2.25rem);
       line-height: 1.02;
       text-wrap: balance;
@@ -337,16 +356,19 @@
 
     .business-flow {
       display: grid;
-      border-top: 1px solid var(--line-strong);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
     }
 
     .flow-step {
       display: grid;
-      grid-template-columns: 72px minmax(0, 1fr);
-      align-items: center;
-      min-height: 54px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(50, 73, 100, 0.12);
+      align-content: start;
+      gap: 10px;
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
     }
 
     .flow-kicker {
@@ -358,13 +380,13 @@
     }
 
     .flow-step strong {
-      font-size: clamp(1.05rem, 1.8vw, 1.36rem);
-      line-height: 1.2;
+      font-size: 0.98rem;
+      line-height: 1.18;
     }
 
     .flow-step.revenue {
-      margin-top: 10px;
-      padding: 15px 18px;
+      margin-top: 0;
+      padding: 14px;
       border: 1px solid rgba(17, 24, 32, 0.42);
       border-radius: 8px;
       background: linear-gradient(90deg, #111820, #24364a);
@@ -381,16 +403,15 @@
     .evidence-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid rgba(50, 73, 100, 0.12);
-      border-left: 1px solid rgba(50, 73, 100, 0.12);
+      gap: 12px;
     }
 
     .evidence-card {
-      min-height: 106px;
+      min-height: 116px;
       padding: 16px 17px;
-      border-right: 1px solid rgba(50, 73, 100, 0.12);
-      border-bottom: 1px solid rgba(50, 73, 100, 0.12);
-      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
     }
 
     .evidence-card strong {
@@ -427,17 +448,19 @@
     .tier-card.primary {
       display: grid;
       align-content: space-between;
-      background: linear-gradient(180deg, #111820, #24364a);
-      color: #f5f8fb;
+      border-color: rgba(122, 48, 48, 0.18);
+      border-left: 3px solid rgba(122, 48, 48, 0.52);
+      background: rgba(122, 48, 48, 0.045);
+      color: var(--ink);
     }
 
     .tier-card.primary .kicker,
     .tier-card.primary p {
-      color: rgba(238, 244, 249, 0.86);
+      color: var(--body);
     }
 
     .tier-card.primary h3 {
-      color: #fff;
+      color: var(--ink);
       font-size: clamp(1.5rem, 2.6vw, 2.1rem);
       line-height: 1.04;
     }
@@ -555,13 +578,16 @@
     .future-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0 22px;
-      border-top: 1px solid rgba(50, 73, 100, 0.12);
+      gap: 10px;
+      border-top: 0;
     }
 
     .future-card {
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(50, 73, 100, 0.12);
+      min-height: 68px;
+      padding: 14px;
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.54);
     }
 
     .future-card h3 {
@@ -570,7 +596,7 @@
     }
 
     .closing-card {
-      padding-bottom: 0;
+      padding-bottom: 26px;
     }
 
     .closing-card h2 {
@@ -630,7 +656,8 @@
       }
 
       .evidence-grid,
-      .future-grid {
+      .future-grid,
+      .business-flow {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -676,19 +703,15 @@
       }
 
       .evidence-grid,
+      .business-flow,
       .future-grid,
       .pricing-row,
       .phase-card {
         grid-template-columns: 1fr;
       }
 
-      .evidence-grid {
-        border-left: 0;
-      }
-
       .evidence-card {
         min-height: auto;
-        border-right: 0;
       }
 
       .pricing-row,
@@ -729,9 +752,9 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Enterprise Revenue Logic</p>
-          <h1 id="business-model-title">Business Model</h1>
+          <h1 id="business-model-title">Revenue model.</h1>
           <p class="lede">
-            How public trust scores create demand, and paid evidence access becomes enterprise revenue.
+            Norynthe uses public trust scores to create market visibility, then sells enterprise access to the evidence, reports, comparisons, and decision support behind the score. The first wedge is enterprise adoption review.
           </p>
           <div class="hero-links">
             <a class="hero-link primary" href="#revenue">Revenue Logic</a>
@@ -745,25 +768,25 @@
           <ul class="answer-lines">
             <li>
               <strong>Public trust scores create demand.</strong>
-              <span>They make AI systems visible and comparable in the market.</span>
+              <span>A visible, comparable market signal.</span>
             </li>
             <li>
               <strong>Enterprise evidence access creates revenue.</strong>
-              <span>Customers pay for reports, methodology, comparisons, and decision support.</span>
+              <span>Reports, methodology, comparisons, and decision support.</span>
             </li>
             <li>
               <strong>The first wedge is enterprise adoption review.</strong>
-              <span>CTO, procurement, risk, and governance teams need independent evidence before adopting or expanding AI systems.</span>
+              <span>CTO, procurement, risk, and governance teams.</span>
             </li>
             <li>
               <strong>The proof path is infrastructure-backed.</strong>
-              <span>The working MVP and report layer become more valuable as upgraded compute enables larger-model testing and repeatable evaluations.</span>
+              <span>Upgraded compute enables larger-model testing and repeatable evaluations.</span>
             </li>
           </ul>
         </aside>
       </div>
       <div class="callout-card">
-        Public trust scores create demand. Enterprise access to the evidence layer creates revenue.
+        Public score -> enterprise demand -> paid evidence access -> recurring revenue.
       </div>
     </section>
 
