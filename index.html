@@ -2003,6 +2003,7 @@
     const ACCESS_STORAGE_KEY = "noryntheInvestorAccess";
     const FIRST_MATERIAL_STORAGE_KEY = "noryntheFirstMaterialTracked";
     const GA4_MEASUREMENT_ID = "G-570981B382";
+    const CLARITY_PROJECT_ID = "x4cvavsztu";
     const TALLY_FORM_ID = "ZjezPA";
     const TALLY_FORM_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
 
@@ -2025,6 +2026,17 @@
       const script = document.createElement("script");
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_MEASUREMENT_ID)}`;
+      document.head.appendChild(script);
+    };
+
+    const initClarity = () => {
+      if (!CLARITY_PROJECT_ID || window.clarity || document.querySelector(`[data-clarity-project="${CLARITY_PROJECT_ID}"]`)) return;
+      window.clarity = window.clarity || function clarity(){ (window.clarity.q = window.clarity.q || []).push(arguments); };
+
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.clarity.ms/tag/${encodeURIComponent(CLARITY_PROJECT_ID)}`;
+      script.dataset.clarityProject = CLARITY_PROJECT_ID;
       document.head.appendChild(script);
     };
 
@@ -2131,6 +2143,7 @@
     };
 
     initAnalytics();
+    initClarity();
 
     const setAccessChecking = (isChecking) => {
       if (!accessButton) return;
