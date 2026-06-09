@@ -2006,6 +2006,10 @@
     const CLARITY_PROJECT_ID = "x4cvavsztu";
     const TALLY_FORM_ID = "ZjezPA";
     const TALLY_FORM_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
+    const OWNER_MODE_KEY = "norynthe_pulse_owner_mode_v1";
+    const OWNER_MODE_COOKIE = "norynthe_pulse_owner_mode";
+    const OWNER_MODE_ENABLE_VALUES = ["1", "true", "yes", "on", "enable", "enabled"];
+    const OWNER_MODE_DISABLE_VALUES = ["0", "false", "no", "off", "disable", "disabled"];
 
     const accessForm = document.querySelector("[data-access-form]");
     const accessError = document.querySelector("[data-access-error]");
@@ -2013,9 +2017,58 @@
     const accessInput = accessForm?.querySelector("input[name='access_password']");
     const accessButton = accessForm?.querySelector("button[type='submit']");
     const originalAccessButtonText = accessButton?.textContent || "Unlock materials";
+    const ownerModeCommand = applyOwnerModeCommand();
+    const ownerModeEnabled = isOwnerModeEnabled();
+    window.NORYNTHE_PULSE_OWNER_MODE_COMMAND = ownerModeCommand;
+    window.NORYNTHE_PULSE_OWNER_MODE = ownerModeEnabled;
+
+    function applyOwnerModeCommand() {
+      const params = new URLSearchParams(window.location.search);
+      const value = String(params.get("pulse_owner") || "").replace(/\s+/g, " ").trim().toLowerCase();
+      if (!OWNER_MODE_ENABLE_VALUES.includes(value) && !OWNER_MODE_DISABLE_VALUES.includes(value)) return false;
+
+      const enabled = OWNER_MODE_ENABLE_VALUES.includes(value);
+      try {
+        if (enabled) {
+          window.localStorage.setItem(OWNER_MODE_KEY, "1");
+        } else {
+          window.localStorage.removeItem(OWNER_MODE_KEY);
+        }
+      } catch (error) {}
+
+      const parts = [
+        OWNER_MODE_COOKIE + "=" + (enabled ? "1" : ""),
+        "path=/",
+        "max-age=" + (enabled ? 60 * 60 * 24 * 400 : 0),
+        "SameSite=Lax"
+      ];
+      const host = window.location.hostname.replace(/^www\./, "");
+      if (host.endsWith("norynthe.com")) parts.push("domain=.norynthe.com");
+      if (host.endsWith("alanmotley.com")) parts.push("domain=.alanmotley.com");
+      if (window.location.protocol === "https:") parts.push("Secure");
+      document.cookie = parts.join("; ");
+
+      try {
+        params.delete("pulse_owner");
+        const nextQuery = params.toString();
+        window.history.replaceState(null, document.title, window.location.pathname + (nextQuery ? "?" + nextQuery : "") + window.location.hash);
+      } catch (error) {}
+
+      return true;
+    }
+
+    function isOwnerModeEnabled() {
+      try {
+        if (window.localStorage.getItem(OWNER_MODE_KEY) === "1") return true;
+      } catch (error) {}
+
+      return document.cookie.split(";").some(function (part) {
+        return part.trim() === OWNER_MODE_COOKIE + "=1";
+      });
+    }
 
     const initAnalytics = () => {
-      if (!GA4_MEASUREMENT_ID) return;
+      if (ownerModeEnabled || ownerModeCommand || !GA4_MEASUREMENT_ID) return;
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
       window.gtag("js", new Date());
@@ -2030,7 +2083,7 @@
     };
 
     const initClarity = () => {
-      if (!CLARITY_PROJECT_ID || window.clarity || document.querySelector(`[data-clarity-project="${CLARITY_PROJECT_ID}"]`)) return;
+      if (ownerModeEnabled || ownerModeCommand || !CLARITY_PROJECT_ID || window.clarity || document.querySelector(`[data-clarity-project="${CLARITY_PROJECT_ID}"]`)) return;
       window.clarity = window.clarity || function clarity(){ (window.clarity.q = window.clarity.q || []).push(arguments); };
 
       const script = document.createElement("script");
@@ -2041,7 +2094,7 @@
     };
 
     const trackInvestorEvent = (eventName, eventParams = {}) => {
-      if (typeof window.gtag !== "function") return;
+      if (ownerModeEnabled || ownerModeCommand || typeof window.gtag !== "function") return;
       window.gtag("event", eventName, {
         event_category: "Investor Portal",
         site_area: "Investor Portal",
