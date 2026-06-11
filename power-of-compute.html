@@ -502,6 +502,87 @@
       line-height: 1.42;
     }
 
+    .unlock-card {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.52fr) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+      border: 1px solid var(--line-soft);
+      border-top: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(122, 48, 48, 0.05), transparent 42%),
+        var(--paper-strong);
+      box-shadow: var(--tight-shadow);
+    }
+
+    .unlock-spec {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      border-right: 1px solid var(--line-soft);
+      padding-right: 18px;
+    }
+
+    .unlock-spec strong {
+      color: var(--ink);
+      font-size: clamp(1.42rem, 2.4vw, 2.1rem);
+      font-weight: 850;
+      letter-spacing: 0;
+      line-height: 1.02;
+    }
+
+    .unlock-price {
+      display: grid;
+      gap: 4px;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 12px;
+    }
+
+    .unlock-price span {
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 860;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .unlock-price b {
+      color: var(--ink);
+      font-size: 1.05rem;
+      line-height: 1.18;
+    }
+
+    .unlock-copy {
+      display: grid;
+      gap: 12px;
+    }
+
+    .unlock-copy p {
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+
+    .unlock-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .unlock-points span {
+      display: block;
+      border: 1px solid var(--line-soft);
+      border-radius: 7px;
+      padding: 10px;
+      color: var(--body);
+      font-size: 0.9rem;
+      font-weight: 720;
+      line-height: 1.28;
+      background: rgba(255, 255, 255, 0.62);
+    }
+
     .section-list {
       display: grid;
       gap: 10px;
@@ -564,6 +645,8 @@
       .compare-grid,
       .metric-row,
       .workstation-panel,
+      .unlock-card,
+      .unlock-points,
       .closing-card {
         grid-template-columns: 1fr;
       }
@@ -575,6 +658,13 @@
       .hero-visual {
         border-left: 0;
         border-top: 1px solid rgba(238, 243, 246, 0.12);
+      }
+
+      .unlock-spec {
+        border-right: 0;
+        border-bottom: 1px solid var(--line-soft);
+        padding-right: 0;
+        padding-bottom: 16px;
       }
     }
 
@@ -789,6 +879,35 @@
               <p>For Norynthe, the point is not raw hardware prestige. The point is independent capacity: the ability to run repeatable evaluations without asking a model vendor for permission, throughput, pricing stability, or policy continuity.</p>
               <p>Two workstations provide redundancy, parallel workloads, resilience, and the foundation for future clustering. They allow Norynthe to separate benchmark execution from validation, production-style assessment from experimentation, and customer-facing report work from background model testing.</p>
               <p>A trust company should not fully rent its evaluation capacity from the companies it may need to evaluate.</p>
+            </div>
+          </div>
+
+          <div class="unlock-card" aria-label="Strategic compute unlock">
+            <aside class="unlock-spec">
+              <div class="section-label">Strategic Compute Unlock</div>
+              <strong>GB300-class AI workstation</strong>
+              <div class="unlock-price">
+                <span>Investor translation</span>
+                <b>A private AI evaluation lab in workstation form.</b>
+              </div>
+              <div class="unlock-price">
+                <span>Capital use</span>
+                <b>Approx. $100K per top-tier system.</b>
+              </div>
+            </aside>
+
+            <div class="unlock-copy">
+              <p>
+                Investors do not need to understand the workstation model number to understand the strategic unlock. A GB300-class system turns capital into reusable evaluation capacity: larger local model tests, faster benchmark cycles, private evidence records, and less dependence on vendor-controlled APIs.
+              </p>
+              <p>
+                The point is not hardware prestige. The point is that Norynthe can move from founder-lab capability into production-grade independent evaluation infrastructure.
+              </p>
+              <div class="unlock-points">
+                <span>Larger open-weight model testing</span>
+                <span>Higher-throughput benchmark execution</span>
+                <span>Defensible private evidence records</span>
+              </div>
             </div>
           </div>
 
