@@ -566,7 +566,7 @@
       <section class="abstract">
         <h2>Abstract</h2>
         <p>AI capability is advancing faster than the systems used to evaluate whether models and agent systems are actually trustworthy for real-world use. Today, evaluation is often shaped by benchmark gaming, vendor-controlled narratives, narrow task metrics, or ad hoc human impressions. These signals can be useful, but they do not provide a stable and independent basis for comparing systems across vendors or determining whether an AI system is defensible for consequential use.</p>
-        <p>Norynthe is proposed as an independent scoring and verification layer for AI models and agents. It combines a controlled benchmark, a workbook-governed rubric, a structured evaluator flow, and a reporting system that turns comparison into a repeatable trust decision. In practical terms, it is designed to help enterprises make better decisions about how probabilistic systems are interpreted, trusted, compared, and operationalized under a governed evaluation standard. The framework is built around three outputs: <code>Norynthe.Score</code>, <code>Score Detail</code>, and <code>Private Evaluation</code>. Together, these outputs provide a public trust signal, an evidence-backed interpretation layer, and a higher-stakes deployment review mode.</p>
+        <p>Norynthe operates as an independent scoring and verification layer for AI models and agents. It combines a controlled benchmark, a workbook-governed rubric, a structured evaluator flow, and a reporting system that turns comparison into a repeatable trust decision. In practical terms, it is designed to help enterprises make better decisions about how probabilistic systems are interpreted, trusted, compared, and operationalized under a governed evaluation standard. The framework is built around three outputs: <code>Norynthe.Score</code>, <code>Score Detail</code>, and <code>Private Evaluation</code>. Together, these outputs provide a public trust signal, an evidence-backed interpretation layer, and a higher-stakes deployment review mode.</p>
         <p>This v1.1 extension adds a harness-based agent evaluation direction. Instead of scoring only the final text a model emits, Norynthe can score the full operating episode around an agent: task contract, context, tools, permissions, observed actions, failures, evidence records, verification steps, and recovery behavior. This moves the methodology from model-output scoring toward harnessed-agent-episode scoring while keeping the same core discipline: explicit rubrics, challengeable evaluator outputs, deterministic resolution, and evidence-backed reporting.</p>
         <p>The implementation story is straightforward: six public score dimensions, one diagnostic comparative signal, scorer and critic agents per dimension, deterministic resolution, calibration prompts, and the workbook layer that makes the process explainable to buyers, researchers, and investors. This paper sets out the problem, the methodology, the rubric and evaluation architecture, and the strategic role of independence in model and agent scoring. It is not a claim of completed scientific validation. It is a first-principles framework for how independent AI trust scoring can be built in a way that is explainable, governable, and expandable over time.</p>
       </section>
@@ -596,13 +596,13 @@
       <section class="glance" aria-label="Investor translation">
         <article class="glance-card">
           <p class="glance-label">What Exists</p>
-          <h3>A working MVP and method architecture</h3>
-          <p>The white paper explains the scoring logic behind the console, report surfaces, benchmark governance, and verification overlay.</p>
+          <h3>A founder-built evaluation OS and method architecture</h3>
+          <p>The current system can review smaller models and validate the scoring logic behind the console, report surfaces, benchmark governance, and verification overlay.</p>
         </article>
         <article class="glance-card">
           <p class="glance-label">What $2M Proves</p>
-          <h3>Compute-backed repeatability</h3>
-          <p>Upgraded compute and larger-model testing should make the benchmark, evaluator behavior, and report outputs more credible under repeated runs.</p>
+          <h3>Compute-backed larger-model repeatability</h3>
+          <p>Dedicated lab and compute infrastructure should expand Norynthe from smaller-model workflow proof into larger-model testing, repeated runs, and more credible evidence reports.</p>
         </article>
         <article class="glance-card">
           <p class="glance-label">Why It Compounds</p>
