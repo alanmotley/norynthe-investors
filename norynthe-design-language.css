@@ -162,6 +162,12 @@ body.nt-investor-system .topline-nav a:hover {
   color: var(--nt-ink);
 }
 
+body.nt-investor-system .topline nav a[aria-current="page"],
+body.nt-investor-system .topline-right a[aria-current="page"],
+body.nt-investor-system .topline-nav a[aria-current="page"] {
+  color: var(--nt-accent);
+}
+
 body.nt-investor-system .topline nav a:last-child,
 body.nt-investor-system .topline-right a:last-child,
 body.nt-investor-system .topline-nav a:last-child {

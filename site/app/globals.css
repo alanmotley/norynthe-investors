@@ -36,9 +36,10 @@ button { font: inherit; }
 
 .site-header {
   min-height: 96px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
   padding: 0 max(4vw, calc((100vw - var(--shell)) / 2));
   border-bottom: 1px solid var(--line);
   background: rgba(233,237,242,.94);
@@ -47,7 +48,7 @@ button { font: inherit; }
 .wordmark { width: 142px; display: inline-flex; }
 .wordmark img { width: 100%; height: auto; filter: saturate(.75) contrast(1.06); }
 .footer-wordmark { width: auto; font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 700; letter-spacing: -.05em; }
-.portal-label, .kicker, .section-index, .card-meta {
+.kicker, .section-index, .card-meta {
   text-transform: uppercase;
   letter-spacing: .22em;
   font-size: .61rem;
@@ -63,7 +64,32 @@ button { font: inherit; }
   vertical-align: .24em;
   background: currentColor;
 }
-.text-link { justify-self: end; padding: .7rem 1rem; border: 1px solid var(--line); font-size: .65rem; font-weight: 720; letter-spacing: .11em; text-transform: uppercase; }
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .5rem 1.15rem;
+  color: var(--muted);
+  font-size: .61rem;
+  font-weight: 760;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.site-nav a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  padding: 0;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--accent); }
+.site-nav .contact-link {
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.58);
+}
+.site-nav .contact-link:hover { border-color: #9faab4; background: rgba(255,255,255,.88); }
 
 .hero {
   min-height: calc(100svh - 96px);
@@ -258,8 +284,10 @@ footer div { display: flex; gap: 18px; }
 }
 
 @media (max-width: 620px) {
-  .site-header { grid-template-columns: 1fr auto; }
-  .portal-label { display: none; }
+  .site-header { flex-wrap: wrap; align-items: flex-start; gap: 1rem; padding-top: 20px; padding-bottom: 18px; }
+  .site-nav { width: 100%; justify-content: flex-start; gap: .35rem .85rem; font-size: .56rem; letter-spacing: .12em; }
+  .site-nav a { min-height: 30px; }
+  .site-nav .contact-link { padding: 0 10px; }
   .hero { min-height: auto; gap: 55px; padding-bottom: 85px; }
   .hero h1 { font-size: clamp(2.55rem,10.8vw,3.25rem); line-height: .92; }
   .proof-strip, .card-grid, .answer-grid { grid-template-columns: 1fr; }
