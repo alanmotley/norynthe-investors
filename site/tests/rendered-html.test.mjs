@@ -1,91 +1,78 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
-
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
-
   return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
   );
 }
 
-test("server-renders the starter loading skeleton", async () => {
+test("server-renders the laboratory-first investor landing page", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
   const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  assert.match(html, /Independent AI Evaluation Laboratory/i);
+  assert.match(html, /Building the independent laboratory for AI trust/i);
+  assert.match(html, /Founder-built foundation/i);
+  assert.match(html, /Low-headcount by design/i);
+  assert.match(html, /noindex, nofollow, noarchive/i);
+  assert.doesNotMatch(html, /working evaluation OS|compute capacity is the present constraint/i);
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
+test("packages the complete local diligence set", async () => {
+  const root = new URL("../dist/client/", import.meta.url);
+  const required = [
+    "norynthe-laboratory.html",
+    "norynthe-raise-plan.html",
+    "norynthe-financial-model-assumptions.html",
+    "norynthe-founder-memo.html",
+    "norynthe-run-console.html",
+    "norynthe-customer-report.html",
+    "norynthe-customer-report-appendix.html",
+    "norynthe-white-paper.html",
+    "norynthe-investor-packet.pdf",
+  ];
+  await Promise.all(required.map((name) => access(new URL(name, root))));
+  const [lab, report, appendix, compute, raise, financial, business, consolePage, whitePaper, privacy, robots, headers] = await Promise.all([
+    readFile(new URL("norynthe-laboratory.html", root), "utf8"),
+    readFile(new URL("norynthe-customer-report.html", root), "utf8"),
+    readFile(new URL("norynthe-customer-report-appendix.html", root), "utf8"),
+    readFile(new URL("power-of-compute.html", root), "utf8"),
+    readFile(new URL("norynthe-raise-plan.html", root), "utf8"),
+    readFile(new URL("norynthe-financial-model-assumptions.html", root), "utf8"),
+    readFile(new URL("norynthe-business-model.html", root), "utf8"),
+    readFile(new URL("norynthe-run-console.html", root), "utf8"),
+    readFile(new URL("norynthe-white-paper.html", root), "utf8"),
+    readFile(new URL("privacy.html", root), "utf8"),
+    readFile(new URL("robots.txt", root), "utf8"),
+    readFile(new URL("_headers", root), "utf8"),
   ]);
-
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
-
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
-
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
-
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  assert.match(lab, /Founder identity/i);
+  assert.match(lab, /Low headcount\. Explicit accountability/i);
+  assert.match(report, /SYNTHETIC SAMPLE DATA/i);
+  assert.match(appendix, /SYNTHETIC SAMPLE DATA/i);
+  assert.match(report, /position:sticky/i);
+  assert.match(appendix, /position:sticky/i);
+  assert.doesNotMatch(compute, /Two GB300-class|Why Two Workstations|Approx\. \$100K per top-tier system/i);
+  assert.match(compute, /\$146,500 fully owned compute-infrastructure budget/i);
+  assert.match(raise, /Capital Architecture Under Consideration/i);
+  assert.match(raise, /Founder-Led Laboratory Runway/i);
+  assert.doesNotMatch(raise, /Travel \/ Business Development|Remaining Liquidity \/ Operating Reserve|International \/ Legal \/ Entity Setup/i);
+  assert.doesNotMatch(financial, /revenue:\s*\[|grossProfit:\s*\[|operatingProfit:\s*\[/i);
+  assert.match(business, /sole initial paid model/i);
+  assert.match(consolePage, /sample_core_v2/i);
+  assert.doesNotMatch(consolePage, /backend online|runtime online|validation-ready score production|completed a governed evaluation/i);
+  assert.match(whitePaper, /canonical public baseline/i);
+  assert.doesNotMatch(whitePaper, /founder-built evaluation OS|current system can review smaller models and validate the scoring logic/i);
+  assert.match(privacy, /noindex, nofollow, noarchive/i);
+  assert.doesNotMatch(privacy, /access unlock events|remember access status/i);
+  assert.match(robots, /Disallow:\s*\//i);
+  assert.match(headers, /X-Robots-Tag:\s*noindex/i);
 });

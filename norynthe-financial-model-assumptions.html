@@ -8,7 +8,7 @@
   <title>Norynthe Financial Model Assumptions</title>
   <meta
     name="description"
-    content="Investor-facing financial model assumptions for Norynthe's $2,000,000 raise, capital deployment, compute bottleneck, lab infrastructure, and modeled commercialization path."
+    content="Investor-facing capital assumptions for Norynthe's $2,000,000 controlled laboratory plan, founder-led runway, milestone gates, and validation path."
   >
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -122,7 +122,6 @@
     .eyebrow,
     .section-label,
     .kicker,
-    .chart-note,
     .phase-index,
     .table-kicker {
       color: var(--muted);
@@ -477,8 +476,7 @@
       background: var(--swatch);
     }
 
-    .funds-table,
-    .forecast-table {
+    .funds-table {
       width: 100%;
       border-collapse: collapse;
       overflow: hidden;
@@ -488,9 +486,7 @@
     }
 
     .funds-table th,
-    .funds-table td,
-    .forecast-table th,
-    .forecast-table td {
+    .funds-table td {
       padding: 12px 11px;
       border-bottom: 1px solid rgba(16,21,27,0.07);
       color: #3f4d59;
@@ -500,8 +496,7 @@
       vertical-align: top;
     }
 
-    .funds-table th,
-    .forecast-table th {
+    .funds-table th {
       color: #233140;
       font-size: 0.68rem;
       font-weight: 820;
@@ -511,15 +506,12 @@
     }
 
     .funds-table td:nth-child(2),
-    .funds-table td:nth-child(3),
-    .forecast-table td:not(:first-child),
-    .forecast-table th:not(:first-child) {
+    .funds-table td:nth-child(3) {
       text-align: right;
       white-space: nowrap;
     }
 
-    .funds-table tr:last-child td,
-    .forecast-table tr:last-child td {
+    .funds-table tr:last-child td {
       border-bottom: 0;
       color: var(--ink);
       font-weight: 800;
@@ -556,178 +548,6 @@
       color: #52606c;
       font-size: 0.91rem;
       line-height: 1.66;
-    }
-
-    .chart-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .chart-card {
-      min-height: 462px;
-    }
-
-    .chart-shell {
-      position: relative;
-      min-height: 322px;
-      border: 1px solid rgba(16,21,27,0.08);
-      border-radius: 12px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.8), rgba(248,251,252,0.66));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.86),
-        inset 0 -16px 28px rgba(48,71,96,0.045),
-        0 10px 22px rgba(16,21,27,0.055);
-      overflow: hidden;
-    }
-
-    .chart-shell::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        linear-gradient(126deg, rgba(255,255,255,0.36), transparent 32%),
-        linear-gradient(180deg, transparent 68%, rgba(16,21,27,0.026));
-      mix-blend-mode: screen;
-    }
-
-    .chart-shell svg {
-      position: relative;
-      z-index: 0;
-      display: block;
-      width: 100%;
-      height: auto;
-      overflow: visible;
-    }
-
-    .chart-plane {
-      filter: drop-shadow(0 7px 10px rgba(16,21,27,0.055));
-    }
-
-    .chart-axis {
-      stroke: rgba(16,21,27,0.2);
-      stroke-width: 1.3;
-    }
-
-    .chart-grid-line {
-      stroke: rgba(16,21,27,0.1);
-      stroke-dasharray: 4 5;
-    }
-
-    .chart-depth-line {
-      opacity: 0.16;
-      stroke-width: 5.2;
-    }
-
-    .chart-line-glow {
-      opacity: 0.1;
-      stroke-width: 6.8;
-    }
-
-    .chart-line-highlight {
-      opacity: 0.44;
-      stroke-width: 1;
-    }
-
-    .chart-line {
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-    }
-
-    .chart-bar,
-    .chart-point {
-      opacity: 0;
-      transform-box: fill-box;
-    }
-
-    .chart-point {
-      transform: scale(0.5);
-      transform-origin: 50% 50%;
-    }
-
-    .chart-bar {
-      transform: scaleY(0.04);
-      transform-origin: 50% 100%;
-      filter: drop-shadow(4px 7px 6px rgba(16,21,27,0.13));
-    }
-
-    .chart-bar-front {
-      stroke: rgba(255,255,255,0.28);
-      stroke-width: 0.8;
-    }
-
-    .chart-bar-top {
-      opacity: 0.66;
-    }
-
-    .chart-bar-side {
-      opacity: 0.48;
-    }
-
-    .chart-shell.is-animated .chart-line {
-      animation: chart-line-draw 1400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      animation-delay: var(--delay, 0ms);
-    }
-
-    .chart-shell.is-animated .chart-bar {
-      animation: chart-bar-rise 760ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      animation-delay: var(--delay, 0ms);
-    }
-
-    .chart-shell.is-animated .chart-point {
-      animation: chart-point-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      animation-delay: var(--delay, 0ms);
-    }
-
-    @keyframes chart-line-draw {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    @keyframes chart-bar-rise {
-      to {
-        opacity: 1;
-        transform: scaleY(1);
-      }
-    }
-
-    @keyframes chart-point-pop {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .chart-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 14px;
-      color: #4a5663;
-      font-size: 0.82rem;
-    }
-
-    .chart-legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .chart-legend i {
-      width: 18px;
-      height: 3px;
-      border-radius: 99px;
-      background: var(--legend-color);
-    }
-
-    .forecast-table-wrap {
-      overflow-x: auto;
-      border-radius: 10px;
     }
 
     .timeline {
@@ -823,7 +643,6 @@
 
       .hero-grid,
       .grid-two,
-      .chart-grid,
       .closing-grid {
         grid-template-columns: 1fr;
       }
@@ -889,10 +708,6 @@
         padding: 18px;
       }
 
-      .chart-shell {
-        min-height: 250px;
-      }
-
       .metric-grid,
       .grid-three,
       .logic-grid,
@@ -909,14 +724,8 @@
         min-height: auto;
       }
 
-      .chart-card {
-        min-height: auto;
-      }
-
       .funds-table th,
-      .funds-table td,
-      .forecast-table th,
-      .forecast-table td {
+      .funds-table td {
         padding: 10px 9px;
         font-size: 0.82rem;
       }
@@ -931,17 +740,6 @@
       }
 
       .fade-in {
-        opacity: 1;
-        transform: none;
-      }
-
-      .chart-line {
-        stroke-dasharray: none;
-        stroke-dashoffset: 0;
-      }
-
-      .chart-bar,
-      .chart-point {
         opacity: 1;
         transform: none;
       }
@@ -985,6 +783,7 @@
       </a>
       <nav class="topline-right">
         <a href="index.html">Investor Access</a>
+        <a href="norynthe-laboratory.html">Laboratory</a>
         <a href="norynthe-investors.html">Investor Overview</a>
         <a href="norynthe-raise-plan.html">Raise Plan</a>
         <a href="mailto:hello@norynthe.com?subject=Norynthe%20Financial%20Model">Contact</a>
@@ -997,12 +796,12 @@
           <p class="eyebrow">Financial Model / Investor Assumptions</p>
           <h1 id="model-title">Financial Model Assumptions</h1>
           <p class="lede">
-            How Norynthe models capital deployment, operating reserve, infrastructure investment, and early commercialization assumptions.
-            The initial raise is designed to remove the compute bottleneck in an existing evaluation OS: durable lab infrastructure,
-            owned compute, larger-model evaluation capacity, and the first enterprise validation cycle.
+            How Norynthe models capital deployment, the controlled laboratory base, hybrid compute, evidence and security systems,
+            founder-led runway, and milestone-gated validation. Commercial forecasts remain hypotheses until pricing, delivery capacity,
+            sales cycle, and pilot conversion are observed.
           </p>
           <div class="hero-actions">
-            <a class="hero-link primary" href="#forecast">View Forecast</a>
+            <a class="hero-link primary" href="#deployment">Review Capital Plan</a>
             <a class="hero-link" href="#deployment">Use of Funds</a>
             <a class="hero-link" href="norynthe-raise-plan.html">Raise Plan</a>
           </div>
@@ -1011,12 +810,12 @@
           <article class="model-card">
             <div class="kicker">Initial Raise Target</div>
             <strong>$2,000,000</strong>
-            <span>Foundation capital for owned compute, evaluation infrastructure, legal/IP setup, focused founder-led execution, product development, and enterprise pilot readiness.</span>
+            <span>Foundation capital for hybrid compute, evaluation infrastructure, legal/IP setup, focused founder-led execution, product development, and enterprise pilot readiness.</span>
           </article>
           <article class="model-card">
-            <div class="kicker">Modeled Commercial Ramp</div>
-            <strong>6 months</strong>
-            <span>Customer discovery, pilot packaging, and early paid access conversion before steadier commercial growth.</span>
+            <div class="kicker">Proof Horizon</div>
+            <strong>18 months</strong>
+            <span>Laboratory commissioning, repeatability, external challenge, traceable reporting, and bounded pilot validation.</span>
           </article>
         </aside>
       </div>
@@ -1029,29 +828,29 @@
         <span>Infrastructure-first capital assumption.</span>
       </article>
           <article class="metric-card">
-            <div class="kicker">Operating Reserve</div>
+            <div class="kicker">Founder-Led Laboratory Runway</div>
         <strong>$477K</strong>
         <span>Remaining liquidity after upfront deployment.</span>
       </article>
       <article class="metric-card">
-        <div class="kicker">Year 1 Revenue</div>
-        <strong>$1.42M</strong>
-        <span>Base scenario revenue across months 1-12.</span>
+        <div class="kicker">Operating Model</div>
+        <strong>Low headcount</strong>
+        <span>Founder-led, AI-leveraged, with selective external accountability.</span>
       </article>
       <article class="metric-card">
-        <div class="kicker">Year 2 Revenue</div>
-        <strong>$7.22M</strong>
-        <span>Base scenario revenue across months 13-24.</span>
+        <div class="kicker">Commercial Status</div>
+        <strong>Unvalidated</strong>
+        <span>First offer, pricing, buying motion, and repeat demand require pilot evidence.</span>
       </article>
       <article class="metric-card">
-        <div class="kicker">M24 Run Rate</div>
-        <strong>$10.44M</strong>
-        <span>Month 24 revenue multiplied by 12.</span>
+        <div class="kicker">Infrastructure Gate</div>
+        <strong>Staged</strong>
+        <span>Property and major compute commitments follow defined diligence and acceptance tests.</span>
       </article>
       <article class="metric-card">
-        <div class="kicker">Break-even</div>
-        <strong>M4</strong>
-        <span>First modeled positive operating profit month.</span>
+        <div class="kicker">Investor Test</div>
+        <strong>Evidence</strong>
+        <span>Repeatability, reconstruction, external challenge, report traceability, and institutional usefulness.</span>
       </article>
     </section>
 
@@ -1060,9 +859,9 @@
         <div class="section-label">Capital Deployment</div>
         <h2 id="deployment-title">The raise is modeled around durable infrastructure before payroll scale.</h2>
         <p>
-          This model prioritizes fully owned operating infrastructure, evaluation capacity, legal setup, and an operating reserve.
-          Instead of using the initial capital primarily for headcount, the budget is structured around the lab and compute base
-          required to move from smaller-model evaluation into larger-model independent trust scoring.
+          This plan prioritizes a controlled physical base, compute and storage, evidence custody, security, method governance,
+          legal structure, selective external challenge, and founder-led runway. Norynthe is intentionally low-headcount and
+          infrastructure-intensive.
         </p>
       </div>
       <div class="grid-two">
@@ -1070,15 +869,15 @@
           <div class="table-kicker">Use of Funds</div>
           <h3>$2,000,000 capital deployment</h3>
           <div class="donut-wrap">
-            <div class="donut" role="img" aria-label="Use of funds donut chart showing $1.13M for headquarters infrastructure, $477K remaining liquidity, and smaller allocations for lab, compute, legal, operations, and business development."></div>
+            <div class="donut" role="img" aria-label="Use of funds donut chart showing $1.13M for the diligence-gated controlled laboratory base, $477K for founder-led laboratory runway, and allocations for compute, buildout, legal and entity setup, institutional validation, software, operations, and security."></div>
             <ul class="legend" aria-label="Use of funds legend">
-              <li><span class="swatch" style="--swatch:#7a3030"></span><span>Property / HQ Infrastructure</span><b>$1.13M</b></li>
+              <li><span class="swatch" style="--swatch:#7a3030"></span><span>Controlled Laboratory Base — Diligence Gated</span><b>$1.13M</b></li>
               <li><span class="swatch" style="--swatch:#304760"></span><span>Lab / Workspace Buildout</span><b>$93.5K</b></li>
               <li><span class="swatch" style="--swatch:#2f5b4d"></span><span>Compute Infrastructure</span><b>$146.5K</b></li>
               <li><span class="swatch" style="--swatch:#9a7c39"></span><span>Legal / Entity Setup</span><b>$72K</b></li>
               <li><span class="swatch" style="--swatch:#55758e"></span><span>Ops / Software / Security</span><b>$34K</b></li>
-              <li><span class="swatch" style="--swatch:#8f6c50"></span><span>Travel / Business Development</span><b>$50K</b></li>
-              <li><span class="swatch" style="--swatch:#b7c7d2"></span><span>Remaining Liquidity / Operating Reserve</span><b>$477K</b></li>
+              <li><span class="swatch" style="--swatch:#8f6c50"></span><span>Institutional Validation / Design Partners</span><b>$50K</b></li>
+              <li><span class="swatch" style="--swatch:#b7c7d2"></span><span>Founder-Led Laboratory Runway</span><b>$477K</b></li>
             </ul>
           </div>
         </article>
@@ -1094,17 +893,37 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Property / Headquarters Infrastructure</td><td>$1,126,571</td><td>56.3%</td></tr>
+              <tr><td>Controlled Laboratory Base — Diligence Gated</td><td>$1,126,571</td><td>56.3%</td></tr>
               <tr><td>Lab / Workspace Buildout</td><td>$93,500</td><td>4.7%</td></tr>
               <tr><td>Compute Infrastructure</td><td>$146,500</td><td>7.3%</td></tr>
-              <tr><td>International / Legal / Entity Setup</td><td>$72,000</td><td>3.6%</td></tr>
-              <tr><td>Operations / Software / Security</td><td>$34,000</td><td>1.7%</td></tr>
-              <tr><td>Travel / Business Development</td><td>$50,000</td><td>2.5%</td></tr>
-              <tr><td>Remaining Liquidity / Operating Reserve</td><td>$477,429</td><td>23.9%</td></tr>
+              <tr><td>Legal / Entity Setup</td><td>$72,000</td><td>3.6%</td></tr>
+              <tr><td>Ops / Software / Security</td><td>$34,000</td><td>1.7%</td></tr>
+              <tr><td>Institutional Validation / Design Partners</td><td>$50,000</td><td>2.5%</td></tr>
+              <tr><td>Founder-Led Laboratory Runway</td><td>$477,429</td><td>23.9%</td></tr>
               <tr><td>Total</td><td>$2,000,000</td><td>100.0%</td></tr>
             </tbody>
           </table>
         </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="capital-architecture-title">
+      <div class="section-head">
+        <div class="section-label">Capital Architecture Under Consideration</div>
+        <h2 id="capital-architecture-title">Capital type should match the capability being financed.</h2>
+        <p>
+          The $2M target is a laboratory funding objective, not a claim that every component should use one financing instrument.
+          Norynthe is evaluating a staged, blended structure and has not selected or offered investment terms.
+        </p>
+      </div>
+      <div class="logic-grid">
+        <article class="logic-card"><div class="kicker">Operating Company</div><h3>Equity or SAFE under consideration</h3><p>Potential fit for commercial product development, founder-led runway, security, pilots, and enterprise validation.</p></article>
+        <article class="logic-card"><div class="kicker">Public-Interest Work</div><h3>Grant, catalytic, or program-related capital</h3><p>Potential fit for public method development, benchmark governance, publication, external challenge, and correction infrastructure.</p></article>
+        <article class="logic-card"><div class="kicker">Long-Lived Assets</div><h3>Property or equipment financing</h3><p>Potential fit only after facility, ownership, workload, technical, economic, and governance diligence supports the asset.</p></article>
+        <article class="logic-card"><div class="kicker">Commercial Proof</div><h3>Customer-funded pilots</h3><p>The strongest early revenue evidence would be bounded paid engagements tied to real institutional decisions.</p></article>
+      </div>
+      <div class="disclosure" style="margin-top:18px;">
+        No valuation, equity percentage, SAFE cap, discount, property structure, or investor-return term is stated or implied on this page.
       </div>
     </section>
 
@@ -1113,7 +932,7 @@
         <div class="section-label">Operating Reserve Logic</div>
         <h2 id="reserve-title">Founder-led execution preserves optionality until enterprise demand is validated.</h2>
         <p>
-          The model assumes disciplined early operating costs while prioritizing the compute capacity needed to produce stronger
+          The plan assumes disciplined operating costs while prioritizing the complete laboratory capacity required to produce stronger
           evaluation evidence before enterprise demand, pilot feedback, and product-market signals justify expansion.
         </p>
       </div>
@@ -1121,12 +940,12 @@
         <article class="logic-card">
           <div class="kicker">Operating Mode</div>
           <h3>Founder-led operations</h3>
-          <p>One employee during the initial phase, with limited payroll burden before validation.</p>
+          <p>Alan remains the principal operator, method steward, and institutional lead. Headcount expands only when evidence and workload justify it.</p>
         </article>
         <article class="logic-card">
           <div class="kicker">Infrastructure</div>
-          <h3>Fully owned compute</h3>
-          <p>Capital goes toward GPU capacity, memory, storage, evaluation control, and larger-model testing on upgraded compute.</p>
+          <h3>Hybrid, controlled compute</h3>
+          <p>Capital supports selected local capacity, secure storage, API access, and external capacity where each mode improves control, coverage, repeatability, or cost.</p>
         </article>
         <article class="logic-card">
           <div class="kicker">Cost Discipline</div>
@@ -1151,98 +970,67 @@
       </div>
     </section>
 
-    <section class="section-card fade-in" id="forecast" aria-labelledby="forecast-title">
+    <section class="section-card fade-in" aria-labelledby="proof-title">
       <div class="section-head">
-        <div class="section-label">Modeled Forecast</div>
-        <h2 id="forecast-title">A 24-month base scenario shows what Norynthe could bring in after a six-month ramp.</h2>
+        <div class="section-label">18-Month Proof Program</div>
+        <h2 id="proof-title">Capital deployment is staged against evidence, not calendar optimism.</h2>
         <p>
-          The forecast models enterprise subscriptions, custom evaluations, reports, advisory support, API access,
-          and licensing. It is an assumption-based operating case, not guaranteed revenue or audited guidance.
+          The funded phase is designed to retire technical, methodological, institutional, and commercial risk in sequence.
+          Dates remain planning ranges until facility, hardware, and external-review diligence is complete.
         </p>
       </div>
-      <div class="chart-grid">
-        <article class="visual-card chart-card">
-          <div class="table-kicker">Monthly Revenue and Profitability</div>
-          <h3>Revenue, gross profit, and operating profit</h3>
-          <div class="chart-shell" id="line-chart" aria-label="Line chart showing modeled revenue, gross profit, and operating profit over 24 months"></div>
-          <div class="chart-legend" aria-label="Line chart legend">
-            <span><i style="--legend-color:#304760"></i>Total revenue</span>
-            <span><i style="--legend-color:#9a7c39"></i>Gross profit</span>
-            <span><i style="--legend-color:#2f5b4d"></i>Operating profit</span>
-          </div>
-        </article>
-        <article class="visual-card chart-card">
-          <div class="table-kicker">Revenue Mix</div>
-          <h3>Year 1 and Year 2 revenue by stream</h3>
-          <div class="chart-shell" id="bar-chart" aria-label="Bar chart showing modeled revenue mix by stream"></div>
-          <div class="chart-legend" aria-label="Bar chart legend">
-            <span><i style="--legend-color:#304760"></i>Year 1</span>
-            <span><i style="--legend-color:#7a3030"></i>Year 2</span>
-          </div>
-        </article>
-      </div>
-      <div class="forecast-table-wrap" style="margin-top:14px;">
-        <table class="forecast-table" aria-label="Forecast checkpoints">
-          <thead>
-            <tr>
-              <th>Checkpoint</th>
-              <th>Revenue</th>
-              <th>Operating Profit</th>
-              <th>Ending Liquidity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Month 6</td><td>$66,000</td><td>$32,600</td><td>$511,529</td></tr>
-            <tr><td>Month 12</td><td>$324,500</td><td>$237,325</td><td>$1,308,604</td></tr>
-            <tr><td>Month 24</td><td>$870,000</td><td>$683,000</td><td>$6,767,604</td></tr>
-          </tbody>
-        </table>
+      <div class="logic-grid">
+        <article class="logic-card"><div class="kicker">Months 0–3</div><h3>Specify and govern</h3><p>Finalize laboratory requirements, buy-versus-lease analysis, hardware configuration, security model, method register, benchmark register, and conflict controls.</p></article>
+        <article class="logic-card"><div class="kicker">Months 3–6</div><h3>Establish controlled execution</h3><p>Commission the minimum viable environment, evidence ledger, version controls, chain of custody, and first complete verified run package.</p></article>
+        <article class="logic-card"><div class="kicker">Months 6–12</div><h3>Demonstrate repeatability</h3><p>Publish repeated-run variance results, reconcile benchmark and method versions, complete external methodological challenge, and issue traceable pilot reports.</p></article>
+        <article class="logic-card"><div class="kicker">Months 12–18</div><h3>Test institutional demand</h3><p>Complete bounded design-partner engagements, test willingness to pay, document decision impact, and determine which recurring products evidence supports.</p></article>
       </div>
     </section>
 
     <section class="section-card fade-in" aria-labelledby="streams-title">
       <div class="section-head">
-        <div class="section-label">Revenue Streams</div>
-        <h2 id="streams-title">Enterprise access to the evidence layer creates multiple commercial paths.</h2>
+        <div class="section-label">Commercial Hypotheses</div>
+        <h2 id="streams-title">One initial paid workflow; multiple later paths to validate.</h2>
+        <p>The first commercial test is a scoped enterprise adoption-evidence engagement. The additional paths below remain hypotheses until buyer behavior and delivery economics support them.</p>
       </div>
       <div class="stream-grid">
         <article class="stream-card">
-          <div class="kicker">Recurring</div>
+          <div class="kicker">Sole Initial Paid Model</div>
+          <h3>Scoped adoption-evidence engagement</h3>
+          <p>One consequential institutional decision, one bounded evaluation record, and one decision-ready report.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Later Unvalidated Hypothesis</div>
           <h3>Enterprise subscriptions</h3>
-          <p>Recurring access to evidence-layer materials and trust-scoring outputs.</p>
+          <p>Potential recurring evidence access only if repeated use, delivery economics, and willingness to pay support it.</p>
         </article>
         <article class="stream-card">
-          <div class="kicker">Scoped Work</div>
-          <h3>Custom evaluations</h3>
-          <p>Specific AI system evaluations for vendors, procurement teams, or enterprise governance groups.</p>
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Comparative reports and monitoring</h3>
+          <p>Potential recurring comparison or change-tracking products only after the scoped engagement proves useful.</p>
         </article>
         <article class="stream-card">
-          <div class="kicker">Decision Intelligence</div>
-          <h3>Vendor and governance reports</h3>
-          <p>Comparison reports for procurement, governance, risk, and AI program stakeholders.</p>
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Advisory services</h3>
+          <p>Potential interpretation support only where buyers demonstrate a separate need beyond the bounded report.</p>
         </article>
         <article class="stream-card">
-          <div class="kicker">Support</div>
-          <h3>Advisory packages</h3>
-          <p>Help interpreting evidence and preparing internal decision materials.</p>
-        </article>
-        <article class="stream-card">
-          <div class="kicker">Data Access</div>
+          <div class="kicker">Later Unvalidated Hypothesis</div>
           <h3>API access</h3>
-          <p>Future score history, score metadata, monitoring feeds, and integration pathways.</p>
+          <p>Potential score history, metadata, and integration access only after repeatable demand and data quality are demonstrated.</p>
         </article>
         <article class="stream-card">
-          <div class="kicker">Licensing</div>
-          <h3>Benchmark and sector licensing</h3>
-          <p>Controlled licensing of benchmark assets, methodology, or sector-specific trust reports.</p>
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Benchmark or sector licensing</h3>
+          <p>Potential controlled licensing only after method governance, buyer demand, and conflict protections are validated.</p>
         </article>
       </div>
     </section>
 
     <section class="section-card fade-in" aria-labelledby="milestones-title">
       <div class="section-head">
-        <div class="section-label">Commercial Milestones</div>
-        <h2 id="milestones-title">Scale follows infrastructure, larger-model testing, and enterprise validation.</h2>
+        <div class="section-label">Commercial Proof Sequence</div>
+        <h2 id="milestones-title">Scale follows laboratory evidence and buyer validation.</h2>
       </div>
       <div class="timeline">
         <article class="phase-card">
@@ -1253,7 +1041,7 @@
         <article class="phase-card">
           <span class="phase-index">Phase 2</span>
           <h3>Larger-model testing</h3>
-          <p>Push the Norynthe evaluation OS from smaller-model workflow proof to upgraded compute and tune the already-built scoring and evidence framework against larger-model performance.</p>
+          <p>Execute controlled evaluations across locally hosted and API-accessed systems, preserving complete run packages and measuring repeatability.</p>
         </article>
         <article class="phase-card">
           <span class="phase-index">Phase 3</span>
@@ -1268,7 +1056,7 @@
         <article class="phase-card">
           <span class="phase-index">Phase 5</span>
           <h3>Validated packaging</h3>
-          <p>Convert validated use cases into subscription, custom evaluation, or advisory revenue.</p>
+          <p>Use observed demand and delivery economics to decide whether any recurring access, monitoring, API, licensing, or advisory extension is warranted.</p>
         </article>
       </div>
     </section>
@@ -1276,12 +1064,12 @@
     <section class="section-card fade-in" aria-labelledby="disclosure-title">
       <div class="section-head">
         <div class="section-label">Forecast Treatment</div>
-        <h2 id="disclosure-title">The page shows modeled upside, not guaranteed outcomes.</h2>
+        <h2 id="disclosure-title">Commercial forecasts are withheld until the first offer is validated.</h2>
       </div>
       <div class="disclosure">
-        Forecast figures are assumptions. Revenue development depends on customer discovery, procurement stakeholder validation,
-        pilot conversion, pricing acceptance, delivery capacity, and enterprise willingness to pay for independent AI evaluation
-        and trust-scoring infrastructure. Profitability is modeled as an operating scenario output, not a guaranteed profitability promise.
+        Prior internal scenarios are not presented as investor guidance. Revenue development depends on customer discovery,
+        procurement stakeholder validation, pilot conversion, pricing acceptance, delivery capacity, and demonstrated willingness to pay.
+        A board-usable forecast should follow evidence on cycle length, pricing, gross delivery effort, repeat usage, and conversion.
       </div>
     </section>
 
@@ -1289,10 +1077,10 @@
       <div class="closing-grid">
         <div>
           <div class="section-label">Investor Interpretation</div>
-          <h2>Infrastructure first. Revenue modeled from validation.</h2>
+          <h2>Laboratory first. Revenue modeled only after validation.</h2>
           <p>
             The raise is not designed to immediately maximize headcount. It is designed to give Norynthe enough independence,
-            compute capacity, legal structure, and focused execution time to produce credible larger-model AI evaluation evidence before scaling.
+            controlled laboratory capacity, legal structure, and focused execution time to produce credible AI evaluation evidence before scaling.
           </p>
           <div class="contact-row">
             <a class="contact-pill primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Financial%20Model">Discuss Financial Model</a>
@@ -1313,37 +1101,20 @@
 
   <script>
     const funds = [
-      { label: "Property / HQ Infrastructure", amount: 1126571, color: "#7a3030" },
+      { label: "Controlled Laboratory Base — Diligence Gated", amount: 1126571, color: "#7a3030" },
       { label: "Lab / Workspace Buildout", amount: 93500, color: "#304760" },
       { label: "Compute Infrastructure", amount: 146500, color: "#2f5b4d" },
       { label: "Legal / Entity Setup", amount: 72000, color: "#9a7c39" },
       { label: "Ops / Software / Security", amount: 34000, color: "#55758e" },
-      { label: "Travel / Business Development", amount: 50000, color: "#8f6c50" },
-      { label: "Remaining Liquidity / Runway", amount: 477429, color: "#b7c7d2" },
-    ];
-    const months = Array.from({ length: 24 }, (_, index) => `M${index + 1}`);
-    const revenue = [0, 0, 26000, 54000, 60000, 66000, 99500, 137000, 218000, 209500, 221000, 324500, 354000, 416000, 487000, 490000, 513000, 628000, 596000, 649000, 734000, 737000, 746000, 870000];
-    const grossProfit = [0, 0, 22100, 45900, 51000, 56100, 84575, 116450, 185300, 178075, 187850, 275825, 300900, 353600, 413950, 416500, 436050, 533800, 506600, 551650, 623900, 626450, 634100, 739500];
-    const operatingProfit = [-23500, -23500, -1400, 22400, 27500, 32600, 46075, 77950, 146800, 139575, 149350, 237325, 244400, 297100, 357450, 360000, 379550, 477300, 450100, 495150, 567400, 569950, 577600, 683000];
-    const mix = [
-      { label: "Enterprise subs", y1: 427500, y2: 2052000 },
-      { label: "Custom evals", y1: 530000, y2: 3360000 },
-      { label: "Reports", y1: 168000, y2: 696000 },
-      { label: "Advisory", y1: 150000, y2: 480000 },
-      { label: "API access", y1: 40000, y2: 432000 },
-      { label: "Licensing", y1: 100000, y2: 200000 },
+      { label: "Institutional Validation / Design Partners", amount: 50000, color: "#8f6c50" },
+      { label: "Founder-Led Laboratory Runway", amount: 477429, color: "#b7c7d2" },
     ];
 
     function moneyShort(value) {
       const abs = Math.abs(value);
-      const sign = value < 0 ? "-" : "";
-      if (abs >= 1000000) return `${sign}$${(abs / 1000000).toFixed(abs >= 10000000 ? 0 : 1)}M`;
-      if (abs >= 1000) return `${sign}$${Math.round(abs / 1000)}K`;
-      return `${sign}$${abs}`;
-    }
-
-    function linePath(values, xFor, yFor) {
-      return values.map((value, index) => `${index === 0 ? "M" : "L"}${xFor(index).toFixed(1)},${yFor(value).toFixed(1)}`).join(" ");
+      if (abs >= 1000000) return `$${(abs / 1000000).toFixed(abs >= 10000000 ? 0 : 1)}M`;
+      if (abs >= 1000) return `$${Math.round(abs / 1000)}K`;
+      return `$${abs}`;
     }
 
     function renderUseOfFundsChart() {
@@ -1420,258 +1191,7 @@
       `;
     }
 
-    function renderLineChart() {
-      const target = document.getElementById("line-chart");
-      if (!target) return;
-
-      const width = 780;
-      const height = 360;
-      const pad = { top: 28, right: 28, bottom: 48, left: 70 };
-      const allValues = [...revenue, ...grossProfit, ...operatingProfit];
-      const min = -100000;
-      const max = Math.ceil(Math.max(...allValues) / 100000) * 100000;
-      const innerW = width - pad.left - pad.right;
-      const innerH = height - pad.top - pad.bottom;
-      const plotRight = width - pad.right;
-      const plotBottom = height - pad.bottom;
-      const depth = { x: 6, y: -5 };
-      const xFor = (index) => pad.left + (index / (months.length - 1)) * innerW;
-      const yFor = (value) => pad.top + ((max - value) / (max - min)) * innerH;
-      const ticks = [-100000, 0, 200000, 400000, 600000, 800000, 1000000];
-      const series = [
-        { id: "revenue", values: revenue, color: "#304760", dark: "#1d3045", delay: 80 },
-        { id: "gross", values: grossProfit, color: "#9a7c39", dark: "#72581f", delay: 200 },
-        { id: "operating", values: operatingProfit, color: "#2f5b4d", dark: "#1e4036", delay: 320 },
-      ];
-      const markerIndexes = [11, 17, 23];
-      const defs = `
-        <defs>
-          <linearGradient id="lineChartBackPlane" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"></stop>
-            <stop offset="100%" stop-color="#ecf2f5" stop-opacity="0.72"></stop>
-          </linearGradient>
-          <linearGradient id="lineChartFloorPlane" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#eef4f7" stop-opacity="0.88"></stop>
-            <stop offset="100%" stop-color="#c8d7e1" stop-opacity="0.72"></stop>
-          </linearGradient>
-          <linearGradient id="lineChartSidePlane" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#dde8ee" stop-opacity="0.78"></stop>
-            <stop offset="100%" stop-color="#b8c9d5" stop-opacity="0.62"></stop>
-          </linearGradient>
-          <radialGradient id="markerRevenue" cx="34%" cy="28%" r="72%">
-            <stop offset="0%" stop-color="#f8fbfd"></stop>
-            <stop offset="44%" stop-color="#55758e"></stop>
-            <stop offset="100%" stop-color="#1d3045"></stop>
-          </radialGradient>
-          <radialGradient id="markerGross" cx="34%" cy="28%" r="72%">
-            <stop offset="0%" stop-color="#fff8df"></stop>
-            <stop offset="46%" stop-color="#b7954a"></stop>
-            <stop offset="100%" stop-color="#72581f"></stop>
-          </radialGradient>
-          <radialGradient id="markerOperating" cx="34%" cy="28%" r="72%">
-            <stop offset="0%" stop-color="#e9f6ef"></stop>
-            <stop offset="46%" stop-color="#4c7b68"></stop>
-            <stop offset="100%" stop-color="#1e4036"></stop>
-          </radialGradient>
-          <filter id="lineStrokeShadow" x="-12%" y="-18%" width="130%" height="145%">
-            <feDropShadow dx="2" dy="3" stdDeviation="2.4" flood-color="#10151b" flood-opacity="0.14"></feDropShadow>
-          </filter>
-          <filter id="linePointShadow" x="-80%" y="-80%" width="260%" height="260%">
-            <feDropShadow dx="1.8" dy="2.6" stdDeviation="1.8" flood-color="#10151b" flood-opacity="0.16"></feDropShadow>
-          </filter>
-        </defs>
-      `;
-
-      const grid = ticks.map((tick) => {
-        const y = yFor(tick);
-        return `
-          <g>
-            <line class="chart-grid-line" x1="${pad.left}" x2="${plotRight}" y1="${y}" y2="${y}"></line>
-            <line x1="${plotRight}" x2="${plotRight + depth.x}" y1="${y}" y2="${y + depth.y}" stroke="rgba(16,21,27,0.05)"></line>
-            <text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text>
-          </g>
-        `;
-      }).join("");
-
-      const monthLabels = months.map((month, index) => {
-        if (index % 2 !== 0 && index !== months.length - 1) return "";
-        return `<text x="${xFor(index)}" y="${height - 19}" text-anchor="middle" fill="#66717c" font-size="10">${month}</text>`;
-      }).join("");
-
-      const verticalGuides = [0, 5, 11, 17, 23].map((index) => {
-        const x = xFor(index);
-        return `<line x1="${x}" y1="${plotBottom}" x2="${x + depth.x}" y2="${pad.top + depth.y}" stroke="rgba(16,21,27,0.035)"></line>`;
-      }).join("");
-
-      const lineLayers = series.map((item) => {
-        const path = linePath(item.values, xFor, yFor);
-        return `
-          <path class="chart-line chart-line-glow" pathLength="1" style="--delay: ${item.delay}ms" d="${path}" fill="none" stroke="${item.dark}" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 4)"></path>
-          <path class="chart-line chart-depth-line" pathLength="1" style="--delay: ${item.delay + 40}ms" d="${path}" fill="none" stroke="${item.dark}" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 2)"></path>
-          <path class="chart-line" pathLength="1" style="--delay: ${item.delay + 80}ms" d="${path}" fill="none" stroke="${item.color}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#lineStrokeShadow)"></path>
-          <path class="chart-line chart-line-highlight" pathLength="1" style="--delay: ${item.delay + 120}ms" d="${path}" fill="none" stroke="rgba(255,255,255,0.78)" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5 -0.8)"></path>
-        `;
-      }).join("");
-
-      const markers = series.map((item) => {
-        const markerFill = item.id === "revenue" ? "markerRevenue" : item.id === "gross" ? "markerGross" : "markerOperating";
-        return item.values.map((value, index) => {
-          if (!markerIndexes.includes(index)) return "";
-          return `<circle class="chart-point" style="--delay: ${item.delay + 760 + index * 18}ms" cx="${xFor(index)}" cy="${yFor(value)}" r="3.4" fill="url(#${markerFill})" stroke="rgba(255,255,255,0.82)" stroke-width="1" filter="url(#linePointShadow)"></circle>`;
-        }).join("");
-      }).join("");
-
-      target.innerHTML = `
-        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Monthly revenue and operating profit chart">
-          ${defs}
-          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.28)"></rect>
-          <rect class="chart-plane" x="${pad.left}" y="${pad.top}" width="${innerW}" height="${innerH}" rx="8" fill="url(#lineChartBackPlane)"></rect>
-          <rect x="${pad.left}" y="${plotBottom - 2}" width="${innerW}" height="7" rx="3.5" fill="rgba(48,71,96,0.055)"></rect>
-          ${verticalGuides}
-          ${grid}
-          <line class="chart-axis" x1="${pad.left}" x2="${plotRight}" y1="${plotBottom}" y2="${plotBottom}"></line>
-          <line class="chart-axis" x1="${pad.left}" x2="${pad.left}" y1="${pad.top}" y2="${plotBottom}"></line>
-          <line x1="${pad.left}" x2="${plotRight}" y1="${yFor(0)}" y2="${yFor(0)}" stroke="rgba(122,48,48,0.38)" stroke-width="1.5"></line>
-          ${lineLayers}
-          ${markers}
-          ${monthLabels}
-        </svg>
-      `;
-    }
-
-    function renderBarChart() {
-      const target = document.getElementById("bar-chart");
-      if (!target) return;
-
-      const width = 620;
-      const height = 360;
-      const pad = { top: 28, right: 24, bottom: 74, left: 62 };
-      const max = 3500000;
-      const innerW = width - pad.left - pad.right;
-      const innerH = height - pad.top - pad.bottom;
-      const groupW = innerW / mix.length;
-      const barW = Math.min(24, groupW * 0.24);
-      const plotRight = width - pad.right;
-      const plotBottom = height - pad.bottom;
-      const depth = { x: 4, y: -4 };
-      const yFor = (value) => pad.top + ((max - value) / max) * innerH;
-      const hFor = (value) => height - pad.bottom - yFor(value);
-      const ticks = [0, 1000000, 2000000, 3000000];
-      const defs = `
-        <defs>
-          <linearGradient id="barChartFloorPlane" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f2f6f8" stop-opacity="0.92"></stop>
-            <stop offset="100%" stop-color="#c8d8e2" stop-opacity="0.72"></stop>
-          </linearGradient>
-          <linearGradient id="barChartBackPlane" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"></stop>
-            <stop offset="100%" stop-color="#edf3f6" stop-opacity="0.68"></stop>
-          </linearGradient>
-          <linearGradient id="yearOneFront" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#607f96"></stop>
-            <stop offset="64%" stop-color="#304760"></stop>
-            <stop offset="100%" stop-color="#263b52"></stop>
-          </linearGradient>
-          <linearGradient id="yearOneTop" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8ba6b8"></stop>
-            <stop offset="100%" stop-color="#55758e"></stop>
-          </linearGradient>
-          <linearGradient id="yearOneSide" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#304760"></stop>
-            <stop offset="100%" stop-color="#162638"></stop>
-          </linearGradient>
-          <linearGradient id="yearTwoFront" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#96504f"></stop>
-            <stop offset="64%" stop-color="#7a3030"></stop>
-            <stop offset="100%" stop-color="#602626"></stop>
-          </linearGradient>
-          <linearGradient id="yearTwoTop" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#b4706d"></stop>
-            <stop offset="100%" stop-color="#9f4c4b"></stop>
-          </linearGradient>
-          <linearGradient id="yearTwoSide" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7a3030"></stop>
-            <stop offset="100%" stop-color="#3e1516"></stop>
-          </linearGradient>
-        </defs>
-      `;
-
-      const grid = ticks.map((tick) => {
-        const y = yFor(tick);
-        return `
-          <g>
-            <line class="chart-grid-line" x1="${pad.left}" x2="${plotRight}" y1="${y}" y2="${y}"></line>
-            <line x1="${plotRight}" x2="${plotRight + depth.x}" y1="${y}" y2="${y + depth.y}" stroke="rgba(16,21,27,0.045)"></line>
-            <text x="${pad.left - 10}" y="${y + 4}" text-anchor="end" fill="#66717c" font-size="11">${moneyShort(tick)}</text>
-          </g>
-        `;
-      }).join("");
-
-      function barStack(x, y, w, h, palette, delay) {
-        const right = x + w;
-        const bottom = y + h;
-        return `
-          <g class="chart-bar" style="--delay: ${delay}ms">
-            <polygon class="chart-bar-side" points="${right},${y} ${right + depth.x},${y + depth.y} ${right + depth.x},${bottom + depth.y} ${right},${bottom}" fill="url(#${palette}Side)"></polygon>
-            <polygon class="chart-bar-top" points="${x},${y} ${x + depth.x},${y + depth.y} ${right + depth.x},${y + depth.y} ${right},${y}" fill="url(#${palette}Top)"></polygon>
-            <rect class="chart-bar-front" x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="url(#${palette}Front)"></rect>
-          </g>
-        `;
-      }
-
-      const bars = mix.map((item, index) => {
-        const baseX = pad.left + index * groupW + groupW / 2;
-        const y1 = yFor(item.y1);
-        const y2 = yFor(item.y2);
-        const h1 = hFor(item.y1);
-        const h2 = hFor(item.y2);
-        return `
-          ${barStack(baseX - barW - 2, y1, barW, h1, "yearOne", 120 + index * 70)}
-          ${barStack(baseX + 2, y2, barW, h2, "yearTwo", 210 + index * 70)}
-          <text x="${baseX}" y="${height - 42}" text-anchor="middle" fill="#4b5866" font-size="10">${item.label}</text>
-        `;
-      }).join("");
-
-      target.innerHTML = `
-        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Revenue mix by stream chart">
-          ${defs}
-          <rect width="${width}" height="${height}" fill="rgba(255,255,255,0.28)"></rect>
-          <rect class="chart-plane" x="${pad.left}" y="${pad.top}" width="${innerW}" height="${innerH}" rx="8" fill="url(#barChartBackPlane)"></rect>
-          <rect x="${pad.left}" y="${plotBottom - 2}" width="${innerW}" height="7" rx="3.5" fill="rgba(48,71,96,0.055)"></rect>
-          ${grid}
-          <line class="chart-axis" x1="${pad.left}" x2="${plotRight}" y1="${plotBottom}" y2="${plotBottom}"></line>
-          <line class="chart-axis" x1="${pad.left}" x2="${pad.left}" y1="${pad.top}" y2="${plotBottom}"></line>
-          ${bars}
-        </svg>
-      `;
-    }
-
     renderUseOfFundsChart();
-    renderLineChart();
-    renderBarChart();
-
-    function animateCharts() {
-      const shells = document.querySelectorAll(".chart-shell");
-      if (!shells.length) return;
-
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reducedMotion || !("IntersectionObserver" in window)) {
-        shells.forEach((shell) => shell.classList.add("is-animated"));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-animated");
-          observer.unobserve(entry.target);
-        });
-      }, { threshold: 0.28, rootMargin: "0px 0px -8% 0px" });
-
-      shells.forEach((shell) => observer.observe(shell));
-    }
-
-    animateCharts();
   </script>
 </body>
 </html>

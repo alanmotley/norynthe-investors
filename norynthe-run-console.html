@@ -1623,6 +1623,28 @@
       display: grid;
     }
 
+    .illustrative-view-banner {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      padding: 12px 16px;
+      border: 1px solid rgba(132, 92, 38, 0.28);
+      border-left: 4px solid var(--warn);
+      border-radius: var(--radius-sm);
+      background: rgba(248, 240, 224, 0.72);
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .illustrative-view-banner strong {
+      flex: 0 0 auto;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+    }
+
     .surface-grid,
     .settings-grid,
     .provider-grid,
@@ -2994,6 +3016,7 @@
       </a>
       <nav class="demo-site-nav" aria-label="Investor demo navigation">
         <a href="./index.html">Investor access</a>
+        <a href="./norynthe-laboratory.html">Laboratory</a>
         <a href="./norynthe-investors.html">Investor overview</a>
         <a href="mailto:hello@norynthe.com">Contact</a>
       </nav>
@@ -3002,23 +3025,23 @@
     <section class="demo-intro page-width" aria-label="MVP console demo overview">
       <div class="demo-intro-copy">
         <div class="eyebrow">Norynthe / Product Preview</div>
-        <h1>The Norynthe MVP is complete and working.</h1>
+        <h1>Founder-built evaluation architecture and prototype workflow.</h1>
         <p>
-          This investor preview shows the working console behind Norynthe.Score: governed evaluation launch,
-          runtime trace, reviewer queue, stored assessment records, benchmark governance, and report-ready evidence. It demonstrates
-          the existing evaluation workflow before the lab and compute expansion needed for larger-model assessment.
+          This static investor preview demonstrates the intended console architecture behind Norynthe.Score: governed evaluation launch,
+          runtime trace, reviewer queue, assessment records, benchmark governance, and report-ready evidence. It is not connected to a
+          production backend, and displayed operational states and records are illustrative unless explicitly linked to a verified run package.
         </p>
         <div class="chip-row">
-          <span class="status-pill good">MVP complete</span>
-          <span class="status-pill strong">Working MVP console</span>
+          <span class="status-pill good">Founder-built prototype</span>
+          <span class="status-pill strong">Illustrative console</span>
           <span class="status-pill">Investor review</span>
         </div>
       </div>
       <aside class="demo-intro-note">
         <strong>Investor review context</strong>
         <span>
-          The framed surface below presents the completed MVP experience in a controlled investor-facing walkthrough.
-          It shows the product structure without exposing credentials, private records, or live operational access.
+          The framed surface below presents the intended workflow in a controlled investor-facing walkthrough.
+          It shows product structure without claiming live operational access, completed scientific validation, or production readiness.
         </span>
       </aside>
     </section>
@@ -3027,7 +3050,7 @@
       <div class="demo-frame-head">
         <div>
           <div class="eyebrow">Console Preview</div>
-          <h2>Completed MVP console.</h2>
+          <h2>Illustrative prototype console.</h2>
         </div>
         <p>
           The console is the operating layer for launching governed evaluations, reviewing assessment records,
@@ -3038,15 +3061,15 @@
       <section class="demo-guidance" aria-label="How to read the MVP console demo">
         <div class="demo-guidance-copy">
           <div class="eyebrow">Investor Proof</div>
-          <h3>What the working MVP demonstrates.</h3>
+          <h3>What the prototype architecture demonstrates.</h3>
           <p>
-            Each tab shows that the product has moved beyond pitch language into a governed workflow. The next proof
-            comes from dedicated lab compute, larger-model testing, repeated-run consistency, and customer-facing pilot reports.
+            Each tab makes the intended workflow concrete. The next proof is executable run evidence: reconciled benchmark and method
+            versions, complete run packages, repeated-run analysis, external challenge, and reports traceable to real assessment records.
           </p>
         </div>
         <div class="demo-guidance-grid" aria-label="Console page guide">
           <article class="demo-guidance-card">
-            <span>Product Exists</span>
+            <span>Prototype Design</span>
             <strong>Assessment command center</strong>
             <p>Launch flow, runtime posture, reviewer state, and score-record work are represented in the MVP.</p>
           </article>
@@ -3058,7 +3081,7 @@
           <article class="demo-guidance-card">
             <span>Records</span>
             <strong>Assessment evidence</strong>
-            <p>Persisted records with scores, flags, readiness, and reviewer posture.</p>
+            <p>Illustrative record structures with scores, flags, readiness, and reviewer posture.</p>
           </article>
           <article class="demo-guidance-card">
             <span>Benchmark</span>
@@ -3068,7 +3091,7 @@
           <article class="demo-guidance-card">
             <span>Next Proof</span>
             <strong>Compute and larger-model testing</strong>
-            <p>Dedicated compute should remove the bottleneck for repeatability, larger-model evaluation, and pilot-ready outputs.</p>
+            <p>A controlled laboratory should make repeatability, larger-model evaluation, evidence custody, and pilot-ready outputs possible; compute is one component of that system.</p>
           </article>
         </div>
       </section>
@@ -3097,15 +3120,16 @@
 
     <main class="page">
       <section class="console-view active" data-demo-view="console">
+      <div class="illustrative-view-banner" role="note"><strong>Illustrative prototype</strong><span>All states, counts, records, benchmark labels, runtime indicators, and scores in this tab are sample interface content, not operational evidence.</span></div>
       <section class="page-hero" aria-label="Evaluation command center">
         <div class="page-hero-main">
           <div class="eyebrow">Console</div>
           <h1>Evaluation command center</h1>
           <p class="lede">Start a governed assessment, monitor execution, and move records into review.</p>
           <div class="chip-row">
-            <span class="status-pill strong">core_v2</span>
-            <span class="status-pill good">Runtime online</span>
-            <span class="status-pill">11 review needed</span>
+            <span class="status-pill strong">sample_core_v2</span>
+            <span class="status-pill good">Sample runtime state</span>
+            <span class="status-pill">Illustrative review queue</span>
           </div>
         </div>
         <aside class="context-rail" aria-label="Console context">
@@ -3121,12 +3145,12 @@
       </section>
 
       <section class="console-status-strip" aria-label="Console status">
-        <article class="console-status-tile good"><span class="metric-label">Runtime</span><strong>Online</strong><p>mock</p></article>
-        <article class="console-status-tile strong"><span class="metric-label">Benchmark set</span><strong>core_v2</strong><p>1 governed set loaded</p></article>
-        <article class="console-status-tile good"><span class="metric-label">Model registry</span><strong>7</strong><p>10 connector-ready families scaffolded</p></article>
-        <article class="console-status-tile strong"><span class="metric-label">Stored records</span><strong>2</strong><p>12 persisted assessment records</p></article>
-        <article class="console-status-tile"><span class="metric-label">Active jobs</span><strong>0</strong><p>0 scoring / 0 queue</p></article>
-        <article class="console-status-tile warn"><span class="metric-label">Review needed</span><strong>4</strong><p>10 blocked / 0 client-ready</p></article>
+        <article class="console-status-tile good"><span class="metric-label">Runtime</span><strong>Illustrative</strong><p>sample mock state</p></article>
+        <article class="console-status-tile strong"><span class="metric-label">Benchmark set</span><strong>sample_core_v2</strong><p>proposed set example</p></article>
+        <article class="console-status-tile good"><span class="metric-label">Model registry</span><strong>7</strong><p>sample registry entries</p></article>
+        <article class="console-status-tile strong"><span class="metric-label">Sample records</span><strong>12</strong><p>illustrative assessment records</p></article>
+        <article class="console-status-tile"><span class="metric-label">Sample jobs</span><strong>0</strong><p>illustrative queue state</p></article>
+        <article class="console-status-tile warn"><span class="metric-label">Sample review state</span><strong>4</strong><p>illustrative blockers</p></article>
       </section>
 
       <section class="section-shell console-workspace-shell">
@@ -3145,7 +3169,7 @@
                 <h2>Start a scored evaluation</h2>
                 <p class="support-copy">Select the evaluation surface, confirm the model target, attach or generate the output, then create the assessment record.</p>
               </div>
-              <span class="status-pill good">Ready</span>
+              <span class="status-pill good">Illustrative ready state</span>
             </div>
 
             <div class="launch-step-grid">
@@ -3193,7 +3217,7 @@
                   <div class="check-list">
                     <span class="check-pill">gemma 3</span>
                     <span class="check-pill">4b</span>
-                    <span class="check-pill success-pill">runtime online</span>
+                    <span class="check-pill success-pill">illustrative runtime state</span>
                   </div>
                   <span class="field-help">Open model profile</span>
                 </div>
@@ -3229,7 +3253,7 @@
                 </div>
                 <div class="check-list">
                   <span class="helper-pill">governance</span>
-                  <span class="helper-pill">core_v2</span>
+                  <span class="helper-pill">sample_core_v2</span>
                   <span class="helper-pill">4 dimensions</span>
                   <span class="helper-pill">open</span>
                 </div>
@@ -3239,7 +3263,7 @@
             <div class="launch-step-grid">
               <label class="field">
                 <span class="field-label">Calibration Version</span>
-                <input value="norynthe_v2" readonly>
+                <input value="sample_rubric_v2" readonly>
               </label>
               <div class="launch-step">
                 <h3>Peer outputs (optional)</h3>
@@ -3248,7 +3272,7 @@
 
             <div class="form-actions launch-submit-bar">
               <button class="primary-button" type="button">Run evaluation</button>
-              <span class="helper-pill success-pill">Ready to create a scored assessment record.</span>
+              <span class="helper-pill success-pill">Intended next step: create a scored assessment record.</span>
             </div>
           </form>
 
@@ -3260,7 +3284,7 @@
                   <h2>Run execution trace</h2>
                   <p>Shows the benchmark prompt, model invocation, scoring queue, and record-writing path for the current setup.</p>
                 </div>
-                <span class="trace-status">Runtime online</span>
+                <span class="trace-status">Illustrative runtime state</span>
               </div>
               <div class="trace-time-panel">
                 <div>
@@ -3276,18 +3300,18 @@
               <div class="trace-context-grid">
                 <div><span>Model</span><strong>Gemma 3 4B Instruct</strong></div>
                 <div><span>Runtime tag</span><strong>gemma3:4b</strong></div>
-                <div><span>Benchmark set</span><strong>core_v2</strong></div>
+                <div><span>Benchmark set</span><strong>sample_core_v2</strong></div>
                 <div><span>Question</span><strong>gov_001</strong></div>
               </div>
               <div class="trace-terminal">
                 <div class="trace-terminal-bar"><span></span><span></span><span></span><strong>evaluation-run.preview</strong></div>
                 <pre>norynthe run --mode local-runtime \
   --model "gemma3:4b" \
-  --benchmark "core_v2" \
+  --benchmark "sample_core_v2" \
   --question "gov_001" \
-  --workbook "norynthe_v2"
+  --workbook "sample_rubric_v2"
 
-[wait] benchmark.load("core_v2")
+[wait] benchmark.load("sample_core_v2")
 [wait] payload.question = "gov_001"
 [wait] runtime.ask("gemma3:4b", payload.prompt)
 [wait] scorer.queue(primary_dimensions)
@@ -3295,17 +3319,17 @@
 [wait] records.write(assessment_record)</pre>
               </div>
               <div class="trace-step-list">
-                <div class="trace-step"><span>wait</span><div><strong>Load benchmark question</strong><p>gov_001 loaded from core_v2.</p></div></div>
-                <div class="trace-step"><span>wait</span><div><strong>Assemble evaluation payload</strong><p>Gemma 3 4B Instruct receives the benchmark prompt and workbook norynthe_v2.</p></div></div>
+                <div class="trace-step"><span>wait</span><div><strong>Load benchmark question</strong><p>gov_001 loaded from sample_core_v2.</p></div></div>
+                <div class="trace-step"><span>wait</span><div><strong>Assemble evaluation payload</strong><p>Gemma 3 4B Instruct receives the benchmark prompt and workbook sample_rubric_v2.</p></div></div>
                 <div class="trace-step"><span>wait</span><div><strong>Ask local runtime</strong><p>Invoke gemma3:4b with the selected question.</p></div></div>
                 <div class="trace-step"><span>wait</span><div><strong>Score public dimensions</strong><p>4 primary dimensions queued for scorer and critic review.</p></div></div>
                 <div class="trace-step"><span>wait</span><div><strong>Resolve flags and calibration checks</strong><p>Peer outputs attached: 0. Escalation checks remain visible in the assessment record.</p></div></div>
-                <div class="trace-step"><span>wait</span><div><strong>Write assessment record</strong><p>Result will persist after scoring completes.</p></div></div>
+                <div class="trace-step"><span>wait</span><div><strong>Write assessment record</strong><p>The intended design would write a record after scoring completes.</p></div></div>
               </div>
               <div class="trace-lines">
-                <div class="trace-line"><span>load_benchmark</span><p>core_v2 / gov_001</p></div>
+                <div class="trace-line"><span>load_benchmark</span><p>sample_core_v2 / gov_001</p></div>
                 <div class="trace-line"><span>select_model</span><p>Gemma 3 4B Instruct (ollama)</p></div>
-                <div class="trace-line"><span>runtime_check</span><p>mock available</p></div>
+                <div class="trace-line"><span>runtime_check</span><p>sample mock state</p></div>
                 <div class="trace-line"><span>request_payload</span><p>A board governance committee asks whether an external AI trust standard before acting on a model-generated recommendation.</p></div>
                 <div class="trace-line"><span>model_output</span><p>blank output will request runtime generation</p></div>
                 <div class="trace-line"><span>time_estimate</span><p>1m 23s estimated. 4B model + prompt + scoring dimensions.</p></div>
@@ -3313,15 +3337,15 @@
             </article>
 
             <article class="side-card">
-              <div class="card-kicker">Live Execution</div>
-              <h2>Active jobs</h2>
-              <p class="support-copy">No active evaluation jobs. Start an assessment or benchmark queue job and it will appear here.</p>
+              <div class="card-kicker">Illustrative Execution</div>
+              <h2>Sample jobs</h2>
+              <p class="support-copy">This sample state shows where assessment or benchmark queue jobs would appear.</p>
             </article>
 
             <article class="side-card">
               <div class="card-kicker">Runtime</div>
               <h2>Runtime state</h2>
-              <p class="support-copy">Engine: mock. Ollama is online.</p>
+              <p class="support-copy">Sample interface state: mock engine with an illustrative online indicator.</p>
               <div class="form-actions">
                 <span class="button">Start Ollama</span>
                 <span class="button">Stop Ollama</span>
@@ -3335,12 +3359,12 @@
         <div class="review-queue-head">
           <div>
             <div class="eyebrow">Reviewer Queue</div>
-            <h2>Decision work, not just stored reports.</h2>
-            <p class="section-intro">This queue groups persisted assessment records by reviewer posture, release blockers, readiness, and export state.</p>
+            <h2>Illustrative reviewer decision work.</h2>
+            <p class="section-intro">This illustrative queue shows how assessment records could be grouped by reviewer posture, release blockers, readiness, and export state.</p>
           </div>
           <div class="review-queue-total">
-            <span>Persisted records</span>
-            <strong>12 records</strong>
+            <span>Sample records</span>
+            <strong>12 illustrative records</strong>
           </div>
         </div>
 
@@ -3426,20 +3450,20 @@
         </div>
         <div class="recent-records-toolbar" aria-label="Record controls">
           <span class="helper-pill">Showing 3 of 3</span>
-          <span class="button">Clear stored records</span>
+          <span class="button">Clear sample records</span>
         </div>
         <div class="run-list">
           <article class="score-run-row">
             <div class="record-body">
               <div>
                 <div class="record-kicker">local_gemma3_4b / gov_001</div>
-                <h3>Norynthe completed a governed evaluation across 12 public dimensions and 12 diagnostic lenses. Final score: 79 (reliable).</h3>
+                <h3>Illustrative report copy: a sample evaluation across 12 proposed dimensions and 12 illustrative diagnostic lenses. Sample score: 79.</h3>
               </div>
               <div class="metadata-chip-row">
                 <span class="status-pill strong">Reliable</span>
-                <span class="status-pill good">Completed</span>
+                <span class="status-pill good">Sample completed state</span>
                 <span class="status-pill risk">Escalation</span>
-                <span class="status-pill">Calibration norynthe_v2</span>
+                <span class="status-pill">Calibration sample_rubric_v2</span>
               </div>
             </div>
             <div class="score-signal good"><span>Norynthe.Score</span><strong>79</strong><small>Reliable</small></div>
@@ -3456,13 +3480,13 @@
             <div class="record-body">
               <div>
                 <div class="record-kicker">local_qwen2_5_7b / gov_001</div>
-                <h3>Norynthe completed a governed evaluation across 12 public dimensions and 12 diagnostic lenses. Final score: 90 (exceptional).</h3>
+                <h3>Illustrative report copy: a sample evaluation across 12 proposed dimensions and 12 illustrative diagnostic lenses. Sample score: 90.</h3>
               </div>
               <div class="metadata-chip-row">
                 <span class="status-pill good">Exceptional</span>
-                <span class="status-pill good">Completed</span>
+                <span class="status-pill good">Sample completed state</span>
                 <span class="status-pill risk">Escalation</span>
-                <span class="status-pill">Calibration norynthe_v2</span>
+                <span class="status-pill">Calibration sample_rubric_v2</span>
               </div>
             </div>
             <div class="score-signal good"><span>Norynthe.Score</span><strong>90</strong><small>Exceptional</small></div>
@@ -3479,13 +3503,13 @@
             <div class="record-body">
               <div>
                 <div class="record-kicker">local_qwen2_5_7b / gov_013</div>
-                <h3>Norynthe completed a governed evaluation across 12 public dimensions and 12 diagnostic lenses. Final score: 89 (strong).</h3>
+                <h3>Illustrative report copy: a sample evaluation across 12 proposed dimensions and 12 illustrative diagnostic lenses. Sample score: 89.</h3>
               </div>
               <div class="metadata-chip-row">
                 <span class="status-pill strong">Strong</span>
-                <span class="status-pill good">Completed</span>
+                <span class="status-pill good">Sample completed state</span>
                 <span class="status-pill good">Clear</span>
-                <span class="status-pill">Calibration norynthe_v2</span>
+                <span class="status-pill">Calibration sample_rubric_v2</span>
               </div>
             </div>
             <div class="score-signal good"><span>Norynthe.Score</span><strong>89</strong><small>Strong</small></div>
@@ -3516,10 +3540,10 @@
           <article class="workflow-card"><span>05</span><strong>Generate report</strong><p>Convert the assessment record into an executive decision package and exportable Norynthe.Report.</p></article>
         </div>
         <div class="readiness-gate-grid">
-          <article class="readiness-gate"><span>Ready</span><strong>Benchmark selected</strong><p>core_v2</p></article>
-          <article class="readiness-gate"><span>Ready</span><strong>Model registry loaded</strong><p>7 registered model targets</p></article>
-          <article class="readiness-gate"><span>Ready</span><strong>Runtime checked</strong><p>Local runtime online</p></article>
-          <article class="readiness-gate"><span>Ready</span><strong>Records available</strong><p>3 stored records</p></article>
+          <article class="readiness-gate"><span>Sample</span><strong>Illustrative benchmark selection</strong><p>sample_core_v2</p></article>
+          <article class="readiness-gate"><span>Sample</span><strong>Illustrative model registry</strong><p>7 sample model targets</p></article>
+          <article class="readiness-gate"><span>Sample</span><strong>Runtime checked</strong><p>Local illustrative runtime state</p></article>
+          <article class="readiness-gate"><span>Sample</span><strong>Sample records shown</strong><p>3 sample records</p></article>
         </div>
         <div class="shortcut-grid">
           <article class="shortcut-card"><span>Registry</span><strong>7 registered model targets</strong><p>Manage evaluated models, runtime metadata, and provider families.</p></article>
@@ -3530,16 +3554,17 @@
       </section>
 
       <section class="console-view" data-demo-view="evaluation">
+        <div class="illustrative-view-banner" role="note"><strong>Illustrative prototype</strong><span>All workflow states, counts, dimensions, outputs, and report previews in this tab are sample interface content, not completed evaluations or validated results.</span></div>
         <section class="page-hero" aria-label="Manual calibration workflow">
           <div class="page-hero-main">
             <div class="eyebrow">Manual Calibration</div>
             <h1>Operator-assisted evaluation run</h1>
             <p class="lede">Paste model outputs, score them against Norynthe dimensions, compare results, and produce an executive report preview without requiring local inference.</p>
             <div class="chip-row">
-              <span class="status-pill good">Manual calibration active</span>
-              <span class="status-pill">12 registry entries</span>
-              <span class="status-pill">25 benchmark categories</span>
-              <span class="status-pill">18 scoring dimensions</span>
+              <span class="status-pill good">Illustrative manual workflow</span>
+              <span class="status-pill">12 sample registry entries</span>
+              <span class="status-pill">25 sample categories</span>
+              <span class="status-pill">18 illustrative dimensions</span>
             </div>
           </div>
           <aside class="context-rail">
@@ -3554,7 +3579,7 @@
               <div class="card-kicker">Manual calibration mode</div>
               <h2>Operator-assisted scoring</h2>
               <p class="support-copy">Paste model outputs, score dimensions, add flags, and generate a report preview.</p>
-              <span class="status-pill good">Active</span>
+              <span class="status-pill good">Illustrative</span>
             </article>
             <article class="surface-card">
               <div class="card-kicker">API evaluation mode</div>
@@ -3574,16 +3599,16 @@
         <section class="section-shell progress-panel">
           <div class="section-head">
             <div class="eyebrow">Evaluation Status</div>
-            <h2>Prompt loaded</h2>
+            <h2>Sample prompt state</h2>
           </div>
           <div class="progress-line" aria-hidden="true"><i style="width:30%"></i></div>
           <div class="progress-meta">
-            <span>30% complete</span>
+            <span>Illustrative 30% progress</span>
             <span>Manual calibration run</span>
           </div>
           <div class="stepper-grid">
             <article class="step-card active"><span class="step-number">1</span><strong>Setup</strong></article>
-            <article class="step-card active"><span class="step-number">2</span><strong>Prompt loaded</strong></article>
+            <article class="step-card active"><span class="step-number">2</span><strong>Sample prompt state</strong></article>
             <article class="step-card"><span class="step-number">3</span><strong>Model outputs added</strong></article>
             <article class="step-card"><span class="step-number">4</span><strong>Dimension scoring</strong></article>
             <article class="step-card"><span class="step-number">5</span><strong>Norynthe.Score</strong></article>
@@ -3648,7 +3673,7 @@
               <div class="trace-time-panel">
                 <div><span>Mode</span><strong>Manual calibration</strong></div>
                 <div><span>Persistence</span><strong>Backend record + local fallback</strong></div>
-                <div><span>Stored reports</span><strong>0</strong></div>
+                <div><span>Sample reports</span><strong>0</strong></div>
                 <div><span>Source status</span><strong>Unverified</strong></div>
               </div>
             </aside>
@@ -3740,7 +3765,7 @@
         <section class="section-shell">
           <div class="section-head split-head">
             <div><div class="eyebrow">Step 7</div><h2>Comparison view</h2></div>
-            <span class="status-pill strong">Ready to compare</span>
+            <span class="status-pill strong">Illustrative comparison state</span>
           </div>
           <div class="score-entry-grid">
             <article class="surface-card"><div class="card-kicker">OpenAI</div><h2>ChatGPT / OpenAI model family</h2><div class="score-signal"><span>Norynthe.Score</span><strong>75</strong><small>Usable with review</small></div><div class="record-meter-list"><div><span>Accuracy</span><strong>75</strong><div class="mini-bar"><i style="width:75%"></i></div></div><div><span>Grounding</span><strong>75</strong><div class="mini-bar"><i style="width:75%"></i></div></div><div><span>Governance fit</span><strong>75</strong><div class="mini-bar"><i style="width:75%"></i></div></div></div></article>
@@ -3763,28 +3788,29 @@
       </section>
 
       <section class="console-view" data-demo-view="records">
+        <div class="illustrative-view-banner" role="note"><strong>Illustrative prototype</strong><span>All record IDs, scores, flags, readiness values, audit states, and counts in this tab are sample interface content, not persisted operational evidence.</span></div>
         <section class="page-hero" aria-label="Records page">
           <div class="page-hero-main">
             <div class="eyebrow">Assessment Records</div>
             <h1>Assessment records</h1>
-            <p class="lede">Browse stored evaluations by record ID, benchmark version, prompt, model output, dimension scores, reviewer notes, flags, confidence, readiness, and audit log.</p>
-            <div class="chip-row"><span class="status-pill strong">Backend-first records</span><span class="status-pill">Versioned evidence</span><span class="status-pill">Confidence + readiness</span></div>
+            <p class="lede">Browse illustrative evaluation records by record ID, benchmark version, prompt, model output, dimension scores, reviewer notes, flags, confidence, readiness, and audit log.</p>
+            <div class="chip-row"><span class="status-pill strong">Sample record design</span><span class="status-pill">Intended versioned evidence</span><span class="status-pill">Illustrative confidence + readiness</span></div>
           </div>
           <aside class="context-rail">
-            <div class="context-rail-item"><span>Persisted records</span><strong>12 records</strong></div>
-            <div class="context-rail-item"><span>Blocked</span><strong>11 records</strong></div>
+            <div class="context-rail-item"><span>Sample records</span><strong>12 records</strong></div>
+            <div class="context-rail-item"><span>Sample blocked state</span><strong>11 records</strong></div>
           </aside>
         </section>
 
         <section class="section-shell">
           <div class="section-head">
             <div class="eyebrow">Record Contents</div>
-            <h2>Stored fields and review state</h2>
+            <h2>Intended fields and review state</h2>
             <p class="section-intro">Use this view to check whether each assessment has the required model outputs, scores, notes, flags, source metadata, confidence level, and reviewer status.</p>
           </div>
           <div class="info-card-grid">
             <article class="surface-card"><div class="card-kicker">Inputs</div><h2>Prompt and output</h2><p>Prompt text, benchmark category, model output, source type, and verification status stay with the assessment.</p></article>
-            <article class="surface-card"><div class="card-kicker">Scoring</div><h2>Scores and notes</h2><p>Dimension scores, score rationale, evidence excerpts, reviewer notes, and calibration notes are stored together.</p></article>
+            <article class="surface-card"><div class="card-kicker">Scoring</div><h2>Scores and notes</h2><p>Dimension scores, score rationale, evidence excerpts, reviewer notes, and calibration notes would be stored together.</p></article>
             <article class="surface-card"><div class="card-kicker">Review</div><h2>Status and flags</h2><p>Readiness score, confidence level, version warnings, approval state, and open flags indicate next steps.</p></article>
           </div>
         </section>
@@ -3801,42 +3827,43 @@
             <div class="check-list"><span class="check-pill">High</span><span class="check-pill">Medium</span><span class="check-pill">Low</span><span class="check-pill">Insufficient Evidence</span></div>
           </div>
           <div class="source-priority-strip">
-            <div><span>Records shown</span><strong>14</strong></div>
+            <div><span>Sample records shown</span><strong>14</strong></div>
             <div><span>Blocked</span><strong>12</strong></div>
             <div><span>Approved</span><strong>1</strong></div>
             <div><span>Client ready</span><strong>0</strong></div>
           </div>
           <div class="record-list">
-            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Persisted record / manual calibration / high risk</div><h2>AR-471f2c15-5379-4d12-84a5-380d2f721f14</h2></div><span class="status-pill warn">3 blockers</span></div><p>A board governance committee asks whether the company should adopt an external AI trust standard before expanding model use into policy settings.</p><div class="metadata-chip-row"><span class="status-pill strong">Review required</span><span class="status-pill">Ready for review</span><span class="status-pill">Blocked</span><span class="status-pill">High</span><span class="status-pill">Not exported</span><span class="status-pill">1 model</span></div><div class="warning-panel">Manual calibration mode active. Verify model output source before publication. High-risk benchmark category. Human review required.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>79</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>67%</strong><div class="mini-bar"><i style="width:67%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
-            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Persisted record / manual calibration / high risk</div><h2>AR-ad8231a9-a55b-4208-a8b4-c4f59e512aa3</h2></div><span class="status-pill warn">3 blockers</span></div><p>A board governance committee asks whether the company should adopt an external AI trust standard before expanding model use into policy settings.</p><div class="metadata-chip-row"><span class="status-pill">Approved</span><span class="status-pill">Not exported</span><span class="status-pill">1 model</span><span class="status-pill">High</span></div><div class="warning-panel">Manual calibration mode active. Source verification remains incomplete.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>90</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>86%</strong><div class="mini-bar"><i style="width:86%"></i></div></div><div><span>Evidence</span><strong>82%</strong><div class="mini-bar"><i style="width:82%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
-            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Persisted record / manual calibration / medium risk</div><h2>AR-652cce5b-7ab1-4628-9668-d7c35d2a7073</h2></div><span class="status-pill warn">2 blockers</span></div><p>A vendor argues that its internal governance dashboard should be enough proof of trust and that external scoring creates friction.</p><div class="metadata-chip-row"><span class="status-pill">Report ready</span><span class="status-pill">Ready for review</span><span class="status-pill">Blocked</span><span class="status-pill">Medium</span></div><div class="warning-panel">One or more model output sources are unverified.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>89</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>78%</strong><div class="mini-bar"><i style="width:78%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
-            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Persisted record / manual calibration / medium risk</div><h2>AR-4c714ff4-f211-49e7-9372-8c9be15d1a10</h2></div><span class="status-pill warn">2 blockers</span></div><p>A CFO asks whether a strong Norynthe score means a model is safe to deploy across all business functions.</p><div class="metadata-chip-row"><span class="status-pill">Review ready</span><span class="status-pill">Low confidence</span><span class="status-pill">1 model</span></div><div class="warning-panel">Core scoring notes remain available for reviewer inspection.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>88</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>78%</strong><div class="mini-bar"><i style="width:78%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
-            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Persisted record / manual calibration / medium risk</div><h2>AR-24522711-3083-4016-8a36-ef3f7bba3bca</h2></div><span class="status-pill warn">3 blockers</span></div><p>A public agency asks whether it can use Norynthe.Score as one factor in procurement without turning it into a sole approval mechanism.</p><div class="metadata-chip-row"><span class="status-pill">Review required</span><span class="status-pill">Ready for review</span><span class="status-pill">Blocked</span><span class="status-pill">4 models</span></div><div class="warning-panel">High-risk benchmark category. Human review required.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>87</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>76%</strong><div class="mini-bar"><i style="width:76%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
-            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Persisted record / sample / high risk</div><h2>AR-FT002-2026-04-28</h2></div><span class="status-pill warn">1 blocker</span></div><p>Summarize the legal and compliance risks required before using an AI assistant to draft customer-facing regulated claims.</p><div class="metadata-chip-row"><span class="status-pill">Review required</span><span class="status-pill">Ready for review</span><span class="status-pill">High</span><span class="status-pill">4 models</span></div><div class="warning-panel">One or more model output sources are unverified.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>83</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div><div><span>Evidence</span><strong>88%</strong><div class="mini-bar"><i style="width:88%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
+            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Illustrative record / manual calibration / high risk</div><h2>AR-471f2c15-5379-4d12-84a5-380d2f721f14</h2></div><span class="status-pill warn">3 blockers</span></div><p>A board governance committee asks whether the company should adopt an external AI trust standard before expanding model use into policy settings.</p><div class="metadata-chip-row"><span class="status-pill strong">Review required</span><span class="status-pill">Ready for review</span><span class="status-pill">Blocked</span><span class="status-pill">High</span><span class="status-pill">Not exported</span><span class="status-pill">1 model</span></div><div class="warning-panel">Illustrative manual-calibration state. Verify model output source before publication. High-risk benchmark category. Human review required.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>79</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>67%</strong><div class="mini-bar"><i style="width:67%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
+            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Illustrative record / manual calibration / high risk</div><h2>AR-ad8231a9-a55b-4208-a8b4-c4f59e512aa3</h2></div><span class="status-pill warn">3 blockers</span></div><p>A board governance committee asks whether the company should adopt an external AI trust standard before expanding model use into policy settings.</p><div class="metadata-chip-row"><span class="status-pill">Approved</span><span class="status-pill">Not exported</span><span class="status-pill">1 model</span><span class="status-pill">High</span></div><div class="warning-panel">Illustrative manual-calibration state. Source verification remains incomplete.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>90</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>86%</strong><div class="mini-bar"><i style="width:86%"></i></div></div><div><span>Evidence</span><strong>82%</strong><div class="mini-bar"><i style="width:82%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
+            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Illustrative record / manual calibration / medium risk</div><h2>AR-652cce5b-7ab1-4628-9668-d7c35d2a7073</h2></div><span class="status-pill warn">2 blockers</span></div><p>A vendor argues that its internal governance dashboard should be enough proof of trust and that external scoring creates friction.</p><div class="metadata-chip-row"><span class="status-pill">Report ready</span><span class="status-pill">Ready for review</span><span class="status-pill">Blocked</span><span class="status-pill">Medium</span></div><div class="warning-panel">One or more model output sources are unverified.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>89</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>78%</strong><div class="mini-bar"><i style="width:78%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
+            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Illustrative record / manual calibration / medium risk</div><h2>AR-4c714ff4-f211-49e7-9372-8c9be15d1a10</h2></div><span class="status-pill warn">2 blockers</span></div><p>A CFO asks whether a strong Norynthe score means a model is safe to deploy across all business functions.</p><div class="metadata-chip-row"><span class="status-pill">Review ready</span><span class="status-pill">Low confidence</span><span class="status-pill">1 model</span></div><div class="warning-panel">Core scoring notes remain available for reviewer inspection.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>88</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>78%</strong><div class="mini-bar"><i style="width:78%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
+            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Illustrative record / manual calibration / medium risk</div><h2>AR-24522711-3083-4016-8a36-ef3f7bba3bca</h2></div><span class="status-pill warn">3 blockers</span></div><p>A public agency asks whether it can use Norynthe.Score as one factor in procurement without turning it into a sole approval mechanism.</p><div class="metadata-chip-row"><span class="status-pill">Review required</span><span class="status-pill">Ready for review</span><span class="status-pill">Blocked</span><span class="status-pill">4 models</span></div><div class="warning-panel">High-risk benchmark category. Human review required.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>87</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>76%</strong><div class="mini-bar"><i style="width:76%"></i></div></div><div><span>Evidence</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
+            <article class="record-row"><div class="record-main"><div class="record-dossier-head"><div><div class="record-kicker">Illustrative record / sample / high risk</div><h2>AR-FT002-2026-04-28</h2></div><span class="status-pill warn">1 blocker</span></div><p>Summarize the legal and compliance risks required before using an AI assistant to draft customer-facing regulated claims.</p><div class="metadata-chip-row"><span class="status-pill">Review required</span><span class="status-pill">Ready for review</span><span class="status-pill">High</span><span class="status-pill">4 models</span></div><div class="warning-panel">One or more model output sources are unverified.</div></div><aside class="record-signal-stack"><div class="record-score-block"><span>Norynthe.Score</span><strong>83</strong></div><div class="record-meter-list"><div><span>Readiness</span><strong>70%</strong><div class="mini-bar"><i style="width:70%"></i></div></div><div><span>Evidence</span><strong>88%</strong><div class="mini-bar"><i style="width:88%"></i></div></div></div><span class="queue-open-link">Open record</span></aside></article>
           </div>
         </section>
       </section>
 
       <section class="console-view" data-demo-view="benchmark">
+        <div class="illustrative-view-banner" role="note"><strong>Proposed benchmark view</strong><span>All set names, counts, prompt classifications, dimensions, lenses, and coverage values in this tab are illustrative design content. No internal set shown here is canonical, active, or validated.</span></div>
         <section class="page-hero" aria-label="Benchmark page">
           <div class="page-hero-main">
             <div class="eyebrow">Benchmark Bank</div>
             <h1>Benchmark Bank</h1>
-            <p class="lede">Governed benchmark categories, prompt coverage, risk levels, and scoring dimensions.</p>
-            <div class="chip-row"><span class="status-pill good">core_v2</span><span class="status-pill">200 governed questions</span><span class="status-pill">80 protected prompts</span><span class="status-pill">4 difficulty tiers</span><span class="status-pill">7 sector packs</span><span class="status-pill">Open question bank</span></div>
+            <p class="lede">Illustrative proposed benchmark categories, prompt coverage, risk levels, and scoring dimensions.</p>
+            <div class="chip-row"><span class="status-pill good">sample_core_v2</span><span class="status-pill">200 sample questions</span><span class="status-pill">80 sample protected prompts</span><span class="status-pill">4 proposed difficulty tiers</span><span class="status-pill">7 illustrative sector packs</span><span class="status-pill">Sample question bank</span></div>
             <div class="hero-metrics-grid">
-              <article class="hero-metric"><span>Bank version</span><strong>2026.05.10</strong></article>
-              <article class="hero-metric"><span>Active set</span><strong>core_v2</strong></article>
+              <article class="hero-metric"><span>Sample version</span><strong>2026.05.10</strong></article>
+              <article class="hero-metric"><span>Illustrative set</span><strong>sample_core_v2</strong></article>
               <article class="hero-metric"><span>Domains</span><strong>8</strong></article>
-              <article class="hero-metric"><span>Questions</span><strong>200</strong></article>
-              <article class="hero-metric"><span>Protected prompts</span><strong>80</strong></article>
-              <article class="hero-metric"><span>Canonical prompts</span><strong>184</strong></article>
-              <article class="hero-metric"><span>Sector packs</span><strong>7</strong></article>
+              <article class="hero-metric"><span>Sample questions</span><strong>200</strong></article>
+              <article class="hero-metric"><span>Sample protected prompts</span><strong>80</strong></article>
+              <article class="hero-metric"><span>Proposed anchor prompts</span><strong>184</strong></article>
+              <article class="hero-metric"><span>Illustrative sector packs</span><strong>7</strong></article>
             </div>
           </div>
           <aside class="context-rail">
-            <div class="context-rail-item"><span>Protected prompts</span><strong>80</strong></div>
-            <div class="context-rail-item"><span>Sector packs</span><strong>7</strong></div>
+            <div class="context-rail-item"><span>Sample protected prompts</span><strong>80</strong></div>
+            <div class="context-rail-item"><span>Illustrative sector packs</span><strong>7</strong></div>
           </aside>
         </section>
 
@@ -3845,19 +3872,19 @@
         </nav>
 
         <section class="section-shell">
-          <div class="section-head"><div class="eyebrow">Bank Browser</div><h2>Current benchmark operating surface</h2></div>
+          <div class="section-head"><div class="eyebrow">Bank Browser</div><h2>Illustrative benchmark operating surface</h2></div>
           <div class="benchmark-bank-dashboard">
-            <article class="benchmark-primary-card"><div class="card-kicker">Active Set</div><h2>Core Governed Benchmark v2</h2><p>Primary internal benchmark set for canonical model comparison, report generation, and validation-ready score production across 200 governed benchmark questions with explicit coverage, holdout, sector, diagnostic, and calibration metadata.</p><div class="benchmark-quick-meta"><span>core_v2</span><span>core_v2</span><span>active</span><span>200 questions</span><span>minor_expansion</span></div></article>
-            <article class="benchmark-compact-card"><div class="card-kicker">Prompt Protection</div><h2>80 protected prompts</h2><p>Only public_sample prompts appear in public demos, marketing pages, screenshots, or external documentation.</p><div class="benchmark-quick-meta"><span>adversarial rotation / 40</span><span>internal canonical / 104</span><span>private holdout / 40</span><span>public sample / 16</span></div></article>
-            <article class="benchmark-compact-card"><div class="card-kicker">Score Contract</div><h2>12 dimensions</h2><p>Calibration v2 defines the score contract and keeps diagnostic checks separate from scored dimensions.</p><div class="chip-row"><span class="status-pill">Calibration</span><span class="status-pill">Records</span><span class="status-pill">Model Index</span></div></article>
+            <article class="benchmark-primary-card"><div class="card-kicker">Proposed Sample Set</div><h2>Illustrative Governed Benchmark v2</h2><p>A proposed interface example for benchmark comparison, report generation, and future validation planning across 200 sample questions with illustrative coverage, holdout, sector, diagnostic, and calibration metadata. It is not a canonical or active benchmark release.</p><div class="benchmark-quick-meta"><span>sample_core_v2</span><span>illustrative</span><span>proposed</span><span>200 sample questions</span><span>design example</span></div></article>
+            <article class="benchmark-compact-card"><div class="card-kicker">Proposed Prompt Protection</div><h2>80 sample protected prompts</h2><p>The proposed design distinguishes public samples, rotating adversarial prompts, internal anchors, and private holdouts.</p><div class="benchmark-quick-meta"><span>adversarial rotation / 40</span><span>proposed internal anchors / 104</span><span>private holdout / 40</span><span>public sample / 16</span></div></article>
+            <article class="benchmark-compact-card"><div class="card-kicker">Proposed Score Contract</div><h2>12 illustrative dimensions</h2><p>The illustrative calibration view proposes a score contract that keeps diagnostic checks separate from scored dimensions.</p><div class="chip-row"><span class="status-pill">Calibration concept</span><span class="status-pill">Sample records</span><span class="status-pill">Sample model index</span></div></article>
           </div>
         </section>
 
         <section class="section-shell">
-          <div class="section-head"><div class="eyebrow">Coverage Matrix</div><h2>Governed coverage, not just question volume</h2><p class="section-intro">The active bank tracks difficulty, visibility, risk, sector coverage, use cases, prompt variants, anchors, and release governance.</p></div>
+          <div class="section-head"><div class="eyebrow">Coverage Matrix</div><h2>Proposed governed coverage, not just question volume</h2><p class="section-intro">The sample bank illustrates difficulty, visibility, risk, sector coverage, use cases, prompt variants, anchors, and release-governance fields.</p></div>
           <div class="benchmark-coverage-grid">
             <article class="benchmark-compact-card"><div class="card-kicker">Difficulty</div><h2>4 tiers</h2><div class="coverage-meter-list"><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Adversarial</span><strong>52</strong></div><div class="coverage-meter-track"><i style="width:52%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Baseline</span><strong>38</strong></div><div class="coverage-meter-track"><i style="width:38%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Intermediate</span><strong>59</strong></div><div class="coverage-meter-track"><i style="width:59%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Stress</span><strong>51</strong></div><div class="coverage-meter-track"><i style="width:51%"></i></div></div></div></article>
-            <article class="benchmark-compact-card"><div class="card-kicker">Visibility</div><h2>Holdout-aware</h2><div class="coverage-meter-list"><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Adversarial rotation</span><strong>40</strong></div><div class="coverage-meter-track"><i style="width:40%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Internal canonical</span><strong>104</strong></div><div class="coverage-meter-track"><i style="width:80%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Private holdout</span><strong>40</strong></div><div class="coverage-meter-track"><i style="width:40%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Public sample</span><strong>16</strong></div><div class="coverage-meter-track"><i style="width:16%"></i></div></div></div></article>
+            <article class="benchmark-compact-card"><div class="card-kicker">Visibility</div><h2>Holdout-aware proposal</h2><div class="coverage-meter-list"><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Adversarial rotation</span><strong>40</strong></div><div class="coverage-meter-track"><i style="width:40%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Proposed internal anchors</span><strong>104</strong></div><div class="coverage-meter-track"><i style="width:80%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Private holdout</span><strong>40</strong></div><div class="coverage-meter-track"><i style="width:40%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Public sample</span><strong>16</strong></div><div class="coverage-meter-track"><i style="width:16%"></i></div></div></div></article>
             <article class="benchmark-compact-card"><div class="card-kicker">Risk</div><h2>4 levels</h2><div class="coverage-meter-list"><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Critical</span><strong>31</strong></div><div class="coverage-meter-track"><i style="width:31%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>High</span><strong>69</strong></div><div class="coverage-meter-track"><i style="width:69%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Medium</span><strong>55</strong></div><div class="coverage-meter-track"><i style="width:55%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Medium high</span><strong>45</strong></div><div class="coverage-meter-track"><i style="width:45%"></i></div></div></div></article>
             <article class="benchmark-compact-card"><div class="card-kicker">Sectors</div><h2>7 packs</h2><div class="coverage-meter-list"><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Customer support</span><strong>38</strong></div><div class="coverage-meter-track"><i style="width:38%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Education</span><strong>25</strong></div><div class="coverage-meter-track"><i style="width:25%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Enterprise operations</span><strong>76</strong></div><div class="coverage-meter-track"><i style="width:76%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Financial services</span><strong>74</strong></div><div class="coverage-meter-track"><i style="width:74%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Healthcare</span><strong>37</strong></div><div class="coverage-meter-track"><i style="width:37%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Legal regulatory</span><strong>75</strong></div><div class="coverage-meter-track"><i style="width:75%"></i></div></div><div class="coverage-meter-row"><div class="coverage-meter-head"><span>Public sector</span><strong>75</strong></div><div class="coverage-meter-track"><i style="width:75%"></i></div></div></div></article>
           </div>
@@ -3865,26 +3892,26 @@
 
         <section class="section-shell">
           <div class="benchmark-sector-layout">
-            <div class="benchmark-sector-intro"><div class="eyebrow">Sector Packs</div><h2>Focused views over one governed bank</h2><p>Sector packs filter the same core_v2 benchmark surface without creating disconnected benchmark standards.</p><div class="benchmark-sector-meta"><span>Packs 7</span><span>Source core_v2</span><span>Bank 200</span></div></div>
+            <div class="benchmark-sector-intro"><div class="eyebrow">Sector Packs</div><h2>Illustrative views over a proposed bank</h2><p>Sample sector packs show how one proposed benchmark surface could support focused views without creating disconnected methods.</p><div class="benchmark-sector-meta"><span>Sample packs 7</span><span>Source sample_core_v2</span><span>Sample bank 200</span></div></div>
             <div class="benchmark-sector-grid">
-              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Healthcare</div><h3>Healthcare</h3></div><div class="benchmark-sector-count"><strong>37</strong><span>tagged</span></div></div><p>Clinical, care operations, patient support, and health-risk communication contexts.</p><div class="benchmark-sector-meta"><span>core_v2</span><span>sector pack</span></div></article>
-              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Financial_services</div><h3>Financial Services</h3></div><div class="benchmark-sector-count"><strong>74</strong><span>tagged</span></div></div><p>Banking, insurance, fintech, model risk, audit, and regulated decision contexts.</p><div class="benchmark-sector-meta"><span>core_v2</span><span>sector pack</span></div></article>
-              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Legal_regulatory</div><h3>Legal Regulatory</h3></div><div class="benchmark-sector-count"><strong>75</strong><span>tagged</span></div></div><p>Legal, compliance, regulatory response, audit, disclosure, and governance contexts.</p><div class="benchmark-sector-meta"><span>core_v2</span><span>sector pack</span></div></article>
-              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Enterprise_operations</div><h3>Enterprise Operations</h3></div><div class="benchmark-sector-count"><strong>76</strong><span>tagged</span></div></div><p>Internal enterprise deployment, operations, procurement, support, and workflow contexts.</p><div class="benchmark-sector-meta"><span>core_v2</span><span>sector pack</span></div></article>
-              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Public_sector</div><h3>Public Sector</h3></div><div class="benchmark-sector-count"><strong>75</strong><span>tagged</span></div></div><p>Government, civic services, public communication, policy, and institutional accountability contexts.</p><div class="benchmark-sector-meta"><span>core_v2</span><span>sector pack</span></div></article>
-              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Customer_support</div><h3>Customer Support</h3></div><div class="benchmark-sector-count"><strong>38</strong><span>tagged</span></div></div><p>Escalation, reliability, safety, and service quality contexts.</p><div class="benchmark-sector-meta"><span>core_v2</span><span>sector pack</span></div></article>
+              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Healthcare</div><h3>Healthcare</h3></div><div class="benchmark-sector-count"><strong>37</strong><span>tagged</span></div></div><p>Clinical, care operations, patient support, and health-risk communication contexts.</p><div class="benchmark-sector-meta"><span>sample_core_v2</span><span>sector pack</span></div></article>
+              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Financial_services</div><h3>Financial Services</h3></div><div class="benchmark-sector-count"><strong>74</strong><span>tagged</span></div></div><p>Banking, insurance, fintech, model risk, audit, and regulated decision contexts.</p><div class="benchmark-sector-meta"><span>sample_core_v2</span><span>sector pack</span></div></article>
+              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Legal_regulatory</div><h3>Legal Regulatory</h3></div><div class="benchmark-sector-count"><strong>75</strong><span>tagged</span></div></div><p>Legal, compliance, regulatory response, audit, disclosure, and governance contexts.</p><div class="benchmark-sector-meta"><span>sample_core_v2</span><span>sector pack</span></div></article>
+              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Enterprise_operations</div><h3>Enterprise Operations</h3></div><div class="benchmark-sector-count"><strong>76</strong><span>tagged</span></div></div><p>Internal enterprise deployment, operations, procurement, support, and workflow contexts.</p><div class="benchmark-sector-meta"><span>sample_core_v2</span><span>sector pack</span></div></article>
+              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Public_sector</div><h3>Public Sector</h3></div><div class="benchmark-sector-count"><strong>75</strong><span>tagged</span></div></div><p>Government, civic services, public communication, policy, and institutional accountability contexts.</p><div class="benchmark-sector-meta"><span>sample_core_v2</span><span>sector pack</span></div></article>
+              <article class="benchmark-sector-card"><div class="benchmark-sector-card-main"><div><div class="card-kicker">Customer_support</div><h3>Customer Support</h3></div><div class="benchmark-sector-count"><strong>38</strong><span>tagged</span></div></div><p>Escalation, reliability, safety, and service quality contexts.</p><div class="benchmark-sector-meta"><span>sample_core_v2</span><span>sector pack</span></div></article>
             </div>
           </div>
         </section>
 
         <section class="section-shell">
-          <div class="section-head"><div class="eyebrow">Benchmark Bank</div><h2>Operator-ready categories</h2></div>
+          <div class="section-head"><div class="eyebrow">Benchmark Bank</div><h2>Illustrative operator categories</h2></div>
           <div class="benchmark-category-table">
-            <article class="benchmark-category-row"><div><div class="card-kicker">Active / high risk / protected prompts</div><h3>Healthcare patient support</h3><p class="redaction-note">Proprietary prompt detail redacted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div></div><div class="check-list"><span class="check-pill">Accuracy</span><span class="check-pill">Grounding</span><span class="check-pill">Safety</span></div></article>
-            <article class="benchmark-category-row"><div><div class="card-kicker">Active / high risk / protected prompts</div><h3>Legal and social decision-making</h3><p class="redaction-note">Proprietary prompt detail redacted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line long"></span></div></div><div class="check-list"><span class="check-pill">Evidence quality</span><span class="check-pill">Governance fit</span></div></article>
-            <article class="benchmark-category-row"><div><div class="card-kicker">Active / medium risk / sample visible</div><h3>Enterprise decision support</h3><p class="redaction-note">Rubric anchors redacted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line short"></span></div></div><div class="check-list"><span class="check-pill">Actionability</span><span class="check-pill">Clarity</span></div></article>
-            <article class="benchmark-category-row"><div><div class="card-kicker">Active / medium risk / protected prompts</div><h3>Procurement vendor evaluation</h3><p class="redaction-note">Proprietary prompt detail redacted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line medium"></span></div></div><div class="check-list"><span class="check-pill">Consistency</span><span class="check-pill">Comparative usefulness</span></div></article>
-            <article class="benchmark-category-row"><div><div class="card-kicker">Active / high risk / protected prompts</div><h3>Medical evidence triage</h3><p class="redaction-note">Proprietary prompt detail redacted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line short"></span></div></div><div class="check-list"><span class="check-pill">Citation discipline</span><span class="check-pill">Safety</span></div></article>
+            <article class="benchmark-category-row"><div><div class="card-kicker">Illustrative / high risk / protected prompts</div><h3>Healthcare patient support</h3><p class="redaction-note">Sample protected prompt detail omitted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div></div><div class="check-list"><span class="check-pill">Accuracy</span><span class="check-pill">Grounding</span><span class="check-pill">Safety</span></div></article>
+            <article class="benchmark-category-row"><div><div class="card-kicker">Illustrative / high risk / protected prompts</div><h3>Legal and social decision-making</h3><p class="redaction-note">Sample protected prompt detail omitted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line long"></span></div></div><div class="check-list"><span class="check-pill">Evidence quality</span><span class="check-pill">Governance fit</span></div></article>
+            <article class="benchmark-category-row"><div><div class="card-kicker">Illustrative / medium risk / sample visible</div><h3>Enterprise decision support</h3><p class="redaction-note">Illustrative rubric anchors omitted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line short"></span></div></div><div class="check-list"><span class="check-pill">Actionability</span><span class="check-pill">Clarity</span></div></article>
+            <article class="benchmark-category-row"><div><div class="card-kicker">Illustrative / medium risk / protected prompts</div><h3>Procurement vendor evaluation</h3><p class="redaction-note">Sample protected prompt detail omitted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line medium"></span></div></div><div class="check-list"><span class="check-pill">Consistency</span><span class="check-pill">Comparative usefulness</span></div></article>
+            <article class="benchmark-category-row"><div><div class="card-kicker">Illustrative / high risk / protected prompts</div><h3>Medical evidence triage</h3><p class="redaction-note">Sample protected prompt detail omitted</p></div><div class="benchmark-category-use"><span>Intended use</span><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line short"></span></div></div><div class="check-list"><span class="check-pill">Citation discipline</span><span class="check-pill">Safety</span></div></article>
           </div>
         </section>
 
@@ -3892,16 +3919,16 @@
           <div class="section-head"><div class="eyebrow">Control Registries</div><h2>Collapsed benchmark reference</h2></div>
           <div class="benchmark-accordion-grid">
             <details class="benchmark-accordion"><summary><span>Domains</span><strong>8 primary domains</strong></summary><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div></details>
-            <details class="benchmark-accordion"><summary><span>Core</span><strong>12 score dimensions</strong></summary><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line short"></span></div></details>
-            <details class="benchmark-accordion"><summary><span>Diagnostics</span><strong>12 diagnostic lenses</strong></summary><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line long"></span></div></details>
+            <details class="benchmark-accordion"><summary><span>Core</span><strong>12 illustrative score dimensions</strong></summary><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line short"></span></div></details>
+            <details class="benchmark-accordion"><summary><span>Diagnostics</span><strong>12 illustrative diagnostic lenses</strong></summary><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line long"></span></div></details>
             <details class="benchmark-accordion"><summary><span>Scenarios</span><strong>15 scenario types</strong></summary><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div></details>
-            <details class="benchmark-accordion"><summary><span>Question sets</span><strong>1 set versions</strong></summary><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line short"></span></div></details>
-            <details class="benchmark-accordion"><summary><span>Score contract</span><strong>12 mapped dimensions</strong></summary><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div></details>
+            <details class="benchmark-accordion"><summary><span>Question sets</span><strong>1 sample set version</strong></summary><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line short"></span></div></details>
+            <details class="benchmark-accordion"><summary><span>Score contract</span><strong>12 proposed dimension fields</strong></summary><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div></details>
           </div>
         </section>
 
         <section class="section-shell">
-          <div class="section-head"><div class="eyebrow">Active Bank</div><h2>Active questions by domain</h2><p class="section-intro">Each row shows the scenario count and governance posture. Prompt text remains redacted in the investor demo.</p></div>
+          <div class="section-head"><div class="eyebrow">Illustrative Bank</div><h2>Sample questions by domain</h2><p class="section-intro">Each row illustrates a proposed scenario count and governance posture. Sample prompt text is omitted in the investor demo.</p></div>
           <div class="benchmark-domain-list">
             <details class="benchmark-domain-accordion"><summary><div><span class="eyebrow">Governance</span><strong>56 scenarios</strong><p>Model behavior in policy, governance, compliance, and institutional accountability contexts.</p></div><span class="status-pill warn">Prompt detail redacted</span></summary><div class="benchmark-question-list"><article class="question-row"><strong>gov_001</strong><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div><span class="status-pill warn">Redacted</span></article><article class="question-row"><strong>gov_014</strong><div class="redaction-stack"><span class="redaction-line medium"></span><span class="redaction-line short"></span></div><span class="status-pill warn">Redacted</span></article></div></details>
             <details class="benchmark-domain-accordion"><summary><div><span class="eyebrow">Safety and Risk</span><strong>52 scenarios</strong><p>Boundaries, escalations, unsafe certainty, and risk handling across high-impact settings.</p></div><span class="status-pill warn">Prompt detail redacted</span></summary><div class="benchmark-question-list"><article class="question-row"><strong>safety_014</strong><div class="redaction-stack"><span class="redaction-line long"></span><span class="redaction-line medium"></span></div><span class="status-pill warn">Redacted</span></article></div></details>
@@ -3911,15 +3938,16 @@
       </section>
 
       <section class="console-view" data-demo-view="settings">
+        <div class="illustrative-view-banner" role="note"><strong>Illustrative prototype</strong><span>All health, credential, runtime, registry, benchmark, and readiness states in this tab are sample interface content, not a live system-status report.</span></div>
         <section class="page-hero" aria-label="Settings page">
           <div class="page-hero-main">
             <div class="eyebrow">Settings</div>
             <h1>System readiness</h1>
-            <p class="lede">Live configuration status for the evaluation console: runtime posture, provider credential bindings, model sources, benchmark readiness, data boundaries, and next setup actions.</p>
-            <div class="chip-row"><span class="status-pill good">Backend online</span><span class="status-pill good">Runtime online</span><span class="status-pill">0 credentials configured</span><span class="status-pill strong">core_v2</span></div>
+            <p class="lede">Illustrative configuration layout for the intended evaluation console: runtime posture, provider credential bindings, model sources, benchmark readiness, data boundaries, and next setup actions.</p>
+            <div class="chip-row"><span class="status-pill good">Sample backend state</span><span class="status-pill good">Sample runtime state</span><span class="status-pill">Illustrative credential state</span><span class="status-pill strong">sample_core_v2</span></div>
           </div>
           <aside class="context-rail">
-            <div class="context-rail-item"><span>Runtime</span><strong>Mock online</strong></div>
+            <div class="context-rail-item"><span>Runtime</span><strong>Illustrative mock</strong></div>
             <div class="context-rail-item"><span>Secrets</span><strong>Not exposed</strong></div>
           </aside>
         </section>
@@ -3928,23 +3956,23 @@
           <aside class="settings-rail" aria-label="Settings readiness summary">
             <div><div class="eyebrow">Readiness</div><h2>Operating posture</h2></div>
             <div class="settings-rail-list">
-              <div class="settings-rail-item"><span class="settings-state active">Active</span><strong>Backend API</strong><p>development / mock</p></div>
-              <div class="settings-rail-item"><span class="settings-state active">Active</span><strong>Benchmark bank</strong><p>core_v2 / 200 questions</p></div>
-              <div class="settings-rail-item"><span class="settings-state active">Active</span><strong>Manual calibration</strong><p>Operator-assisted output entry and review flow are available.</p></div>
-              <div class="settings-rail-item"><span class="settings-state active">Active</span><strong>Local runtime</strong><p>ollama online / 1 pid</p></div>
-              <div class="settings-rail-item"><span class="settings-state missing">Missing</span><strong>Provider credentials</strong><p>0 of 7 credential bindings configured</p></div>
-              <div class="settings-rail-item"><span class="settings-state active">Active</span><strong>Model registry</strong><p>7 model records / 6 local entries</p></div>
+              <div class="settings-rail-item"><span class="settings-state active">Illustrative</span><strong>Backend API</strong><p>development / mock</p></div>
+              <div class="settings-rail-item"><span class="settings-state active">Illustrative</span><strong>Benchmark bank</strong><p>sample_core_v2 / 200 questions</p></div>
+              <div class="settings-rail-item"><span class="settings-state active">Illustrative</span><strong>Manual calibration</strong><p>Operator-assisted output entry and review flow is represented.</p></div>
+              <div class="settings-rail-item"><span class="settings-state active">Illustrative</span><strong>Local runtime</strong><p>ollama online / 1 pid</p></div>
+              <div class="settings-rail-item"><span class="settings-state missing">Missing</span><strong>Provider credentials</strong><p>Illustrative state: 0 of 7 credential bindings</p></div>
+              <div class="settings-rail-item"><span class="settings-state active">Illustrative</span><strong>Model registry</strong><p>7 model records / 6 local entries</p></div>
             </div>
           </aside>
 
           <div class="settings-main">
             <section class="section-shell">
-              <div class="section-head"><div class="eyebrow">System Health</div><h2>Live system state</h2></div>
+              <div class="section-head"><div class="eyebrow">System Health</div><h2>Illustrative system state</h2></div>
               <div class="settings-health-grid">
-                <article class="settings-status-card"><span class="settings-state active">Online</span><h3>Backend API</h3><p>Environment development; runner backend mock.</p></article>
-                <article class="settings-status-card"><span class="settings-state active">Online</span><h3>Local runtime</h3><p>Ollama running with 1 detected process.</p></article>
-                <article class="settings-status-card"><span class="settings-state active">Loaded</span><h3>Benchmark bank</h3><p>core_v2 is active with 200 governed questions.</p></article>
-                <article class="settings-status-card"><span class="settings-state active">Loaded</span><h3>Model index</h3><p>7 registry entries are available for evaluation routing.</p></article>
+                <article class="settings-status-card"><span class="settings-state active">Sample</span><h3>Backend API</h3><p>Illustrative development environment with a mock runner.</p></article>
+                <article class="settings-status-card"><span class="settings-state active">Sample</span><h3>Local runtime</h3><p>Illustrative interface state; no detected process is asserted.</p></article>
+                <article class="settings-status-card"><span class="settings-state active">Proposed</span><h3>Benchmark bank</h3><p>sample_core_v2 illustrates a proposed 200-question bank.</p></article>
+                <article class="settings-status-card"><span class="settings-state active">Sample</span><h3>Model index</h3><p>Seven illustrative registry entries show intended evaluation routing.</p></article>
               </div>
             </section>
 
@@ -3952,7 +3980,7 @@
               <div class="section-head"><div class="eyebrow">Provider Credentials</div><h2>Credential bindings without secret exposure</h2><p class="section-intro">Settings shows whether each environment binding exists. It never renders or stores credential values in the browser.</p></div>
               <div class="settings-credential-layout">
                 <article class="settings-credential-guide"><span class="settings-state configured">Server-side</span><h3>Where credentials go</h3><p>Provider API keys belong in the backend environment for this MVP. Add them to the backend process environment or the local backend env file, then restart the backend so settings reload.</p><code class="settings-env-path">norynthe-system/backend/.env</code><p>The web app should only show configured or missing status. Secret values stay outside the browser.</p></article>
-                <article class="settings-env-list"><span class="settings-state missing">0 configured</span><h3>Credential variables</h3><p>Use only the providers you intend to test.</p><div class="settings-env-grid"><code>NORYNTHE_OPENAI_API_KEY=...</code><code>NORYNTHE_ANTHROPIC_API_KEY=...</code><code>NORYNTHE_GOOGLE_API_KEY=...</code><code>NORYNTHE_XAI_API_KEY=...</code><code>NORYNTHE_MISTRAL_API_KEY=...</code><code>NORYNTHE_DEEPSEEK_API_KEY=...</code><code>NORYNTHE_QWEN_API_KEY=...</code></div></article>
+                <article class="settings-env-list"><span class="settings-state missing">Sample: 0 configured</span><h3>Credential variables</h3><p>Use only the providers you intend to test.</p><div class="settings-env-grid"><code>NORYNTHE_OPENAI_API_KEY=...</code><code>NORYNTHE_ANTHROPIC_API_KEY=...</code><code>NORYNTHE_GOOGLE_API_KEY=...</code><code>NORYNTHE_XAI_API_KEY=...</code><code>NORYNTHE_MISTRAL_API_KEY=...</code><code>NORYNTHE_DEEPSEEK_API_KEY=...</code><code>NORYNTHE_QWEN_API_KEY=...</code></div></article>
               </div>
               <div class="settings-provider-list">
                 <article class="settings-provider-row"><div class="settings-provider-name"><span class="settings-state missing">Missing</span><strong>OpenAI / ChatGPT</strong></div><div class="settings-provider-binding"><span>Environment key</span><code>NORYNTHE_OPENAI_API_KEY</code></div><div class="settings-provider-secret"><span>Secret exposed</span><strong>No</strong></div></article>
@@ -3968,17 +3996,17 @@
             <section class="section-shell">
               <div class="section-head"><div class="eyebrow">Local Runtime</div><h2>Runtime controls and capabilities</h2></div>
               <div class="settings-runtime-grid">
-                <article class="surface-card"><div class="card-kicker">Runtime</div><h2>Runtime state</h2><p>Engine: mock. Ollama is <strong>online</strong>.</p><div class="form-actions"><span class="button">Start Ollama</span><span class="button">Stop Ollama</span><span class="button">Refresh status</span></div></article>
-                <article class="settings-capabilities-card"><div class="card-kicker">Capabilities</div><h2>Execution paths</h2><div class="settings-capability-list"><div class="settings-capability-row"><span class="settings-state active">Available</span><div><strong>Manual calibration</strong><p>Operator-provided outputs are supported now.</p></div></div><div class="settings-capability-row"><span class="settings-state planned">Planned</span><div><strong>Ollama local runtime</strong><p>Discovery and pull support exist; execution requires local runtime availability.</p></div></div><div class="settings-capability-row"><span class="settings-state planned">Planned</span><div><strong>Remote provider API</strong><p>Provider adapter boundary exists; provider-specific SDK execution remains future work.</p></div></div></div></article>
+                <article class="surface-card"><div class="card-kicker">Runtime</div><h2>Illustrative runtime state</h2><p>The sample interface shows a mock engine with an online indicator; it does not report a live process.</p><div class="form-actions"><span class="button">Start Ollama</span><span class="button">Stop Ollama</span><span class="button">Refresh status</span></div></article>
+                <article class="settings-capabilities-card"><div class="card-kicker">Capabilities</div><h2>Intended execution paths</h2><div class="settings-capability-list"><div class="settings-capability-row"><span class="settings-state active">Illustrative</span><div><strong>Manual calibration</strong><p>The design supports operator-provided outputs and review.</p></div></div><div class="settings-capability-row"><span class="settings-state planned">Planned</span><div><strong>Ollama local runtime</strong><p>Discovery, pull, and execution require implementation and local runtime availability.</p></div></div><div class="settings-capability-row"><span class="settings-state planned">Planned</span><div><strong>Remote provider API</strong><p>The provider-adapter boundary is proposed; provider-specific SDK execution remains future work.</p></div></div></div></article>
               </div>
             </section>
 
             <section class="section-shell">
               <div class="section-head"><div class="eyebrow">Model Sources</div><h2>Where evaluated outputs can come from</h2></div>
               <div class="settings-source-grid">
-                <article class="settings-source-card"><div class="settings-source-card-head"><h3>Manual calibration</h3><span class="settings-state active">Active</span></div><p>Operator-pasted model outputs, source notes, reviewer context, and report generation are available now.</p></article>
-                <article class="settings-source-card"><div class="settings-source-card-head"><h3>Local runtime models</h3><span class="settings-state configured">Configured</span></div><p>6 local runtime model entries are currently in the registry.</p></article>
-                <article class="settings-source-card"><div class="settings-source-card-head"><h3>Provider API outputs</h3><span class="settings-state planned">Planned</span></div><p>0 provider API model entries are registered. Live execution depends on future provider adapters.</p></article>
+                <article class="settings-source-card"><div class="settings-source-card-head"><h3>Manual calibration</h3><span class="settings-state active">Illustrative</span></div><p>The sample workflow shows operator-pasted model outputs, source notes, reviewer context, and report-preview generation.</p></article>
+                <article class="settings-source-card"><div class="settings-source-card-head"><h3>Local runtime models</h3><span class="settings-state configured">Sample</span></div><p>Six illustrative local-runtime model entries show the intended registry design.</p></article>
+                <article class="settings-source-card"><div class="settings-source-card-head"><h3>Provider API outputs</h3><span class="settings-state planned">Planned</span></div><p>The sample registry shows no provider API entries; future live execution would depend on implemented provider adapters.</p></article>
               </div>
             </section>
 
@@ -3990,10 +4018,10 @@
             <section class="section-shell">
               <div class="section-head"><div class="eyebrow">Readiness Checklist</div><h2>Setup actions</h2></div>
               <div class="settings-checklist">
-                <article class="settings-check-row"><span class="settings-state active">Active</span><div><h3>Run manual calibration</h3><p>Active workflow is available now.</p></div></article>
-                <article class="settings-check-row"><span class="settings-state active">Active</span><div><h3>Verify local runtime</h3><p>Ollama is online.</p></div></article>
-                <article class="settings-check-row"><span class="settings-state missing">Missing</span><div><h3>Add provider credentials</h3><p>0 provider credential bindings configured.</p></div></article>
-                <article class="settings-check-row"><span class="settings-state configured">Configured</span><div><h3>Register runtime models</h3><p>6 local runtime model records detected.</p></div></article>
+                <article class="settings-check-row"><span class="settings-state active">Illustrative</span><div><h3>Run manual calibration</h3><p>The sample interface demonstrates the intended workflow.</p></div></article>
+                <article class="settings-check-row"><span class="settings-state planned">Planned</span><div><h3>Verify local runtime</h3><p>A future live console would verify runtime availability.</p></div></article>
+                <article class="settings-check-row"><span class="settings-state missing">Missing</span><div><h3>Add provider credentials</h3><p>Illustrative state: no provider credential bindings.</p></div></article>
+                <article class="settings-check-row"><span class="settings-state active">Illustrative</span><div><h3>Register runtime models</h3><p>Six sample records illustrate the intended registry.</p></div></article>
                 <article class="settings-check-row"><span class="settings-state planned">Planned</span><div><h3>Run benchmark smoke test</h3><p>Use a small question limit before a full 200-question sweep.</p></div></article>
                 <article class="settings-check-row"><span class="settings-state planned">Planned</span><div><h3>Confirm export readiness</h3><p>Review source verification, flags, and report readiness before export.</p></div></article>
               </div>
@@ -4007,7 +4035,7 @@
                 <details class="detail-panel"><summary><span>Google Gemini</span><small>Planned / API-ready scaffold</small></summary><div class="detail-panel-body">Provider adapter is planned. Credentials stay server-side.</div></details>
                 <details class="detail-panel"><summary><span>Qwen</span><small>Planned / API-ready scaffold / API / local</small></summary><div class="detail-panel-body">Registry supports local and future provider paths.</div></details>
                 <details class="detail-panel"><summary><span>Ollama / llama.cpp</span><small>Planned / local</small></summary><div class="detail-panel-body">Local runtime path remains explicit.</div></details>
-                <details class="detail-panel"><summary><span>Manual calibration</span><small>Active / manual</small></summary><div class="detail-panel-body">Operator-provided output path is active now.</div></details>
+                <details class="detail-panel"><summary><span>Manual calibration</span><small>Illustrative / manual</small></summary><div class="detail-panel-body">The prototype demonstrates an intended operator-provided output path.</div></details>
               </div>
             </section>
           </div>

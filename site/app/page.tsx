@@ -7,15 +7,15 @@ const groups = [
     id: "start",
     number: "01",
     eyebrow: "Start here",
-    title: "A short path through the diligence packet.",
+    title: "Begin with the laboratory.",
     description:
-      "The company narrative, founder context, revenue logic, and a concise boardroom view.",
+      "The institutional thesis, laboratory architecture, founder context, and capital-to-capability plan.",
     cards: [
-      ["Investor PDF packet", "The complete thesis, product proof, business model, raise plan, and diligence path.", "PDF · 11 pages", "https://norynthe-pulse-tracker.alanmotley.workers.dev/download/investor-packet?site=investor&access=61b63b8f581904d31752068285cbbb5b18e9d81bf45daf02"],
-      ["Company and category narrative", "Norynthe’s positioning, market argument, and standard-forming opportunity.", "Core · 7 min", "https://investors.norynthe.com/norynthe-investors.html"],
-      ["Revenue logic and paid evidence layer", "Public trust scores, enterprise evidence access, and recurring decision-infrastructure revenue.", "Core · 6 min", "https://investors.norynthe.com/norynthe-business-model.html"],
+      ["Laboratory architecture", "Why independent evaluation requires a controlled physical, computational, methodological, evidentiary, security, and governance environment.", "Core · 10 min", "https://investors.norynthe.com/norynthe-laboratory.html"],
+      ["Investor PDF packet", "The laboratory thesis, current evidence state, capital plan, founder-led operation, and 18-month proof path.", "PDF · 11 pages", "/norynthe-investor-packet.pdf"],
+      ["Company and category narrative", "Norynthe’s positioning as an independent AI assurance company and institution.", "Core · 7 min", "https://investors.norynthe.com/norynthe-investors.html"],
       ["Why this company exists", "Founder context on the trust problem and the rationale for an independent evaluation layer.", "Context · 6 min", "https://investors.norynthe.com/norynthe-founder-memo.html"],
-      ["Boardroom-readable summary", "A compact review of the score, evidence layer, benchmark system, and long-term strategy.", "Summary · 5 min", "https://investors.norynthe.com/executive-overview.html"],
+      ["Capital-to-capability plan", "What the $2M establishes, why the controlled base matters, and which milestones govern deployment.", "Capital · 8 min", "https://investors.norynthe.com/norynthe-raise-plan.html"],
     ],
   },
   {
@@ -28,56 +28,57 @@ const groups = [
     cards: [
       ["The Norynthe Papers", "A continuing institutional publication series documenting the science of trustworthy inference.", "Research archive", "https://papers.norynthe.com/"],
       ["Volume I — On Trust, Inference, and Intelligence", "The founding treatise: intelligence and trust are different, inference should become an object of science, and evaluation requires institutional memory.", "Foundational publication", "https://papers.norynthe.com/volume-i/"],
-      ["Durable research record", "Methodology notes, benchmark releases, research reports, and state-of-trust reports preserve how the standard evolves.", "Forthcoming series", "https://papers.norynthe.com/#publications"],
+      ["Volume II — On Reality, Records, and the Calibration of Intelligence", "The published foundation for continuous epistemic calibration, revision memory, and reality-facing institutional inquiry.", "Published · Aug 25, 2026", "https://papers.norynthe.com/volume-ii/"],
+      ["Norynthe AI Assurance Method v0.1", "The current public method defining assurance, independence, evidence, corrections, appeals, and non-certification limits.", "Method · M-001", "https://papers.norynthe.com/methods/ai-assurance-method-v0-1/"],
     ],
   },
   {
     id: "product",
     number: "03",
-    eyebrow: "Product evidence",
-    title: "The working system behind the thesis.",
+    eyebrow: "Evidence state",
+    title: "Founder-built foundation; laboratory validation ahead.",
     description:
-      "The evaluation OS turns the research discipline into governed workflows, evidence records, and decision-ready reporting.",
+      "The investor surfaces demonstrate intended workflow and reporting architecture. They are not a production backend or proof of completed scientific validation.",
     cards: [
-      ["Norynthe OS walkthrough", "The working console for benchmark selection, scoring dimensions, reviewer state, model outputs, and records.", "Product · 10 min", "https://investors.norynthe.com/norynthe-run-console.html"],
-      ["External report surface", "The customer-facing format translating assessment records into executive findings and score detail.", "Product · 7 min", "https://investors.norynthe.com/norynthe-customer-report.html"],
-      ["Comparative evidence and scoring detail", "A deeper multi-model report with evidence excerpts, reviewer notes, and traceable score context.", "Product · 12 min", "https://investors.norynthe.com/norynthe-customer-report-appendix.html"],
+      ["Evaluation workflow preview", "A static investor walkthrough of the intended benchmark, scoring, review, evidence-record, and reporting workflow.", "Illustrative prototype · 10 min", "https://investors.norynthe.com/norynthe-run-console.html"],
+      ["External report concept", "A synthetic example of how a future traceable assessment record could become a bounded institutional finding.", "Synthetic sample · 7 min", "https://investors.norynthe.com/norynthe-customer-report.html"],
+      ["Comparative report concept", "A synthetic multi-model format showing intended comparison, evidence, reviewer notes, and score context.", "Synthetic sample · 12 min", "https://investors.norynthe.com/norynthe-customer-report-appendix.html"],
     ],
   },
   {
     id: "financials",
     number: "04",
     eyebrow: "Capital plan",
-    title: "Compute capacity is the present constraint.",
+    title: "$2M to establish the controlled evaluation laboratory.",
     description:
-      "The raise moves Norynthe from founder-built proof and smaller-model reviews to a repeatable independent evaluation lab.",
+      "The plan establishes the physical, computational, evidentiary, security, governance, and operating environment required for repeatable independent evaluation.",
     cards: [
-      ["$2M to build the AI trust lab", "The funding target, use of funds, compute unlock, and milestones for larger-model trust scoring.", "Financials · 8 min", "https://investors.norynthe.com/norynthe-raise-plan.html"],
-      ["Assumptions, forecast, and reserve logic", "The deployment model, lab budget, commercial ramp, revenue forecast, and investor-ready charts.", "Financials · 10 min", "https://investors.norynthe.com/norynthe-financial-model-assumptions.html"],
+      ["Capital-to-capability plan", "The controlled laboratory base, compute, evidence systems, governance, founder-led runway, and 18-month proof milestones.", "Financials · 8 min", "https://investors.norynthe.com/norynthe-raise-plan.html"],
+      ["Capital assumptions and runway", "The deployment model, open property and compute diligence, low-headcount operating logic, and milestone gates.", "Financials · 10 min", "https://investors.norynthe.com/norynthe-financial-model-assumptions.html"],
     ],
   },
   {
     id: "strategy",
     number: "05",
     eyebrow: "Category and adoption",
-    title: "An independent trust layer for models and agents.",
+    title: "An independent trust layer for models and a proposed agent-evaluation extension.",
     description:
       "Norynthe is designed to sit outside the model owner’s control and create evidence the market can compare, inspect, and rely upon.",
     cards: [
-      ["External trust layer for models and agents", "The deeper thesis for Norynthe.Score, benchmark governance, and external trust infrastructure.", "Strategy · 12 min", "https://investors.norynthe.com/norynthe-white-paper.html"],
+      ["External trust layer and proposed agent-evaluation extension", "Historical methodology context for Norynthe.Score, benchmark governance, and a proposed future agent-assessment extension.", "Strategy · 12 min", "https://investors.norynthe.com/norynthe-white-paper.html"],
       ["Institutional adoption paths", "How independent model credibility records support buyers, regulated enterprises, and strategic reviewers.", "Strategy · 8 min", "https://investors.norynthe.com/norynthe-enterprise-use-cases.html"],
-      ["Tokens are fuel. Compute is infrastructure.", "Why capacity is the current bottleneck—and why the evaluation infrastructure should be independent.", "Strategy · 7 min", "https://investors.norynthe.com/power-of-compute.html"],
+      ["Tokens are fuel. Compute is infrastructure.", "Why Norynthe needs hybrid compute inside a wider system of method, evidence custody, governance, and external challenge.", "Strategy · 7 min", "https://investors.norynthe.com/power-of-compute.html"],
     ],
   },
 ];
 
 const answers = [
-  ["What exists now?", "A working evaluation OS, scoring workflow, evidence records, and customer-facing reporting surfaces."],
-  ["What does capital unlock?", "Dedicated lab and compute capacity for larger-model evaluation, repeatability, and commercial delivery."],
-  ["Who buys first?", "Enterprise CTO, procurement, governance, and risk teams that need external evidence before consequential AI decisions."],
-  ["What is the near-term proof?", "Paid pilots, repeatable evaluations, comparative records, and evidence-linked reports."],
-  ["What compounds?", "The benchmark bank, scoring history, methodology, institutional memory, and public meaning of Norynthe.Score."],
-  ["Why is this different?", "Norynthe is an outside-in trust signal—not another inside-out governance or observability dashboard."],
+  ["What exists now?", "Published research, Method v0.1, a founder-built evaluation architecture, prototype workflow surfaces, illustrative reports, and early smaller-model experimentation requiring a verified evidence bundle."],
+  ["Why a laboratory?", "Independent evaluation requires controlled conditions, benchmark custody, repeatability, evidence preservation, challenge, correction, and institutional continuity."],
+  ["What does capital unlock?", "The controlled base, hybrid compute, evidence systems, security, methodology, external review, and founder-led runway required to establish the laboratory."],
+  ["Why low headcount?", "Norynthe scales through infrastructure, automation, governed workflows, and accumulated evidence—not a large early payroll."],
+  ["What is the near-term proof?", "Complete run packages, repeatability and variance results, externally challenged methodology, traceable reports, design partners, and bounded paid pilots."],
+  ["What compounds?", "The benchmark bank, evidence ledger, revision history, methodology, corrections, and institutional memory."],
 ];
 
 export default function Home() {
@@ -107,21 +108,21 @@ export default function Home() {
       <section className="hero">
         <div className="hero-copy">
           <p className="kicker">Selected investor and strategic review conversations</p>
-          <h1>Independent infrastructure for AI trust.</h1>
+          <h1>Building the independent laboratory for AI trust.</h1>
           <p className="lede">
-            Norynthe is building the external evaluation layer for intelligent systems:
-            governed methods, durable evidence, and a standard the market can trust
-            outside the model owner’s control.
+            Norynthe is building a controlled evaluation environment for intelligent systems:
+            governed benchmarks, hybrid compute, preserved evidence, repeatable methods,
+            and institutional reporting outside the model owner’s control.
           </p>
           <div className="thesis-line">
-            <span>Research discipline</span><i>→</i><span>Evaluation OS</span><i>→</i><span>Independent trust signal</span>
+            <span>Research discipline</span><i>→</i><span>Controlled laboratory</span><i>→</i><span>Evidence institutions can inspect</span>
           </div>
         </div>
 
         <aside className="access-card" aria-label="Investor access gate">
-          <p className="kicker">Controlled diligence</p>
+          <p className="kicker">Selected diligence</p>
           <h2>Unlock the review.</h2>
-          <p>The portal connects the institutional thesis, working product, capital plan, and category opportunity.</p>
+          <p>The portal connects the institutional thesis, founder-built foundation, laboratory architecture, capital plan, and proof program.</p>
           {!unlocked ? (
             <form onSubmit={unlock}>
               <label htmlFor="password">Access password</label>
@@ -129,17 +130,17 @@ export default function Home() {
                 <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" />
                 <button type="submit">Unlock</button>
               </div>
-              <p className="form-note" role="status">{error || "Shared for selected investor and strategic conversations."}</p>
+              <p className="form-note" role="status">{error || "Shared for selected investor and strategic conversations. This static review gate is not a confidential data room."}</p>
             </form>
           ) : <p className="unlocked">Access active · Review materials below</p>}
         </aside>
       </section>
 
       <section className="proof-strip" aria-label="Company proof points">
-        <div><strong>Working OS</strong><span>Evaluation and reporting surfaces exist today.</span></div>
-        <div><strong>Institutional research</strong><span>The Papers preserve the discipline behind the system.</span></div>
-        <div><strong>$2M plan</strong><span>Dedicated lab and compute capacity.</span></div>
-        <div><strong>Compounding asset</strong><span>Benchmarks, evidence, history, and trust.</span></div>
+        <div><strong>Founder-built foundation</strong><span>Published method, prototype workflow, and reporting architecture.</span></div>
+        <div><strong>Institutional research</strong><span>The Papers preserve the discipline and revision history behind the system.</span></div>
+        <div><strong>$2M laboratory plan</strong><span>Controlled base, compute, evidence, security, governance, and runway.</span></div>
+        <div><strong>Low-headcount by design</strong><span>Founder-led operation scaled through infrastructure and disciplined automation.</span></div>
       </section>
 
       <section className="research-bridge">
@@ -162,15 +163,15 @@ export default function Home() {
         <div className="section-heading">
           <p className="kicker">From thesis to evidence</p>
           <h2>A guided packet, not a file dump.</h2>
-          <p>Review the working product, the report it produces, and the capital plan that expands its reach.</p>
+          <p>Review the founder-built foundation, the intended workflow, the laboratory it requires, and the evidence the funded phase must produce.</p>
         </div>
         <div className="preview-grid">
           <figure className="preview-main">
             <img src="https://investors.norynthe.com/previews/console-page-preview.jpg" alt="Norynthe scoring console with benchmark context and evaluation workflow" />
-            <figcaption><span>Working MVP</span><strong>Governed evaluation workflow</strong></figcaption>
+            <figcaption><span>Illustrative prototype</span><strong>Intended governed evaluation workflow</strong></figcaption>
           </figure>
-          <figure><img src="https://investors.norynthe.com/previews/customer-report-page-preview.jpg" alt="Norynthe customer report score summary" /><figcaption><span>Customer report</span><strong>Decision-ready evidence</strong></figcaption></figure>
-          <figure><img src="https://investors.norynthe.com/previews/financial-model-page-preview.jpg" alt="Norynthe financial model and use-of-funds chart" /><figcaption><span>Use of funds</span><strong>Capital tied to proof</strong></figcaption></figure>
+          <figure><img src="https://investors.norynthe.com/previews/customer-report-page-preview.jpg" alt="Illustrative Norynthe report concept" /><figcaption><span>Synthetic sample</span><strong>Intended decision-report format</strong></figcaption></figure>
+          <figure><img src="https://investors.norynthe.com/previews/financial-model-page-preview.jpg" alt="Norynthe laboratory capital plan preview" /><figcaption><span>Capital plan</span><strong>Infrastructure tied to proof</strong></figcaption></figure>
         </div>
       </section>
 
@@ -216,13 +217,13 @@ export default function Home() {
       <section className="closing">
         <p className="kicker">The category thesis</p>
         <h2>If AI becomes infrastructure, trust becomes infrastructure too.</h2>
-        <p>Norynthe is building the durable, independent evidence layer required to evaluate, compare, and understand intelligent systems over time.</p>
+        <p>Norynthe is building the controlled laboratory, governed method, and durable evidence record required to evaluate, compare, and understand intelligent systems over time.</p>
         <a className="button-primary" href="https://tally.so/r/ZjezPA">Request a walkthrough ↗</a>
       </section>
 
       <footer>
         <a className="wordmark footer-wordmark" href="https://norynthe.com/">Norynthe.</a>
-        <p>Confidential investor review · Independent evaluation · Governed methodology · Traceable evidence</p>
+          <p>Selected investor review · Independent evaluation · Governed methodology · Traceable evidence</p>
         <div><a href="https://papers.norynthe.com/">Papers</a><a href="https://norynthe.com/privacy.html">Privacy</a><span>© 2026 Norynthe.</span></div>
       </footer>
     </main>

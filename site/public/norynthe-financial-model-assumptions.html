@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norynthe Financial Model Assumptions</title>
+  <meta
+    name="description"
+    content="Investor-facing capital assumptions for Norynthe's $2,000,000 controlled laboratory plan, founder-led runway, milestone gates, and validation path."
+  >
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <style>
+    :root {
+      --bg: #edf2f5;
+      --ink: #10151b;
+      --body: #344250;
+      --muted: #66717c;
+      --paper: rgba(255, 255, 255, 0.76);
+      --paper-strong: rgba(255, 255, 255, 0.94);
+      --line: rgba(16, 21, 27, 0.09);
+      --line-strong: rgba(49, 72, 99, 0.16);
+      --slate: #304760;
+      --signal: #7a3030;
+      --pine: #2f5b4d;
+      --gold: #9a7c39;
+      --steel: #55758e;
+      --shadow: 0 24px 58px rgba(16, 21, 27, 0.08);
+      --shadow-soft: 0 12px 28px rgba(16, 21, 27, 0.05);
+      --radius-lg: 24px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(122, 48, 48, 0.08), transparent 26%),
+        radial-gradient(circle at 84% 10%, rgba(50, 73, 100, 0.13), transparent 28%),
+        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.36), transparent 38%),
+        linear-gradient(180deg, #f6f9fb 0%, var(--bg) 52%, #f5f8fa 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(16, 21, 27, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 21, 27, 0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.78;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: min(calc(100% - 44px), var(--max));
+      margin: 0 auto;
+      padding: 1rem 0 76px;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      margin-bottom: clamp(1.55rem, 3vw, 2.35rem);
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      width: 140px;
+      min-width: 140px;
+      max-width: 32vw;
+      line-height: 0;
+    }
+
+    .brand img {
+      width: 100%;
+      height: auto;
+    }
+
+    .brand-fallback {
+      color: var(--ink);
+      font-size: 1.55rem;
+      font-weight: 760;
+      line-height: 1;
+    }
+
+    .topline-right,
+    .eyebrow,
+    .section-label,
+    .kicker,
+    .phase-index,
+    .table-kicker {
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .topline-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .topline-right a {
+      display: inline-flex;
+      align-items: center;
+      color: #53606c;
+      transition: color 180ms ease;
+    }
+
+    .topline-right a:hover {
+      color: var(--ink);
+    }
+
+    .topline-right a:last-child {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.54);
+      color: #27313b;
+    }
+
+    .hero,
+    .section-card,
+    .visual-card,
+    .metric-card,
+    .closing-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: clamp(2rem, 4.5vw, 3.5rem);
+      margin-bottom: 22px;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 46%, rgba(235,242,247,0.94) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.92));
+    }
+
+    .hero::after,
+    .section-card::after,
+    .closing-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(122, 48, 48, 0.08), transparent 22%, transparent 78%, rgba(50, 73, 100, 0.1)),
+        linear-gradient(180deg, rgba(18, 23, 30, 0.03), transparent 22%);
+      opacity: 0.62;
+    }
+
+    .hero > *,
+    .section-card > *,
+    .closing-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+      gap: clamp(1.8rem, 4.6vw, 3.8rem);
+      align-items: start;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 10.8ch;
+      margin: 0.82rem 0 1.2rem;
+      font-size: clamp(3.2rem, 7vw, 6.6rem);
+      line-height: 0.92;
+      text-wrap: balance;
+    }
+
+    h2 {
+      font-size: clamp(1.82rem, 3.4vw, 3.05rem);
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    h3 {
+      font-size: 1.04rem;
+      line-height: 1.12;
+    }
+
+    .lede {
+      max-width: 48rem;
+      margin: 0;
+      color: var(--body);
+      font-size: clamp(1.02rem, 1.45vw, 1.18rem);
+      line-height: 1.78;
+      text-wrap: pretty;
+    }
+
+    .hero-actions,
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.55rem;
+    }
+
+    .hero-link,
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 12px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.13em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .hero-link:hover,
+    .contact-pill:hover {
+      border-color: rgba(15, 17, 21, 0.2);
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .hero-link.primary,
+    .contact-pill.primary {
+      background: #0f1115;
+      border-color: #0f1115;
+      color: #fff;
+    }
+
+    .model-panel {
+      display: grid;
+      gap: 16px;
+    }
+
+    .model-card {
+      padding: 20px;
+      border: 1px solid rgba(16, 21, 27, 0.1);
+      border-radius: var(--radius-sm);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.64));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .model-card strong {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink);
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      letter-spacing: 0;
+      line-height: 0.92;
+    }
+
+    .model-card span {
+      display: block;
+      margin-top: 12px;
+      color: #4d5a67;
+      line-height: 1.6;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 26px;
+    }
+
+    .metric-card {
+      min-height: 156px;
+      padding: 18px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin: 14px 0 9px;
+      color: var(--ink);
+      font-size: clamp(1.45rem, 2.5vw, 2.28rem);
+      letter-spacing: 0;
+      line-height: 0.94;
+    }
+
+    .metric-card span {
+      color: #52606c;
+      font-size: 0.86rem;
+      line-height: 1.52;
+    }
+
+    .section-card,
+    .closing-card {
+      margin-top: 26px;
+      padding: clamp(1.55rem, 3.4vw, 2.45rem);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 13px;
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: #4b5866;
+      line-height: 1.82;
+      text-wrap: pretty;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .visual-card {
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .visual-card h3 {
+      margin: 10px 0 16px;
+    }
+
+    .donut-wrap {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.74fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .donut {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: min(100%, 255px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      padding: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(16,21,27,0.08);
+      background:
+        radial-gradient(circle at 36% 28%, rgba(255,255,255,0.92), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.72), rgba(230,238,244,0.66));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.82),
+        0 14px 28px rgba(16,21,27,0.075);
+    }
+
+    .donut svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .donut-segment {
+      stroke: rgba(248,251,252,0.94);
+      stroke-width: 2.2;
+      stroke-linejoin: round;
+    }
+
+    .donut-segment-shadow {
+      opacity: 0.14;
+    }
+
+    .donut-center-label {
+      fill: var(--ink);
+      font-size: 1.72rem;
+      font-weight: 820;
+      letter-spacing: 0;
+    }
+
+    .donut-center-sub {
+      fill: #66717c;
+      font-size: 0.58rem;
+      font-weight: 820;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .legend {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .legend li {
+      display: grid;
+      grid-template-columns: 12px minmax(0, 1fr) auto;
+      gap: 9px;
+      align-items: center;
+      color: #445160;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .legend b {
+      color: var(--ink);
+      font-weight: 760;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: var(--swatch);
+    }
+
+    .funds-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid rgba(16,21,27,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.58);
+    }
+
+    .funds-table th,
+    .funds-table td {
+      padding: 12px 11px;
+      border-bottom: 1px solid rgba(16,21,27,0.07);
+      color: #3f4d59;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .funds-table th {
+      color: #233140;
+      font-size: 0.68rem;
+      font-weight: 820;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(232, 239, 245, 0.86);
+    }
+
+    .funds-table td:nth-child(2),
+    .funds-table td:nth-child(3) {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .funds-table tr:last-child td {
+      border-bottom: 0;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .logic-grid,
+    .stream-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .logic-card,
+    .stream-card,
+    .phase-card {
+      min-height: 168px;
+      padding: 20px;
+      border: 1px solid rgba(16,21,27,0.09);
+      border-top: 2px solid rgba(48,71,96,0.3);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.64);
+    }
+
+    .logic-card h3,
+    .stream-card h3,
+    .phase-card h3 {
+      margin: 12px 0 10px;
+    }
+
+    .logic-card p,
+    .stream-card p,
+    .phase-card p {
+      margin: 0;
+      color: #52606c;
+      font-size: 0.91rem;
+      line-height: 1.66;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .phase-card {
+      min-height: 232px;
+      border-top-color: rgba(122,48,48,0.32);
+    }
+
+    .phase-index {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 28px;
+      padding: 0 10px;
+      border: 1px solid rgba(122,48,48,0.12);
+      border-radius: 999px;
+      background: rgba(122,48,48,0.07);
+      color: var(--signal);
+      letter-spacing: 0.12em;
+    }
+
+    .disclosure {
+      padding: 20px 22px;
+      border: 1px solid rgba(122, 48, 48, 0.16);
+      border-radius: 10px;
+      background: rgba(248, 236, 236, 0.72);
+      color: #6f2d2d;
+      line-height: 1.72;
+      font-weight: 700;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .closing-card p {
+      margin: 14px 0 0;
+      color: #4b5866;
+      line-height: 1.84;
+    }
+
+    .closing-line {
+      padding: 24px;
+      border-radius: 12px;
+      background: #111820;
+      color: #fff;
+      font-size: clamp(1.28rem, 2.4vw, 2rem);
+      font-weight: 800;
+      line-height: 1.12;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: reveal 700ms ease forwards;
+    }
+
+    .fade-in:nth-of-type(2) { animation-delay: 80ms; }
+    .fade-in:nth-of-type(3) { animation-delay: 140ms; }
+    .fade-in:nth-of-type(4) { animation-delay: 200ms; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .grid-two,
+      .closing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .topline {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 1.4rem;
+      }
+
+      .topline-right {
+        justify-content: flex-start;
+        gap: 12px 14px;
+      }
+
+      .hero {
+        padding: 28px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 9.5ch;
+        font-size: clamp(2.55rem, 13vw, 3.35rem);
+        line-height: 0.94;
+      }
+
+      .lede {
+        line-height: 1.72;
+      }
+
+      .hero-actions,
+      .contact-row {
+        gap: 8px;
+        margin-top: 1.25rem;
+      }
+
+      .section-card,
+      .closing-card {
+        margin-top: 20px;
+        padding: 22px;
+      }
+
+      .section-head {
+        gap: 11px;
+        margin-bottom: 20px;
+      }
+
+      .model-card,
+      .visual-card,
+      .logic-card,
+      .stream-card,
+      .phase-card {
+        padding: 18px;
+      }
+
+      .metric-grid,
+      .grid-three,
+      .logic-grid,
+      .stream-grid,
+      .timeline,
+      .donut-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-card,
+      .logic-card,
+      .stream-card,
+      .phase-card {
+        min-height: auto;
+      }
+
+      .funds-table th,
+      .funds-table td {
+        padding: 10px 9px;
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="norynthe-design-language.css">
+  <style>
+    body.financial-model-page .hero h1 {
+      max-width: 12.6ch;
+      line-height: 1 !important;
+      overflow-wrap: normal;
+      padding-inline-end: 0.08em;
+      padding-bottom: 0.06em;
+      word-break: normal;
+    }
+
+    @media (max-width: 760px) {
+      body.financial-model-page .hero h1 {
+        max-width: 11.8ch;
+        line-height: 1.03 !important;
+        padding-inline-end: 0.06em;
+      }
+    }
+  </style>
+  <script>document.documentElement.classList.add("nt-transition-enabled");</script>
+  <link rel="stylesheet" href="norynthe-page-transitions.css">
+  <script src="norynthe-page-transitions.js" defer></script>
+  <script src="norynthe-pulse-tracker.js" defer data-pulse-site="investor"></script>
+</head>
+<body class="financial-model-page">
+  <main class="page">
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          loading="eager"
+          decoding="async"
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html">Investor Access</a>
+        <a href="norynthe-laboratory.html">Laboratory</a>
+        <a href="norynthe-investors.html">Investor Overview</a>
+        <a href="norynthe-raise-plan.html">Raise Plan</a>
+        <a href="mailto:hello@norynthe.com?subject=Norynthe%20Financial%20Model">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero fade-in" aria-labelledby="model-title">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Financial Model / Investor Assumptions</p>
+          <h1 id="model-title">Financial Model Assumptions</h1>
+          <p class="lede">
+            How Norynthe models capital deployment, the controlled laboratory base, hybrid compute, evidence and security systems,
+            founder-led runway, and milestone-gated validation. Commercial forecasts remain hypotheses until pricing, delivery capacity,
+            sales cycle, and pilot conversion are observed.
+          </p>
+          <div class="hero-actions">
+            <a class="hero-link primary" href="#deployment">Review Capital Plan</a>
+            <a class="hero-link" href="#deployment">Use of Funds</a>
+            <a class="hero-link" href="norynthe-raise-plan.html">Raise Plan</a>
+          </div>
+        </div>
+        <aside class="model-panel" aria-label="Model headline metrics">
+          <article class="model-card">
+            <div class="kicker">Initial Raise Target</div>
+            <strong>$2,000,000</strong>
+            <span>Foundation capital for hybrid compute, evaluation infrastructure, legal/IP setup, focused founder-led execution, product development, and enterprise pilot readiness.</span>
+          </article>
+          <article class="model-card">
+            <div class="kicker">Proof Horizon</div>
+            <strong>18 months</strong>
+            <span>Laboratory commissioning, repeatability, external challenge, traceable reporting, and bounded pilot validation.</span>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="metric-grid fade-in" aria-label="Financial model key metrics">
+      <article class="metric-card">
+        <div class="kicker">Raise</div>
+        <strong>$2.0M</strong>
+        <span>Infrastructure-first capital assumption.</span>
+      </article>
+          <article class="metric-card">
+            <div class="kicker">Founder-Led Laboratory Runway</div>
+        <strong>$477K</strong>
+        <span>Remaining liquidity after upfront deployment.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Operating Model</div>
+        <strong>Low headcount</strong>
+        <span>Founder-led, AI-leveraged, with selective external accountability.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Commercial Status</div>
+        <strong>Unvalidated</strong>
+        <span>First offer, pricing, buying motion, and repeat demand require pilot evidence.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Infrastructure Gate</div>
+        <strong>Staged</strong>
+        <span>Property and major compute commitments follow defined diligence and acceptance tests.</span>
+      </article>
+      <article class="metric-card">
+        <div class="kicker">Investor Test</div>
+        <strong>Evidence</strong>
+        <span>Repeatability, reconstruction, external challenge, report traceability, and institutional usefulness.</span>
+      </article>
+    </section>
+
+    <section class="section-card fade-in" id="deployment" aria-labelledby="deployment-title">
+      <div class="section-head">
+        <div class="section-label">Capital Deployment</div>
+        <h2 id="deployment-title">The raise is modeled around durable infrastructure before payroll scale.</h2>
+        <p>
+          This plan prioritizes a controlled physical base, compute and storage, evidence custody, security, method governance,
+          legal structure, selective external challenge, and founder-led runway. Norynthe is intentionally low-headcount and
+          infrastructure-intensive.
+        </p>
+      </div>
+      <div class="grid-two">
+        <article class="visual-card">
+          <div class="table-kicker">Use of Funds</div>
+          <h3>$2,000,000 capital deployment</h3>
+          <div class="donut-wrap">
+            <div class="donut" role="img" aria-label="Use of funds donut chart showing $1.13M for the diligence-gated controlled laboratory base, $477K for founder-led laboratory runway, and allocations for compute, buildout, legal and entity setup, institutional validation, software, operations, and security."></div>
+            <ul class="legend" aria-label="Use of funds legend">
+              <li><span class="swatch" style="--swatch:#7a3030"></span><span>Controlled Laboratory Base — Diligence Gated</span><b>$1.13M</b></li>
+              <li><span class="swatch" style="--swatch:#304760"></span><span>Lab / Workspace Buildout</span><b>$93.5K</b></li>
+              <li><span class="swatch" style="--swatch:#2f5b4d"></span><span>Compute Infrastructure</span><b>$146.5K</b></li>
+              <li><span class="swatch" style="--swatch:#9a7c39"></span><span>Legal / Entity Setup</span><b>$72K</b></li>
+              <li><span class="swatch" style="--swatch:#55758e"></span><span>Ops / Software / Security</span><b>$34K</b></li>
+              <li><span class="swatch" style="--swatch:#8f6c50"></span><span>Institutional Validation / Design Partners</span><b>$50K</b></li>
+              <li><span class="swatch" style="--swatch:#b7c7d2"></span><span>Founder-Led Laboratory Runway</span><b>$477K</b></li>
+            </ul>
+          </div>
+        </article>
+        <article class="visual-card">
+          <div class="table-kicker">Detailed Budget</div>
+          <h3>Assumption table</h3>
+          <table class="funds-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Controlled Laboratory Base — Diligence Gated</td><td>$1,126,571</td><td>56.3%</td></tr>
+              <tr><td>Lab / Workspace Buildout</td><td>$93,500</td><td>4.7%</td></tr>
+              <tr><td>Compute Infrastructure</td><td>$146,500</td><td>7.3%</td></tr>
+              <tr><td>Legal / Entity Setup</td><td>$72,000</td><td>3.6%</td></tr>
+              <tr><td>Ops / Software / Security</td><td>$34,000</td><td>1.7%</td></tr>
+              <tr><td>Institutional Validation / Design Partners</td><td>$50,000</td><td>2.5%</td></tr>
+              <tr><td>Founder-Led Laboratory Runway</td><td>$477,429</td><td>23.9%</td></tr>
+              <tr><td>Total</td><td>$2,000,000</td><td>100.0%</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="capital-architecture-title">
+      <div class="section-head">
+        <div class="section-label">Capital Architecture Under Consideration</div>
+        <h2 id="capital-architecture-title">Capital type should match the capability being financed.</h2>
+        <p>
+          The $2M target is a laboratory funding objective, not a claim that every component should use one financing instrument.
+          Norynthe is evaluating a staged, blended structure and has not selected or offered investment terms.
+        </p>
+      </div>
+      <div class="logic-grid">
+        <article class="logic-card"><div class="kicker">Operating Company</div><h3>Equity or SAFE under consideration</h3><p>Potential fit for commercial product development, founder-led runway, security, pilots, and enterprise validation.</p></article>
+        <article class="logic-card"><div class="kicker">Public-Interest Work</div><h3>Grant, catalytic, or program-related capital</h3><p>Potential fit for public method development, benchmark governance, publication, external challenge, and correction infrastructure.</p></article>
+        <article class="logic-card"><div class="kicker">Long-Lived Assets</div><h3>Property or equipment financing</h3><p>Potential fit only after facility, ownership, workload, technical, economic, and governance diligence supports the asset.</p></article>
+        <article class="logic-card"><div class="kicker">Commercial Proof</div><h3>Customer-funded pilots</h3><p>The strongest early revenue evidence would be bounded paid engagements tied to real institutional decisions.</p></article>
+      </div>
+      <div class="disclosure" style="margin-top:18px;">
+        No valuation, equity percentage, SAFE cap, discount, property structure, or investor-return term is stated or implied on this page.
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="reserve-title">
+      <div class="section-head">
+        <div class="section-label">Operating Reserve Logic</div>
+        <h2 id="reserve-title">Founder-led execution preserves optionality until enterprise demand is validated.</h2>
+        <p>
+          The plan assumes disciplined operating costs while prioritizing the complete laboratory capacity required to produce stronger
+          evaluation evidence before enterprise demand, pilot feedback, and product-market signals justify expansion.
+        </p>
+      </div>
+      <div class="logic-grid">
+        <article class="logic-card">
+          <div class="kicker">Operating Mode</div>
+          <h3>Founder-led operations</h3>
+          <p>Alan remains the principal operator, method steward, and institutional lead. Headcount expands only when evidence and workload justify it.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Infrastructure</div>
+          <h3>Hybrid, controlled compute</h3>
+          <p>Capital supports selected local capacity, secure storage, API access, and external capacity where each mode improves control, coverage, repeatability, or cost.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Cost Discipline</div>
+          <h3>Controlled software and cloud costs</h3>
+          <p>The model avoids cloud-heavy experimentation consuming the raise early.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Workflow Leverage</div>
+          <h3>AI-assisted operations</h3>
+          <p>Research, product strategy, documentation, and reporting workflows use AI-assisted leverage.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Commercial Trigger</div>
+          <h3>Pilots before hiring</h3>
+          <p>Enterprise pilot development precedes aggressive hiring or broad go-to-market expansion.</p>
+        </article>
+        <article class="logic-card">
+          <div class="kicker">Scale Gate</div>
+          <h3>Expand from evidence</h3>
+          <p>Expansion follows demand signals, buyer validation, pricing acceptance, and repeatable delivery.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="proof-title">
+      <div class="section-head">
+        <div class="section-label">18-Month Proof Program</div>
+        <h2 id="proof-title">Capital deployment is staged against evidence, not calendar optimism.</h2>
+        <p>
+          The funded phase is designed to retire technical, methodological, institutional, and commercial risk in sequence.
+          Dates remain planning ranges until facility, hardware, and external-review diligence is complete.
+        </p>
+      </div>
+      <div class="logic-grid">
+        <article class="logic-card"><div class="kicker">Months 0–3</div><h3>Specify and govern</h3><p>Finalize laboratory requirements, buy-versus-lease analysis, hardware configuration, security model, method register, benchmark register, and conflict controls.</p></article>
+        <article class="logic-card"><div class="kicker">Months 3–6</div><h3>Establish controlled execution</h3><p>Commission the minimum viable environment, evidence ledger, version controls, chain of custody, and first complete verified run package.</p></article>
+        <article class="logic-card"><div class="kicker">Months 6–12</div><h3>Demonstrate repeatability</h3><p>Publish repeated-run variance results, reconcile benchmark and method versions, complete external methodological challenge, and issue traceable pilot reports.</p></article>
+        <article class="logic-card"><div class="kicker">Months 12–18</div><h3>Test institutional demand</h3><p>Complete bounded design-partner engagements, test willingness to pay, document decision impact, and determine which recurring products evidence supports.</p></article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="streams-title">
+      <div class="section-head">
+        <div class="section-label">Commercial Hypotheses</div>
+        <h2 id="streams-title">One initial paid workflow; multiple later paths to validate.</h2>
+        <p>The first commercial test is a scoped enterprise adoption-evidence engagement. The additional paths below remain hypotheses until buyer behavior and delivery economics support them.</p>
+      </div>
+      <div class="stream-grid">
+        <article class="stream-card">
+          <div class="kicker">Sole Initial Paid Model</div>
+          <h3>Scoped adoption-evidence engagement</h3>
+          <p>One consequential institutional decision, one bounded evaluation record, and one decision-ready report.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Enterprise subscriptions</h3>
+          <p>Potential recurring evidence access only if repeated use, delivery economics, and willingness to pay support it.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Comparative reports and monitoring</h3>
+          <p>Potential recurring comparison or change-tracking products only after the scoped engagement proves useful.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Advisory services</h3>
+          <p>Potential interpretation support only where buyers demonstrate a separate need beyond the bounded report.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>API access</h3>
+          <p>Potential score history, metadata, and integration access only after repeatable demand and data quality are demonstrated.</p>
+        </article>
+        <article class="stream-card">
+          <div class="kicker">Later Unvalidated Hypothesis</div>
+          <h3>Benchmark or sector licensing</h3>
+          <p>Potential controlled licensing only after method governance, buyer demand, and conflict protections are validated.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="milestones-title">
+      <div class="section-head">
+        <div class="section-label">Commercial Proof Sequence</div>
+        <h2 id="milestones-title">Scale follows laboratory evidence and buyer validation.</h2>
+      </div>
+      <div class="timeline">
+        <article class="phase-card">
+          <span class="phase-index">Phase 1</span>
+          <h3>Infrastructure foundation</h3>
+          <p>Secure lab infrastructure, compute, legal structure, and the controlled operating base for independent evaluation.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 2</span>
+          <h3>Larger-model testing</h3>
+          <p>Execute controlled evaluations across locally hosted and API-accessed systems, preserving complete run packages and measuring repeatability.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 3</span>
+          <h3>Enterprise engagement</h3>
+          <p>Engage procurement, governance, risk, compliance, and enterprise AI stakeholders.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 4</span>
+          <h3>Controlled pilots</h3>
+          <p>Run pilot programs and validate paid access use cases.</p>
+        </article>
+        <article class="phase-card">
+          <span class="phase-index">Phase 5</span>
+          <h3>Validated packaging</h3>
+          <p>Use observed demand and delivery economics to decide whether any recurring access, monitoring, API, licensing, or advisory extension is warranted.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card fade-in" aria-labelledby="disclosure-title">
+      <div class="section-head">
+        <div class="section-label">Forecast Treatment</div>
+        <h2 id="disclosure-title">Commercial forecasts are withheld until the first offer is validated.</h2>
+      </div>
+      <div class="disclosure">
+        Prior internal scenarios are not presented as investor guidance. Revenue development depends on customer discovery,
+        procurement stakeholder validation, pilot conversion, pricing acceptance, delivery capacity, and demonstrated willingness to pay.
+        A board-usable forecast should follow evidence on cycle length, pricing, gross delivery effort, repeat usage, and conversion.
+      </div>
+    </section>
+
+    <section class="closing-card fade-in">
+      <div class="closing-grid">
+        <div>
+          <div class="section-label">Investor Interpretation</div>
+          <h2>Laboratory first. Revenue modeled only after validation.</h2>
+          <p>
+            The raise is not designed to immediately maximize headcount. It is designed to give Norynthe enough independence,
+            controlled laboratory capacity, legal structure, and focused execution time to produce credible AI evaluation evidence before scaling.
+          </p>
+          <div class="contact-row">
+            <a class="contact-pill primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Financial%20Model">Discuss Financial Model</a>
+            <a class="contact-pill" href="norynthe-raise-plan.html">Raise Plan</a>
+            <a class="contact-pill" href="norynthe-investors.html">Investor Overview</a>
+          </div>
+        </div>
+        <div class="closing-line">
+          Preserve operating discipline. Build defensible infrastructure. Validate enterprise demand. Scale from evidence.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Norynthe Financial Model Assumptions · Investor review page · © 2026 Norynthe.
+    </footer>
+  </main>
+
+  <script>
+    const funds = [
+      { label: "Controlled Laboratory Base — Diligence Gated", amount: 1126571, color: "#7a3030" },
+      { label: "Lab / Workspace Buildout", amount: 93500, color: "#304760" },
+      { label: "Compute Infrastructure", amount: 146500, color: "#2f5b4d" },
+      { label: "Legal / Entity Setup", amount: 72000, color: "#9a7c39" },
+      { label: "Ops / Software / Security", amount: 34000, color: "#55758e" },
+      { label: "Institutional Validation / Design Partners", amount: 50000, color: "#8f6c50" },
+      { label: "Founder-Led Laboratory Runway", amount: 477429, color: "#b7c7d2" },
+    ];
+
+    function moneyShort(value) {
+      const abs = Math.abs(value);
+      if (abs >= 1000000) return `$${(abs / 1000000).toFixed(abs >= 10000000 ? 0 : 1)}M`;
+      if (abs >= 1000) return `$${Math.round(abs / 1000)}K`;
+      return `$${abs}`;
+    }
+
+    function renderUseOfFundsChart() {
+      const target = document.querySelector(".donut");
+      if (!target) return;
+
+      const total = funds.reduce((sum, item) => sum + item.amount, 0);
+      const size = 280;
+      const center = size / 2;
+      const outer = 112;
+      const inner = 68;
+      let cursor = 0;
+
+      function polar(radius, angle) {
+        const radians = (angle - 90) * Math.PI / 180;
+        return {
+          x: center + radius * Math.cos(radians),
+          y: center + radius * Math.sin(radians),
+        };
+      }
+
+      function segmentPath(start, end) {
+        const outerStart = polar(outer, start);
+        const outerEnd = polar(outer, end);
+        const innerEnd = polar(inner, end);
+        const innerStart = polar(inner, start);
+        const largeArc = end - start > 180 ? 1 : 0;
+
+        return [
+          `M ${outerStart.x.toFixed(2)} ${outerStart.y.toFixed(2)}`,
+          `A ${outer} ${outer} 0 ${largeArc} 1 ${outerEnd.x.toFixed(2)} ${outerEnd.y.toFixed(2)}`,
+          `L ${innerEnd.x.toFixed(2)} ${innerEnd.y.toFixed(2)}`,
+          `A ${inner} ${inner} 0 ${largeArc} 0 ${innerStart.x.toFixed(2)} ${innerStart.y.toFixed(2)}`,
+          "Z",
+        ].join(" ");
+      }
+
+      const segments = funds.map((item) => {
+        const sweep = (item.amount / total) * 360;
+        const gap = Math.min(1.35, sweep * 0.26);
+        const start = cursor + gap / 2;
+        const end = cursor + sweep - gap / 2;
+        const path = segmentPath(start, end);
+        cursor += sweep;
+        return { ...item, path };
+      });
+
+      const shadowPaths = segments.map((item) => (
+        `<path class="donut-segment-shadow" d="${item.path}" fill="${item.color}" transform="translate(3.5 5)"></path>`
+      )).join("");
+
+      const mainPaths = segments.map((item) => (
+        `<path class="donut-segment" d="${item.path}" fill="${item.color}"><title>${item.label}: ${moneyShort(item.amount)}</title></path>`
+      )).join("");
+
+      target.innerHTML = `
+        <svg viewBox="0 0 ${size} ${size}" aria-hidden="true">
+          <defs>
+            <filter id="donutCenterShadow" x="-35%" y="-35%" width="170%" height="170%">
+              <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#10151b" flood-opacity="0.12"></feDropShadow>
+            </filter>
+            <radialGradient id="donutCenterFill" cx="38%" cy="28%" r="78%">
+              <stop offset="0%" stop-color="#ffffff"></stop>
+              <stop offset="100%" stop-color="#f5f9fb"></stop>
+            </radialGradient>
+          </defs>
+          <circle cx="${center}" cy="${center}" r="${outer + 2}" fill="rgba(255,255,255,0.34)"></circle>
+          ${shadowPaths}
+          ${mainPaths}
+          <circle cx="${center}" cy="${center}" r="${inner - 3}" fill="url(#donutCenterFill)" stroke="rgba(16,21,27,0.08)" stroke-width="1.2" filter="url(#donutCenterShadow)"></circle>
+          <text class="donut-center-label" x="${center}" y="${center - 2}" text-anchor="middle" dominant-baseline="middle">$2.0M</text>
+          <text class="donut-center-sub" x="${center}" y="${center + 25}" text-anchor="middle">Raise</text>
+        </svg>
+      `;
+    }
+
+    renderUseOfFundsChart();
+  </script>
+</body>
+</html>

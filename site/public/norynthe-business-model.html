@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norynthe Business Model</title>
+  <meta
+    name="description"
+    content="Norynthe commercial model: a controlled AI evaluation laboratory produces bounded evidence records and decision reports, with recurring products to be validated."
+  >
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <style>
+    :root {
+      --bg: #ecf1f5;
+      --ink: #0f1115;
+      --body: #344251;
+      --muted: #5a6671;
+      --line: rgba(15, 17, 21, 0.1);
+      --line-strong: rgba(50, 73, 100, 0.18);
+      --signal: #7a3030;
+      --slate: #324964;
+      --paper: rgba(255, 255, 255, 0.5);
+      --paper-strong: rgba(255, 255, 255, 0.82);
+      --shadow-soft: 0 14px 34px rgba(15, 17, 21, 0.045);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 14% 14%, rgba(122, 48, 48, 0.07), transparent 27%),
+        radial-gradient(circle at 82% 12%, rgba(50, 73, 100, 0.14), transparent 29%),
+        radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.34), transparent 38%),
+        linear-gradient(180deg, #f5f8fa 0%, var(--bg) 52%, #f4f7f9 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(18, 23, 30, 0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 23, 30, 0.016) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.85;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: min(calc(100% - 44px), var(--max));
+      margin: 0 auto;
+      padding: 1rem 0 72px;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 54px;
+      margin-bottom: clamp(1.65rem, 3vw, 2.35rem);
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      width: 140px;
+      min-width: 140px;
+      max-width: 32vw;
+      line-height: 0;
+    }
+
+    .brand img {
+      width: 100%;
+      height: auto;
+    }
+
+    .brand-fallback {
+      color: var(--ink);
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .topline-right,
+    .eyebrow,
+    .section-label,
+    .kicker,
+    .phase-kicker,
+    .pricing-status {
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .topline-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+      letter-spacing: 0.16em;
+    }
+
+    .topline-right a {
+      display: inline-flex;
+      align-items: center;
+      min-height: auto;
+      padding: 0;
+      color: #53606c;
+      transition: color 180ms ease;
+    }
+
+    .topline-right a:hover {
+      color: var(--ink);
+    }
+
+    .topline-right a:last-child {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(15, 17, 21, 0.13);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.48);
+      color: #27313b;
+    }
+
+    .hero,
+    .section-card,
+    .closing-card {
+      border: 1px solid rgba(15, 17, 21, 0.08);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 251, 253, 0.66));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero {
+      padding: clamp(1.55rem, 3.4vw, 2.55rem);
+      margin-bottom: 16px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(330px, 0.62fr);
+      gap: clamp(1.35rem, 3.4vw, 3rem);
+      align-items: start;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .hero h1 {
+      max-width: 9ch;
+      margin: 0.7rem 0 0.9rem;
+      font-size: clamp(3rem, 6vw, 5.55rem);
+      line-height: 0.94;
+      text-wrap: balance;
+    }
+
+    .lede {
+      max-width: 48rem;
+      margin: 0;
+      color: var(--body);
+      font-size: clamp(1rem, 1.45vw, 1.12rem);
+      line-height: 1.64;
+    }
+
+    .hero-links,
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.35rem;
+    }
+
+    .hero-link,
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 10px 12px;
+      border: 1px solid rgba(15, 17, 21, 0.1);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 760;
+      letter-spacing: 0.14em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .hero-link.primary,
+    .contact-pill.primary {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .hero-answer {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid rgba(50, 73, 100, 0.14);
+      border-top: 3px solid rgba(122, 48, 48, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--ink);
+    }
+
+    .hero-answer .section-label {
+      color: var(--signal);
+    }
+
+    .answer-lines {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .answer-lines li {
+      display: grid;
+      gap: 5px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(50, 73, 100, 0.12);
+    }
+
+    .answer-lines li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .answer-lines li:last-child {
+      padding-bottom: 0;
+    }
+
+    .answer-lines strong {
+      color: var(--ink);
+      font-size: clamp(1rem, 1.35vw, 1.14rem);
+      line-height: 1.18;
+    }
+
+    .answer-lines span {
+      color: #4d5b68;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .callout-card {
+      max-width: none;
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: 1px solid rgba(122, 48, 48, 0.18);
+      border-radius: 8px;
+      background: rgba(122, 48, 48, 0.045);
+      color: #1f2a35;
+      font-size: clamp(1rem, 1.35vw, 1.12rem);
+      font-weight: 760;
+      line-height: 1.42;
+    }
+
+    .section-card,
+    .closing-card {
+      padding: 26px;
+      margin-top: 16px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.3fr) minmax(0, 1fr);
+      gap: 0.7rem clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .section-head .section-label {
+      grid-column: 1;
+      grid-row: 1;
+      color: var(--signal);
+    }
+
+    .section-head h2 {
+      grid-column: 1;
+      grid-row: 2;
+      max-width: 17ch;
+      font-size: clamp(1.55rem, 2.55vw, 2.25rem);
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .section-head p {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: end;
+      max-width: 54rem;
+      margin: 0;
+      color: var(--body);
+      font-size: 1rem;
+      line-height: 1.62;
+    }
+
+    .body-copy {
+      display: grid;
+      gap: 10px;
+      max-width: 74rem;
+      padding-top: 12px;
+      border-top: 1px solid rgba(50, 73, 100, 0.1);
+    }
+
+    .body-copy p {
+      max-width: 70rem;
+      margin: 0;
+      color: #3d4b59;
+      line-height: 1.62;
+    }
+
+    .business-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .flow-step {
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .flow-kicker {
+      color: var(--signal);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .flow-step strong {
+      font-size: 0.98rem;
+      line-height: 1.18;
+    }
+
+    .flow-step.revenue {
+      margin-top: 0;
+      padding: 14px;
+      border: 1px solid rgba(17, 24, 32, 0.42);
+      border-radius: 8px;
+      background: linear-gradient(90deg, #111820, #24364a);
+    }
+
+    .flow-step.revenue .flow-kicker {
+      color: rgba(234, 240, 246, 0.78);
+    }
+
+    .flow-step.revenue strong {
+      color: #fff;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .evidence-card {
+      min-height: 116px;
+      padding: 16px 17px;
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .evidence-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.18;
+    }
+
+    .evidence-card span {
+      display: block;
+      color: #536170;
+      font-size: 0.84rem;
+      line-height: 1.46;
+    }
+
+    .tier-grid,
+    .comparison-grid,
+    .closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .tier-card {
+      padding: 18px;
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .tier-card.primary {
+      display: grid;
+      align-content: space-between;
+      border-color: rgba(122, 48, 48, 0.18);
+      border-left: 3px solid rgba(122, 48, 48, 0.52);
+      background: rgba(122, 48, 48, 0.045);
+      color: var(--ink);
+    }
+
+    .tier-card.primary .kicker,
+    .tier-card.primary p {
+      color: var(--body);
+    }
+
+    .tier-card.primary h3 {
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      line-height: 1.04;
+    }
+
+    .tier-card p {
+      margin: 0;
+      color: var(--body);
+      line-height: 1.54;
+    }
+
+    .tier-list,
+    .comparison-list,
+    .closing-summary {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid rgba(50, 73, 100, 0.12);
+    }
+
+    .tier-list li,
+    .comparison-list li,
+    .closing-summary li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(50, 73, 100, 0.12);
+      color: #2f3e4f;
+      line-height: 1.45;
+    }
+
+    .tier-list li,
+    .closing-summary li {
+      font-weight: 740;
+    }
+
+    .pricing-table {
+      display: grid;
+      border-top: 1px solid rgba(50, 73, 100, 0.14);
+    }
+
+    .pricing-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.34fr) minmax(180px, 0.36fr) minmax(0, 1fr);
+      gap: 7px 18px;
+      align-items: start;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(50, 73, 100, 0.12);
+    }
+
+    .pricing-row strong {
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.22;
+    }
+
+    .pricing-row p {
+      margin: 0;
+      color: #435160;
+      font-size: 0.92rem;
+      line-height: 1.52;
+    }
+
+    .pricing-status {
+      color: var(--signal);
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+    }
+
+    .pricing-note,
+    .value-note {
+      margin: 14px 0 0;
+      padding: 12px 0 0 16px;
+      border-left: 2px solid rgba(122, 48, 48, 0.42);
+      color: var(--body);
+      font-size: 0.9rem;
+      line-height: 1.54;
+    }
+
+    .comparison-panel h3 {
+      margin: 0;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(50, 73, 100, 0.16);
+      font-size: 1.22rem;
+    }
+
+    .phase-timeline {
+      display: grid;
+      border-top: 1px solid rgba(50, 73, 100, 0.14);
+    }
+
+    .phase-card {
+      display: grid;
+      grid-template-columns: 88px minmax(160px, 0.42fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(50, 73, 100, 0.12);
+    }
+
+    .phase-kicker {
+      color: var(--signal);
+    }
+
+    .phase-card h3 {
+      font-size: 1.08rem;
+      line-height: 1.14;
+    }
+
+    .phase-card p {
+      margin: 0;
+      color: #435160;
+      line-height: 1.52;
+    }
+
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      border-top: 0;
+    }
+
+    .future-card {
+      min-height: 68px;
+      padding: 14px;
+      border: 1px solid rgba(50, 73, 100, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.54);
+    }
+
+    .future-card h3 {
+      font-size: 1.02rem;
+      line-height: 1.22;
+    }
+
+    .closing-card {
+      padding-bottom: 26px;
+    }
+
+    .closing-card h2 {
+      margin-bottom: 12px;
+      font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+      line-height: 1;
+    }
+
+    .closing-card p {
+      margin: 0;
+      color: var(--body);
+      line-height: 1.66;
+    }
+
+    .closing-card p + p {
+      margin-top: 10px;
+    }
+
+    .closing-summary li {
+      padding: 12px 0;
+    }
+
+    .footer-note {
+      width: min(100%, 56rem);
+      margin: 44px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.74rem;
+      letter-spacing: 0.11em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .footer-note::before {
+      content: "";
+      display: block;
+      width: min(22vw, 180px);
+      height: 1px;
+      margin: 0 auto 16px;
+      background: linear-gradient(90deg, transparent, rgba(122, 48, 48, 0.18), transparent);
+    }
+
+    @media (max-width: 1020px) {
+      .hero-grid,
+      .tier-grid,
+      .comparison-grid,
+      .closing-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head .section-label,
+      .section-head h2,
+      .section-head p {
+        grid-column: 1;
+        grid-row: auto;
+      }
+
+      .evidence-grid,
+      .future-grid,
+      .business-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pricing-row {
+        grid-template-columns: minmax(160px, 0.4fr) minmax(0, 1fr);
+      }
+
+      .pricing-row p {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(calc(100% - 24px), var(--max));
+        padding-top: 18px;
+      }
+
+      .topline {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .topline-right {
+        justify-content: flex-start;
+        gap: 12px 16px;
+        font-size: 0.58rem;
+      }
+
+      .brand {
+        width: 132px;
+        min-width: 132px;
+      }
+
+      .hero {
+        padding-top: 1.9rem;
+      }
+
+      .hero h1 {
+        max-width: 8.2ch;
+        font-size: clamp(2.78rem, 13vw, 3.75rem);
+      }
+
+      .evidence-grid,
+      .business-flow,
+      .future-grid,
+      .pricing-row,
+      .phase-card {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-card {
+        min-height: auto;
+      }
+
+      .pricing-row,
+      .phase-card {
+        gap: 6px;
+      }
+
+      .pricing-row p {
+        grid-column: 1;
+      }
+    }
+  </style>
+  <script>document.documentElement.classList.add("nt-transition-enabled");</script>
+  <link rel="stylesheet" href="norynthe-page-transitions.css">
+  <script src="norynthe-page-transitions.js" defer></script>
+  <script src="norynthe-pulse-tracker.js" defer data-pulse-site="investor"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="topline" aria-label="Investor site header">
+      <a class="brand" href="index.html" aria-label="Norynthe investor access home">
+        <img
+          src="Norynthe_master.png"
+          alt="Norynthe."
+          loading="eager"
+          decoding="async"
+          onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'brand-fallback', textContent: 'Norynthe.' }));"
+        >
+      </a>
+      <nav class="topline-right">
+        <a href="index.html">Investor Access</a>
+        <a href="norynthe-laboratory.html">Laboratory</a>
+        <a href="norynthe-investors.html">Investor Overview</a>
+        <a href="norynthe-raise-plan.html">Raise Plan</a>
+        <a href="mailto:hello@norynthe.com?subject=Norynthe%20Business%20Model">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="business-model-title">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Commercial Model Under Validation</p>
+          <h1 id="business-model-title">How laboratory evidence can become a business.</h1>
+          <p class="lede">
+            Norynthe’s first commercial hypothesis is a bounded enterprise adoption-evidence engagement: an independent evaluation record and report for a consequential AI decision. Recurring products come only after that workflow and willingness to pay are demonstrated.
+          </p>
+          <div class="hero-links">
+            <a class="hero-link primary" href="#revenue">Revenue Logic</a>
+            <a class="hero-link" href="#buyer-wedge">Buyer Wedge</a>
+            <a class="hero-link" href="#paid-layer">Paid Evidence Layer</a>
+          </div>
+        </div>
+
+        <aside class="hero-answer" aria-label="Business model summary">
+          <div class="section-label">30 Second Answer</div>
+          <ul class="answer-lines">
+            <li>
+              <strong>The laboratory produces the asset.</strong>
+              <span>Controlled methods, run evidence, comparisons, and an inspectable report.</span>
+            </li>
+            <li>
+              <strong>The first offer is scoped, not sprawling.</strong>
+              <span>One consequential adoption decision, one bounded evaluation record, one decision-ready report.</span>
+            </li>
+            <li>
+              <strong>The first wedge is enterprise adoption review.</strong>
+              <span>CTO, procurement, risk, and governance teams.</span>
+            </li>
+            <li>
+              <strong>The proof path is laboratory-backed.</strong>
+              <span>Controlled environments, hybrid compute, evidence custody, repeatability, and review make the work credible.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+      <div class="callout-card">
+        Controlled evaluation -> inspectable evidence -> paid decision support -> validated recurring products.
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="thesis-title">
+      <div class="section-head">
+        <div class="section-label">Core Business Thesis</div>
+        <h2 id="thesis-title">The Business Thesis</h2>
+      </div>
+      <div class="body-copy">
+        <p>Norynthe intends to sell independent, evidence-bound evaluation work produced through its laboratory.</p>
+        <p>The initial paid output is a bounded evaluation record and decision report. Public scores may later create visibility, but they are not presented here as a validated acquisition engine.</p>
+        <p>The business model depends on proving that controlled methods, traceable evidence, and repeatable reporting change or defend real institutional decisions. The current console and report surfaces are prototypes of that workflow, not proof of commercial demand.</p>
+        <p>As AI adoption grows, buyers need external evaluation for procurement, governance, and risk review. The first commercial wedge is enterprise CTO and procurement teams evaluating AI systems before adoption, expansion, or vendor selection. Government and institutional verification become expansion paths after the enterprise workflow is proven.</p>
+      </div>
+    </section>
+
+    <section class="section-card" id="buyer-wedge" aria-labelledby="buyer-wedge-title">
+      <div class="section-head">
+        <div class="section-label">Who Pays First</div>
+        <h2 id="buyer-wedge-title">Enterprise adoption review is the first wedge.</h2>
+        <p>
+          Norynthe should first sell where model choice already creates budget pressure: CTO, procurement, risk, governance,
+          and AI program teams that need independent evidence before adopting, expanding, or defending AI systems.
+        </p>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card">
+          <strong>CTO / AI Program Owners</strong>
+          <span>Need defensible model comparison before choosing platforms, agents, or deployment patterns.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Procurement Teams</strong>
+          <span>Need a buyer-readable record that moves beyond vendor claims and demo polish.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Risk And Governance</strong>
+          <span>Need evidence trails, flags, score context, and review posture for internal controls.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Compliance-Adjacent Review</strong>
+          <span>Need decision support before policy, audit, or regulated-use review becomes formal.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Regulated Enterprise</strong>
+          <span>Expands after the enterprise workflow proves report usefulness and repeatable evaluation value.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Government / Public Sector</strong>
+          <span>Later expansion path where defensible procurement and independent AI review become institutional needs.</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" id="revenue" aria-labelledby="revenue-title">
+      <div class="section-head">
+        <div class="section-label">Revenue Logic</div>
+        <h2 id="revenue-title">How the First Revenue Model Is Tested</h2>
+        <p>The sole initial paid model is a scoped adoption-evidence engagement tied to one consequential institutional decision.</p>
+      </div>
+      <div class="business-flow" aria-label="Revenue generation flow">
+        <article class="flow-step">
+          <span class="flow-kicker">01</span>
+          <strong>Institutional Decision</strong>
+        </article>
+        <article class="flow-step">
+          <span class="flow-kicker">02</span>
+          <strong>Defined Reliance Claim</strong>
+        </article>
+        <article class="flow-step">
+          <span class="flow-kicker">03</span>
+          <strong>Controlled Evaluation</strong>
+        </article>
+        <article class="flow-step">
+          <span class="flow-kicker">04</span>
+          <strong>Inspectable Evidence Record</strong>
+        </article>
+        <article class="flow-step">
+          <span class="flow-kicker">05</span>
+          <strong>Decision-Ready Report</strong>
+        </article>
+        <article class="flow-step revenue">
+          <span class="flow-kicker">06</span>
+          <strong>Scoped Paid Engagement</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" id="paid-layer" aria-labelledby="paid-layer-title">
+      <div class="section-head">
+        <div class="section-label">Paid Evidence Layer</div>
+        <h2 id="paid-layer-title">What Enterprises Pay For</h2>
+        <p>The paid layer gives buyers the reports and evidence needed to make and defend AI decisions.</p>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card">
+          <strong>Full Evaluation Reports</strong>
+          <span>Findings, score context, and decision-ready summaries.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Score Methodology &amp; Breakdown</strong>
+          <span>Dimension-level explanation, scoring logic, and interpretation.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Vendor &amp; Model Comparisons</strong>
+          <span>Side-by-side model and vendor views.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Benchmark Results</strong>
+          <span>Controlled test outcomes and interpretation.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Evidence Trails</strong>
+          <span>Source evidence behind findings and flags.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Governance &amp; Risk Summaries</strong>
+          <span>Risk and governance readouts for review teams.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Procurement Documentation</strong>
+          <span>Materials for vendor review and buying committees.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Historical Score Tracking</strong>
+          <span>Changes in model standing over time.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Custom Evaluation Requests</strong>
+          <span>Scoped assessments for specific buyer questions.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Decision Support Exports</strong>
+          <span>Outputs teams can reuse internally.</span>
+        </article>
+        <article class="evidence-card">
+          <strong>Advisory Support</strong>
+          <span>Help interpreting evidence and next steps.</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="commercial-title">
+      <div class="section-head">
+        <div class="section-label">Sole Initial Paid Model</div>
+        <h2 id="commercial-title">Initial Commercial Strategy</h2>
+      </div>
+      <div class="tier-grid">
+        <article class="tier-card primary">
+          <div>
+            <div class="kicker">Commercial Model To Validate</div>
+            <h3>Scoped enterprise adoption-evidence engagement.</h3>
+          </div>
+          <p>One consequential adoption decision, one bounded evaluation record, and one decision-ready report. No recurring model is assumed before this engagement demonstrates usefulness, delivery economics, and willingness to pay.</p>
+        </article>
+        <article class="tier-card">
+          <div class="kicker">Later Unvalidated Hypotheses</div>
+          <ul class="tier-list">
+            <li>Subscription evidence access</li>
+            <li>Comparative reports and monitoring</li>
+            <li>API access and integrations</li>
+            <li>Benchmark or sector licensing</li>
+            <li>Advisory services</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="pricing-title">
+      <div class="section-head">
+        <div class="section-label">Initial Offer And Later Hypotheses</div>
+        <h2 id="pricing-title">One paid engagement comes before any recurring product.</h2>
+        <p>Pricing, delivery effort, decision impact, and willingness to pay must be learned through bounded design-partner and pilot work.</p>
+      </div>
+      <div class="pricing-table" aria-label="Pricing architecture">
+        <article class="pricing-row">
+          <strong>Scoped Adoption-Evidence Engagement</strong>
+          <span class="pricing-status">Sole initial paid model</span>
+          <p>A project-scoped evaluation record and decision report for one defined system, use context, and institutional decision.</p>
+        </article>
+        <article class="pricing-row">
+          <strong>Subscription Evidence Access</strong>
+          <span class="pricing-status">Later unvalidated hypothesis</span>
+          <p>Considered only if buyers demonstrate repeat use and the delivery model supports recurring access.</p>
+        </article>
+        <article class="pricing-row">
+          <strong>Comparative Reports &amp; Monitoring</strong>
+          <span class="pricing-status">Later unvalidated hypothesis</span>
+          <p>Considered only if institutions need repeated comparison, change tracking, or reevaluation.</p>
+        </article>
+        <article class="pricing-row">
+          <strong>Advisory Services</strong>
+          <span class="pricing-status">Later unvalidated hypothesis</span>
+          <p>Considered only where buyers demonstrate a need separate from the bounded evidence record and report.</p>
+        </article>
+        <article class="pricing-row">
+          <strong>API Access &amp; Benchmark Licensing</strong>
+          <span class="pricing-status">Later unvalidated hypothesis</span>
+          <p>Considered only after repeatable demand, data quality, method governance, and conflict protections are demonstrated.</p>
+        </article>
+      </div>
+      <p class="pricing-note">
+        Only the scoped adoption-evidence engagement is an initial commercial hypothesis. All other paths remain unvalidated.
+      </p>
+    </section>
+
+    <section class="section-card" aria-labelledby="value-title">
+      <div class="section-head">
+        <div class="section-label">Why Organizations Will Pay</div>
+        <h2 id="value-title">Why This Creates Value</h2>
+      </div>
+      <div class="comparison-grid">
+        <article class="comparison-panel">
+          <h3>Without Norynthe</h3>
+          <ul class="comparison-list">
+            <li>Vendor claims</li>
+            <li>Internal guesswork</li>
+            <li>Fragmented benchmarks</li>
+            <li>Limited comparability</li>
+            <li>Difficult procurement decisions</li>
+          </ul>
+        </article>
+        <article class="comparison-panel">
+          <h3>With Norynthe</h3>
+          <ul class="comparison-list">
+            <li>Independent evaluation</li>
+            <li>Evidence-based assessment</li>
+            <li>Comparable scoring</li>
+            <li>Transparent methodology</li>
+            <li>Decision support</li>
+          </ul>
+        </article>
+      </div>
+      <p class="value-note">
+        Organizations need more than a score: reasoning, transparency, documentation, and evidence they can defend.
+      </p>
+    </section>
+
+    <section class="section-card" aria-labelledby="rollout-title">
+      <div class="section-head">
+        <div class="section-label">Commercial Rollout</div>
+        <h2 id="rollout-title">Phase One Commercial Path</h2>
+      </div>
+      <div class="phase-timeline">
+        <article class="phase-card">
+          <div class="phase-kicker">Phase 1</div>
+          <h3>Infrastructure foundation</h3>
+          <p>Build evaluation infrastructure, scoring methodology, and compute foundation.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-kicker">Phase 2</div>
+          <h3>Enterprise wedge validation</h3>
+          <p>Engage CTO, procurement, governance, risk, and AI program owners around adoption review and vendor comparison workflows.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-kicker">Phase 3</div>
+          <h3>Controlled pilots</h3>
+          <p>Launch controlled enterprise pilot programs.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-kicker">Phase 4</div>
+          <h3>Offer refinement</h3>
+          <p>Refine offerings through customer feedback and usage data.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-kicker">Phase 5</div>
+          <h3>Evidence-supported extensions</h3>
+          <p>Decide whether any subscription, monitoring, API, licensing, or advisory extension is warranted by observed demand and delivery economics.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="future-title">
+      <div class="section-head">
+        <div class="section-label">Later Unvalidated Hypotheses</div>
+        <h2 id="future-title">Possible extensions only after the initial engagement is proven.</h2>
+      </div>
+      <div class="future-grid">
+        <article class="future-card"><h3>Enterprise Subscriptions</h3></article>
+        <article class="future-card"><h3>Comparative Reports</h3></article>
+        <article class="future-card"><h3>Vendor Comparison Reports</h3></article>
+        <article class="future-card"><h3>Governance Intelligence</h3></article>
+        <article class="future-card"><h3>API Access</h3></article>
+        <article class="future-card"><h3>Benchmark Licensing</h3></article>
+        <article class="future-card"><h3>Sector-Specific Evidence Access</h3></article>
+        <article class="future-card"><h3>Advisory Services</h3></article>
+        <article class="future-card"><h3>Monitoring &amp; Tracking</h3></article>
+      </div>
+    </section>
+
+    <section class="closing-card" aria-labelledby="closing-title">
+      <div class="closing-grid">
+        <div>
+          <div class="section-label">Closing Statement</div>
+          <h2 id="closing-title">Decision Infrastructure for the AI Economy</h2>
+          <p>As AI adoption grows, organizations will need independent ways to evaluate, compare, and trust AI systems.</p>
+          <p>Norynthe's long-term objective is to become a trusted external source for AI scoring, comparison, and evidence.</p>
+        </div>
+        <ul class="closing-summary">
+          <li>The trust score creates visibility.</li>
+          <li>The evidence layer creates revenue.</li>
+          <li>The infrastructure creates long-term value.</li>
+        </ul>
+      </div>
+      <div class="contact-row">
+        <a class="contact-pill primary" href="mailto:hello@norynthe.com?subject=Norynthe%20Business%20Model">Discuss Business Model</a>
+        <a class="contact-pill" href="norynthe-raise-plan.html">Raise Plan</a>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Norynthe business model · Evidence layer revenue · Independent AI evaluation · investors.norynthe.com
+    </p>
+  </div>
+</body>
+</html>
