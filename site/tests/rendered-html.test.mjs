@@ -64,12 +64,16 @@ test("packages the complete local diligence set", async () => {
   assert.match(compute, /\$146,500 fully owned compute-infrastructure budget/i);
   assert.match(raise, /Capital Architecture Under Consideration/i);
   assert.match(raise, /Founder-Led Laboratory Runway/i);
+  assert.match(raise, /Founder-led, one-employee first phase/i);
+  assert.match(raise, /href="norynthe-white-paper\.html">White Paper/i);
+  assert.doesNotMatch(raise, /Why This Round|Funding And Burn|What This Round Proves|What the \$2M lab build should unlock/i);
   assert.doesNotMatch(raise, /Travel \/ Business Development|Remaining Liquidity \/ Operating Reserve|International \/ Legal \/ Entity Setup/i);
   assert.doesNotMatch(financial, /revenue:\s*\[|grossProfit:\s*\[|operatingProfit:\s*\[/i);
   assert.match(business, /sole initial paid model/i);
   assert.match(consolePage, /sample_core_v2/i);
   assert.doesNotMatch(consolePage, /backend online|runtime online|validation-ready score production|completed a governed evaluation/i);
   assert.match(whitePaper, /canonical public baseline/i);
+  assert.match(whitePaper, /Independent AI Evaluation Architecture/i);
   assert.doesNotMatch(whitePaper, /founder-built evaluation OS|current system can review smaller models and validate the scoring logic/i);
   assert.match(privacy, /noindex, nofollow, noarchive/i);
   assert.doesNotMatch(privacy, /access unlock events|remember access status/i);

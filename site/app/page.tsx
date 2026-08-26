@@ -13,6 +13,7 @@ const groups = [
     cards: [
       ["Laboratory architecture", "Why independent evaluation requires a controlled physical, computational, methodological, evidentiary, security, and governance environment.", "Core · 10 min", "https://investors.norynthe.com/norynthe-laboratory.html"],
       ["Investor PDF packet", "The laboratory thesis, current evidence state, capital plan, founder-led operation, and 18-month proof path.", "PDF · 11 pages", "/norynthe-investor-packet.pdf"],
+      ["White Paper — evaluation architecture", "The technical rationale for independent scoring, verification, benchmark governance, and future agent-episode evaluation. Historical extension context; Method v0.1 remains canonical.", "Technical deep dive · 12 min", "https://investors.norynthe.com/norynthe-white-paper.html"],
       ["Company and category narrative", "Norynthe’s positioning as an independent AI assurance company and institution.", "Core · 7 min", "https://investors.norynthe.com/norynthe-investors.html"],
       ["Why this company exists", "Founder context on the trust problem and the rationale for an independent evaluation layer.", "Context · 6 min", "https://investors.norynthe.com/norynthe-founder-memo.html"],
       ["Capital-to-capability plan", "What the $2M establishes, why the controlled base matters, and which milestones govern deployment.", "Capital · 8 min", "https://investors.norynthe.com/norynthe-raise-plan.html"],
@@ -61,11 +62,10 @@ const groups = [
     id: "strategy",
     number: "05",
     eyebrow: "Category and adoption",
-    title: "An independent trust layer for models and a proposed agent-evaluation extension.",
+    title: "Adoption paths and the infrastructure behind independent evaluation.",
     description:
       "Norynthe is designed to sit outside the model owner’s control and create evidence the market can compare, inspect, and rely upon.",
     cards: [
-      ["External trust layer and proposed agent-evaluation extension", "Historical methodology context for Norynthe.Score, benchmark governance, and a proposed future agent-assessment extension.", "Strategy · 12 min", "https://investors.norynthe.com/norynthe-white-paper.html"],
       ["Institutional adoption paths", "How independent model credibility records support buyers, regulated enterprises, and strategic reviewers.", "Strategy · 8 min", "https://investors.norynthe.com/norynthe-enterprise-use-cases.html"],
       ["Tokens are fuel. Compute is infrastructure.", "Why Norynthe needs hybrid compute inside a wider system of method, evidence custody, governance, and external challenge.", "Strategy · 7 min", "https://investors.norynthe.com/power-of-compute.html"],
     ],
