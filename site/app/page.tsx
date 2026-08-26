@@ -1,7 +1,3 @@
-"use client";
-
-import { FormEvent, useState } from "react";
-
 const groups = [
   {
     id: "start",
@@ -82,26 +78,11 @@ const answers = [
 ];
 
 export default function Home() {
-  const [unlocked, setUnlocked] = useState(false);
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  function unlock(event: FormEvent) {
-    event.preventDefault();
-    if (password === "INVEST_2026") {
-      setUnlocked(true);
-      setError("");
-      requestAnimationFrame(() => document.querySelector("#materials")?.scrollIntoView({ behavior: "smooth" }));
-    } else {
-      setError("That password wasn’t recognized. Please check the invitation and try again.");
-    }
-  }
-
   return (
     <main>
       <header className="site-header">
         <a className="wordmark" href="https://norynthe.com/" aria-label="Norynthe home"><img src="/Norynthe_master.png" alt="Norynthe." /></a>
-        <span className="portal-label">Investor access</span>
+        <span className="portal-label">Investor review</span>
         <a className="text-link" href="https://tally.so/r/ZjezPA">Contact ↗</a>
       </header>
 
@@ -119,20 +100,15 @@ export default function Home() {
           </div>
         </div>
 
-        <aside className="access-card" aria-label="Investor access gate">
-          <p className="kicker">Selected diligence</p>
-          <h2>Unlock the review.</h2>
+        <aside className="access-card" aria-label="Investor review guide">
+          <p className="kicker">Investor review</p>
+          <h2>Review the case.</h2>
           <p>The portal connects the institutional thesis, founder-built foundation, laboratory architecture, capital plan, and proof program.</p>
-          {!unlocked ? (
-            <form onSubmit={unlock}>
-              <label htmlFor="password">Access password</label>
-              <div className="input-row">
-                <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" />
-                <button type="submit">Unlock</button>
-              </div>
-              <p className="form-note" role="status">{error || "Shared for selected investor and strategic conversations. This static review gate is not a confidential data room."}</p>
-            </form>
-          ) : <p className="unlocked">Access active · Review materials below</p>}
+          <ol className="review-path">
+            <li><span>01</span><a href="#start">Begin with the laboratory</a></li>
+            <li><span>02</span><a href="#research">Read the institutional foundation</a></li>
+            <li><span>03</span><a href="#financials">Review the capital plan</a></li>
+          </ol>
         </aside>
       </section>
 
@@ -175,15 +151,7 @@ export default function Home() {
         </div>
       </section>
 
-      {!unlocked ? (
-        <section className="locked-map">
-          <p className="kicker">What access unlocks</p>
-          <div className="locked-grid">
-            {groups.map((group) => <div key={group.id}><span>{group.number}</span><strong>{group.eyebrow}</strong><p>{group.title}</p></div>)}
-          </div>
-        </section>
-      ) : (
-        <section id="materials" className="materials">
+      <section id="materials" className="materials">
           {groups.map((group) => (
             <section className="material-group" key={group.id} id={group.id}>
               <div className="group-intro">
@@ -211,8 +179,7 @@ export default function Home() {
               {answers.map(([question, answer], index) => <article key={question}><span>0{index + 1}</span><h3>{question}</h3><p>{answer}</p></article>)}
             </div>
           </section>
-        </section>
-      )}
+      </section>
 
       <section className="closing">
         <p className="kicker">The category thesis</p>

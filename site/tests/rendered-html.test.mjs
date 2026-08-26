@@ -22,7 +22,10 @@ test("server-renders the laboratory-first investor landing page", async () => {
   assert.match(html, /Building the independent laboratory for AI trust/i);
   assert.match(html, /Founder-built foundation/i);
   assert.match(html, /Low-headcount by design/i);
+  assert.match(html, /Review the case/i);
+  assert.match(html, /White Paper — evaluation architecture/i);
   assert.match(html, /noindex, nofollow, noarchive/i);
+  assert.doesNotMatch(html, /password|unlock the review|INVEST_2026/i);
   assert.doesNotMatch(html, /working evaluation OS|compute capacity is the present constraint/i);
 });
 
