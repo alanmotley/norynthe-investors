@@ -83,6 +83,10 @@ export default function Home() {
       <header className="site-header">
         <a className="wordmark" href="https://norynthe.com/" aria-label="Norynthe home"><img src="/Norynthe_master.png" alt="Norynthe." /></a>
         <nav className="site-nav" aria-label="Investor review navigation">
+          <a href="/index.html" aria-current="page">Investor Review</a>
+          <a href="/norynthe-laboratory.html">Laboratory</a>
+          <a href="/norynthe-white-paper.html">White Paper</a>
+          <a href="/norynthe-raise-plan.html">Capital Plan</a>
           <a className="contact-link" href="https://tally.so/r/ZjezPA">Contact</a>
         </nav>
       </header>
