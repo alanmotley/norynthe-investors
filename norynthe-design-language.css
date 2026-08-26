@@ -16,10 +16,219 @@
   --nt-report-title-size: clamp(2.5rem, 4.2vw, 3.78rem);
   --nt-report-title-mobile-size: clamp(2.2rem, 10vw, 3.42rem);
   --nt-control-radius: 7px;
+  --nt-investor-bg: #eaf0f4;
+  --nt-investor-paper: rgba(255, 255, 255, 0.9);
+  --nt-investor-paper-soft: rgba(255, 255, 255, 0.72);
+  --nt-investor-line: rgba(15, 17, 21, 0.1);
+  --nt-investor-line-strong: rgba(49, 72, 99, 0.2);
+  --nt-investor-shadow: 0 22px 58px rgba(15, 17, 21, 0.075);
+  --nt-investor-shadow-soft: 0 12px 30px rgba(15, 17, 21, 0.05);
+  --nt-investor-radius: 16px;
+  --nt-investor-radius-small: 8px;
+  --nt-investor-max: 1180px;
 }
 
 body {
   font-family: var(--nt-font-sans);
+}
+
+/*
+  Investor diligence system.
+  Applied only to narrative and policy pages so product previews and synthetic
+  reports retain their purpose-built interface language.
+*/
+body.nt-investor-system {
+  min-height: 100vh;
+  color: var(--nt-ink);
+  background:
+    radial-gradient(circle at 16% 10%, rgba(122, 48, 48, 0.065), transparent 27%),
+    radial-gradient(circle at 84% 8%, rgba(49, 72, 99, 0.12), transparent 29%),
+    linear-gradient(180deg, #f5f8fa 0%, var(--nt-investor-bg) 52%, #f4f7f9 100%);
+  overflow-x: hidden;
+}
+
+body.nt-investor-system::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(15, 17, 21, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 17, 21, 0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.72;
+  mask-image: none;
+}
+
+body.nt-investor-system .page {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 44px), var(--nt-investor-max));
+  margin: 0 auto;
+  padding: 1rem 0 76px;
+}
+
+body.nt-investor-system .topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  min-height: 55px;
+  margin: 0 0 clamp(1.65rem, 3vw, 2.4rem);
+  padding: 0 0 18px;
+  color: var(--nt-muted);
+  font-family: var(--nt-font-sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  border: 0;
+  border-bottom: 1px solid var(--nt-investor-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.nt-investor-system .brand,
+body.nt-investor-system .topline-brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 140px;
+  width: 140px;
+  min-width: 140px;
+  max-width: 32vw;
+  line-height: 0;
+}
+
+body.nt-investor-system .brand img,
+body.nt-investor-system .topline-logo {
+  width: 100%;
+  height: auto;
+}
+
+body.nt-investor-system .topline nav,
+body.nt-investor-system .topline-right,
+body.nt-investor-system .topline-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px 18px;
+  color: var(--nt-muted);
+  font-family: var(--nt-font-sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+body.nt-investor-system .topline nav a,
+body.nt-investor-system .topline-right a,
+body.nt-investor-system .topline-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0;
+  color: #53606c;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+body.nt-investor-system .topline nav a:hover,
+body.nt-investor-system .topline-right a:hover,
+body.nt-investor-system .topline-nav a:hover {
+  color: var(--nt-ink);
+}
+
+body.nt-investor-system .topline nav a:last-child,
+body.nt-investor-system .topline-right a:last-child,
+body.nt-investor-system .topline-nav a:last-child {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--nt-investor-line);
+  border-radius: var(--nt-control-radius);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+body.nt-investor-system .topline nav a:last-child:hover,
+body.nt-investor-system .topline-right a:last-child:hover,
+body.nt-investor-system .topline-nav a:last-child:hover {
+  border-color: var(--nt-investor-line-strong);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body.nt-investor-system .hero,
+body.nt-investor-system .document-header {
+  border: 1px solid var(--nt-investor-line);
+  border-top: 3px solid rgba(49, 72, 99, 0.36);
+  border-radius: var(--nt-investor-radius);
+  box-shadow: var(--nt-investor-shadow);
+}
+
+body.nt-investor-system .section-card,
+body.nt-investor-system .closing-card,
+body.nt-investor-system .ask-card,
+body.nt-investor-system .memo,
+body.nt-investor-system .policy-card {
+  border-color: var(--nt-investor-line);
+  border-radius: var(--nt-investor-radius);
+  box-shadow: var(--nt-investor-shadow-soft);
+}
+
+body.nt-investor-system .metric-card,
+body.nt-investor-system .summary-card,
+body.nt-investor-system .proof-card,
+body.nt-investor-system .phase,
+body.nt-investor-system .pricing-card,
+body.nt-investor-system .use-card,
+body.nt-investor-system .hero-answer,
+body.nt-investor-system .hero-summary,
+body.nt-investor-system .sidebar-card {
+  border-radius: var(--nt-investor-radius-small);
+}
+
+body.nt-investor-system .eyebrow,
+body.nt-investor-system .section-label,
+body.nt-investor-system .kicker,
+body.nt-investor-system .card-kicker,
+body.nt-investor-system .phase-kicker,
+body.nt-investor-system .document-kicker,
+body.nt-investor-system .policy-kicker {
+  color: #7a3030;
+  font-family: var(--nt-font-sans);
+  font-size: 0.62rem;
+  font-weight: 820;
+  letter-spacing: 0.18em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+body.nt-investor-system .hero-link,
+body.nt-investor-system .back-link,
+body.nt-investor-system .hero-actions a,
+body.nt-investor-system .hero-cta,
+body.nt-investor-system .button {
+  min-height: 40px;
+  border-radius: var(--nt-control-radius);
+  font-family: var(--nt-font-sans);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body.nt-investor-system .footer {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--nt-investor-line);
 }
 
 .hero h1,
@@ -110,6 +319,56 @@ body.investor-overview-page .hero h1 .no-break {
 }
 
 @media (max-width: 760px) {
+  body.nt-investor-system .page {
+    width: min(calc(100% - 28px), var(--nt-investor-max));
+    padding-top: 0.75rem;
+  }
+
+  body.nt-investor-system .topline {
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+  }
+
+  body.nt-investor-system .brand,
+  body.nt-investor-system .topline-brand {
+    flex-basis: 112px;
+    width: 112px;
+    min-width: 112px;
+  }
+
+  body.nt-investor-system .topline nav,
+  body.nt-investor-system .topline-right,
+  body.nt-investor-system .topline-nav {
+    gap: 8px 12px;
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+  }
+
+  body.nt-investor-system .topline nav a,
+  body.nt-investor-system .topline-right a,
+  body.nt-investor-system .topline-nav a {
+    min-height: 28px;
+  }
+
+  body.nt-investor-system .topline nav a:last-child,
+  body.nt-investor-system .topline-right a:last-child,
+  body.nt-investor-system .topline-nav a:last-child {
+    min-height: 30px;
+    padding: 0 10px;
+  }
+
+  body.nt-investor-system .hero,
+  body.nt-investor-system .document-header,
+  body.nt-investor-system .section-card,
+  body.nt-investor-system .closing-card,
+  body.nt-investor-system .ask-card,
+  body.nt-investor-system .memo,
+  body.nt-investor-system .policy-card {
+    border-radius: 12px;
+  }
+
   .hero h1,
   .hero-copy h1,
   main.hero h1,
