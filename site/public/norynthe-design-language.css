@@ -23,8 +23,8 @@
   --nt-investor-line-strong: rgba(49, 72, 99, 0.2);
   --nt-investor-shadow: 0 22px 58px rgba(15, 17, 21, 0.075);
   --nt-investor-shadow-soft: 0 12px 30px rgba(15, 17, 21, 0.05);
-  --nt-investor-radius: 16px;
-  --nt-investor-radius-small: 8px;
+  --nt-investor-radius: 0;
+  --nt-investor-radius-small: 0;
   --nt-investor-max: 1180px;
 }
 
@@ -59,6 +59,20 @@ body.nt-investor-system::before {
   background-size: 72px 72px;
   opacity: 0.72;
   mask-image: none;
+}
+
+body.nt-investor-system :where(a, article, aside, blockquote, button, div, figure, img, nav, section, span, table) {
+  border-radius: 0 !important;
+}
+
+body.nt-investor-system .topline nav a:last-child,
+body.nt-investor-system .topline-right a:last-child,
+body.nt-investor-system .topline-nav a:last-child {
+  border-radius: 0 !important;
+}
+
+body.nt-investor-system.enterprise-use-cases-page .signal-pill {
+  border-radius: 0 !important;
 }
 
 body.nt-investor-system .page {
@@ -366,7 +380,7 @@ body.investor-overview-page .hero h1 .no-break {
   body.nt-investor-system .ask-card,
   body.nt-investor-system .memo,
   body.nt-investor-system .policy-card {
-    border-radius: 12px;
+    border-radius: 0;
   }
 
   .hero h1,
