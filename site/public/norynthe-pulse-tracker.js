@@ -1,4 +1,8 @@
 (function () {
+  document.querySelectorAll("[data-current-year]").forEach(function (element) {
+    element.textContent = String(new Date().getFullYear());
+  });
+
   const ENDPOINT = window.NORYNTHE_PULSE_ENDPOINT || "https://norynthe-pulse-tracker.alanmotley.workers.dev/track";
   const TRACKER_HOST = new URL(ENDPOINT).hostname;
   const SESSION_KEY = "norynthe_pulse_session_id_v1";

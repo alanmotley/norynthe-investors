@@ -38,7 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script dangerouslySetInnerHTML={{ __html: 'document.querySelectorAll("[data-current-year]").forEach(function(element){element.textContent=String(new Date().getFullYear());});' }} />
+      </body>
     </html>
   );
 }

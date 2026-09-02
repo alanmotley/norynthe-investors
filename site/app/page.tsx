@@ -196,7 +196,7 @@ export default function Home() {
       <footer>
         <a className="wordmark footer-wordmark" href="https://norynthe.com/">Norynthe.</a>
           <p>Selected investor review · Independent evaluation · Governed methodology · Traceable evidence</p>
-        <div><a href="https://papers.norynthe.com/">Papers</a><a href="https://norynthe.com/privacy.html">Privacy</a><span>© 2026 Norynthe.</span></div>
+        <div><a href="https://papers.norynthe.com/">Papers</a><a href="https://norynthe.com/privacy.html">Privacy</a><span>© <span data-current-year>2026</span> Norynthe.</span></div>
       </footer>
     </main>
   );
