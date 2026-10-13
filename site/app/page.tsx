@@ -27,6 +27,7 @@ const groups = [
       ["Volume I — On Trust, Inference, and Intelligence", "The founding treatise: intelligence and trust are different, inference should become an object of science, and evaluation requires institutional memory.", "Foundational publication", "https://papers.norynthe.com/volume-i/"],
       ["Volume II — On Reality, Records, and the Calibration of Intelligence", "The published foundation for continuous epistemic calibration, revision memory, and reality-facing institutional inquiry.", "Published · Aug 25, 2026", "https://papers.norynthe.com/volume-ii/"],
       ["Norynthe AI Assurance Method v0.1", "The current public method defining assurance, independence, evidence, corrections, appeals, and non-certification limits.", "Method · M-001", "https://papers.norynthe.com/methods/ai-assurance-method-v0-1/"],
+      ["The Norynthe Assurance Record", "M-002 defines the durable, evidence-bound record that preserves a finding, its scope, conditions, limitations, and correction history.", "Method · M-002", "https://papers.norynthe.com/methods/assurance-record-v0-1/"],
     ],
   },
   {
