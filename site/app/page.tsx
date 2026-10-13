@@ -63,15 +63,15 @@ const groups = [
       "Norynthe is designed to sit outside the model owner’s control and create evidence the market can compare, inspect, and rely upon.",
     cards: [
       ["Institutional adoption paths", "How independent model credibility records support buyers, regulated enterprises, and strategic reviewers.", "Strategy · 8 min", "https://investors.norynthe.com/norynthe-enterprise-use-cases.html"],
-      ["Tokens are fuel. Compute is infrastructure.", "Why Norynthe needs hybrid compute inside a wider system of method, evidence custody, governance, and external challenge.", "Strategy · 7 min", "https://investors.norynthe.com/power-of-compute.html"],
+      ["Tokens are fuel. Compute is infrastructure.", "Why Norynthe is building owned evaluation capacity inside a wider system of method, evidence custody, governance, and external challenge.", "Strategy · 7 min", "https://investors.norynthe.com/power-of-compute.html"],
     ],
   },
 ];
 
 const answers = [
-  ["What exists now?", "Published research, Method v0.1, a founder-built evaluation architecture, prototype workflow surfaces, illustrative reports, and early smaller-model experimentation requiring a verified evidence bundle."],
+  ["What exists now?", "Published research, Method v0.1, a working local MVP console, completed smaller-model runs, persisted assessment records, and deterministic mock-reference validation. External review and production hardening remain ahead."],
   ["Why a laboratory?", "Independent evaluation requires controlled conditions, benchmark custody, repeatability, evidence preservation, challenge, correction, and institutional continuity."],
-  ["What does capital unlock?", "The controlled base, hybrid compute, evidence systems, security, methodology, external review, and founder-led runway required to establish the laboratory."],
+  ["What does capital unlock?", "The controlled base, owned evaluation compute, evidence systems, security, methodology, external review, and founder-led runway required to establish the laboratory."],
   ["Why low headcount?", "Norynthe scales through infrastructure, automation, governed workflows, and accumulated evidence—not a large early payroll."],
   ["What is the near-term proof?", "Complete run packages, repeatability and variance results, externally challenged methodology, traceable reports, design partners, and bounded paid pilots."],
   ["What compounds?", "The benchmark bank, evidence ledger, revision history, methodology, corrections, and institutional memory."],
@@ -97,7 +97,7 @@ export default function Home() {
           <h1>Building the independent laboratory for AI trust.</h1>
           <p className="lede">
             Norynthe is building a controlled evaluation environment for intelligent systems:
-            governed benchmarks, hybrid compute, preserved evidence, repeatable methods,
+            governed benchmarks, owned evaluation compute, preserved evidence, repeatable methods,
             and institutional reporting outside the model owner’s control.
           </p>
           <div className="thesis-line">
